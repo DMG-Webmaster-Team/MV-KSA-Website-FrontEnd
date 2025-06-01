@@ -1,0 +1,42 @@
+{
+  "server-component": {
+    "welcome": "ARRRR"
+  },
+  "LocaleLayout": {
+    "title": "Zyy"
+  },
+  "data": {
+    "login_label": "Willkommen zurück",
+    "login_title": "Jetzt anmelden",
+    "login_subtitle": "Zugriff auf Ihre Bewertung, entdecken Sie Ihr Potenzial",
+    "emailaddress": "E-Mail-Adresse",
+    "youremail": "Ihre E-Mail",
+    "password": "Passwort",
+    "login": "Anmelden",
+    "dont_have_account": "Sie haben noch kein Konto?",
+    "create_account": "Konto erstellen",
+    "invalid_creditials": "Ungültige Anmeldeinformationen",
+    "register_lable": "Willkommen bei Awareness Profiling",
+    "register_title": "Konto erstellen",
+    "first_name": "Vorname",
+    "last_name": "Nachname",
+    "phone_number": "Telefonnummer",
+    "confirmed_password": "Passwort bestätigen",
+    "confirm_your_password": "Passwort bestätigen",
+    "enter_your_password": "Geben Sie Ihr Passwort ein",
+    "already_have_account": "Haben Sie bereits ein Konto?",
+    "enter_your_email": "Geben Sie Ihre E-Mail-Adresse ein",
+    "register": "Registrieren",
+    "registering": "Registrieren...",
+    "enter_your_lastname": "Geben Sie Ihren Nachnamen ein",
+    "enter_your_firstname": "Geben Sie Ihren Vornamen ein",
+    "first_name_required": "Vorname ist erforderlich",
+    "last_name_required": "Nachname ist erforderlich",
+    "email_required": "E-Mail-Adresse ist erforderlich",
+    "phone_required": "Telefonnummer ist erforderlich",
+    "password_required": "Passwort erforderlich",
+    "password_too_short": "Passwort muss mindestens 8 Zeichen lang sein",
+    "passwords_do_not_match": "Passwörter stimmen nicht überein",
+    "invalid_phone":"Ungültige Telefonnummer"
+  }
+}

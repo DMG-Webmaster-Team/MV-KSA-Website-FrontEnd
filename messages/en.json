@@ -1,0 +1,42 @@
+{
+  "server-component": {
+    "welcome": "ARRRR"
+  },
+  "LocaleLayout": {
+    "title": "Zyy"
+  },
+  "data": {
+    "login_label": "Welcome Back",
+    "login_title": "Login Now",
+    "login_subtitle": "Access your assessment, discover your potential",
+    "emailaddress": "Email Address",
+    "youremail": "Your Email",
+    "password": "Password",
+    "login": "Login",
+    "dont_have_account": "Don’t have account?",
+    "create_account": "Create Account",
+    "invalid_creditials": "Invalid credentials",
+    "register_lable": "Welcome at Awareness Profilling",
+    "register_title": "Create Your Account",
+    "first_name":"First Name",
+    "last_name":"Last Name",
+    "phone_number":"Phone Number",
+    "confirmed_password":"Confirm Password",
+    "confirm_your_password":"Confirm your password",
+    "enter_your_password":"Enter your password",
+    "already_have_account":"Already have account?",
+    "enter_your_email":"Enter your email",
+    "register":"Register",
+    "registering":"Registrieren...",
+    "enter_your_lastname":"Enter your last name",
+    "enter_your_firstname":"Enter your first name",
+    "first_name_required":"First name is required",
+    "last_name_required":"Last name is required",
+    "email_required":"Email is required",
+    "phone_required":"Phone number is required",
+    "password_required":"Password is required",
+    "password_too_short":"Password must be at least 8 characters",
+    "passwords_do_not_match":"Passwords does not match",
+    "invalid_phone":"Invalid phone number"
+  }
+}
