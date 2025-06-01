@@ -1,9 +1,8 @@
-import { UserProvider } from "@/context/UserContext";
 import { NextIntlClientProvider, createTranslator } from "next-intl";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
-import MainHeader from "../_components/Header/MainHeader";
 import "../globals.css";
+import { tajwal } from "../fonts";
 
 
 type Props = {
@@ -70,13 +69,11 @@ export default async function RootLayout({ children, params }: Props) {
               <link rel="manifest" href="/favicon/site.webmanifest" />
             </head>
             <body
-              className={`font-tuffy`}
+              className={`${locale == "ar"? tajwal.className:""}`}
             >
               <NextIntlClientProvider locale={locale} messages={messages}>
-                <UserProvider>
-                  <MainHeader />
+                  {/* <MainHeader /> */}
                   <main>{children}</main>
-                </UserProvider>
               </NextIntlClientProvider>
             </body>
           </html>

@@ -5,7 +5,7 @@ export default withNextIntl("./i18n.ts")({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'backend.awareness-profiling.com'
+        hostname: 'mv-ksa.cloudhosta.com'
       }
     ]
   },

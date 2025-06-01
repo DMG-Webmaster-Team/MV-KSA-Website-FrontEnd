@@ -1,4 +1,4 @@
-import { Poppins,DM_Sans , Archivo, Cairo } from 'next/font/google'
+import { Poppins,DM_Sans , Archivo, Tajawal } from 'next/font/google'
 
 export const poppins = Poppins({
     subsets: ["latin"],
@@ -20,9 +20,9 @@ export const archivo = Archivo({
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 })
 
-export const cairo = Cairo({
+export const tajwal = Tajawal({
     subsets: ["latin"],
     display: "swap",
     variable: "--font-Archivo",
-    weight: ['200', '300', '400', '500', '600', '700', '800', '900', '1000'],
+    weight: ['200','300', '400' ,'500' ,'700', '800' , '900'],
 })
