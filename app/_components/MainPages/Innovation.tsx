@@ -13,8 +13,7 @@ interface Props {
         Widgets: WidgetProps[]
     }
 }
-export default function OurStory({ data }: Props) {
-    console.log(data)
+export default function InnovationPage({ data }: Props) {
     return (
         <>
             <HeroSection data={data.HeroSection} />

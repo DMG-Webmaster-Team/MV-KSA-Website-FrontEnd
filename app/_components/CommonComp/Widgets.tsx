@@ -32,6 +32,7 @@ export default function Widgets({ data, reverse }: {
       }
     }, [data.Description, expanded]);
   
+    console.log(data.Image.data.attributes.url)
     return (
         <div className={`max-w-[1660px] mx-auto flex bg-gray ${reverse ? " flex-row-reverse" : "flex-row"} `}>
             <div className='w-[50%] p-[100px] content-center'>

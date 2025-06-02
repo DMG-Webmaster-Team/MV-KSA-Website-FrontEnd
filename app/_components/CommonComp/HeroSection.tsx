@@ -4,6 +4,7 @@ import React from 'react'
 
 export interface HeroSectionProps {
     Title: string,
+    ShortDescription?: string,
     Media: {
         data: {
             attributes: {
@@ -16,7 +17,7 @@ export interface HeroSectionProps {
 
 export default function HeroSection({ data }: { data: HeroSectionProps }) {
     return (
-        <section className='w-full h-[90vh] relative herosection' style={{boxShadow:"0px 1000px 4px 0px #00000033 inset"}}>
+        <section className='w-full h-[90vh] relative herosection' style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}>
             <Image
                 src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media.data.attributes.url}`}
                 alt={data.Media.data.attributes.alternativeText ?? ""}
@@ -24,7 +25,11 @@ export default function HeroSection({ data }: { data: HeroSectionProps }) {
                 priority
                 className=' object-cover'
             />
-            <h1 className=' absolute w-fit h-fit m-auto text-white z-20 inset-0 text-[100px] font-medium'>{data.Title}</h1>
+            <div className='absolute w-fit h-fit m-auto inset-0 z-20 text-center'>
+                <h1 className='  text-white  text-[100px] font-medium'>{data.Title}</h1>
+                <p className=' text-white opacity-70 text-[60px] font-medium'>{data.ShortDescription}</p>
+            </div>
+
         </section>
     )
 }

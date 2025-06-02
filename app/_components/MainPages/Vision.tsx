@@ -1,6 +1,4 @@
-import React from 'react'
 import HeroSection, { HeroSectionProps } from '../CommonComp/HeroSection'
-import OverviewSection, { OverviewSectionProps } from '../CommonComp/OverviewSection'
 import Widgets, { WidgetProps } from '../CommonComp/Widgets'
 
 
@@ -9,16 +7,14 @@ import Widgets, { WidgetProps } from '../CommonComp/Widgets'
 interface Props {
     data: {
         HeroSection: HeroSectionProps,
-        OverviewSection: OverviewSectionProps,
         Widgets: WidgetProps[]
+        
     }
 }
-export default function OurStory({ data }: Props) {
-    console.log(data)
+export default function VisionPage({ data }: Props) {
     return (
         <>
             <HeroSection data={data.HeroSection} />
-            <OverviewSection data={data.OverviewSection} />
             {data?.Widgets?.map((item: WidgetProps, index: number) => (
                 <Widgets data={item} key={index} reverse={index % 2 == 0} />
             ))}

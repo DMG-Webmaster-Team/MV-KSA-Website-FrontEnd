@@ -57,5 +57,5 @@ body {
 }
 
 .herosection::after{
-  background: linear-gradient(2.47deg, rgba(0, 0, 0, 0) 85.37%, rgba(0, 0, 0, 0.5) 97.84%);
+  background:rgba(0, 0, 0, 50%);
 }
