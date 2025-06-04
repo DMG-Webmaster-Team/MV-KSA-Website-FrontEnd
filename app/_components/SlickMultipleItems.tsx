@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
+import ArrowLong from "./SVGS/ArrowLong";
 // import Arrow from "./Svgs/Arrow";
 
 interface SlickMultipleItemsProps {
@@ -10,7 +11,7 @@ interface SlickMultipleItemsProps {
     blogs?: boolean;
 }
 
-function SlickMultipleItems({ children}: SlickMultipleItemsProps) {
+function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
 
     const [totalPages, setTotalPages] = useState<number>(1);
     const locale = useLocale();
@@ -68,14 +69,14 @@ function SlickMultipleItems({ children}: SlickMultipleItemsProps) {
     };
     return (
         <div className=" md:-mt-[60px] ">
-            <div className={` md:block hidden   `}>
-                <div className="max-w-[1336px] mx-auto px-3">
+            <div className={` md:block hidden absolute top-20 w-full   `}>
+                <div className="max-w-[1448px] mx-auto px-3">
                     {totalPages > 1 && (
-                        <div className="flex justify-end gap-1 items-center">
+                        <div className="flex justify-start gap-1 flex-row-reverse items-center">
                             {locale == "en" ?
                                 <>
                                     <div
-                                        className={` transition text-white hover:text-primary
+                                        className={`  bg-white text-primary hover:bg-primary hover:text-white transition-all duration-500
                   ${!isEndOfLeft ? "opacity-100" : "opacity-50 pointer-events-none"
                                             } 
                   `}
@@ -85,16 +86,15 @@ function SlickMultipleItems({ children}: SlickMultipleItemsProps) {
                                             <span
                                                 className={` block w-6 h-6  ${locale === "en" ? "rotate-180" : " "}`}
                                             >
-                                                {/* <Arrow /> */}
+                                                <ArrowLong />
                                             </span>
                                         </button>
                                     </div>
 
                                     <div
-                                        className={` text-white hover:text-primary
+                                        className={` bg-white text-primary hover:bg-primary hover:text-white transition-all duration-500
                    ${!isEndOfRight ? "opacity-100" : "opacity-50 pointer-events-none "
-                                            } 
-                  transition`}
+                                            }`}
                                         onClick={goRight}
 
                                     >
@@ -102,7 +102,7 @@ function SlickMultipleItems({ children}: SlickMultipleItemsProps) {
                                             <span
                                                 className={`block w-6 h-6 `}
                                             >
-                                                {/* <Arrow /> */}
+                                                <ArrowLong />
                                             </span>
                                         </button>
                                     </div>
@@ -110,7 +110,7 @@ function SlickMultipleItems({ children}: SlickMultipleItemsProps) {
                                 :
                                 <>
                                     <div
-                                        className={`  text-white hover:text-primary transition
+                                        className={`  bg-white text-primary hover:bg-primary hover:text-white transition-all duration-500
                   ${!isEndOfLeft ? "opacity-100" : "opacity-50 pointer-events-none"
                                             } 
                   `}
@@ -121,13 +121,14 @@ function SlickMultipleItems({ children}: SlickMultipleItemsProps) {
                                                 className={`${locale === "ar" ? "" : "rotate-180"
                                                     } block w-6 h-6`}
                                             >
-                                                {/* <Arrow /> */}
+                                                <ArrowLong />
+
                                             </span>
                                         </button>
                                     </div>
 
                                     <div
-                                        className={`transition text-white hover:text-primary
+                                        className={` bg-white text-primary hover:bg-primary hover:text-white transition-all duration-500
                    ${!isEndOfRight ? "opacity-100" : "opacity-50 pointer-events-none "
                                             }  `}
                                         onClick={goLeft}
@@ -138,7 +139,8 @@ function SlickMultipleItems({ children}: SlickMultipleItemsProps) {
                                                 className={`block w-6 h-6 ${locale === "ar" ? "rotate-180" : ""
                                                     }`}
                                             >
-                                                {/* <Arrow /> */}
+                                                <ArrowLong />
+
                                             </span>
                                         </button>
                                     </div>

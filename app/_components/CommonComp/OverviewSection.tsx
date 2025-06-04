@@ -1,16 +1,33 @@
+import Image from 'next/image'
 import React from 'react'
 
 export interface OverviewSectionProps {
     Label: string,
     Title: string,
     Description: string
+    Logo: {
+        data: {
+            attributes: {
+                url: string,
+                alternativeText: string,
+            }
+        }
+    }
 }
 
-export default function OverviewSection({ data, FullWidth }: { data: OverviewSectionProps, FullWidth?: boolean }) {
+export default function OverviewSection({ data, FullWidth, vision }: { data: OverviewSectionProps, FullWidth?: boolean, vision?: boolean }) {
     return (
-        <section className={`${FullWidth ? "w-full text-start" : "max-w-[1112px] mx-auto text-center py-20"}   flex flex-col gap-6 justify-center`}>
+        <section className={`${FullWidth ? "w-full text-start" : "max-w-[1112px] mx-auto text-center py-20"}   flex flex-col ${vision ? "gap-10" : "gap-6"} justify-center`}>
             {data?.Label && <span className='  text-2xl text-opacity-50 text-primary'>{data.Label}</span>}
-            <h2 className=' text-balance text-primary text-[52px] leading-[65px]'>{data?.Title}</h2>
+            {data.Logo &&
+                <Image
+                    src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
+                    alt={data.Logo.data.attributes.alternativeText ?? "Logo"}
+                    width={128}
+                    height={86}
+                />
+            }
+            <h2 className={`${vision ? " text-4xl" : "text-[52px] leading-[65px]"} text-pretty  text-primary `}>{data?.Title}</h2>
             {data?.Description &&
                 <p className='text-xl font-medium text-primary text-opacity-50 '>{data.Description}</p>}
         </section>

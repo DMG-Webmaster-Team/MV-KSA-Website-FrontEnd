@@ -1,6 +1,8 @@
 import HeroSection, { HeroSectionProps } from '../CommonComp/HeroSection'
+import LighthouseWidget, { LighthouseWidgetProps } from '../CommonComp/LighthouseWidget'
 import OverviewSection, { OverviewSectionProps } from '../CommonComp/OverviewSection'
 import TextComp, { Repeater } from '../CommonComp/TextComp'
+import SlickMultipleItems from '../SlickMultipleItems'
 
 
 
@@ -12,17 +14,7 @@ interface Props {
         Repeater: Repeater[],
         Whatweserve: {
             Title: string,
-            Widgets: {
-                Title: string,
-                Image: {
-                    data: {
-                        attributes: {
-                            url: string,
-                            alternativeText: string,
-                        }
-                    }
-                }
-            }[]
+            Widgets: LighthouseWidgetProps[]
         }
     }
 }
@@ -36,12 +28,22 @@ export default function LighthousePage({ data }: Props) {
                 </div>
                 <div className='w-[calc(50%-50px)] flex flex-col gap-5'>
                     {data.Repeater.map((item: Repeater, index: number) => (
-                       <TextComp data={item} key={index} />
+                        <TextComp data={item} key={index} />
                     ))}
                 </div>
             </div>
-            <div className=' bg-gray'>
+            <div className=' bg-gray py-20 relative'>
+                <div className='max-w-[1448px] px-4 mx-auto mb-10'>
+                    <h2 className=' text-primary text-[60px] font-medium'>{data.Whatweserve.Title}</h2>
+                </div>
+                <SlickMultipleItems>
+                    {data.Whatweserve.Widgets.map((item: LighthouseWidgetProps, index: number) => (
+                        <div key={index} className='w-[440px]'>
+                            <LighthouseWidget data={item} />
+                        </div>
 
+                    ))}
+                </SlickMultipleItems>
             </div>
         </>
     )
