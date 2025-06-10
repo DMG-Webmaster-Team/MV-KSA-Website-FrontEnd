@@ -9,6 +9,12 @@
     "see_more":"See more",
     "see_less":"See less",
     "discover_more":"Discover more"
-
+  },
+  "Menu":{
+    "home":"Home",
+    "our_story":"Our story",
+    "our_com":"Our communities",
+    "vision":"Vision 2030",
+    "lifeAtMV":"Life at MV"
   }
 }
