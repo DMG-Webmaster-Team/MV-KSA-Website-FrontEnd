@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import "../globals.css";
 import { tajwal } from "../fonts";
 import MainHeader from "../_components/Header/MainHeader";
+import Footer from "../_components/Footer/BottomComponent";
 
 
 type Props = {
@@ -75,6 +76,9 @@ export default async function RootLayout({ children, params }: Props) {
         <NextIntlClientProvider locale={locale} messages={messages}>
           <MainHeader />
           <main>{children}</main>
+          <Footer params={{
+            locale: locale
+          }}  />
         </NextIntlClientProvider>
       </body>
     </html>

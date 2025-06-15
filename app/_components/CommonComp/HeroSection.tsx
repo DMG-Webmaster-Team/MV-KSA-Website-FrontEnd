@@ -28,7 +28,7 @@ export default function HeroSection({ data }: { data: HeroSectionProps }) {
         <section className='w-full h-[90vh] relative herosection' style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}>
             <Image
                 src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media.data.attributes.url}`}
-                alt={data.Media.data.attributes.alternativeText ?? data.Title}
+                alt={data.Media.data.attributes.alternativeText ?? "Image"}
                 fill
                 priority
                 className=' object-cover'
@@ -38,7 +38,7 @@ export default function HeroSection({ data }: { data: HeroSectionProps }) {
                     <div className=' relative w-[305px] h-[140px] mb-20 mx-auto'>
                         <Image
                             src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
-                            alt={data.Media.data.attributes.alternativeText ?? data.Title}
+                            alt={data.Media.data.attributes.alternativeText ??  "Image"}
                             fill
                             className=' object-contain'
                         />

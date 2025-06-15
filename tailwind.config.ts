@@ -22,10 +22,11 @@ export default {
     extend: {
       colors: {
         primary: "#001A70",
-        gray:"#F6F6F6",
-        gray2:"#EAEAEA"
-       
-       
+        gray: "#F6F6F6",
+        gray2: "#EAEAEA",
+       darkblue: "#000F3D",
+       yellow: "#FAC63E"
+
       },
     },
   },
