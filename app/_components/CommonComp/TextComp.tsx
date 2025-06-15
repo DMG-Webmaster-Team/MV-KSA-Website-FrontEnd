@@ -7,9 +7,9 @@ export interface Repeater {
 
 export default function TextComp({ data }: { data: Repeater }) {
     return (
-        <div className='px-8 py-7 bg-gray rounded-xl flex flex-col gap-3'>
-            <h3 className=' text-2xl font-medium text-primary'>{data.Title}</h3>
-            <p className=' text-xl font-medium text-primary text-opacity-50'>{data.Description}</p>
+        <div className='md:px-8 md:py-7 p-4 bg-gray rounded-xl flex flex-col gap-3'>
+            <h3 className=' md:text-2xl text-base font-medium text-primary'>{data.Title}</h3>
+            <p className=' md:text-xl text-base font-medium text-primary text-opacity-50'>{data.Description}</p>
         </div>
     )
 }

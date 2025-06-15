@@ -109,3 +109,9 @@ body {
 .herosection::after {
   background: rgba(0, 0, 0, 50%);
 }
+
+@media (max-width:765px) {
+  .flex-mobile{
+    flex:0 0 45%;
+  }
+}

@@ -151,7 +151,7 @@ function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
                 </div>
 
             </div>
-            <div className={`multi_scroll_content pt-8`}>
+            <div className={`multi_scroll_content md:pt-8`}>
                 <div
                     ref={sliderRef}
                     className={`multi_scroll_content_gallery`}
@@ -160,7 +160,7 @@ function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
                 >
                     <div className={`wrapper`}>
                         {children}
-                        {/* <div className=" shrink-0 flex-grow-0 w-5 h-5 "></div> */}
+                        <div className=" shrink-0 flex-grow-0 w-1 h-5 "></div>
                     </div>
                 </div>
             </div>

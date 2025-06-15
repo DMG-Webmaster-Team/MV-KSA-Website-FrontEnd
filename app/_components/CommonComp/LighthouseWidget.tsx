@@ -28,7 +28,7 @@ export default function LighthouseWidget({ data }: { data: LighthouseWidgetProps
                 </div>
             }
 
-            <h3 className=' text-primary text-2xl font-medium mt-4'>{data.Title}</h3>
+            <h3 className=' text-primary md:text-2xl text-base font-medium mt-4'>{data.Title}</h3>
         </div>
     )
 }

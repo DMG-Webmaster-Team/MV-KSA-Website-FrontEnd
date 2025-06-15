@@ -45,8 +45,8 @@ export default function HeroSection({ data }: { data: HeroSectionProps }) {
                     </div>
 
                 }
-                <h1 className='  text-white  text-[100px] leading-[100px] font-medium'>{data.Title}</h1>
-                <p className=' text-white opacity-70 text-[60px] font-medium'>{data.ShortDescription}</p>
+                <h1 className='  text-white  lg:text-[100px] lg:leading-[100px] md:text-6xl text-4xl font-medium'>{data.Title}</h1>
+                <p className=' text-white opacity-70 lg:text-[60px] md:text-4xl text-base font-medium'>{data.ShortDescription}</p>
             </div>
 
         </section>
