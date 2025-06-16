@@ -18,6 +18,7 @@
     "lifeAtMV":"Life at MV"
   },
   "Buttons":{
-    "register_your_interest":"Register your interests"
+    "register_your_interest":"Register your interests",
+    "download_company_profile":"Download Company Profile"
   }
 }

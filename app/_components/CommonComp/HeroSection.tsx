@@ -25,13 +25,14 @@ export interface HeroSectionProps {
 
 export default function HeroSection({ data }: { data: HeroSectionProps }) {
     return (
-        <section className='w-full h-[90vh] relative herosection' style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}>
+        <section className='w-full md:h-[90vh] h-[70vh] relative herosection' style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}>
             <Image
                 src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media.data.attributes.url}`}
                 alt={data.Media.data.attributes.alternativeText ?? "Image"}
                 fill
                 priority
                 className=' object-cover'
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className='absolute w-fit h-fit m-auto inset-0 z-20 text-center'>
                 {data.Logo &&
@@ -41,6 +42,7 @@ export default function HeroSection({ data }: { data: HeroSectionProps }) {
                             alt={data.Media.data.attributes.alternativeText ??  "Image"}
                             fill
                             className=' object-contain'
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
 

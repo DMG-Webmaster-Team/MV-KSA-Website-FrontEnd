@@ -31,11 +31,12 @@ export default function Widgets({ data, reverse }: {
         setHeight(contentRef.current.scrollHeight);
       }
     }, [data.Description, expanded]);
+    console.log(data.Description?.split(' ').length,data.Title)
       return (
-        <div className={`max-w-[1660px] mx-auto flex bg-gray ${reverse ? " flex-row-reverse" : "flex-row"} `}>
-            <div className='w-[50%] p-[100px] content-center'>
-                <div className='max-w-[516px] flex flex-col gap-3'>
-                    <h2 className=' text-primary text-6xl font-medium leading-[75px]'>{data.Title}</h2>
+        <div className={`max-w-[1660px] mx-auto flex bg-gray flex-col-reverse  ${reverse ? " lg:flex-row-reverse" : "lg:flex-row"} `}>
+            <div className='lg:w-[50%] xl:p-[100px] md:py-[100px] md:px-10 py-[84px] px-4 content-center'>
+                <div className='md:max-w-[516px] flex flex-col gap-3'>
+                    <h2 className=' text-primary lg:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]'>{data.Title}</h2>
                     <motion.div
                         initial={false}
                         animate={{ height: expanded ? height : 110 }} // 110px ≈ 6.9rem fixed collapsed height
@@ -46,31 +47,31 @@ export default function Widgets({ data, reverse }: {
                         <p
                                   ref={contentRef}
 
-                        className={`text-xl text-primary text-opacity-50 ${!expanded ? 'line-clamp-4' : ''}`}>
+                        className={`md:text-xl text-base text-primary text-opacity-50 ${!expanded ? 'line-clamp-4' : ''}`}>
                             {data.Description}
                         </p>
                     </motion.div>
-                    {data.Description?.split(' ').length > 20 && (
+                    {data.Description?.split(' ').length > 30 && (
                         <button
-                            className=" text-primary flex items-center mt-3 gap-1 text-base font-bold py-1 border-b border-primary border-opacity-20 w-fit"
+                            className=" text-primary flex items-center mt-3 gap-1 md:text-base text-sm font-bold py-1 border-b border-primary border-opacity-20 w-fit"
                             onClick={() => setExpanded(!expanded)}
                         >
                             {expanded ? t("data.see_less") : t("data.see_more")}
                             <span className={`w-4 h-4 ${expanded ? " rotate-180" : ""}`}>
                                 <Arrow />
                             </span>
-
                         </button>
                     )}
                 </div>
 
             </div>
-            <div className='w-[50%] relative aspect-[800/1064]'>
+            <div className='lg:w-[50%] relative lg:aspect-[800/1064] aspect-[800/604]'>
                 <Image
                     src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url}`}
                     alt={data.Image.data.attributes.alternativeText ?? ""}
                     fill
                     className=' object-cover'
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
         </div>

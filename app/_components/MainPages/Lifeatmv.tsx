@@ -17,7 +17,7 @@ export default function LifeatmvPage({ data }: Props) {
         <>
             <HeroSection data={data.HeroSection} />
             <OverviewSection data={data.Overview} />
-            <div className='flex gap-[2px]'>
+            <div className='flex gap-[2px] lg:flex-row flex-col-reverse'>
                 {data.Widgets.map((item:WidgetProps,index:number)=>(
                     <WidgetWithlogo data={item} key={index} />
                 ))}

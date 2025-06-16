@@ -51,22 +51,25 @@ export default function MainHeader() {
         }
     }, [openMenu]);
 
+    const StableHeader = Pathname == "/calendly" || Pathname == "/en/calendly";
+
     return (
         <>
-            <div className={`${openMenu ? " bg-darkblue" : ""} transition-all duration-500 absolute top-0 w-full z-40 py-2.5 border-b-[2px] border-white border-opacity-20`}>
+            <div className={`${openMenu ? " bg-darkblue" : ""} ${StableHeader ? "" : "absolute top-0"} transition-all duration-500  w-full z-40 py-2.5 border-b-[2px] border-white border-opacity-20`}>
                 <div className="max-w-[1448px] px-4 mx-auto flex justify-between items-center">
                     <Link className=" relative rtl:2xl:w-[268px] rtl:xl:w-[220px] rtl:sm:w-[200px] rtl:w-[153px] ltr:w-[240px] aspect-[401/105]" href={`${locale == "en" ? "/en" : ""}/`}>
                         <Image
                             src={'/logowhite.webp'}
                             alt="Logo MV KSA"
                             fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </Link>
                     <div className="rtl:2xl:w-[calc(100%-268px-140px)] rtl:xl:w-[calc(100%-220px-100px)] rtl:w-[calc(100%-200px-20px)] ltr:w-[calc(100%-240px-50px)] rtl:2xl:gap-[60px] xl:gap-[50px] gap-8 ltr:2xl:gap-[40px] items-center justify-between lg:flex hidden ">
                         <div className="lg:flex hidden xl:gap-[28px] gap-4 rtl:xl:w-[calc(100%-422px-50px)] rtl:w-[calc(100%-359px-50px)] ltr:2xl:w-[calc(100%-485px-50px)] ltr:w-[calc(100%-429px-50px)]">
                             {Menu.map((item: { name: string, link: string }, index: number) => (
                                 <Link
-                                    className={`${Pathname === item.link ? " before:opacity-100 pointer-events-none" : " before:opacity-0"} relative rtl:2xl:text-base rtl:xl:text-sm rtl:text-xs ltr:text-sm font-bold text-white hover:text-opacity-60 duration-500 transition-all before:content-normal before:w-full before:h-[2px] before:bg-white before:absolute before:inset-x-0 rtl:2xl:before:bottom-[-35px] rtl:xl:before:bottom-[-31px] rtl:before:bottom-[-28px] before:bottom-[-34px]`}
+                                    className={`${Pathname === item.link ? " before:opacity-100 pointer-events-none" : " before:opacity-0"} relative rtl:2xl:text-base rtl:xl:text-sm rtl:text-xs ltr:text-sm font-bold ${StableHeader ? "text-primary before:bg-primary" : "text-white before:bg-white"}  hover:text-opacity-60 duration-500 transition-all before:content-normal before:w-full before:h-[2px]  before:absolute before:inset-x-0 rtl:2xl:before:bottom-[-35px] rtl:xl:before:bottom-[-31px] rtl:before:bottom-[-28px] before:bottom-[-34px]`}
                                     key={index}
                                     href={`${item.link}`}>
                                     {item.name}
@@ -79,31 +82,31 @@ export default function MainHeader() {
                                 <LangSwitcher />
                             </div>
 
-                            <div className="lg:flex hidden border border-white rtl:divide-x-reverse ltr:divide-x divide-x-[1px] divide-white rounded-sm">
+                            <div className={`${StableHeader ? "border-primary divide-primary" : "border-white divide-white"} lg:flex hidden border  rtl:divide-x-reverse ltr:divide-x divide-x-[1px]  rounded-sm`}>
                                 <Link
-                                    className=" text-white rlt:xl:p-2.5 p-1.5 hover:bg-primary transition-all duration-500 flex"
+                                    className={`${StableHeader ? " text-primary hover:bg-primary hover:text-white" : "text-white hover:bg-primary"}  xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
                                     href={'/calendly'}>
-                                    <span className=" rlt:xl:w-6 rtl:xl:h-6 w-5 h-5 block">
+                                    <span className=" xl:w-6 xl:h-6 w-5 h-5 block">
                                         <Calender />
                                     </span>
                                 </Link>
                                 <Link
-                                    className=" text-white rtl:xl:p-2.5 p-1.5 hover:bg-primary transition-all duration-500"
+                                    className={` ${StableHeader ? " text-primary hover:bg-primary hover:text-white" : "text-white hover:bg-primary"} xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
                                     href={'tel:'}>
-                                    <span className=" rlt:xl:w-6 rtl:xl:h-6 w-5 h-5 block">
+                                    <span className=" xl:w-6 xl:h-6 w-5 h-5 block">
                                         <Phone />
                                     </span>
                                 </Link>
                                 <button
-                                    className=" text-white rtl:xl:p-2.5 p-1.5 hover:bg-primary transition-all duration-500"
+                                    className={` ${StableHeader ? " text-primary hover:bg-primary hover:text-white" : "text-white hover:bg-primary"} xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
                                 >
-                                    <span className=" rlt:xl:w-6 rtl:xl:h-6 w-5 h-5 block">
+                                    <span className=" xl:w-6 xl:h-6 w-5 h-5 block">
                                         <Search />
                                     </span>
                                 </button>
                             </div>
                             <Link href={'/contact-us'}
-                                className="bg-white xl:px-4 px-3 xl:py-3 py-2 rtl:xl:text-base text-sm font-bold text-primary lg:flex hidden gap-3 items-center rounded-sm hover:bg-primary hover:text-white transition-all duration-500 "
+                                className={`${StableHeader ? "bg-primary text-white hover:bg-darkblue" : "bg-white text-primary hover:bg-primary hover:text-white"}  xl:px-4 px-3 xl:py-3 py-2 rtl:xl:text-base text-sm font-bold  lg:flex hidden gap-3 items-center rounded-sm  transition-all duration-500 `}
                             >
                                 <span className=" leading-[10px] whitespace-nowrap">
                                     {t("Buttons.register_your_interest")}
@@ -153,12 +156,12 @@ export default function MainHeader() {
                 initial={{
                     y: -200,
                     opacity: 0,
-                    visibility: openMenu? "visible" : "hidden"
+                    visibility: openMenu ? "visible" : "hidden"
                 }}
                 animate={{
                     y: openMenu ? 0 : -200,
                     opacity: openMenu ? 1 : 0,
-                    visibility: openMenu? "visible" : "hidden"
+                    visibility: openMenu ? "visible" : "hidden"
                 }}
                 transition={{
                     duration: 0.5,
@@ -170,6 +173,7 @@ export default function MainHeader() {
                         <Link
                             href={`${item.link}`}
                             key={index}
+                            onClick={() => { setOpenMenu(!openMenu) }}
                             className={` ${Pathname === item.link ? "text-yellow" : "  text-white"} justify-between flex items-center text-[22px] font-medium py-4 border-b border-white border-opacity-10`}
                         >
                             <span className="flex gap-3 items-center">

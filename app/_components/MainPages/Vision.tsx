@@ -1,6 +1,7 @@
 import HeroSection, { HeroSectionProps } from '../CommonComp/HeroSection'
-import OverviewSection, { OverviewSectionProps } from '../CommonComp/OverviewSection'
-import TextComp, { Repeater } from '../CommonComp/TextComp'
+import { OverviewSectionProps } from '../CommonComp/OverviewSection'
+import OverviewSectionRepeater from '../CommonComp/OverviewSectionRepeater'
+import { Repeater } from '../CommonComp/TextComp'
 import Widgets, { WidgetProps } from '../CommonComp/Widgets'
 
 
@@ -19,7 +20,7 @@ export default function VisionPage({ data }: Props) {
     return (
         <>
             <HeroSection data={data.HeroSection} />
-            <div className='flex max-w-[1448px] px-4 mx-auto items-start py-20 gap-[100px]'>
+            {/* <div className='flex max-w-[1448px] px-4 mx-auto items-start py-20 gap-[100px]'>
                 <div className='w-[calc(50%-50px)]'>
                     <OverviewSection data={data.OverviewSection} FullWidth vision />
                 </div>
@@ -28,7 +29,8 @@ export default function VisionPage({ data }: Props) {
                         <TextComp data={item} key={index} />
                     ))}
                 </div>
-            </div>
+            </div> */}
+            <OverviewSectionRepeater vision OverviewSectionData={data.OverviewSection} Repeater={data.Repeater} />
 
             {data?.Widgets?.map((item: WidgetProps, index: number) => (
                 <Widgets data={item} key={index} reverse={index % 2 == 0} />

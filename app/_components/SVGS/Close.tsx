@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Close() {
     return (
-        <svg className='w-full h-full' viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fillRule="evenodd" clipRule="evenodd" d="M5.75304 14.3953L6.4595 15.1018L10.1127 11.684L10.6038 11.5858L14.2452 15.0154L15.0106 14.2501L11.5859 10.6037L11.6841 10.1126L15.1019 6.45942L14.3954 5.75296L10.702 9.13053L10.211 9.22874L6.36813 5.60766L5.98796 5.98784L5.6028 6.37299L9.22886 10.2108L9.13065 10.7019L5.75304 14.3953Z" fill="white" />
+        <svg className='w-full h-full' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" clipRule="evenodd" d="M6.90355 17.2746L7.75131 18.1224L12.1352 14.021L12.7245 13.9032L17.0942 18.0187L18.0126 17.1003L13.903 12.7246L14.0208 12.1354L18.1222 7.75155L17.2744 6.9038L12.8423 10.9569L12.253 11.0747L7.64166 6.72943L7.18545 7.18564L6.72326 7.64783L11.0745 12.2532L10.9567 12.8425L6.90355 17.2746Z" fill="currentColor" />
         </svg>
 
     )

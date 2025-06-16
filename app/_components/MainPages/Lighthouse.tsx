@@ -41,7 +41,6 @@ export default function LighthousePage({ data }: Props) {
                         <div key={index} className='md:w-[440px] flex-mobile'>
                             <LighthouseWidget data={item} />
                         </div>
-
                     ))}
                 </SlickMultipleItems>
             </div>

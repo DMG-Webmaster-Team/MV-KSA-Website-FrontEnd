@@ -23,6 +23,6 @@ export const archivo = Archivo({
 export const tajwal = Tajawal({
     subsets: ["latin"],
     display: "swap",
-    variable: "--font-Archivo",
+    variable: "--font-Tijwall",
     weight: ['200','300', '400' ,'500' ,'700', '800' , '900'],
 })

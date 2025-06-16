@@ -112,6 +112,31 @@ body {
 
 @media (max-width:765px) {
   .flex-mobile{
-    flex:0 0 45%;
+    flex:0 0 39%;
   }
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid white;
+  border-right-color: #001A70;
+  position: relative;
+  animation: l24 1s infinite linear;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: inherit;
+  animation: inherit;
+  animation-duration: 2s;
+}
+
+.loader:after {
+  animation-duration: 4s;
 }

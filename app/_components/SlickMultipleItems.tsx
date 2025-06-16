@@ -9,9 +9,11 @@ interface SlickMultipleItemsProps {
     Aboutus?: boolean;
     homepage?: boolean
     blogs?: boolean;
+    noMargin?: boolean;
+    customArrow?: boolean
 }
 
-function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
+function SlickMultipleItems({ children, noMargin, customArrow }: SlickMultipleItemsProps) {
 
     const [totalPages, setTotalPages] = useState<number>(1);
     const locale = useLocale();
@@ -68,11 +70,11 @@ function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
         }
     };
     return (
-        <div className=" md:-mt-[60px] ">
-            <div className={` md:block hidden absolute top-20 w-full   `}>
+        <div className={`${noMargin ? "" : " md:-mt-[30px]"} ${customArrow ? "relative" : ""}`}>
+            <div className={` md:block hidden absolute  ${customArrow ? "top-0 bottom-0 m-auto h-fit z-20 max-w-[1392px] px-7 w-full" : "top-[65px] w-full"}  `}>
                 <div className="max-w-[1448px] mx-auto px-3">
                     {totalPages > 1 && (
-                        <div className="flex justify-start gap-1 flex-row-reverse items-center">
+                        <div className={`flex ${customArrow ? " justify-between" : "justify-start"}  gap-1 flex-row-reverse items-center`}>
                             {locale == "en" ?
                                 <>
                                     <div
@@ -82,7 +84,7 @@ function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
                   `}
                                         onClick={goLeft}
                                     >
-                                        <button className="w-[56px] h-[56px] flex justify-center items-center">
+                                        <button className={`${customArrow ? "w-12 h-12" : "w-[56px] h-[56px]"}  flex justify-center items-center`}>
                                             <span
                                                 className={` block w-6 h-6  ${locale === "en" ? "rotate-180" : " "}`}
                                             >
@@ -98,7 +100,7 @@ function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
                                         onClick={goRight}
 
                                     >
-                                        <button className="w-[56px] h-[56px] flex justify-center items-center">
+                                        <button className={`${customArrow ? "w-12 h-12" : "w-[56px] h-[56px]"} flex justify-center items-center`}>
                                             <span
                                                 className={`block w-6 h-6 `}
                                             >
@@ -116,7 +118,7 @@ function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
                   `}
                                         onClick={goRight}
                                     >
-                                        <button className="w-[56px] h-[56px] flex justify-center items-center">
+                                        <button className={`${customArrow ? "w-12 h-12" : "w-[56px] h-[56px]"} flex justify-center items-center`}>
                                             <span
                                                 className={`${locale === "ar" ? "" : "rotate-180"
                                                     } block w-6 h-6`}
@@ -134,7 +136,7 @@ function SlickMultipleItems({ children }: SlickMultipleItemsProps) {
                                         onClick={goLeft}
 
                                     >
-                                        <button className="w-[56px] h-[56px] flex justify-center items-center">
+                                        <button className={`${customArrow ? "w-12 h-12" : "w-[56px] h-[56px]"} flex justify-center items-center`}>
                                             <span
                                                 className={`block w-6 h-6 ${locale === "ar" ? "rotate-180" : ""
                                                     }`}

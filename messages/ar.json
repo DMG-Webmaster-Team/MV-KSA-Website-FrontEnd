@@ -18,6 +18,7 @@
     "lifeAtMV":"الحياة في ماونتن فيو"
   },
   "Buttons":{
-    "register_your_interest":"سجل اهتماماتك"
+    "register_your_interest":"سجل اهتماماتك",
+    "download_company_profile":"تحميل الملف الشخصي للشركة"
   }
 }

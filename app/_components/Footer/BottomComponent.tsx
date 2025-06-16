@@ -10,11 +10,12 @@ export default async function Footer({ params: { locale } }: { params: { locale:
             <div className="max-w-[1448px] px-4 mx-auto">
                 <div className=" py-8 flex justify-between items-center border-b border-white border-opacity-10">
                     <div className="flex md:gap-6 gap-3 items-center">
-                        <Link href={`${locale == "en" ? "/en" : "/"}`} className=" relative w-[267px] aspect-[401/105]">
+                        <Link href={`${locale == "en" ? "/en" : "/"}`} className=" relative md:w-[267px] w-[152px] aspect-[401/105]">
                             <Image
                                 src={'/logowhite.webp'}
                                 alt="Logo MV KSA"
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </Link>
                         <span className="w-[1px] md:h-[60px] h-[40px] bg-white bg-opacity-20" />
@@ -36,6 +37,7 @@ export default async function Footer({ params: { locale } }: { params: { locale:
                                             src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Icon.data.attributes.url}`}
                                             alt={item.Icon.data.attributes.alternativeText || 'Social media icon'}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                     </Link>
                                 )
@@ -49,11 +51,11 @@ export default async function Footer({ params: { locale } }: { params: { locale:
                     </button>
                 </div>
                 <div className=" md:py-[60px] py-10 flex md2:flex-row flex-col-reverse gap-y-10 justify-between  border-b border-white border-opacity-10">
-                    <div className="w-[400px]">
+                    <div className="md:w-[400px]">
                         <h3 className=" text-white md:text-4xl text-[22px]">{Footer.data.attributes?.Footer.Text?.Title}</h3>
                         <p className=" text-white text-opacity-50 md:text-xl text-sm font-medium md:pt-3 pt-2">{Footer.data.attributes?.Footer.Text?.Description}</p>
                     </div>
-                    <div className="w-[324px] flex gap-x-16">
+                    <div className="md:w-[324px] flex gap-x-16">
                         <div className="flex flex-col gap-3">
                             {Footer.data.attributes.Footer.Menu.slice(0, 8).map(
                                 (item: {
