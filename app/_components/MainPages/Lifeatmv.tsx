@@ -1,6 +1,6 @@
 import HeroSection, { HeroSectionProps } from '../CommonComp/HeroSection'
 import OverviewSection, { OverviewSectionProps } from '../CommonComp/OverviewSection'
-import WidgetWithlogo, { WidgetProps } from '../CommonComp/WidgetWithlogo'
+import WidgetWithLogo, { WidgetProps } from '../CommonComp/WidgetWithlogo'
 
 
 
@@ -19,7 +19,7 @@ export default function LifeatmvPage({ data }: Props) {
             <OverviewSection data={data.Overview} />
             <div className='flex gap-[2px] lg:flex-row flex-col-reverse'>
                 {data.Widgets.map((item:WidgetProps,index:number)=>(
-                    <WidgetWithlogo data={item} key={index} />
+                    <WidgetWithLogo data={item} key={index} />
                 ))}
             </div>
         </>

@@ -8,7 +8,9 @@
   "data":{
     "see_more":"See more",
     "see_less":"See less",
-    "discover_more":"Discover more"
+    "discover_more":"Discover more",
+    "all":"All"
+
   },
   "Menu":{
     "home":"Home",

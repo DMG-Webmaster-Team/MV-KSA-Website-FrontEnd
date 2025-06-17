@@ -30,10 +30,10 @@ interface Props {
     }
 }
 export default function ScienceOfHappinessPage({ data }: Props) {
-    const [openfaq, setOpenfaq] = useState<number | null>(null);
+    const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     const handleClick = (index: number) => {
-        setOpenfaq(index === openfaq ? null : index);
+        setOpenFaq(index === openFaq ? null : index);
     };
     return (
         <>
@@ -56,7 +56,7 @@ export default function ScienceOfHappinessPage({ data }: Props) {
                         <h2 className=' lg:text-4xl md:text-3xl text-[28px]  text-primary font-medium'>{data.Strategies.Title}</h2>
                         <div>
                             {data.Strategies.Repeater.map((item: Repeater, index: number) => (
-                                <SingleAccordion item={item} key={index} handleClick={handleClick} openfaq={openfaq} index={index} />
+                                <SingleAccordion item={item} key={index} handleClick={handleClick} openFaq={openFaq} index={index} />
                             ))}
                         </div>
 

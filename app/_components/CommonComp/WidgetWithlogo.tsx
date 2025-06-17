@@ -24,14 +24,14 @@ export interface WidgetProps {
     }
 }
 
-export default function WidgetWithlogo({ data }: { data: WidgetProps }) {
+export default function WidgetWithLogo({ data }: { data: WidgetProps }) {
     const t = useTranslations();
     const locale = useLocale();
     return (
         <div className='relative lg:w-[50%] w-full aspect-[1000/835] group overflow-hidden'>
             <a
             className=' absolute w-full h-full inset-0 z-20'
-            href={`${locale === "en" ? "/" : "/ar/"}${data.Link}`} />
+            href={`${locale === "en" ? "/en/" : "/"}${data.Link}`} />
             <Image
                 src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url}`}
                 alt={`${data.Image.data.attributes.alternativeText ?? data.Title}`}
@@ -60,7 +60,7 @@ export default function WidgetWithlogo({ data }: { data: WidgetProps }) {
                             {t("data.discover_more")}
                         </span>
 
-                        <span className='w-5 h-5'>
+                        <span className='w-5 h-5 ltr:rotate-180'>
                             <ArrowLong />
                         </span>
 

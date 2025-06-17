@@ -71,7 +71,7 @@ export default async function RootLayout({ children, params }: Props) {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </head>
       <body
-        className={`${locale == "ar" ? tajwal.className : ""}`}
+        className={`${locale == "ar" ? tajwal.className : "font-FreightNeoPro"}`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <MainHeader />

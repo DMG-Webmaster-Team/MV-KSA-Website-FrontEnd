@@ -63,7 +63,7 @@ export default function CompoundComponent({ item, index, lastone, open, onClose,
                             onClick={() => onOpen(index)}
                             className=' text-primary flex gap-1 text-base font-bold mt-1 border-b border-primary border-opacity-20 w-fit hover:border-opacity-100 transition-all duration-500'>
                             {t("data.see_more")}
-                            <span className='w-5 h-5 rotate-90'><Arrow /></span>
+                            <span className='w-5 h-5 rotate-90 ltr:-rotate-90'><Arrow /></span>
                         </button>
                     </div>
 

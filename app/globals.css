@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "FreightNeoPro";
+  src: url("/fonts/FreightNeoPro-Book.woff2") format("woff2"),
+    url("/fonts/FreightNeoPro-Book.woff") format("woff"),
+    url("/fonts/FreightNeoPro-Book.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  /* Ensures text remains visible during font load */
+}
+
+@font-face {
+  font-family: "FreightNeoPro";
+  src: url("/fonts/FreightNeoPro-Light.woff2") format("woff2"),
+    url("/fonts/FreightNeoPro-Light.woff") format("woff"),
+    url("/fonts/FreightNeoPro-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  /* Ensures text remains visible during font load */
+}
+
+.font-FreightNeoPro {
+  font-family: "FreightNeoPro", sans-serif;
+}
 
 @layer base {
 

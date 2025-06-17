@@ -71,7 +71,7 @@ function SlickMultipleItems({ children, noMargin, customArrow }: SlickMultipleIt
     };
     return (
         <div className={`${noMargin ? "" : " md:-mt-[30px]"} ${customArrow ? "relative" : ""}`}>
-            <div className={` md:block hidden absolute  ${customArrow ? "top-0 bottom-0 m-auto h-fit z-20 max-w-[1392px] px-7 w-full" : "top-[65px] w-full"}  `}>
+            <div className={` md:block hidden absolute  ${customArrow ? "top-0 bottom-0 m-auto h-fit z-20 max-w-[1392px] px-7 w-full inset-x-0" : "top-[65px] w-full"}  `}>
                 <div className="max-w-[1448px] mx-auto px-3">
                     {totalPages > 1 && (
                         <div className={`flex ${customArrow ? " justify-between" : "justify-start"}  gap-1 flex-row-reverse items-center`}>
