@@ -1,10 +1,10 @@
 import { NextIntlClientProvider, createTranslator } from "next-intl";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
-import "../globals.css";
-import { tajwal } from "../fonts";
-import MainHeader from "../_components/Header/MainHeader";
 import Footer from "../_components/Footer/BottomComponent";
+import HeaderComp from "../_components/Header/HeaderComp";
+import { tajwal } from "../fonts";
+import "../globals.css";
 
 
 type Props = {
@@ -74,7 +74,10 @@ export default async function RootLayout({ children, params }: Props) {
         className={`${locale == "ar" ? tajwal.className : "font-FreightNeoPro"}`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <MainHeader />
+          {/* <MainHeader /> */}
+          <HeaderComp params={{
+            locale: locale
+          }} />
           <main>{children}</main>
           <Footer params={{
             locale: locale
