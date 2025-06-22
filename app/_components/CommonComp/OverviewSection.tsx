@@ -2,10 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 
 export interface OverviewSectionProps {
-    Label: string,
+    Label?: string,
     Title: string,
     Description: string
-    Logo: {
+    Logo?: {
         data: {
             attributes: {
                 url: string,

@@ -53,7 +53,10 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     Pathname == "/en/faqs" ||
     Pathname == "/faqs" ||
     Pathname == "/contact-us" ||
-    Pathname == "/en/contact-us";
+    Pathname == "/en/contact-us" ||
+    Pathname == "/careers" ||
+    Pathname == "/en/careers" 
+    ;
   return (
     <>
       <div

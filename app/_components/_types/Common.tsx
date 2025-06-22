@@ -3,17 +3,37 @@ export interface ImageData {
   alternativeText: string | null;
 }
 
-
 export interface SingleFaq {
   attributes: {
-    Question: string
-    Answer: string
+    Question: string;
+    Answer: string;
     faqs_type: {
       data: {
         attributes: {
-          Title: string
-        }
-      }
-    }
-  }
+          Title: string;
+        };
+      };
+    };
+  };
+}
+
+export interface CareerWidget {
+  attributes: {
+    Title: string;
+    slug: string;
+    department: {
+      data: {
+        attributes: {
+          Name: string;
+        };
+      };
+    };
+    role_type: {
+      data: {
+        attributes: {
+          Name: string;
+        };
+      };
+    };
+  };
 }
