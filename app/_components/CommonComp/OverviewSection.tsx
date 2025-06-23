@@ -18,7 +18,7 @@ export interface OverviewSectionProps {
 export default function OverviewSection({ data, FullWidth, vision }: { data: OverviewSectionProps, FullWidth?: boolean, vision?: boolean }) {
     return (
         <section className={`${FullWidth ? "w-full md:text-start text-center" : "max-w-[1112px] mx-auto text-center md:py-20 py-10"}   flex flex-col ${vision ? "gap-10" : "md:gap-6 gap-5"} md:px-0 px-4 justify-center`}>
-            {data?.Label && <span className='  text-2xl text-opacity-50 text-primary'>{data.Label}</span>}
+            {data?.Label && <span className='  text-2xl opacity-50 text-primary'>{data.Label}</span>}
             {data.Logo &&
                 <Image
                     src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
@@ -30,7 +30,7 @@ export default function OverviewSection({ data, FullWidth, vision }: { data: Ove
             }
             <h2 className={`${vision ? " md:text-4xl text-[22px]" : "md:text-[52px] md:leading-[65px] text-[28px]"} text-pretty  text-primary `}>{data?.Title}</h2>
             {data?.Description &&
-                <p className='md:text-xl text-base font-medium text-primary text-opacity-50 '>{data.Description}</p>}
+                <p className='md:text-xl text-base font-medium text-primary opacity-50 '>{data.Description}</p>}
         </section>
     )
 }

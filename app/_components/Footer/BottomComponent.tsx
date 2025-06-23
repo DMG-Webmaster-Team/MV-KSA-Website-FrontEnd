@@ -53,7 +53,7 @@ export default async function Footer({ params: { locale } }: { params: { locale:
                 <div className=" md:py-[60px] py-10 flex md2:flex-row flex-col-reverse gap-y-10 justify-between  border-b border-white border-opacity-10">
                     <div className="md:w-[400px]">
                         <h3 className=" text-white md:text-4xl text-[22px]">{Footer.data.attributes?.Footer.Text?.Title}</h3>
-                        <p className=" text-white text-opacity-50 md:text-xl text-sm font-medium md:pt-3 pt-2">{Footer.data.attributes?.Footer.Text?.Description}</p>
+                        <p className=" text-white opacity-50 md:text-xl text-sm font-medium md:pt-3 pt-2">{Footer.data.attributes?.Footer.Text?.Description}</p>
                     </div>
                     <div className="md:w-[324px] flex gap-x-16">
                         <div className="flex flex-col gap-3">
@@ -62,7 +62,7 @@ export default async function Footer({ params: { locale } }: { params: { locale:
                                     Link: string;
                                     Title: string;
                                 }) => (
-                                    <Link href={item.Link} key={item.Link} className="  text-white hover:text-opacity-50 transition-all duration-500 md:text-base text-sm font-bold" rel="noopener noreferrer">
+                                    <Link href={item.Link} key={item.Link} className="  text-white hover:opacity-50 transition-all duration-500 md:text-base text-sm font-bold" rel="noopener noreferrer">
                                         {item.Title}
                                     </Link>
                                 )
@@ -74,7 +74,7 @@ export default async function Footer({ params: { locale } }: { params: { locale:
                                     Link: string;
                                     Title: string;
                                 }) => (
-                                    <Link href={item.Link} key={item.Link} className="  text-white hover:text-opacity-50 transition-all duration-500 text-base font-bold" rel="noopener noreferrer">
+                                    <Link href={item.Link} key={item.Link} className="  text-white hover:opacity-50 transition-all duration-500 text-base font-bold" rel="noopener noreferrer">
                                         {item.Title}
                                     </Link>
                                 )
@@ -85,7 +85,7 @@ export default async function Footer({ params: { locale } }: { params: { locale:
                 </div>
                 <div className=" md:py-[22px] py-3 flex items-center justify-between md:flex-row flex-col-reverse">
                     <p className=" text-white text-sm font-medium">{Footer.data.attributes.Footer.Copyrights}</p>
-                    <p className="text-white text-sm text-opacity-50">Website design and developed by <Link href={'www.mitchdesigns.com'} className="underline" target="_blank" >MitchDesigns</Link></p>
+                    <p className="text-white text-sm opacity-50">Website design and developed by <Link href={'www.mitchdesigns.com'} className="underline" target="_blank" >MitchDesigns</Link></p>
                 </div>
             </div>
         </footer>

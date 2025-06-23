@@ -51,7 +51,7 @@ export default function CompoundComponent({ item, index, lastone, open, onClose,
                         />
                     </div>
                     <div className=' flex flex-col gap-1 mt-6'>
-                        <span className=' text-xl text-primary text-opacity-50'>{item.Years}</span>
+                        <span className=' text-xl text-primary opacity-50'>{item.Years}</span>
                         <h3 className=' text-2xl font-medium text-primary'>{item.Title}</h3>
                         <p
                             className="text-sm font-medium text-primary"

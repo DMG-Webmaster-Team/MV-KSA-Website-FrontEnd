@@ -21,7 +21,7 @@ export default function SingleAccordion({ item, handleClick, openFaq, index, Big
                 animate={openFaq === index ? { height: "auto" } : { height: 0 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-                <p className={`${Big ? "md:text-xl text-sm" : "text-sm"} text-primary text-opacity-50 md:pt-4 pt-4 md:pb-6 pb-4`}>
+                <p className={`${Big ? "md:text-xl text-sm" : "text-sm"} text-primary opacity-50 md:pt-4 pt-4 md:pb-6 pb-4`}>
                     {item.Description}
                 </p>
             </motion.div>

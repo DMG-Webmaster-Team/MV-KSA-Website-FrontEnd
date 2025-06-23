@@ -66,7 +66,7 @@ export default function ScienceOfHappinessPage({ data }: Props) {
             </div>
             <div className='max-w-[1448px] mx-auto px-4 md:py-20 py-10'>
                 <h2 className=' text-primary lg:text-4xl md:text-2xl text-base font-medium text-center'>{data.TextSection.Title}</h2>
-                <p className=' text-center lg:text-4xl md:text-2xl text-base mt-6 text-primary text-opacity-50'>{data.TextSection.Description}</p>
+                <p className=' text-center lg:text-4xl md:text-2xl text-base mt-6 text-primary opacity-50'>{data.TextSection.Description}</p>
             </div>
 
         </>

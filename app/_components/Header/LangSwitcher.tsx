@@ -21,7 +21,7 @@ export default function LangSwitcher({ DesktopHeader }: { DesktopHeader?: boolea
     }, [pathname]);
     return (
         <div className=" relative">
-            <button className={`${DesktopHeader ? "lg:text-primary" : "lg:text-white"} text-white flex gap-1 border-b hover:text-opacity-50 duration-500 transition-all`}
+            <button className={`${DesktopHeader ? "lg:text-primary" : "lg:text-white"} text-white flex gap-1 border-b hover:opacity-50 duration-500 transition-all`}
                 onClick={setisOpenlang}
             >
                 {locale == "en" ? "EN" : "AR"}

@@ -22,13 +22,12 @@ interface Props {
         Description: string;
       };
     };
-    AllCareersData: {
-      data: CareerWidget[];
-    };
+    AllCareersData: CareerWidget[];
   };
 }
 
 export default function CareersPage({ data }: Props) {
+  console.log(data)
   return (
     <div>
       <div className="md:py-20 py-10 text-center space-y-6 mx-auto max-w-[840px]">
@@ -65,9 +64,11 @@ export default function CareersPage({ data }: Props) {
           </h2>
         </div>
         <div>
-          {data.AllCareersData.data.map((item: CareerWidget, index: number) => (
+          {data?.AllCareersData?.map((item: CareerWidget, index: number) => (
             <div key={index}>
-                
+
+              <h3>{item.attributes.Title}</h3>
+
             </div>
           ))}
         </div>

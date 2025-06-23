@@ -47,7 +47,7 @@ export default function Widgets({ data, reverse }: {
                         <p
                                   ref={contentRef}
 
-                        className={`md:text-xl text-base text-primary text-opacity-50 ${!expanded ? 'line-clamp-4' : ''}`}>
+                        className={`md:text-xl text-base text-primary opacity-50 ${!expanded ? 'line-clamp-4' : ''}`}>
                             {data.Description}
                         </p>
                     </motion.div>
