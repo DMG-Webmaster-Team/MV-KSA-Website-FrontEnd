@@ -1,5 +1,5 @@
 import HeroSection, { HeroSectionProps } from '../CommonComp/HeroSection'
-import LighthouseWidget, { LighthouseWidgetProps } from '../CommonComp/LighthouseWidget'
+import LighthouseWidget, { LighthouseWidgetProps } from '../SmallWidgets/LighthouseWidget'
 import OverviewSection, { OverviewSectionProps } from '../CommonComp/OverviewSection'
 import TextComp, { Repeater } from '../CommonComp/TextComp'
 import SlickMultipleItems from '../SlickMultipleItems'

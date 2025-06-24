@@ -8,7 +8,7 @@ import { useState } from 'react';
 import DownloadButton from '../CommonComp/DownloadButton';
 import { useTranslations } from 'next-intl';
 import SlickMultipleItems from '../SlickMultipleItems';
-import WidgetComp from '../CommonComp/WidgetComp';
+import WidgetComp from '../SmallWidgets/WidgetComp';
 
 interface Props {
     data: {

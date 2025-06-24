@@ -27,8 +27,10 @@ export default {
         darkblue: "#000F3D",
         yellow: "#FAC63E",
         beige: "#F1EEE8",
-        CoolGray:"#EDF1F4"
-
+        CoolGray:"#EDF1F4",
+        DarkGray:"#777777",
+        Gray03:"#CDCDCD",
+        Gray04:"#E3E3E3",
       },
     },
   },

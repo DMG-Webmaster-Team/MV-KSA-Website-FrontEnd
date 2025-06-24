@@ -1,24 +1,24 @@
 import { Metadata } from "next";
-export async function fetchServer(pageURL: string,lang:string) {
+
+export async function fetchServer(pageURL: string, lang: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${pageURL}?locale=${lang}`,
-    );
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${pageURL}locale=${lang}`;
+    // console.log("💬 fetchServer URL:", url); // ⬅️ Log this
+    const res = await fetch(url);
 
     if (!res.ok) {
-      console.error(
-        `fetchServer: Failed with status ${res.status} for ${pageURL}`,
-      );
+      console.error(`❌ fetchServer failed with status ${res.status} for ${pageURL}`);
       throw new Error("Failed to fetch Props");
     }
 
     const json = await res.json();
     return { data: json.data };
   } catch (error) {
-    console.error("fetchServer error:", error);
+    console.error("⚠️ fetchServer error:", error);
     return { data: null };
   }
 }
+
 
   export async function getSEOMetadata(
     slug: string,

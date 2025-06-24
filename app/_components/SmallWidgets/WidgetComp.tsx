@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { WidgetProps } from './Widgets';
 import { motion } from 'framer-motion';
+import { WidgetProps } from '../CommonComp/Widgets';
 
 export default function WidgetComp({ item }: { item: WidgetProps }) {
     const [isHovered, setIsHovered] = useState(false);

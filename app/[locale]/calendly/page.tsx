@@ -7,10 +7,10 @@ import { generatePageMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-    return generatePageMetadata("calendly", locale);
+    return generatePageMetadata("calendly?", locale);
 }
 
 export default async function page({ params: { locale } }: { params: { locale: string } }) {
-    const Data = await fetchServer("calendly", locale);
+    const Data = await fetchServer("calendly?", locale);
     return <CalendlyPage data={Data.data.attributes} />;
 }

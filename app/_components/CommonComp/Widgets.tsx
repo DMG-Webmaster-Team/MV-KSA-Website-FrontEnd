@@ -31,7 +31,6 @@ export default function Widgets({ data, reverse }: {
         setHeight(contentRef.current.scrollHeight);
       }
     }, [data.Description, expanded]);
-    console.log(data.Description?.split(' ').length,data.Title)
       return (
         <div className={`max-w-[1660px] mx-auto flex bg-gray flex-col-reverse  ${reverse ? " lg:flex-row-reverse" : "lg:flex-row"} `}>
             <div className='lg:w-[50%] xl:p-[100px] md:py-[100px] md:px-10 py-[84px] px-4 content-center'>

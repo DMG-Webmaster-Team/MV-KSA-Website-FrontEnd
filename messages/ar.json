@@ -11,7 +11,13 @@
     "discover_more":"اكتشف المزيد",
     "all":"الكل",
     "hotline":"الخط الساخن",
-    "email":"بريد إلكتروني"
+    "email":"بريد إلكتروني",
+    "department":" القسم ",
+    "role_type":" نوع الدور ",
+    "all_departments":" جميع الإدارات ",
+    "all_role_types":" جميع الادوار",
+    "no_results_found":"لا توجد وظائف متاحة تطابق اختياراتك."
+
   },
   "Menu":{
     "home":"الرئيسية",

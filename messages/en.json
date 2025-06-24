@@ -11,7 +11,12 @@
     "discover_more":"Discover more",
     "all":"All",
     "hotline":"Hotline",
-    "email":"Email"
+    "email":"Email",
+    "department":"Department",
+    "role_type":"Role Type",
+    "all_departments":"All Departments",
+    "all_role_types":"All Roles",
+    "no_results_found":"There are no available roles matching your selection."
   },
   "Menu":{
     "home":"Home",

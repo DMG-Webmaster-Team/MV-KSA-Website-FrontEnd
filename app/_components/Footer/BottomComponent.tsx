@@ -4,7 +4,7 @@ import Link from "next/link";
 import ArrowLong from "../SVGS/ArrowLong";
 
 export default async function Footer({ params: { locale } }: { params: { locale: string } }) {
-    const Footer = await fetchServer("general-page", locale)
+    const Footer = await fetchServer("general-page?", locale)
     return (
         <footer className="bg-darkblue">
             <div className="max-w-[1448px] px-4 mx-auto">
