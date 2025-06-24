@@ -16,7 +16,9 @@
     "role_type":" نوع الدور ",
     "all_departments":" جميع الإدارات ",
     "all_role_types":" جميع الادوار",
-    "no_results_found":"لا توجد وظائف متاحة تطابق اختياراتك."
+    "no_results_found":"لا توجد وظائف متاحة تطابق اختياراتك.",
+    "apply": "تقديم الطلب"
+
 
   },
   "Menu":{
@@ -24,10 +26,22 @@
     "our_story":"قصتنا",
     "our_com":"مجتمعاتنا",
     "vision":"رؤية 2030",
-    "lifeAtMV":"الحياة في ماونتن فيو"
+    "lifeAtMV":"الحياة في ماونتن فيو",
+    "careers":"الوظائف"
   },
   "Buttons":{
     "register_your_interest":"سجل اهتماماتك",
-    "download_company_profile":"تحميل الملف الشخصي للشركة"
-  }
+    "download_company_profile":"تحميل الملف الشخصي للشركة",
+    "apply_now":"تقدم الآن"
+
+  },
+  "form": {
+  "first_name": "الاسم الأول",
+  "last_name": "اسم العائلة",
+  "email": "البريد الإلكتروني",
+  "phone": "رقم الهاتف",
+  "resume": "أضف سيرتك الذاتية",
+  "message": "اكتب رسالة تعريفية"
+}
+
 }

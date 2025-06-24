@@ -2,7 +2,7 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React from "react";
-// import ContactUsForm from "../Forms/ContactUsForm";
+import ContactUsForm from "../Forms/ContactUsForm";
 
 interface Props {
   data: {
@@ -44,7 +44,7 @@ export default function ContactUs({ data }: Props) {
             <span className=" text-sm opacity-50">{data.FormLabel}</span>
             <h2 className=" md:text-5xl text-3xl">{data.FormTitle}</h2>
           </div>
-          {/* <ContactUsForm /> */}
+          <ContactUsForm />
         </div>
       </div>
       <div className="max-w-[1448px] px-4 mx-auto md:py-[60px] py-10 md:gap-[60px] gap-6 flex items-center sm:flex-row flex-col">

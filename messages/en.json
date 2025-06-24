@@ -16,17 +16,29 @@
     "role_type":"Role Type",
     "all_departments":"All Departments",
     "all_role_types":"All Roles",
-    "no_results_found":"There are no available roles matching your selection."
+    "no_results_found":"There are no available roles matching your selection.",
+    "apply":"Apply"
   },
   "Menu":{
     "home":"Home",
     "our_story":"Our story",
     "our_com":"Our communities",
     "vision":"Vision 2030",
-    "lifeAtMV":"Life at MV"
+    "lifeAtMV":"Life at MV",
+    "careers":"Careers"
   },
   "Buttons":{
     "register_your_interest":"Register your interests",
-    "download_company_profile":"Download Company Profile"
+    "download_company_profile":"Download Company Profile",
+    "apply_now":"Apply Now"
+  },
+  "form":{
+    "first_name":"First Name",
+    "last_name":"Last Name",
+    "email":"Email Address",
+    "phone":"Phone Number",
+    "resume":"Add your Resume",
+    "message":"Write a cover message",
+    "select_file":"Select File"
   }
 }
