@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import BreadCrumbs from "../CommonComp/BreadCrumbs";
-import JobForm from "../Forms/JobForm";
+import CareerForm from "../Forms/CareerForm";
 interface SingleContent {
   Title: string;
   Details: {
@@ -171,7 +171,7 @@ export default function SingleCareerPage({ data }: Props) {
                       </a>
                     )}
                   </div>
-                ))}{" "}
+                ))}
               </div>
             </div>
           ))}
@@ -179,7 +179,7 @@ export default function SingleCareerPage({ data }: Props) {
             <h2 className="  xl:text-[52px] md:text-4xl text-[28px] font-medium md:mb-12 mb-6">
               {t("data.apply")}
             </h2>
-            <JobForm Title={data.MainData.Title} />
+            <CareerForm Title={data.MainData.Title} />
           </div>
         </div>
         <div className="relative xl:w-[calc(100%-616px-80px)] lg:w-[calc(50%-50px)] w-full aspect-[616/434]">

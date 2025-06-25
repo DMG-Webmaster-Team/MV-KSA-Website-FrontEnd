@@ -30,7 +30,9 @@
   "Buttons":{
     "register_your_interest":"Register your interests",
     "download_company_profile":"Download Company Profile",
-    "apply_now":"Apply Now"
+    "apply_now":"Apply Now",
+    "send_message":"Send My Message"
+
   },
   "form":{
     "first_name":"First Name",
@@ -39,7 +41,9 @@
     "phone":"Phone Number",
     "resume":"Add your Resume",
     "message":"Write a cover message",
-    "select_file":"Select File"
+    "select_file":"Select File",
+    "select_inquiry_type": "Inquiry Type",
+    "add_message":"Add Message"
   },
   "validation":{
     "firstName": {
@@ -65,12 +69,19 @@
     },
     "resume": {
       "required": "Resume is required"
+    },
+    "inquiryType": {
+      "required": "Please select an inquiry type"
     }
   },
   "thanks":{
     "jobs":{
       "title":"Thank you for your application!",
       "description":"We’ve received your submission and our team will review it shortly. If your profile matches our requirements, we’ll get in touch with you soon."
+    },
+    "contactUs":{
+      "title":"Thank you for getting in touch!",
+      "description":"We’ve received your message and will get back to you as soon as possible."
     }
   }
 }

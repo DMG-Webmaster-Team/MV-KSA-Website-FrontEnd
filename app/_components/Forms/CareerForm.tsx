@@ -98,15 +98,15 @@ const CareerForm = ({ Title }: { Title: string }) => {
           validateOnBlur={true}
         >
           {({ setFieldValue, values, errors, touched }) => (
-            <Form className="flex flex-col md:gap-5 gap-3">
+            <Form className="flex flex-col md:gap-5 gap-3  text-primary ">
               <div className="flex md:gap-5 gap-3 md:flex-row flex-col">
                 <div className=" md:w-1/2">
                   <Field
                     name="firstName"
-                    className={`input w-full md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none ${
+                    className={`input bg-gray w-full md:px-5 md:py-3 px-4 py-3 md:text-xl text-base rounded-sm outline-none placeholder:text-primary placeholder:opacity-70  ${
                       errors.firstName && touched.firstName
                         ? "border-red-500"
-                        : "border-Gray04"
+                        : "border-transparent"
                     } border`}
                     placeholder={t("form.first_name")}
                   />
@@ -120,10 +120,10 @@ const CareerForm = ({ Title }: { Title: string }) => {
                 <div className=" md:w-1/2">
                   <Field
                     name="lastName"
-                    className={`input w-full md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none ${
+                    className={`input bg-gray w-full md:px-5 md:py-3 px-4 py-3 md:text-xl text-base rounded-sm outline-none placeholder:text-primary placeholder:opacity-70  ${
                       errors.lastName && touched.lastName
                         ? "border-red-500"
-                        : "border-Gray04"
+                        : "border-transparent"
                     } border`}
                     placeholder={t("form.last_name")}
                   />
@@ -139,10 +139,10 @@ const CareerForm = ({ Title }: { Title: string }) => {
                 <Field
                   name="email"
                   type="email"
-                  className={`input border border-Gray04 w-full md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none     ${
+                  className={`input bg-gray border  w-full md:px-5 md:py-3 px-4 py-3 md:text-xl text-base rounded-sm outline-none   placeholder:text-primary placeholder:opacity-70   ${
                     errors.email && touched.email
                       ? "border-red-500"
-                      : "border-Gray04"
+                      : "border-transparent"
                   }`}
                   placeholder={t("form.email")}
                 />
@@ -157,11 +157,13 @@ const CareerForm = ({ Title }: { Title: string }) => {
                   value={values.mobile}
                   onChange={(value) => setFieldValue("mobile", value)}
                   defaultCountry="EG"
-                  className={`input w-full md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none ${
+                  className={`input bg-gray w-full md:px-5 md:py-3 px-4 py-3 md:text-xl text-base rounded-sm outline-none placeholder:text-primary placeholder:opacity-70  ${
                     errors.mobile && touched.mobile
                       ? "border-red-500"
-                      : "border-Gray04"
+                      : "border-transparent"
                   } border`}
+                  placeholder={t("form.phone")}
+
                 />
 
                 <ErrorMessage
@@ -173,13 +175,13 @@ const CareerForm = ({ Title }: { Title: string }) => {
 
               <div className="">
                 <div
-                  className={`relative w-full p-2 md:text-xl text-base rounded-sm outline-none flex items-center gap-6 border ${
+                  className={`relative w-full bg-gray p-2 md:text-xl text-base rounded-sm outline-none flex items-center gap-6 border  ${
                     errors.resume && touched.resume
                       ? "border-red-500"
-                      : "border-Gray04"
+                      : "border-transparent"
                   }`}
                 >
-                  <div className="relative text-primary bg-[#E8E9E4] md:px-5 md:py-4 px-4 py-3 h-full whitespace-nowrap">
+                  <div className="relative text-primary bg-[#E8E9E4] md:px-5 md:py-2 px-4 py-3 h-full whitespace-nowrap">
                     <input
                       id="resume"
                       name="resume"
@@ -193,13 +195,13 @@ const CareerForm = ({ Title }: { Title: string }) => {
                     {t("form.select_file")}
                   </div>
 
-                  <div className=" text-Gray03">
+                  <div className=" text-primary">
                     {values.resume ? (
                       <span className=" md:text-base text-sm">
                         {(values.resume as File).name}
                       </span>
                     ) : (
-                      <span className=" md:text-xl text-base">
+                      <span className=" md:text-xl text-base opacity-70">
                         {t("form.resume")}
                       </span>
                     )}
@@ -217,10 +219,10 @@ const CareerForm = ({ Title }: { Title: string }) => {
                 <Field
                   name="message"
                   as="textarea"
-                  className={`input w-full md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none resize-none ${
+                  className={`input bg-gray w-full md:px-5 md:py-3 px-4 py-3 md:text-xl text-base rounded-sm outline-none resize-none placeholder:text-primary placeholder:opacity-70  ${
                     errors.message && touched.message
                       ? "border-red-500"
-                      : "border-Gray04"
+                      : "border-transparent"
                   } border`}
                   rows={5}
                   placeholder={t("form.message")}
@@ -237,7 +239,7 @@ const CareerForm = ({ Title }: { Title: string }) => {
                 type="submit"
                 className={`${
                   isLoading ? " opacity-40 pointer-events-none" : ""
-                } w-full bg-primary text-white uppercase md:py-6 py-3 hover:bg-darkblue transition-all duration-500 text-base`}
+                } w-full bg-primary text-white uppercase md:py-6 py-3 hover:bg-darkblue transition-all duration-500 text-base rounded-sm `}
               >
                 {t("Buttons.apply_now")}
               </button>

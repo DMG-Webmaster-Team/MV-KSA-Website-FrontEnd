@@ -165,3 +165,28 @@ body {
 .loader:after {
   animation-duration: 4s;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none !important;
+  outline: none;
+}
+
+
+
+.PhoneInput {
+  direction: ltr;
+}
+.PhoneInputInput {
+  background: #F6F6F6;
+}
+
+.PhoneInputInput::placeholder {
+  color: #001A70;
+  opacity: 70%;
+}
+.PhoneInputInput:focus-visible {
+  outline: none;
+}
