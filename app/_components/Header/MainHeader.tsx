@@ -73,14 +73,14 @@ export default function MainHeader({ data }: { data: Menu[] }) {
           >
             {StableHeader && !openMenu ? (
               <Image
-                src={"/logoBlack.webp"}
+                src={`${process.env.NEXT_PUBLIC_API_BASE_URL}uploads/logo_Black_c18c9ebbc6.webp`}
                 alt="Logo MV KSA"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             ) : (
               <Image
-                src={"/logoWhite.webp"}
+              src={`${process.env.NEXT_PUBLIC_API_BASE_URL}uploads/logo_White_7bce5b4307.webp`}
                 alt="Logo MV KSA"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
