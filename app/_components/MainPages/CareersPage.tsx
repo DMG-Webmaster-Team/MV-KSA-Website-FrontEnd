@@ -60,7 +60,7 @@ export default function CareersPage({ data }: Props) {
       (selectedRoleType === "" || roleTypeName === selectedRoleType)
     );
   });
-
+console.log(roleTypes.length > 0,"roleTypes.length > 0")
   return (
     <div>
       <div className="py-20  text-center md:space-y-6  mx-auto max-w-[840px]">
@@ -94,7 +94,7 @@ export default function CareersPage({ data }: Props) {
         <h2 className=" md:text-5xl text-[32px] font-medium text-primary">
           {data.MainData.ListTitle}
         </h2>
-        {roleTypes.length > 1 || departments.length > 1 && (
+        {(roleTypes.length > 0 || departments.length > 0) && (
           <div className="flex gap-5 md:flex-row flex-col md:w-fit w-full">
             {roleTypes.length > 1 && (
               <FilterSelect
