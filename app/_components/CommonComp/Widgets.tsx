@@ -32,7 +32,7 @@ export default function Widgets({ data, reverse }: {
       }
     }, [data.Description, expanded]);
       return (
-        <div className={`max-w-[1660px] mx-auto flex bg-gray flex-col-reverse  ${reverse ? " lg:flex-row-reverse" : "lg:flex-row"} `}>
+        <div className={`max-w-[1910px] mx-auto flex bg-gray flex-col-reverse  ${reverse ? " lg:flex-row-reverse" : "lg:flex-row"} `}>
             <div className='lg:w-[50%] xl:p-[100px] md:py-[100px] md:px-10 py-[84px] px-4 content-center'>
                 <div className='md:max-w-[516px] flex flex-col gap-3'>
                     <h2 className=' text-primary lg:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]'>{data.Title}</h2>
@@ -64,7 +64,7 @@ export default function Widgets({ data, reverse }: {
                 </div>
 
             </div>
-            <div className='lg:w-[50%] relative lg:aspect-[800/1064] aspect-[800/604]'>
+            <div className='lg:w-[50%] relative lg:aspect-[800/634] aspect-[800/604]'>
                 <Image
                     src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url}`}
                     alt={data.Image.data.attributes.alternativeText ?? ""}

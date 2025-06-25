@@ -40,7 +40,7 @@ export default function WidgetWithLogo({ data }: { data: WidgetProps }) {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className=' relative flex flex-col justify-between z-10 h-full'>
-                <div className='relative xl:w-[260px] xl:h-[120px] md:w-[200px] md:h-[90px] w-[160px] h-[60px] md:m-10 p-5 m-5 ms-auto'>
+                <div className='relative xl:w-[260px] xl:h-[120px] md:w-[200px] md:h-[90px] w-[160px] h-[60px] md:m-10 p-5 m-5 !ms-auto'>
                     <Image
                         src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
                         alt={`${data.Logo.data.attributes.alternativeText ?? data.Title}`}
