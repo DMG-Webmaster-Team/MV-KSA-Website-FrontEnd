@@ -1,8 +1,8 @@
 "use client";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 import BreadCrumbs from "../CommonComp/BreadCrumbs";
-import Image from "next/image";
 import JobForm from "../Forms/JobForm";
 interface SingleContent {
   Title: string;
@@ -82,7 +82,7 @@ export default function SingleCareerPage({ data }: Props) {
         </Link>
       </div>
       <div className="flex justify-between mb-[100px] items-start lg:flex-row flex-col-reverse gap-y-10">
-        <div className="xl:w-[calc(100%-616px-80px)] lg:w-[50%] w-full flex flex-col md:gap-20 gap-10">
+        <div className="xl:w-[616px] lg:w-[50%] w-full flex flex-col md:gap-20 gap-10">
           {data.MainData.Content.map((item: SingleContent, index: number) => (
             <div key={index} className="">
               <h4 className="flex md:text-[52px] text-3xl gap-2.5 items-center font-semibold">
@@ -176,12 +176,13 @@ export default function SingleCareerPage({ data }: Props) {
             </div>
           ))}
           <div className="" id="form">
-            <h2 className=" text-[52px] font-medium mb-12">{t("data.apply")}</h2>
-
-            <JobForm />
+            <h2 className="  xl:text-[52px] md:text-4xl text-[28px] font-medium md:mb-12 mb-6">
+              {t("data.apply")}
+            </h2>
+            <JobForm Title={data.MainData.Title} />
           </div>
         </div>
-        <div className="relative xl:w-[616px] lg:w-[calc(50%-50px)] w-full aspect-[616/434]">
+        <div className="relative xl:w-[calc(100%-616px-80px)] lg:w-[calc(50%-50px)] w-full aspect-[616/434]">
           <Image
             alt={
               data.MainData.Image.data.attributes.alternativeText ??

@@ -40,5 +40,37 @@
     "resume":"Add your Resume",
     "message":"Write a cover message",
     "select_file":"Select File"
+  },
+  "validation":{
+    "firstName": {
+      "required": "First name required",
+      "invalid": "Invalid value: numbers and symbols are not allowed",
+      "min": "First name should be at least 3 characters."
+    },
+    "lastName": {
+      "required": "Last name required",
+      "invalid": "Invalid value: numbers and symbols are not allowed",
+      "min": "Last name should be at least 3 characters."
+    },
+    "email": {
+      "invalid": "Invalid email address",
+      "required": "Required Field"
+    },
+    "mobile": {
+      "invalid": "Invalid mobile number format",
+      "required": "Required Field"
+    },
+    "message": {
+      "required": "Required Field"
+    },
+    "resume": {
+      "required": "Resume is required"
+    }
+  },
+  "thanks":{
+    "jobs":{
+      "title":"Thank you for your application!",
+      "description":"We’ve received your submission and our team will review it shortly. If your profile matches our requirements, we’ll get in touch with you soon."
+    }
   }
 }
