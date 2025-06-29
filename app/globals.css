@@ -133,8 +133,8 @@ body {
 }
 
 .heroSection::after {
-  background: linear-gradient(2.47deg, rgba(0, 0, 0, 0) 85.37%, rgba(0, 0, 0, 0.5) 97.84%);
-  transform: rotateY(180deg);
+  background: linear-gradient(168.8deg, rgba(0, 0, 0, 0) 74.07%, #000000 91.74%);
+  /* transform: rotateY(180deg); */
 }
 
 @media (max-width:765px) {
