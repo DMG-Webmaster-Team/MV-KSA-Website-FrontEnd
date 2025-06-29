@@ -57,8 +57,11 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     Pathname == "/careers" ||
     Pathname == "/en/careers" ||
     Pathname.startsWith("/careers/") ||
-    Pathname.startsWith("/en/careers/");
-    ;
+    Pathname.startsWith("/en/careers/")||
+    Pathname== "/media-center"||
+    Pathname== "/en/media-center"||
+    Pathname.startsWith("/media-center/") ||
+    Pathname.startsWith("/en/media-center/");
   return (
     <>
       <div

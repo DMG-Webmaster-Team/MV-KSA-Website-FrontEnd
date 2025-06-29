@@ -16,7 +16,7 @@ interface BreadCrumbsProps {
 export default function BreadCrumbs({ ListProps }: BreadCrumbsProps) {
   const locale = useLocale();
   return (
-    <div className="flex gap-[6px] items-center">
+    <div className="flex gap-[6px] items-center whitespace-nowrap  overflow-hidden">
       {ListProps.map((item, index) => (
         <p
           key={index}
@@ -30,7 +30,7 @@ export default function BreadCrumbs({ ListProps }: BreadCrumbsProps) {
               {item.Name}
             </Link>
           ) : (
-            <span className=" opacity-50 leading-[22px]">{item.Name}</span>
+            <span className=" opacity-50 leading-[22px] truncate overflow-hidden whitespace-nowrap max-w-48 ">{item.Name}</span>
           )}
 
           {index < ListProps.length - 1 && (

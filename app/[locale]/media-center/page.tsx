@@ -1,6 +1,6 @@
 export const runtime = "edge";
 
-import FaqsPage from "@/app/_components/MainPages/FaqsPage";
+import MediaCenter from "@/app/_components/MainPages/MediaCenter";
 import { fetchServer } from "@/app/api/general";
 import { generatePageMetadata } from "@/lib/seo";
 import { Metadata } from "next";
@@ -10,7 +10,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  return generatePageMetadata("faqs-page?", locale);
+  return generatePageMetadata("media-center?", locale);
 }
 
 export default async function page({
@@ -18,16 +18,16 @@ export default async function page({
 }: {
   params: { locale: string };
 }) {
-  const [Data, Faqs] = await Promise.all([
-    fetchServer("faqs-page?", locale),
-    fetchServer("faqs?", locale),
+  const [Data, Blogs] = await Promise.all([
+    fetchServer("media-center?", locale),
+    fetchServer("blogs?fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText&", locale),
   ]);
 
   return (
-    <FaqsPage
+    <MediaCenter
       data={{
         MainData: Data.data.attributes,
-        FaqsData: Faqs.data,
+        Blogs: Blogs.data,
       }}
     />
   );

@@ -53,7 +53,6 @@ interface Props {
 }
 
 export default function SingleCareerPage({ data }: Props) {
-  console.log(data);
 
   const t = useTranslations();
   const List = [
