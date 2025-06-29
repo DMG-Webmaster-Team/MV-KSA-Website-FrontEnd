@@ -17,7 +17,8 @@
     "all_departments":"All Departments",
     "all_role_types":"All Roles",
     "no_results_found":"There are no available roles matching your selection.",
-    "apply":"Apply"
+    "apply":"Apply",
+    "scroll_text":"Scroll to explore more"
   },
   "Menu":{
     "home":"Home",
@@ -32,7 +33,8 @@
     "register_your_interest":"Register your interests",
     "download_company_profile":"Download Company Profile",
     "apply_now":"Apply Now",
-    "send_message":"Send My Message"
+    "send_message":"Send My Message",
+  "download_PDF":"Download Profile"
 
   },
   "form":{

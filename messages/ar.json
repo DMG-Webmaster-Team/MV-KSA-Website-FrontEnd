@@ -17,8 +17,8 @@
     "all_departments":" جميع الإدارات ",
     "all_role_types":" جميع الادوار",
     "no_results_found":"لا توجد وظائف متاحة تطابق اختياراتك.",
-    "apply": "تقديم الطلب"
-
+    "apply": "تقديم الطلب",
+"scroll_text":"قم بالتمرير لاستكشاف المزيد"
 
   },
   "Menu":{
@@ -35,7 +35,9 @@
     "register_your_interest":"سجل اهتماماتك",
     "download_company_profile":"تحميل الملف الشخصي للشركة",
     "apply_now":"تقدم الآن",
-    "send_message":"أرسل رسالتي"
+    "send_message":"أرسل رسالتي",
+    "download_PDF":"تحميل الملف التعريفي"
+
 
   },
   "form": {

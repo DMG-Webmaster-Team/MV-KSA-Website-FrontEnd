@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ArrowLong from "../SVGS/ArrowLong";
+import { useLocale, useTranslations } from "next-intl";
 
 export interface HeroSectionProps {
   Title: string;
@@ -21,9 +23,19 @@ export interface HeroSectionProps {
       };
     };
   };
+  Buttonlink?: string;
+  ButtonText?: string;
 }
 
-export default function HeroSection({ data }: { data: HeroSectionProps }) {
+export default function HeroSection({
+  data,
+  singleProject,
+}: {
+  data: HeroSectionProps;
+  singleProject?: boolean;
+}) {
+  const t = useTranslations();
+  const locale = useLocale();
   return (
     <section
       className="w-full md:h-[90vh] h-[70vh] relative heroSection"
@@ -37,9 +49,17 @@ export default function HeroSection({ data }: { data: HeroSectionProps }) {
         className=" object-cover"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
-      <div className="absolute w-fit h-fit m-auto inset-0 z-20 text-center">
+      <div
+        className={`${
+          singleProject ? " space-y-10" : ""
+        } absolute w-fit h-fit m-auto inset-0 z-20 text-center`}
+      >
         {data.Logo && (
-          <div className=" relative w-[305px] h-[140px] mb-20 mx-auto">
+          <div
+            className={`${
+              singleProject ? "h-[200px]" : "h-[140px]  mb-20"
+            } relative w-[305px]  mx-auto`}
+          >
             <Image
               src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
               alt={data.Media.data.attributes.alternativeText ?? "Image"}
@@ -49,18 +69,45 @@ export default function HeroSection({ data }: { data: HeroSectionProps }) {
             />
           </div>
         )}
-        <h1 className="  text-white  lg:text-[100px] lg:leading-[100px] md:text-6xl text-4xl font-medium">
-          {data.Title}
-        </h1>
-        <p className=" text-white opacity-70 lg:text-[60px] md:text-4xl text-base font-medium">
-          {data.ShortDescription}
-        </p>
+        <div>
+          <h1
+            className={`${
+              singleProject
+                ? "text-[52px]"
+                : "lg:text-[100px] lg:leading-[100px] md:text-6xl text-4xl"
+            } text-white   font-medium`}
+          >
+            {data.Title}
+          </h1>
+          <p
+            className={`${
+              singleProject
+                ? "text-2xl"
+                : "lg:text-[60px] md:text-4xl text-base  opacity-70"
+            } text-white  font-medium`}
+          >
+            {data.ShortDescription}
+          </p>
+        </div>
+
+        {data?.Buttonlink && (
+          <Link
+            href={`${locale == "en" ? "/en" : ""}${data.Buttonlink}`}
+            className="text-primary bg-white hover:bg-darkblue hover:text-white transition-all duration-500 flex py-[18px] px-4 w-fit mx-auto text-base font-bold gap-3"
+          >
+            {data.ButtonText}
+
+            <span className="w-5 h-5 ltr:rotate-180">
+              <ArrowLong />
+            </span>
+          </Link>
+        )}
       </div>
       <Link
         href={"#Overview"}
         className=" text-white text-xl font-medium text-center  absolute bottom-8 flex flex-col gap-5 w-full z-20"
       >
-        قم بالتمرير لاستكشاف المزيد
+        {t("data.scroll_text")}
         <span className="w-[1px] h-[70px] bg-white mx-auto" />
       </Link>
     </section>
