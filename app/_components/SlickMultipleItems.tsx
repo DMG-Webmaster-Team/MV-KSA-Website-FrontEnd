@@ -36,7 +36,7 @@ function SlickMultipleItems({
   let x = 0;
   let scrollAmount = 500;
   if (typeof window !== "undefined") {
-    scrollAmount = window.innerWidth < 768 ? 330 : 400;
+    scrollAmount = window.innerWidth < 768 ? 330 : 440;
   }
 
   const goLeft = () => {
@@ -100,7 +100,7 @@ function SlickMultipleItems({
                       ? "opacity-100"
                       : "opacity-50 pointer-events-none"
                   }  
-                   ${(!isEndOfLeft && customArrow) ? "" : " !opacity-0"}
+                   
                   ${customArrow ? " absolute start-0" : ""}
                   `}
                     onClick={goLeft}
@@ -127,7 +127,6 @@ function SlickMultipleItems({
                        ? "opacity-100"
                        : "opacity-50 pointer-events-none "
                    } ${customArrow ? " absolute end-0" : ""}
-                    ${(!isEndOfRight && customArrow) ? "" : " !opacity-0"}
                    `}
                     onClick={goRight}
                   >
@@ -151,7 +150,7 @@ function SlickMultipleItems({
                       ? "opacity-100"
                       : "opacity-50 pointer-events-none"
                   } 
-                  ${(!isEndOfLeft && customArrow) ? "" : " !opacity-0"}
+                  
                   ${customArrow ? " absolute end-0" : ""}
                   `}
                     onClick={goRight}
@@ -174,11 +173,10 @@ function SlickMultipleItems({
                   <div
                     className={` bg-white text-primary hover:bg-primary hover:text-white transition-all duration-500
                    ${
-                     !isEndOfRight 
+                     !isEndOfRight
                        ? "opacity-100"
                        : "opacity-50 pointer-events-none "
                    } ${customArrow ? " absolute start-0" : ""}
-                    ${(!isEndOfRight && customArrow) ? "" : " !opacity-0"}
                    `}
                     onClick={goLeft}
                   >
@@ -211,7 +209,7 @@ function SlickMultipleItems({
         >
           <div className={`wrapper`}>
             {children}
-            <div className=" shrink-0 flex-grow-0 w-1 h-5 "></div>
+            {/* <div className=" shrink-0 flex-grow-0 w-1 h-5 "></div> */}
           </div>
         </div>
       </div>

@@ -45,18 +45,6 @@
   font-family: "Tuffy", sans-serif;
 }
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
 html {
   scroll-behavior: smooth;
 }
@@ -66,7 +54,6 @@ body {
   --space-md: calc(var(--space) * 2);
   --content-max-width: 1416px;
   background: white;
-
 }
 
 .multi_scroll_content {
