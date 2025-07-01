@@ -1,12 +1,12 @@
 "use client";
-import React from "react";
+import { useTranslations } from "next-intl";
+import DownloadButton from "../CommonComp/DownloadButton";
 import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
 import OverviewSection, {
   OverviewSectionProps,
 } from "../CommonComp/OverviewSection";
 import Widgets, { WidgetProps } from "../CommonComp/Widgets";
-import DownloadButton from "../CommonComp/DownloadButton";
-import { useTranslations } from "next-intl";
+import SiteMap, { siteMap } from "../SiteMap";
 
 interface Props {
   data: {
@@ -14,6 +14,7 @@ interface Props {
       slug: string;
       HeroSection: HeroSectionProps;
       OverviewSection: OverviewSectionProps;
+      OverviewSection2: OverviewSectionProps;
       Widgets: WidgetProps[];
       PDF: {
         data: {
@@ -27,11 +28,13 @@ interface Props {
         Title: string;
         Description: string;
       }[];
+      SiteMap: siteMap;
     };
   };
 }
 export default function SingleProject({ data }: Props) {
   const t = useTranslations();
+  console.log(data);
   return (
     <div>
       <HeroSection data={data.MainData.HeroSection} singleProject />
@@ -60,6 +63,8 @@ export default function SingleProject({ data }: Props) {
       {data?.MainData.Widgets?.map((item: WidgetProps, index: number) => (
         <Widgets data={item} key={index} reverse={index % 2 == 0} />
       ))}
+      <SiteMap data={data.MainData.SiteMap} />
+      <OverviewSection data={data.MainData.OverviewSection2} />
     </div>
   );
 }
