@@ -60,7 +60,6 @@ export default function CareersPage({ data }: Props) {
       (selectedRoleType === "" || roleTypeName === selectedRoleType)
     );
   });
-console.log(roleTypes.length > 0,"roleTypes.length > 0")
   return (
     <div>
       <div className="py-20  text-center md:space-y-6  mx-auto max-w-[840px]">

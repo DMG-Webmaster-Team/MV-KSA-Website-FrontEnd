@@ -55,7 +55,7 @@ export default function ContactUs({ data }: Props) {
             {t("data.email")}
           </span>
           <Link
-            className=" md:text-5xl text-2xl font-normal"
+            className=" md:text-5xl text-2xl font-normal font-FreightNeoPro "
             href={`mailto:${data.Email}`}
           >
             {data.Email}
@@ -66,7 +66,7 @@ export default function ContactUs({ data }: Props) {
             {t("data.hotline")}
           </span>
           <Link
-            className=" md:text-5xl text-2xl font-normal"
+            className=" md:text-5xl text-2xl font-normal font-FreightNeoPro "
             href={`tel:${data.Hotline}`}
           >
             {data.Hotline}

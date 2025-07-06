@@ -37,8 +37,8 @@ interface Props {
 }
 
 export default function MediaCenter({ data }: Props) {
-  const [selectedType, setSelectedType] = useState("All");
   const t = useTranslations();
+  const [selectedType, setSelectedType] = useState(t("data.all"));
   const locale = useLocale();
   // Extract unique blog types
   const blogTypes = useMemo(() => {
@@ -50,12 +50,12 @@ export default function MediaCenter({ data }: Props) {
 
   // Filtered blogs based on selected type
   const filteredBlogs = useMemo(() => {
-    if (selectedType === "All") return data.Blogs;
+    if (selectedType === t("data.all")) return data.Blogs;
     return data.Blogs.filter(
       (item) =>
         item.attributes.blogs_type?.data?.attributes?.Name === selectedType
     );
-  }, [selectedType, data.Blogs]);
+  }, [selectedType, t, data.Blogs]);
 
   return (
     <div>

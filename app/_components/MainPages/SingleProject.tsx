@@ -34,7 +34,7 @@ interface Props {
 }
 export default function SingleProject({ data }: Props) {
   const t = useTranslations();
-  console.log(data);
+
   return (
     <div>
       <HeroSection data={data.MainData.HeroSection} singleProject />
