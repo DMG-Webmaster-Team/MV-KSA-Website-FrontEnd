@@ -7,6 +7,10 @@ import OverviewSection, {
 } from "../CommonComp/OverviewSection";
 import Widgets, { WidgetProps } from "../CommonComp/Widgets";
 import SiteMap, { siteMap } from "../SiteMap";
+import LandScape, { LandScapeProps } from "../LandScape";
+import Units, { UnitsProps } from "../Units";
+import PartnerShipSection, { PartnerShipProps } from "../PartnerShipSection";
+import Gallery, { singleImage } from "../Gallery";
 
 interface Props {
   data: {
@@ -29,12 +33,15 @@ interface Props {
         Description: string;
       }[];
       SiteMap: siteMap;
+      Landscape: LandScapeProps;
+      Units: UnitsProps;
+      PartnerSection: PartnerShipProps;
+      Gallery: { data: singleImage[] }
     };
   };
 }
 export default function SingleProject({ data }: Props) {
   const t = useTranslations();
-
   return (
     <div>
       <HeroSection data={data.MainData.HeroSection} singleProject />
@@ -65,6 +72,11 @@ export default function SingleProject({ data }: Props) {
       ))}
       <SiteMap data={data.MainData.SiteMap} />
       <OverviewSection data={data.MainData.OverviewSection2} />
+      <LandScape data={data.MainData.Landscape} />
+      <Units data={data.MainData.Units} />
+      <Gallery data={data.MainData.Gallery} />
+      <PartnerShipSection data={data.MainData.PartnerSection} />
+
     </div>
   );
 }

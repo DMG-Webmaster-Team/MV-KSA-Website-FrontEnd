@@ -179,3 +179,8 @@ select {
 .PhoneInputInput:focus-visible {
   outline: none;
 }
+
+.swiper-slide-thumb-active
+{
+  border: 4px solid #E2B162;
+}
