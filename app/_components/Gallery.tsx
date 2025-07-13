@@ -44,7 +44,7 @@ export default function Gallery({ data }: { data: { data: singleImage[] } }) {
   return (
     <>
       <div className="md:my-20 my-[50px] relative ">
-        <div className="max-w-[1448px] px-4 mx-auto absolute w-full flex justify-between items-center inset-0 z-20">
+        <div className="max-w-[1448px] px-4 mx-auto absolute w-full flex justify-between items-center inset-0 md:top-0 top-auto z-30">
           <button className="custom-prev hover:bg-primary hover:text-Gray05 transition-all duration-500 text-primary bg-Gray05 p-3 md:flex hidden ">
             <span className="w-5 h-5 rotate-180">
               <ArrowLong />

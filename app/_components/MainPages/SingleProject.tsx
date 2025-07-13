@@ -46,21 +46,21 @@ export default function SingleProject({ data }: Props) {
     <div>
       <HeroSection data={data.MainData.HeroSection} singleProject />
       <OverviewSection data={data.MainData.OverviewSection} singleProject />
-      <div className="-mt-10">
+      <div className="md:-mt-10">
         <DownloadButton
           title={t("Buttons.download_PDF")}
           PDFurl={data.MainData.PDF.data.attributes.url}
           PDFName={data.MainData.PDF.data.attributes.name}
         />
       </div>
-      <div className=" my-10 max-w-[1200px] mx-auto flex rtl:divide-x-reverse divide-x-2 divide-primary divide-opacity-10">
+      <div className=" my-10 max-w-[1200px] mx-auto md:flex-row flex-col gap-y-3 flex rtl:divide-x-reverse divide-x-2 divide-primary divide-opacity-10">
         {data.MainData.Numbers.map(
           (item: { Title: string; Description: string }, index: number) => (
-            <div key={index} className="w-[calc(100%/3)] text-center space-y-3">
-              <h3 className=" text-7xl text-medium font-FreightNeoPro text-primary">
+            <div key={index} className="md:w-[calc(100%/3)] w-full text-center space-y-3">
+              <h3 className=" xl:text-7xl text-5xl text-medium font-FreightNeoPro text-primary">
                 {item.Description}
               </h3>
-              <p className="text-primary text-xl font-medium opacity-50">
+              <p className="text-primary xl:text-xl md:text-lg text-sm font-medium opacity-50">
                 {item.Title}
               </p>
             </div>

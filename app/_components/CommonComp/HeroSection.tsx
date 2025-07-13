@@ -38,7 +38,7 @@ export default function HeroSection({
   const locale = useLocale();
   return (
     <section
-      className="w-full md:h-[90vh] h-[70vh] relative heroSection"
+      className="w-full md:h-[90vh] h-[93vh] relative heroSection"
       style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}
     >
       <Image
@@ -52,12 +52,12 @@ export default function HeroSection({
       <div
         className={`${
           singleProject ? " space-y-10" : ""
-        } absolute w-fit h-fit m-auto inset-0 z-20 text-center`}
+        } absolute w-fit h-fit m-auto inset-0 z-20 text-center px-2`}
       >
         {data.Logo && (
           <div
             className={`${
-              singleProject ? "h-[200px]" : "h-[140px]  mb-20"
+              singleProject ? "md:h-[200px] h-[100px]" : "h-[140px]  mb-20"
             } relative w-[305px]  mx-auto`}
           >
             <Image
@@ -73,7 +73,7 @@ export default function HeroSection({
           <h1
             className={`${
               singleProject
-                ? "text-[52px]"
+                ? "md:text-[52px] text-4xl"
                 : "lg:text-[100px] lg:leading-[100px] md:text-6xl text-4xl"
             } text-white   font-medium`}
           >
@@ -82,9 +82,9 @@ export default function HeroSection({
           <p
             className={`${
               singleProject
-                ? "text-2xl"
-                : "lg:text-[60px] md:text-4xl text-base  opacity-70"
-            } text-white  font-medium`}
+                ? "md:text-2xl text-base"
+                : "lg:text-[60px] md:text-4xl text-base  opacity-70 "
+            } text-white  font-medium mt-2`}
           >
             {data.ShortDescription}
           </p>
@@ -93,11 +93,11 @@ export default function HeroSection({
         {data?.Buttonlink && (
           <Link
             href={`${locale == "en" ? "/en" : ""}${data.Buttonlink}`}
-            className="text-primary bg-white hover:bg-darkblue hover:text-white transition-all duration-500 flex py-[18px] px-4 w-fit mx-auto text-base font-bold gap-3"
+            className="text-primary bg-white hover:bg-darkblue hover:text-white transition-all duration-500 flex md:py-[18px] py-2.5 px-4 w-fit mx-auto md:text-base text-sm font-bold md:gap-3 gap-2 rounded-sm"
           >
             {data.ButtonText}
 
-            <span className="w-5 h-5 ltr:rotate-180">
+            <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
               <ArrowLong />
             </span>
           </Link>
@@ -105,10 +105,10 @@ export default function HeroSection({
       </div>
       <Link
         href={"#Overview"}
-        className=" text-white text-xl font-medium text-center  absolute bottom-8 flex flex-col gap-5 w-full z-20"
+        className=" text-white md:text-xl text-xs font-medium text-center  absolute md:bottom-8 bottom-4 flex flex-col md:gap-5 gap-3 w-full z-20"
       >
         {t("data.scroll_text")}
-        <span className="w-[1px] h-[70px] bg-white mx-auto" />
+        <span className="w-[1px] md:h-[70px] h-[50px] bg-white mx-auto" />
       </Link>
     </section>
   );
