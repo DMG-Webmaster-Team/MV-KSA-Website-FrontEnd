@@ -25,7 +25,7 @@ export interface siteMap {
 export default function SiteMap({ data }: { data: siteMap }) {
   const t = useTranslations();
   return (
-    <div className={`max-w-[1910px] mx-auto flex 2xl:items-center bg-gray lg:flex-row flex-col-reverse`}>
+    <div className={`max-w-[1910px] mx-auto flex  bg-gray lg:flex-row flex-col-reverse`}>
       <div className="lg:w-[50%] w-full 2xl:p-[100px] lg:py-[100px] lg:px-10 md:py-[84px] py-6 px-4 content-center">
         <div className="space-y-5">
           <h2 className=" text-primary xl:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]">

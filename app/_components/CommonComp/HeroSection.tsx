@@ -38,7 +38,7 @@ export default function HeroSection({
   const locale = useLocale();
   return (
     <section
-      className="w-full md:h-[90vh] h-[93vh] relative heroSection"
+      className="w-full md:h-[100vh] h-[93vh] relative heroSection"
       style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}
     >
       <Image

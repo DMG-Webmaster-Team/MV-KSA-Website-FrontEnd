@@ -73,7 +73,7 @@ export default function SingleProject({ data }: Props) {
       <SiteMap data={data.MainData.SiteMap} />
       <OverviewSection data={data.MainData.OverviewSection2} />
       <LandScape data={data.MainData.Landscape} />
-      <Units data={data.MainData.Units} />
+      <Units data={data.MainData.Units} ProjectSlug={data.MainData.slug} />
       <Gallery data={data.MainData.Gallery} />
       <PartnerShipSection data={data.MainData.PartnerSection} />
 

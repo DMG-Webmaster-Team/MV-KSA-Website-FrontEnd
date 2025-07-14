@@ -50,7 +50,7 @@ html {
 }
 
 body {
-  --space: 24px;
+  --space: 20px;
   --space-md: calc(var(--space) * 2);
   --content-max-width: 1416px;
   background: white;
