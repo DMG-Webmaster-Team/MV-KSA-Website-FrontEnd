@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react'
 import ArrowLong from './SVGS/ArrowLong';
 
-interface SingleList {
+export interface SingleList {
     Text: string;
     Icon: {
         data: {
@@ -86,7 +86,7 @@ export default function UnitWidget({ data, ProjectSlug }: { data: SingleUnitProp
                 <div className='flex gap-2 !mb-3 md:flex-row flex-col-reverse'>
                     <Link
                         className='bg-Gray05 hover:bg-[#DDDDDD] text-primary transition-all duration-500 md:w-[calc(50%-4px)] w-full flex justify-between items-center py-2 px-4 font-bold text-sm'
-                        href={`/${ProjectSlug}/units/${data.attributes.slug}`}>
+                        href={`/projects/${ProjectSlug}/units/${data.attributes.slug}`}>
                         {t("data.discover_more")}
                         <span className='w-4 h-4'><ArrowLong /></span>
                     </Link>
