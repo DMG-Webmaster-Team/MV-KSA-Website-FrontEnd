@@ -1,54 +1,21 @@
-import { Suspense } from "react";
-import HomepageLoading from "../_components/LoadingPages/HomepageLoading";
+import { generatePageMetadata } from "@/lib/seo";
+import { Metadata } from "next";
+import Homepage from "../_components/MainPages/Homepage";
+import { fetchServer } from "../api/general";
 export const runtime = "edge";
 
-// export async function generateMetadata({
-//   params: { locale },
-// }: {
-//   params: { locale: string };
-// }): Promise<Metadata> {
-
-//   try {
-//     const seo = await GetSEO(locale, 'home');
-//     const realData = seo.props.data.data;
-//     if (!realData) {
-//       return {
-//         title: "not found",
-//         description: "not found",
-//       };
-//     }
-
-//     return {
-//       title: realData.seo_title,
-//       description: realData.seo_description,
-//       keywords: realData.seo_keyword,
-//       openGraph: {
-//         title: realData.seo_title,
-//         description: realData.seo_description,
-//         images: [
-//           {
-//             url: `${ImageLink}${realData.og_image}`,
-//           },
-//         ],
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error fetching SEO data:", error);
-//     return {
-//       title: "Not Found",
-//       description: "The page not found",
-//     };
-//   }
-// }
-
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return generatePageMetadata("homepage?", locale);
+}
 export default async function Page({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  console.log(locale);
-  return (
-    <Suspense fallback={<HomepageLoading />}>
-      Homepage    </Suspense>
-  )
+  const Data = await fetchServer("homepage?", locale);
+  return <Homepage data={Data.data.attributes} />;
 }

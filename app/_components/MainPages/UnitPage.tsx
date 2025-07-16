@@ -57,26 +57,26 @@ export default function UnitPage({ data }: { data: Props }) {
           fill
           className=" object-cover"
         />
-        <div className="relative max-w-[1448px] px-4 mx-auto z-10 pt-[60px] flex justify-between items-start">
-          <h1 className="text-white text-[100px] max-w-[70%] leading-[100px]">
+        <div className="relative max-w-[1448px] px-4 mx-auto z-10 lg:pt-[60px] pt-5 flex justify-between items-start lg:flex-row flex-col-reverse gap-y-5">
+          <h1 className="text-white xl:text-[100px] xl:w-[70%] xl:leading-[100px] lg:text-[70px] lg:leading-[80px] lg:w-[60%] md:text-5xl text-4xl">
             {data.Title}
           </h1>
-          <div className="flex gap-8 items-center">
+          <div className="flex gap-8 items-center justify-end w-full md:w-fit">
             <LangSwitcher />
             <Link
               href={`/projects/one-mountain-view`}
-              className=" bg-white flex rounded-full p-4 text-primary hover:text-white hover:bg-primary duration-500 transition-all"
+              className=" bg-white flex rounded-full md:p-4 p-2.5 text-primary hover:text-white hover:bg-primary duration-500 transition-all"
             >
-              <span className="w-6 h-6 ">
+              <span className="md:w-6 md:h-6 w-5 h-5 ">
                 <Close />
               </span>
             </Link>
           </div>
         </div>
       </div>
-      <div className="py-20 max-w-[1448px] px-4 mx-auto text-primary font-medium text-4xl space-y-6">
-        <h2 className=" opacity-50">{data.OverviewSection.Title}</h2>
-        <p className=" ">{data.OverviewSection.Description}</p>
+      <div className="md:py-20 pt-10 max-w-[1448px] px-4 mx-auto text-primary font-medium space-y-6">
+        <h2 className=" opacity-50 md:text-4xl text-[28px] ">{data.OverviewSection.Title}</h2>
+        <p className=" md:text-4xl text-[22px] ">{data.OverviewSection.Description}</p>
         <Link
           href={`/contact-us`}
           className="flex bg-primary text-white w-fit text-base font-bold gap-3 px-4 py-2.5 items-center hover:bg-darkblue transition-all duration-500"
@@ -89,10 +89,10 @@ export default function UnitPage({ data }: { data: Props }) {
       </div>
       <Gallery data={data.Gallery} />
       <div
-        className={`max-w-[1910px] mx-auto flex bg-gray flex-col-reverse  lg:flex-row-reverse  `}
+        className={`max-w-[1910px] mx-auto flex flex-col-reverse  lg:flex-row-reverse md:pt-0 pt-10  `}
       >
-        <div className="lg:w-[50%] xl:p-[100px] md:py-[100px] md:px-10 py-[84px] px-4 content-center">
-          <div className="md:max-w-[516px] space-y-10">
+        <div className="lg:w-[50%] xl:p-[100px] md:py-[100px] md:px-10 py-[28px] px-4 content-center">
+          <div className="md:max-w-[516px] md:space-y-10 space-y-[28px]">
             <p className=" text-xl font-medium text-primary">
               {data.amenities.Description}
             </p>
@@ -123,6 +123,7 @@ export default function UnitPage({ data }: { data: Props }) {
               title={t("Buttons.download_PDF")}
               PDFurl={data.PDF.data.attributes.url}
               PDFName={data.PDF.data.attributes.name}
+              light
             />
           </div>
         </div>
@@ -137,7 +138,7 @@ export default function UnitPage({ data }: { data: Props }) {
         </div>
       </div>
       {data.Repeater?.map((item: WidgetProps, index: number) => (
-        <Widgets data={item} key={index} reverse={index % 2 != 0} />
+        <Widgets data={item} key={index} reverse={index % 2 != 0} white />
       ))}
     </div>
   );

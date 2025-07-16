@@ -30,25 +30,46 @@ export interface HeroSectionProps {
 export default function HeroSection({
   data,
   singleProject,
+  home
 }: {
   data: HeroSectionProps;
   singleProject?: boolean;
+  home?:boolean
 }) {
   const t = useTranslations();
   const locale = useLocale();
+  const mediaUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media.data.attributes.url}`;
+  const isVideo = /\.(mp4|webm)$/i.test(data.Media.data.attributes.url);
   return (
     <section
       className="w-full md:h-[100vh] h-[93vh] relative heroSection"
       style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}
     >
-      <Image
-        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media.data.attributes.url}`}
-        alt={data.Media.data.attributes.alternativeText ?? "Image"}
-        fill
-        priority
-        className=" object-cover"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      />
+      {isVideo ? (
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source
+            src={mediaUrl}
+            type={`video/${mediaUrl.endsWith(".webm") ? "webm" : "mp4"}`}
+          />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <Image
+          src={mediaUrl}
+          alt={data.Media.data.attributes.alternativeText ?? "Image"}
+          fill
+          priority
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      )}
+
       <div
         className={`${
           singleProject ? " space-y-10" : ""
@@ -83,8 +104,8 @@ export default function HeroSection({
             className={`${
               singleProject
                 ? "md:text-2xl text-base"
-                : "lg:text-[60px] md:text-4xl text-base  opacity-70 "
-            } text-white  font-medium mt-2`}
+                : "lg:text-[60px] md:text-4xl text-base  "
+            } text-white  font-medium mt-2 ${home ? "" : " opacity-70"}`}
           >
             {data.ShortDescription}
           </p>
