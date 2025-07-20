@@ -1,8 +1,9 @@
+export const runtime = "edge";
+
 import UnitPage from "@/app/_components/MainPages/UnitPage";
 import { fetchServer } from "@/app/api/general";
 import { generatePageMetadata } from "@/lib/seo";
 import { Metadata } from "next";
-
 export async function generateMetadata({
     params: { locale, unitSlug },
 }: {
