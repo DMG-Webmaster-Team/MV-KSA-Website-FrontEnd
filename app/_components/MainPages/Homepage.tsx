@@ -67,6 +67,7 @@ interface Props {
 }
 
 export default function Homepage({ data }: { data: Props }) {
+  
   return (
     <div>
       <HeroSection data={data.HeroSection} home />
