@@ -16,6 +16,20 @@ export default async function Page({
 }: {
   params: { locale: string };
 }) {
-  const Data = await fetchServer("homepage?", locale);
-  return <Homepage data={Data.data.attributes} />;
+  const [Data, Blogs] = await Promise.all([
+    fetchServer("homepage?", locale),
+    fetchServer(
+      "blogs?fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText&",
+      locale
+    ),
+  ]);
+
+  return (
+    <Homepage
+      data={{
+        MainData: Data.data.attributes,
+        Blogs: Blogs.data,
+      }}
+    />
+  );
 }

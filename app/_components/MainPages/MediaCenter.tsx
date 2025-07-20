@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 
-interface BlogWidget {
+export interface BlogWidget {
   attributes: {
     Title: string;
     slug: string;
