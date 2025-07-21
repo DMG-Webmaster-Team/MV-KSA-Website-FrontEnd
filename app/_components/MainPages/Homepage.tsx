@@ -34,7 +34,7 @@ export default function Homepage({ data }: Props) {
   return (
     <div>
       <HeroSection data={data.MainData.HeroSection} home />
-      <div className="max-w-[1144px] mx-auto px-4 pt-20">
+      <div className="max-w-[1144px] mx-auto px-4 pt-20" id="Overview">
         <p className=" text-2xl text-primary text-center">
           {data.MainData.OverviewSection}
         </p>
