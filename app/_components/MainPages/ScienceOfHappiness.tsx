@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import HeroSection, { HeroSectionProps } from '../CommonComp/HeroSection'
-import { OverviewSectionProps } from '../CommonComp/OverviewSection'
+import OverviewSection, { OverviewSectionProps } from '../CommonComp/OverviewSection'
 import SingleAccordion from '../CommonComp/SingleAccordion'
 import { Repeater } from '../CommonComp/TextComp'
 import Image from 'next/image'
@@ -38,6 +38,7 @@ export default function ScienceOfHappinessPage({ data }: Props) {
     return (
         <>
             <HeroSection data={data.HeroSection} />
+            <OverviewSection data={data.OverviewSection} />
             <div className=' bg-gray flex overflow-hidden lg:flex-row flex-col'>
                 <div className='md:w-[50%] w-full lg:mx-0 mx-auto relative'>
                     <div className='max-w-[750px] relative aspect-[1512/1524] ms-auto'>
