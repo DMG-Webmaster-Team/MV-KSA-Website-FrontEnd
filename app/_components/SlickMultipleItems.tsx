@@ -100,7 +100,7 @@ function SlickMultipleItems({
                       ? "opacity-100"
                       : "opacity-50 pointer-events-none"
                   }  
-                   
+                   ltr:rotate-180
                   ${customArrow ? " absolute start-0" : ""}
                   `}
                     onClick={goLeft}
@@ -127,6 +127,7 @@ function SlickMultipleItems({
                        ? "opacity-100"
                        : "opacity-50 pointer-events-none "
                    } ${customArrow ? " absolute end-0" : ""}
+                   ltr:rotate-180
                    `}
                     onClick={goRight}
                   >

@@ -54,7 +54,7 @@ export default function Boxes({ BoxOne }: { BoxOne: BoxProps[] }) {
                   className=" flex text-primary bg-white md:text-base text-sm gap-3 font-bold md:py-[18px] py-2.5 px-4 w-fit hover:bg-primary hover:text-white transition-all duration-500"
                 >
                   {t("data.discover_more")}
-                  <span className="md:w-5 md:h-5 w-4 h-4">
+                  <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
                     <ArrowLong />
                   </span>
                 </Link>
@@ -89,7 +89,7 @@ export default function Boxes({ BoxOne }: { BoxOne: BoxProps[] }) {
                 className="md:mt-20 mt-5 flex text-primary bg-white text-base gap-3 font-bold md:py-[18px] py-2.5 px-4 w-fit hover:bg-primary hover:text-white transition-all duration-500"
               >
                 {t("data.discover_more")}
-                <span className="md:w-5 md:h-5 w-4 h-4">
+                <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
                   <ArrowLong />
                 </span>
               </Link>

@@ -61,7 +61,7 @@ export default function LaunchingSection({
               className="flex gap-3 bg-primary text-white md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center"
             >
               {LaunchingSection.ButtonOneText}
-              <span className="md:w-5 md:h-5 w-4 h-4">
+              <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180 ">
                 <ArrowLong />
               </span>
             </Link>
@@ -70,7 +70,7 @@ export default function LaunchingSection({
               className="flex gap-3 bg-Gray05 text-primary md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center"
             >
               {LaunchingSection.ButtonTwoText}
-              <span className="md:w-5 md:h-5 w-4 h-4">
+              <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
                 <ArrowLong />
               </span>
             </Link>

@@ -9,7 +9,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  return generatePageMetadata("homepage?", locale);
+  return generatePageMetadata("homepage", locale);
 }
 export default async function Page({
   params: { locale },

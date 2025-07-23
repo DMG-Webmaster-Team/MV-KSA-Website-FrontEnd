@@ -47,7 +47,7 @@ export default function WidgetSection({ Widget }: { Widget: WidgetProps }) {
             className="md:mt-20 mt-10 flex text-primary bg-white text-base gap-3 font-bold md:py-[18px] py-2 px-4 w-fit hover:bg-primary hover:text-white transition-all duration-500"
           >
             {t("data.discover_more")}
-            <span className="md:w-5 md:h-5 w-6 h-6">
+            <span className="md:w-5 md:h-5 w-6 h-6 ltr:rotate-180">
               <ArrowLong />
             </span>
           </Link>

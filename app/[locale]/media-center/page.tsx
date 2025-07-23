@@ -19,7 +19,7 @@ export default async function page({
   params: { locale: string };
 }) {
   const [Data, Blogs] = await Promise.all([
-    fetchServer("media-center?", locale),
+    fetchServer("media-center", locale),
     fetchServer("blogs?fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText&", locale),
   ]);
 

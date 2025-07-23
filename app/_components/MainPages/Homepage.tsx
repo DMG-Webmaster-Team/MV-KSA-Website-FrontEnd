@@ -43,11 +43,15 @@ export default function Homepage({ data }: Props) {
       <NumbersList NumbersList={data.MainData.NumbersList} />
       <LaunchingSection LaunchingSection={data.MainData.LaunchingSection} />
       <Boxes BoxOne={data.MainData.BoxOne} />
-      <WidgetSection Widget={data.MainData.Widget} />
-      <Rewards
-        Title={data.MainData.Rewards.Title}
-        Logos={data.MainData.Rewards.Logos}
-      />
+      {data.MainData.Widget && <WidgetSection Widget={data.MainData.Widget} />}
+
+      {data.MainData?.Rewards?.Logos.length > 0 && (
+        <Rewards
+          Title={data?.MainData.Rewards?.Title}
+          Logos={data.MainData.Rewards.Logos}
+        />
+      )}
+
       <BlogsSection Blogs={data.Blogs} />
     </div>
   );

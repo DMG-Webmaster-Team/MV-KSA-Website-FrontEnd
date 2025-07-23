@@ -20,7 +20,7 @@ export default function BlogsSection({ Blogs }: { Blogs: BlogWidget[] }) {
           className="flex text-white bg-primary md:text-base text-sm gap-3 font-bold md:py-[18px] py-2 px-4 w-fit hover:bg-darkblue transition-all duration-500 !m-0"
         >
           {t("Buttons.go_to_media_center")}
-          <span className="md:w-5 md:h-5 w-4 h-4">
+          <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
             <ArrowLong />
           </span>
         </Link>
