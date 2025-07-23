@@ -36,7 +36,7 @@ interface Props {
       Landscape: LandScapeProps;
       Units: UnitsProps;
       PartnerSection: PartnerShipProps;
-      Gallery: { data: singleImage[] }
+      Gallery: { data: singleImage[] };
     };
   };
 }
@@ -56,7 +56,10 @@ export default function SingleProject({ data }: Props) {
       <div className=" my-10 max-w-[1200px] mx-auto md:flex-row flex-col gap-y-3 flex rtl:divide-x-reverse divide-x-2 divide-primary divide-opacity-10">
         {data.MainData.Numbers.map(
           (item: { Title: string; Description: string }, index: number) => (
-            <div key={index} className="md:w-[calc(100%/3)] w-full text-center space-y-3">
+            <div
+              key={index}
+              className="md:w-[calc(100%/3)] w-full text-center space-y-3"
+            >
               <h3 className=" xl:text-7xl text-5xl text-medium font-FreightNeoPro text-primary">
                 {item.Description}
               </h3>
@@ -71,12 +74,14 @@ export default function SingleProject({ data }: Props) {
         <Widgets data={item} key={index} reverse={index % 2 == 0} />
       ))}
       <SiteMap data={data.MainData.SiteMap} />
-      <OverviewSection data={data.MainData.OverviewSection2} />
+      {data.MainData.OverviewSection2 && (
+        <OverviewSection data={data.MainData.OverviewSection2} />
+      )}
+
       <LandScape data={data.MainData.Landscape} />
       <Units data={data.MainData.Units} ProjectSlug={data.MainData.slug} />
       <Gallery data={data.MainData.Gallery} />
       <PartnerShipSection data={data.MainData.PartnerSection} />
-
     </div>
   );
 }
