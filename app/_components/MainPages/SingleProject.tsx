@@ -80,7 +80,10 @@ export default function SingleProject({ data }: Props) {
 
       <LandScape data={data.MainData.Landscape} />
       <Units data={data.MainData.Units} ProjectSlug={data.MainData.slug} />
-      <Gallery data={data.MainData.Gallery} />
+      {data.MainData.Gallery?.data?.length > 0 && (
+        <Gallery data={data.MainData.Gallery} />
+      )}
+
       <PartnerShipSection data={data.MainData.PartnerSection} />
     </div>
   );
