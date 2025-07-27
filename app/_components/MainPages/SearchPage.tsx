@@ -18,7 +18,7 @@ export default function SearchResultsPage() {
     const fetchResults = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs?filters[$or][0][Title][$contains]=${query}&filters[$or][1][blogs_type][fields][Name][$contains]=${query}&locale=${locale}&fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs?filters[$or][0][Title][$contains]=${query}&locale=${locale}&fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText`
         );
         const data = await res.json();
         setResults(data.data); // Strapi returns in `data`
@@ -32,11 +32,10 @@ export default function SearchResultsPage() {
 
     fetchResults();
   }, [query]);
+  console.log(results, "results");
 
   return (
     <div className="max-w-[1000px] mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-6">Search Results for: "{query}"</h1>
-
       {loading ? (
         <p>Loading...</p>
       ) : results.length === 0 ? (
