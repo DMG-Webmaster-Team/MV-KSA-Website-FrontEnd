@@ -32,7 +32,7 @@ export default function BlogsSection({ Blogs }: { Blogs: BlogWidget[] }) {
             href={`${locale == "en" ? "/en/" : "/"}media-center/${
               item.attributes.slug
             }`}
-            className="block space-y-3 lg:w-[calc(100%/3-14px)] md:w-[calc(100%/2-10px)] w-[23%] group  "
+            className="block space-y-3 lg:w-[460px] md:w-[calc(100%/2-10px)] w-[23%] group  "
           >
             <p className=" bg-beige w-fit px-3 pt-[9px] pb-[3px] rounded-full">
               <span className="md:text-sm text-xs text-black opacity-50">

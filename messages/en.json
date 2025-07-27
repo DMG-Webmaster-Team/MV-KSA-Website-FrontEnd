@@ -20,7 +20,8 @@
     "apply":"Apply",
     "scroll_text":"Scroll to know More",
     "google_link":"Open in Google Maps",
-    "latest_news":"Latest News"
+    "latest_news":"Latest News",
+    "search_2":"Search"
   },
   "Menu":{
     "home":"Home",
@@ -39,7 +40,8 @@
   "download_PDF":"Download Profile",
    "call_us":"Call Us",
    "all_images":"All Images",
-   "go_to_media_center":"Go to media center"
+   "go_to_media_center":"Go to media center",
+    "search":"Search"
 
 
   },

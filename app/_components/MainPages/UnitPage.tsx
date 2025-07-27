@@ -62,7 +62,10 @@ export default function UnitPage({ data }: { data: Props }) {
             {data.Title}
           </h1>
           <div className="flex gap-8 items-center justify-end w-full md:w-fit">
-            <LangSwitcher />
+            <div className="md:block hidden">
+              <LangSwitcher />
+            </div>
+
             <Link
               href={`/projects/one-mountain-view`}
               className=" bg-white flex rounded-full md:p-4 p-2.5 text-primary hover:text-white hover:bg-primary duration-500 transition-all"
@@ -75,8 +78,12 @@ export default function UnitPage({ data }: { data: Props }) {
         </div>
       </div>
       <div className="md:py-20 pt-10 max-w-[1448px] px-4 mx-auto text-primary font-medium space-y-6">
-        <h2 className=" opacity-50 md:text-4xl text-[28px] ">{data.OverviewSection.Title}</h2>
-        <p className=" md:text-4xl text-[22px] ">{data.OverviewSection.Description}</p>
+        <h2 className=" opacity-50 md:text-4xl text-[28px] ">
+          {data.OverviewSection.Title}
+        </h2>
+        <p className=" md:text-4xl text-[22px] ">
+          {data.OverviewSection.Description}
+        </p>
         <Link
           href={`/contact-us`}
           className="flex bg-primary text-white w-fit text-base font-bold gap-3 px-4 py-2.5 items-center hover:bg-darkblue transition-all duration-500"

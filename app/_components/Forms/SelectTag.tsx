@@ -22,7 +22,7 @@ export default function FilterSelect({
         {title}
       </label>
       <select
-        className=" appearance-none outline-none text-end text-xl"
+        className=" appearance-none outline-none text-end text-xl bg-transparent"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >

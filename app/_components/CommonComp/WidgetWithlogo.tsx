@@ -28,7 +28,7 @@ export default function WidgetWithLogo({ data }: { data: WidgetProps }) {
   const t = useTranslations();
   const locale = useLocale();
   return (
-    <div className="relative lg:w-[50%] w-full aspect-[1000/835] group overflow-hidden">
+    <div className="relative lg:w-[50%] w-full md:aspect-[1000/835] aspect-[1000/873] group overflow-hidden">
       <a
         className=" absolute w-full h-full inset-0 z-20"
         href={`${locale === "en" ? "/en/" : "/"}${data.Link}`}

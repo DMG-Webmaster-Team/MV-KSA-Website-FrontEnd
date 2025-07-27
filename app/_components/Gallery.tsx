@@ -66,7 +66,7 @@ export default function Gallery({ data }: { data: { data: singleImage[] } }) {
               <ImageIcon />
             </span>
           </button>
-          <div className="flex justify-center gap-2 absolute md:-bottom-10 bottom-5 inset-x-0 mx-auto w-fit border-b border-primary border-opacity-20">
+          <div className="flex justify-center gap-2 absolute md:-bottom-10 bottom-5 inset-x-0 mx-auto max-w-[600px] border-b border-primary border-opacity-20">
             {images.map((_, index) => (
               <button
                 key={index}

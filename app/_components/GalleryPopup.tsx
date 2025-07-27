@@ -117,7 +117,7 @@ export default function GalleryPopup({
               main.slideTo(main.activeIndex - 1);
             }
           }}
-          className="bg-Gray05 text-primary absolute inset-y-0 start-0 hover:bg-primary hover:text-Gray05 p-2 rounded-full transition flex items-center h-fit m-auto z-10"
+          className=" opacity-0 bg-Gray05 text-primary absolute inset-y-0 start-0 hover:bg-primary hover:text-Gray05 p-2 rounded-full transition flex items-center h-fit m-auto z-10"
         >
           <span className="w-4 h-4 rotate-180">
             <ArrowLong />
@@ -132,7 +132,7 @@ export default function GalleryPopup({
               main.slideTo(main.activeIndex + 1);
             }
           }}
-          className="bg-Gray05 text-primary absolute inset-y-0 end-0 hover:bg-primary hover:text-Gray05 p-2 rounded-full transition flex items-center h-fit m-auto z-10"
+          className="opacity-0 bg-Gray05 text-primary absolute inset-y-0 end-0 hover:bg-primary hover:text-Gray05 p-2 rounded-full transition flex items-center h-fit m-auto z-10"
         >
           <span className="w-4 h-4">
             <ArrowLong />

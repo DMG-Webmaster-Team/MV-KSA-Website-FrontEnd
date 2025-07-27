@@ -42,7 +42,7 @@ export default function HeroSection({
   const isVideo = /\.(mp4|webm)$/i.test(data.Media.data.attributes.url);
   return (
     <section
-      className="w-full md:h-[100vh] h-[93vh] relative heroSection overflow-hidden"
+      className="w-full md:h-[100vh] h-[73vh] relative heroSection overflow-hidden"
       style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}
     >
       {isVideo ? (
