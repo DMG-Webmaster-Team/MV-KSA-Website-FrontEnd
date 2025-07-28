@@ -76,7 +76,7 @@ export default function Widgets({
           )}
         </div>
       </div>
-      <div className="lg:w-[50%] relative lg:aspect-[800/634] aspect-[800/604]">
+      <div className="lg:w-[50%] relative lg:aspect-[800/634] aspect-[1/1]">
         <Image
           src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url}`}
           alt={data.Image.data.attributes.alternativeText ?? ""}

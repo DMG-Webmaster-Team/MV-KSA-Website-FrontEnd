@@ -31,7 +31,7 @@ export default function Boxes({ BoxOne }: { BoxOne: BoxProps[] }) {
     <div className="flex lg:flex-row flex-col">
       {BoxOne.map((item: BoxProps, index: number) => (
         <div
-          className="lg:w-1/2 w-full relative aspect-[1134/1194]"
+          className="lg:w-1/2 w-full relative aspect-[1.1]"
           key={index}
         >
           <Image

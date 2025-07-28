@@ -13,7 +13,8 @@ import DownloadButton from "../CommonComp/DownloadButton";
 import { useTranslations } from "next-intl";
 import SlickMultipleItems from "../SlickMultipleItems";
 import WidgetComp from "../SmallWidgets/WidgetComp";
-
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 interface Props {
   data: {
     HeroSection: HeroSectionProps;
@@ -52,6 +53,17 @@ interface Props {
 export default function OurStory({ data }: Props) {
   const [openPopupIndex, setOpenPopupIndex] = useState<number | null>(null);
   const t = useTranslations();
+  const [expanded, setExpanded] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
+    }
+  }, [data.OwnerMessage.Message, expanded]);
+
+  const isLong = data.OwnerMessage.Message.length > 250;
   return (
     <>
       <HeroSection data={data.HeroSection} />
@@ -73,19 +85,34 @@ export default function OurStory({ data }: Props) {
               className=" object-cover object-top"
             />
           </div>
-          <div className="xl:w-[calc(100%-500px-100px)] lg:w-[calc(100%-500px-50px)] xl:pe-20 lg:pe-10">
+          <div className="xl:w-[calc(100%-500px-100px)] lg:w-[calc(100%-500px-50px)] xl:pe-20 lg:pe-10 space-y-5">
             <h2 className=" xl:text-5xl text-4xl text-primary font-medium mb-5">
               {data.OwnerMessage.Title}
             </h2>
-            <p
-              className="xl:text-xl md:text-lg text-sm font-medium text-primary"
-              dangerouslySetInnerHTML={{
-                __html: data.OwnerMessage.Message.replace(
-                  /\n\n/g,
-                  "</br></br>"
-                ),
-              }}
-            />
+            <motion.div
+              initial={false}
+              animate={{ height: expanded || !isLong ? height : 120 }}
+              transition={{ duration: 0.3 }}
+              style={{ overflow: "hidden" }}
+              className="text-primary text-sm md:text-lg xl:text-xl font-medium md:!h-auto overflow-hidden"
+            >
+              <div
+                ref={contentRef}
+                dangerouslySetInnerHTML={{
+                  __html: data.OwnerMessage.Message.replace(/\n\n/g, "<br><br>"),
+                }}
+              />
+            </motion.div>
+
+            {isLong && (
+              <button
+                className="text-primary font-bold text-sm mt-3 underline md:hidden inline-flex"
+                onClick={() => setExpanded((prev) => !prev)}
+              >
+                {expanded ? t("data.see_less") : t("data.see_more")}
+              </button>
+            )}
+
           </div>
         </div>
       </div>
