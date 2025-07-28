@@ -43,9 +43,7 @@ export default function CareerWidgetComp({
           {item.attributes.role_type.data.attributes.Name}
         </p>
         <span
-          className={`md:w-9 md:h-9 w-6 h-6 ms-auto text-primary block ${
-            locale == "en" ? " rotate-180" : ""
-          }`}
+          className={`md:w-9 md:h-9 w-6 h-6 ms-auto text-primary block ltr:rotate-180`}
         >
           <ArrowLong />
         </span>

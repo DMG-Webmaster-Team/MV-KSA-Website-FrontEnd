@@ -70,7 +70,7 @@ export default function GalleryPopup({
             ref={mainPrevRef}
             className="hover:bg-primary hover:text-Gray05 rounded-full transition-all duration-500 text-primary flex bg-Gray05 p-3"
           >
-            <span className="w-5 h-5 rotate-180">
+            <span className="w-5 h-5 rtl:rotate-180">
               <ArrowLong />
             </span>
           </button>
@@ -78,7 +78,7 @@ export default function GalleryPopup({
             ref={mainNextRef}
             className="text-primary flex bg-Gray05 p-3 hover:bg-primary hover:text-Gray05 rounded-full transition-all duration-500"
           >
-            <span className="w-5 h-5">
+            <span className="w-5 h-5 ltr:rotate-180">
               <ArrowLong />
             </span>
           </button>

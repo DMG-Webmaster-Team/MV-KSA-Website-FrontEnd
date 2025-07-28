@@ -62,8 +62,9 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     Pathname == "/media-center" ||
     Pathname == "/en/media-center" ||
     Pathname.startsWith("/media-center/") ||
-    Pathname.startsWith("/en/media-center/")|| Pathname == "/search"
-  const isUnitPage = /^\/projects\/[^/]+\/units\/[^/]+$/.test(Pathname);
+    Pathname.startsWith("/en/media-center/")|| Pathname == "/search" || Pathname == "/en/search"
+  const isUnitPage = /^\/(?:[a-z]{2}\/)?projects\/[^/]+\/units\/[^/]+$/.test(Pathname);
+
 
   return (
     <>
@@ -117,7 +118,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                           ? " text-primary hover:bg-primary hover:text-white"
                           : "text-white hover:bg-primary"
                       }  xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
-                      href={"/calendly"}
+                      href={`${locale == "en" ? "/en/" : "/"}calendly`}
                     >
                       <span className=" xl:w-6 xl:h-6 w-5 h-5 block">
                         <Calender />
@@ -148,7 +149,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                     <SearchComponent StableHeader={StableHeader} />
                   </div>
                   <Link
-                    href={"/contact-us"}
+                    href={`${locale == "en" ? "/en/" : "/"}contact-us`}
                     className={`${
                       StableHeader
                         ? "bg-primary text-white hover:bg-darkblue"
@@ -189,7 +190,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                       ? " text-primary hover:bg-primary hover:text-white"
                       : "text-white hover:bg-primary"
                   } p-2.5  transition-all duration-500`}
-                  href={"/calendly"}
+                  href={`${locale == "en" ? "/en/" : "/"}calendly`}
                 >
                   <span className=" w-5 h-5 block">
                     <Calender />
@@ -240,7 +241,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
             </div>
             <div className="flex flex-col gap-[33px]">
               <Link
-                href={"/contact-us"}
+                href={`${locale == "en" ? "/en/" : "/"}contact-us`}
                 className="bg-white xl:px-4 px-3 py-2.5 text-sm font-bold text-primary flex justify-center gap-3 items-center rounded-sm hover:bg-primary hover:text-white transition-all duration-500 "
               >
                 <span className=" leading-[10px] whitespace-nowrap">

@@ -25,7 +25,7 @@ export interface siteMap {
 export default function SiteMap({ data }: { data: siteMap }) {
   const t = useTranslations();
   return (
-    <div className={`max-w-[1910px] mx-auto flex  bg-gray lg:flex-row flex-col-reverse`}>
+    <div className={`max-w-[1910px] mx-auto flex  bg-gray lg:flex-row flex-col-reverse `}>
       <div className="lg:w-[50%] w-full 2xl:p-[100px] lg:py-[100px] lg:px-10 md:py-[84px] py-6 px-4 content-center">
         <div className="space-y-5">
           <h2 className=" text-primary xl:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]">
@@ -42,7 +42,7 @@ export default function SiteMap({ data }: { data: siteMap }) {
                 className=" flex text-primary bg-white md:text-base text-sm w-fit items-center gap-3 py-[18px] font-bold px-3 rounded-sm hover:bg-[#DDDDDD] transition-all duration-500 "
               >
                 {t("data.discover_more")}
-                <span className="w-4 h-4">
+                <span className="w-4 h-4 ltr:rotate-180">
                   <ArrowLong />
                 </span>
               </Link>
@@ -67,7 +67,7 @@ export default function SiteMap({ data }: { data: siteMap }) {
                 return (
                   <div
                     key={index}
-                    className={`w-[50%] p-5 pt-2 space-y-5 leading-[75px]  lg:border-gray2 border-transparent
+                    className={`w-[50%] flex-mobile p-5 pt-2 space-y-5 leading-[75px]  lg:border-gray2 border-transparent
                         ${
                           data.Repeater.length - 1 === index ||
                           data.Repeater.length - 2 === index

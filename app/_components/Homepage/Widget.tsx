@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ArrowLong from "../SVGS/ArrowLong";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export interface WidgetProps {
   Description: string;
@@ -19,6 +19,7 @@ export interface WidgetProps {
 }
 export default function WidgetSection({ Widget }: { Widget: WidgetProps }) {
   const t = useTranslations();
+  const locale = useLocale();
   return (
     <div className="flex lg:flex-row flex-col">
       <div className="lg:w-1/2 w-full aspect-[1134/874] relative">
@@ -43,7 +44,7 @@ export default function WidgetSection({ Widget }: { Widget: WidgetProps }) {
             </p>
           </div>
           <Link
-            href={"/our-story"}
+            href={`${locale == "en" ? "/en/" : "/"}our-story`}
             className="md:mt-20 mt-10 flex text-primary bg-white text-base gap-3 font-bold md:py-[18px] py-2 px-4 w-fit hover:bg-primary hover:text-white transition-all duration-500"
           >
             {t("data.discover_more")}

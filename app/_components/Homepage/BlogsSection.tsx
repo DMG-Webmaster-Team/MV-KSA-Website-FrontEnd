@@ -16,7 +16,7 @@ export default function BlogsSection({ Blogs }: { Blogs: BlogWidget[] }) {
           {t("data.latest_news")}
         </h2>
         <Link
-          href={"/media-center"}
+          href={`${locale == "en" ? "/en/" : "/"}media-center`}
           className="flex text-white bg-primary md:text-base text-sm gap-3 font-bold md:py-[18px] py-2 px-4 w-fit hover:bg-darkblue transition-all duration-500 !m-0"
         >
           {t("Buttons.go_to_media_center")}

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Close from "../SVGS/Close";
 import LangSwitcher from "../Header/LangSwitcher";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Calender from "../SVGS/Calender";
 import Gallery, { singleImage } from "../Gallery";
 import Widgets, { WidgetProps } from "../CommonComp/Widgets";
@@ -48,6 +48,7 @@ interface Props {
 }
 export default function UnitPage({ data }: { data: Props }) {
   const t = useTranslations();
+  const locale = useLocale();
   return (
     <div>
       <div className=" w-full h-[80vh] HeroUnit relative">
@@ -67,7 +68,7 @@ export default function UnitPage({ data }: { data: Props }) {
             </div>
 
             <Link
-              href={`/projects/one-mountain-view`}
+              href={`${locale == "en" ? "/en/" : "/"}projects/one-mountain-view`}
               className=" bg-white flex rounded-full md:p-4 p-2.5 text-primary hover:text-white hover:bg-primary duration-500 transition-all"
             >
               <span className="md:w-6 md:h-6 w-5 h-5 ">
@@ -85,7 +86,7 @@ export default function UnitPage({ data }: { data: Props }) {
           {data.OverviewSection.Description}
         </p>
         <Link
-          href={`/contact-us`}
+          href={`${locale == "en" ? "/en/" : "/"}contact-us`}
           className="flex bg-primary text-white w-fit text-base font-bold gap-3 px-4 py-2.5 items-center hover:bg-darkblue transition-all duration-500"
         >
           {t("Buttons.register_your_interest")}
@@ -125,13 +126,15 @@ export default function UnitPage({ data }: { data: Props }) {
                 )}
               </ul>
             )}
+            {data.PDF?.data?.attributes &&
+              <DownloadButton
+                title={t("Buttons.download_PDF")}
+                PDFurl={data.PDF.data.attributes.url}
+                PDFName={data.PDF.data.attributes.name}
+                light
+              />
+            }
 
-            <DownloadButton
-              title={t("Buttons.download_PDF")}
-              PDFurl={data.PDF.data.attributes.url}
-              PDFName={data.PDF.data.attributes.name}
-              light
-            />
           </div>
         </div>
         <div className="lg:w-[50%] relative lg:aspect-[800/634] aspect-[800/604]">

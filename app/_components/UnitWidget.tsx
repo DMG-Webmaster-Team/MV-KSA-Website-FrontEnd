@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
@@ -38,6 +38,7 @@ export interface SingleUnitProps {
 
 export default function UnitWidget({ data, ProjectSlug }: { data: SingleUnitProps, ProjectSlug: string }) {
     const t = useTranslations();
+    const locale = useLocale();
     return (
         <div
             className="md:w-[600px]  w-full p-3 bg-white rounded-sm space-y-3"
@@ -86,15 +87,15 @@ export default function UnitWidget({ data, ProjectSlug }: { data: SingleUnitProp
                 <div className='flex gap-2 !mb-3 md:flex-row flex-col-reverse'>
                     <Link
                         className='bg-Gray05 hover:bg-[#DDDDDD] text-primary transition-all duration-500 md:w-[calc(50%-4px)] w-full flex justify-between items-center py-2 px-4 font-bold text-sm'
-                        href={`/projects/${ProjectSlug}/units/${data.attributes.slug}`}>
+                        href={`${locale == "en" ? "/en/" : "/"}projects/${ProjectSlug}/units/${data.attributes.slug}`}>
                         {t("data.discover_more")}
-                        <span className='w-4 h-4'><ArrowLong /></span>
+                        <span className='w-4 h-4 ltr:rotate-180'><ArrowLong /></span>
                     </Link>
-                    <Link href={`/contact-us`}
+                    <Link href={`${locale == "en" ? "/en/" : "/"}contact-us`}
                         className='bg-primary hover:bg-darkblue transition-all duration-500 text-white md:w-[calc(50%-4px)] w-full flex justify-between items-center py-2 px-4 font-bold text-sm'
                     >
                         {t("Buttons.register_your_interest")}
-                        <span className='w-4 h-4'><ArrowLong /></span>
+                        <span className='w-4 h-4 ltr:rotate-180'><ArrowLong /></span>
 
                     </Link>
                 </div>

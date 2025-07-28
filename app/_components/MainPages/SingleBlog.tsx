@@ -60,8 +60,8 @@ export default function SingleBlog({ data }: Props) {
   const locale = useLocale();
   const t = useTranslations();
   const List = [
-    { Name: t("Menu.home"), Link: "/" },
-    { Name: t("Menu.media_center"), Link: "/media-center" },
+    { Name: t("Menu.home"), Link: locale == "en" ? "/en" : "/" },
+    { Name: t("Menu.media_center"), Link: locale == "en" ? "/en/media-center" : "/media-center" },
     { Name: data.MainData.Title },
   ];
   return (

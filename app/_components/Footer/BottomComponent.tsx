@@ -1,7 +1,7 @@
 import { fetchServer } from "@/app/api/general";
 import Image from "next/image";
 import Link from "next/link";
-import ArrowLong from "../SVGS/ArrowLong";
+import ScrollTop from "./ScrollTop";
 
 export default async function Footer({ params: { locale } }: { params: { locale: string } }) {
     const Footer = await fetchServer("general-page?", locale)
@@ -44,11 +44,7 @@ export default async function Footer({ params: { locale } }: { params: { locale:
                             )}
                         </div>
                     </div>
-                    <button className=" bg-primary hover:bg-darkblue transition-all duration-500 rounded-full p-3 md2:flex hidden items-center justify-center">
-                        <span className="w-6 h-6 rotate-90 text-white">
-                            <ArrowLong />
-                        </span>
-                    </button>
+                    <ScrollTop />
                 </div>
                 <div className=" md:py-[60px] py-10 flex md2:flex-row flex-col-reverse gap-y-10 justify-between  border-b border-white border-opacity-10">
                     <div className="md:w-[400px]">

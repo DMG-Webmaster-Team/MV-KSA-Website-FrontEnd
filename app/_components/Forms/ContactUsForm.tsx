@@ -227,7 +227,7 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
                 } w-[51%] ms-auto flex justify-between bg-primary text-white uppercase py-3 px-4 hover:bg-darkblue transition-all duration-500 text-base rounded-sm`}
               >
                 {t("Buttons.send_message")}
-                <span className="w-5 h-5">
+                <span className="w-5 h-5 ltr:rotate-180">
                   <ArrowLong />
                 </span>
               </button>

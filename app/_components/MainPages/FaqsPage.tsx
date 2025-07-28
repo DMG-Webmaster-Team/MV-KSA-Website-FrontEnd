@@ -106,11 +106,11 @@ export default function FaqsPage({ data }: Props) {
               {data.MainData.Text.Description}
             </p>
             <Link
-              href={`${locale === "en" ? "/en/" : ""}/contact-us`}
+              href={`${locale === "en" ? "/en/" : "/"}contact-us`}
               className="flex items-center bg-primary hover:bg-darkblue transition-all duration-500 text-white py-3 px-4 rounded-sm w-fit gap-3 text-base"
             >
               {t("Buttons.call_us")}
-              <span className="w-5 h-5">
+              <span className="w-5 h-5 ltr:rotate-180">
                 <ArrowLong />
               </span>
             </Link>

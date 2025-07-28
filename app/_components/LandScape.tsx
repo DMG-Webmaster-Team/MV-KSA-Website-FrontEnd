@@ -52,7 +52,7 @@ export default function LandScape({ data }: { data: LandScapeProps }) {
             target="_blank"
           >
             {t("data.discover_more")}
-            <span className="w-5 h-5">
+            <span className="w-5 h-5 ltr:rotate-180 ">
               <ArrowLong />
             </span>
           </Link>
