@@ -24,15 +24,33 @@ export default function SearchResultsPage() {
         const response3 = await SearchProjects(locale, keyword);
         const response4 = await SearchUnits(locale, keyword);
 
+        const taggedBlogs = response1.data.map((item: any) => ({
+          ...item,
+          __source: "blog",
+        }));
+        const taggedCareers = response2.data.map((item: any) => ({
+          ...item,
+          __source: "career",
+        }));
+        const taggedProjects = response3.data.map((item: any) => ({
+          ...item,
+          __source: "project",
+        }));
+        const taggedUnits = response4.data.map((item: any) => ({
+          ...item,
+          __source: "unit",
+        }));
 
-
-        const combinedResults = [...response1.data,
-        ...response2.data,
-        ...response3.data, ...response4.data
+        const combinedResults = [
+          ...taggedBlogs,
+          ...taggedCareers,
+          ...taggedProjects,
+          ...taggedUnits,
         ];
+
         setSearchResults(combinedResults);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -57,20 +75,51 @@ export default function SearchResultsPage() {
           <p className=" py-10 text-primary text-center">{t("data.no_result")}</p>
         ) : (
           <ul className="space-y-5">
-            {searchResults.map((item: any) => (
-              <Link
-                href={`${locale == "en" ? "/en" : "/"}${item.attributes?.blogs_type?.data ? "media-center" : "careers"}/${item.attributes.slug}`}
-                key={item.id} className="bg-beige p-6 md:space-y-[90px] space-y-10 block">
-                <p className="bg-white w-fit py-[3px] px-1.5 rounded-[1px]">
-                  <span className=" text-black opacity-50">
-                    {item.attributes?.blogs_type?.data ? t("data.news") : t("data.work")}
-                  </span>
-                </p>
-                <div>
-                  <h2 className="text-darkblue md:text-5xl text-3xl font-medium">{item.attributes.Title}</h2>
-                </div>
-              </Link>
-            ))}
+            {searchResults.map((item: any) => {
+              const { Title, slug } = item.attributes;
+
+              let basePath = "";
+              let badgeText = "";
+
+              switch (item.__source) {
+                case "blog":
+                  basePath = "media-center";
+                  badgeText = t("data.news");
+                  break;
+                case "career":
+                  basePath = "careers";
+                  badgeText = t("data.work");
+                  break;
+                case "project":
+                  basePath = "projects";
+                  badgeText = t("data.project");
+                  break;
+                case "unit":
+                  basePath = "projects/one-mountain-view/units";
+                  badgeText = t("data.unit");
+                  break;
+                default:
+                  basePath = "";
+                  badgeText = "";
+              }
+
+              return (
+                <Link
+                  href={`${locale === "en" ? "/en" : "/"}${basePath}/${slug}`}
+                  key={`${item.__source}-${item.id}`}
+                  className="bg-beige p-6 md:space-y-[90px] space-y-10 block"
+                >
+                  <p className="bg-white w-fit py-[3px] px-1.5 rounded-[1px]">
+                    <span className="text-black opacity-50">{badgeText}</span>
+                  </p>
+                  <div>
+                    <h2 className="text-darkblue md:text-5xl text-3xl font-medium">
+                      {Title}
+                    </h2>
+                  </div>
+                </Link>
+              );
+            })}
           </ul>
         )}
       </div>

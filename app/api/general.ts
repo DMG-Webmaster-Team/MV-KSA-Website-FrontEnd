@@ -102,7 +102,7 @@ export async function SearchCareers(lang: string, keyword: string) {
 export async function SearchProjects(lang: string, keyword: string) {
   try {
     const SearchApi = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/projects?filters[Title][$containsi]=${keyword}&locale=${lang}&populate=deep`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/projects?filters[HeroSection][Title][$containsi]=${keyword}&locale=${lang}`
     );
     const SearchApiData = await SearchApi.json();
 
@@ -116,7 +116,7 @@ export async function SearchProjects(lang: string, keyword: string) {
 export async function SearchUnits(lang: string, keyword: string) {
   try {
     const SearchApi = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/units?filters[Title][$containsi]=${keyword}&locale=${lang}&fields=Title,slug`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/units?filters[Title][$containsi]=${keyword}&locale=${lang}`
     );
     const SearchApiData = await SearchApi.json();
 
