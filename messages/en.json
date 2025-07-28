@@ -5,58 +5,59 @@
   "LocaleLayout": {
     "title": "Mountain View"
   },
-  "data":{
-    "see_more":"See more",
-    "see_less":"See less",
-    "discover_more":"Discover more",
-    "all":"All",
-    "hotline":"Hotline",
-    "email":"Email",
-    "department":"Department",
-    "role_type":"Role Type",
-    "all_departments":"All Departments",
-    "all_role_types":"All Roles",
-    "no_results_found":"There are no available roles matching your selection.",
-    "apply":"Apply",
-    "scroll_text":"Scroll to know More",
-    "google_link":"Open in Google Maps",
-    "latest_news":"Latest News",
-    "search_2":"Search"
+  "data": {
+    "see_more": "See more",
+    "see_less": "See less",
+    "discover_more": "Discover more",
+    "all": "All",
+    "hotline": "Hotline",
+    "email": "Email",
+    "department": "Department",
+    "role_type": "Role Type",
+    "all_departments": "All Departments",
+    "all_role_types": "All Roles",
+    "no_results_found": "There are no available roles matching your selection.",
+    "apply": "Apply",
+    "scroll_text": "Scroll to know More",
+    "google_link": "Open in Google Maps",
+    "latest_news": "Latest News",
+    "search_2": "Search",
+    "no_result": "No results found.",
+    "news": "News",
+    "work": "Work"
   },
-  "Menu":{
-    "home":"Home",
-    "our_story":"Our story",
-    "our_com":"Our communities",
-    "vision":"Vision 2030",
-    "lifeAtMV":"Life at MV",
-    "careers":"Careers",
-    "media_center":"Media Center"
+  "Menu": {
+    "home": "Home",
+    "our_story": "Our story",
+    "our_com": "Our communities",
+    "vision": "Vision 2030",
+    "lifeAtMV": "Life at MV",
+    "careers": "Careers",
+    "media_center": "Media Center"
   },
-  "Buttons":{
-    "register_your_interest":"Register your interests",
-    "download_company_profile":"Download Company Profile",
-    "apply_now":"Apply Now",
-    "send_message":"Send My Message",
-  "download_PDF":"Download Profile",
-   "call_us":"Call Us",
-   "all_images":"All Images",
-   "go_to_media_center":"Go to media center",
-    "search":"Search"
-
-
+  "Buttons": {
+    "register_your_interest": "Register your interests",
+    "download_company_profile": "Download Company Profile",
+    "apply_now": "Apply Now",
+    "send_message": "Send My Message",
+    "download_PDF": "Download Profile",
+    "call_us": "Call Us",
+    "all_images": "All Images",
+    "go_to_media_center": "Go to media center",
+    "search": "Search"
   },
-  "form":{
-    "first_name":"First Name",
-    "last_name":"Last Name",
-    "email":"Email Address",
-    "phone":"Phone Number",
-    "resume":"Add your Resume",
-    "message":"Write a cover message",
-    "select_file":"Select File",
+  "form": {
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "resume": "Add your Resume",
+    "message": "Write a cover message",
+    "select_file": "Select File",
     "select_inquiry_type": "Inquiry Type",
-    "add_message":"Add Message"
+    "add_message": "Add Message"
   },
-  "validation":{
+  "validation": {
     "firstName": {
       "required": "First name required",
       "invalid": "Invalid value: numbers and symbols are not allowed",
@@ -85,14 +86,14 @@
       "required": "Please select an inquiry type"
     }
   },
-  "thanks":{
-    "jobs":{
-      "title":"Thank you for your application!",
-      "description":"We’ve received your submission and our team will review it shortly. If your profile matches our requirements, we’ll get in touch with you soon."
+  "thanks": {
+    "jobs": {
+      "title": "Thank you for your application!",
+      "description": "We’ve received your submission and our team will review it shortly. If your profile matches our requirements, we’ll get in touch with you soon."
     },
-    "contactUs":{
-      "title":"Thank you for getting in touch!",
-      "description":"We’ve received your message and will get back to you as soon as possible."
+    "contactUs": {
+      "title": "Thank you for getting in touch!",
+      "description": "We’ve received your message and will get back to you as soon as possible."
     }
   }
 }

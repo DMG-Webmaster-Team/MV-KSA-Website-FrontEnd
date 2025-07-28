@@ -1,55 +1,81 @@
 // app/search/page.tsx or pages/search.tsx (based on your routing style)
 "use client";
 
-import { useLocale } from "next-intl";
+import { SearchBlogs, SearchCareers, SearchProjects, SearchUnits } from "@/app/api/general";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import BreadCrumbs from "../CommonComp/BreadCrumbs";
+import SearchInput from "../Header/SearchInput";
 
 export default function SearchResultsPage() {
   const searchParams = useSearchParams();
-  const query = searchParams.get("query") || "";
+  const t = useTranslations();
+  const keyword = searchParams.get('keyword') || '';
+  const [searchResults, setSearchResults] = useState<any[]>([]);
   const locale = useLocale();
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!query) return;
-
-    const fetchResults = async () => {
+    const fetchData = async () => {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs?filters[$or][0][Title][$contains]=${query}&locale=${locale}&fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText`
-        );
-        const data = await res.json();
-        setResults(data.data); // Strapi returns in `data`
-      } catch (err) {
-        console.error("Search error", err);
-        setResults([]);
-      } finally {
-        setLoading(false);
+        const response1 = await SearchBlogs(locale, keyword);
+        const response2 = await SearchCareers(locale, keyword);
+        const response3 = await SearchProjects(locale, keyword);
+        const response4 = await SearchUnits(locale, keyword);
+
+
+
+        const combinedResults = [...response1.data,
+        ...response2.data,
+        ...response3.data, ...response4.data
+        ];
+        setSearchResults(combinedResults);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
     };
 
-    fetchResults();
-  }, [query]);
-  console.log(results, "results");
-
+    if (keyword) {
+      fetchData();
+    }
+  }, [keyword, locale]);
+  const List = [
+    { Name: t("Menu.home"), Link: locale == "en" ? "/en" : "/" },
+    { Name: t("Buttons.search") },
+  ];
+  console.log(searchResults)
   return (
-    <div className="max-w-[1000px] mx-auto px-4 py-10">
-      {loading ? (
-        <p>Loading...</p>
-      ) : results.length === 0 ? (
-        <p>No results found.</p>
-      ) : (
-        <ul className="space-y-4">
-          {results.map((item: any) => (
-            <li key={item.id} className="border p-4 rounded shadow">
-              <h2 className="text-xl font-semibold">{item.attributes.title}</h2>
-              <p>{item.attributes.description?.slice(0, 100)}...</p>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="max-w-[1000px] mx-auto px-4 md:py-10 py-5">
+      <div className="text-center flex flex-col justify-center items-center md:py-20 py-7 gap-6">
+        <BreadCrumbs ListProps={List} />
+        <h1 className="md:text-[100px] text-6xl font-medium text-primary">{t("Buttons.search")}</h1>
+      </div>
+      <div className=" md:mt-[60px] mt-10 space-y-5">
+        <SearchInput />
+        {searchResults.length === 0 ? (
+          <p className=" py-10 text-primary text-center">{t("data.no_result")}</p>
+        ) : (
+          <ul className="space-y-5">
+            {searchResults.map((item: any) => (
+              <Link
+                href={`${locale == "en" ? "/en" : "/"}${item.attributes?.blogs_type?.data ? "media-center" : "careers"}/${item.attributes.slug}`}
+                key={item.id} className="bg-beige p-6 md:space-y-[90px] space-y-10 block">
+                <p className="bg-white w-fit py-[3px] px-1.5 rounded-[1px]">
+                  <span className=" text-black opacity-50">
+                    {item.attributes?.blogs_type?.data ? t("data.news") : t("data.work")}
+                  </span>
+                </p>
+                <div>
+                  <h2 className="text-darkblue md:text-5xl text-3xl font-medium">{item.attributes.Title}</h2>
+                </div>
+              </Link>
+            ))}
+          </ul>
+        )}
+      </div>
+
     </div>
   );
+
 }

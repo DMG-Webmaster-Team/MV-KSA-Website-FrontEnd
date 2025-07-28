@@ -3,11 +3,9 @@ import { Metadata } from "next";
 export async function fetchServer(pageURL: string, lang: string) {
   try {
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${pageURL}locale=${lang}`;
-    // console.log("💬 fetchServer URL:", url); // ⬅️ Log this
     const res = await fetch(url);
 
     if (!res.ok) {
-      console.error(`❌ fetchServer failed with status ${res.status} for ${pageURL}`);
       throw new Error("Failed to fetch Props");
     }
 
@@ -77,7 +75,48 @@ export async function getSEOMetadata(
 export async function SearchBlogs(lang: string, keyword: string) {
   try {
     const SearchApi = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs?filters[$or][0][Title][$contains]=${keyword}&filters[$or][1][blogs_type][fields][Name][$contains]=${keyword}&locale=${lang}&fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs?filters[Title][$containsi]=${keyword}&locale=${lang}&fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText`
+    );
+    const SearchApiData = await SearchApi.json();
+
+    return SearchApiData; // Add a return statement to return the fetched data
+  } catch (error) {
+    console.error("Error fetching  SearchApi:", error);
+    throw error; // You can choose to throw the error or handle it differently
+  }
+}
+export async function SearchCareers(lang: string, keyword: string) {
+  try {
+    const SearchApi = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/single-careers?filters[Title][$containsi]=${keyword}&locale=${lang}&fields=Title,slug`
+    );
+    const SearchApiData = await SearchApi.json();
+
+    return SearchApiData; // Add a return statement to return the fetched data
+  } catch (error) {
+    console.error("Error fetching  SearchApi:", error);
+    throw error; // You can choose to throw the error or handle it differently
+  }
+}
+
+export async function SearchProjects(lang: string, keyword: string) {
+  try {
+    const SearchApi = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/projects?filters[Title][$containsi]=${keyword}&locale=${lang}&populate=deep`
+    );
+    const SearchApiData = await SearchApi.json();
+
+    return SearchApiData; // Add a return statement to return the fetched data
+  } catch (error) {
+    console.error("Error fetching  SearchApi:", error);
+    throw error; // You can choose to throw the error or handle it differently
+  }
+}
+
+export async function SearchUnits(lang: string, keyword: string) {
+  try {
+    const SearchApi = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/units?filters[Title][$containsi]=${keyword}&locale=${lang}&fields=Title,slug`
     );
     const SearchApiData = await SearchApi.json();
 
