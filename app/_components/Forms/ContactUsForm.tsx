@@ -61,7 +61,7 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
       );
 
       const res = await fetch(
-        "https://mv-ksa.cloudhosta.com/api/contact-us-submissions",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact-us-submissions`,
         {
           method: "POST",
           body: formData,

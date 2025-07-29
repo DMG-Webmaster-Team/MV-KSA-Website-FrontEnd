@@ -25,7 +25,11 @@
     "no_result": "No results found.",
     "news": "News",
     "work": "Work",
-    "unit":"Units"
+    "unit":"Units",
+    "enter_your_email":"Enter your email",
+    "success":"Successfully subscribed!",
+    "error":"Submission failed",
+    "went_wrong":"Something went wrong"
   },
   "Menu": {
     "home": "Home",

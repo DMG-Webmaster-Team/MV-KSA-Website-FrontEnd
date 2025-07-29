@@ -65,7 +65,7 @@ const CareerForm = ({ Title }: { Title: string }) => {
       );
 
       const res = await fetch(
-        "https://mv-ksa.cloudhosta.com/api/careers-submissions",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/careers-submissions`,
         {
           method: "POST",
           body: formData,
