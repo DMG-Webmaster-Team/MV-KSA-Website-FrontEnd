@@ -65,17 +65,17 @@ export default function Rewards({
 
               <AnimatePresence>
                 {isHovered && (
-                  <motion.div
-                    key="text"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ duration: 0.4 }}
-                  >
+                  // <motion.div
+                  //   key="text"
+                  //   initial={{ opacity: 0, y: 20 }}
+                  //   animate={{ opacity: 1, y: 0 }}
+                  //   exit={{ opacity: 0, y: 20 }}
+                  //   transition={{ duration: 0.4 }}
+                  // >
                     <h3 className="text-primary text-center md:text-xl text-lg font-medium">
                       {item.Link}
                     </h3>
-                  </motion.div>
+                  // </motion.div>
                 )}
               </AnimatePresence>
             </div>
