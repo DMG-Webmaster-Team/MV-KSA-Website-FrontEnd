@@ -5,6 +5,8 @@ import Footer from "../_components/Footer/BottomComponent";
 import HeaderComp from "../_components/Header/HeaderComp";
 import "../globals.css";
 import { tajwal } from "../fonts";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   children: ReactNode;
@@ -19,21 +21,13 @@ async function getMessages(locale: string): Promise<Record<string, string>> {
   }
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}) {
-  const { locale } = params;
-  const messages = await getMessages(locale);
-  const t = createTranslator({ locale, messages });
+export async function generateMetadata(props: Promise<{ params: { locale: string } }>
+) {
+  const t = await getTranslations('LocaleLayout');
 
   return {
-    title: t("LocaleLayout.title"),
-    meta: [
-      { name: "apple-mobile-web-app-capable", content: "yes" },
-      { name: "mobile-web-app-capable", content: "yes" },
-    ],
+    title: t("title"),
+
     robots: {
       index: true,
       follow: true,
@@ -51,7 +45,7 @@ export async function generateMetadata({
 }
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = params;
+  const {locale} = await params;
   const messages = await getMessages(locale);
   const direction = locale === "ar" ? "rtl" : "ltr";
 

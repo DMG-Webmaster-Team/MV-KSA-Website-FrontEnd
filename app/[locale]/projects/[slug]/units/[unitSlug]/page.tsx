@@ -4,11 +4,11 @@ import UnitPage from "@/app/_components/MainPages/UnitPage";
 import { fetchServer } from "@/app/api/general";
 import { generatePageMetadata } from "@/lib/seo";
 import { Metadata } from "next";
-export async function generateMetadata({
-  params: { locale, unitSlug },
-}: {
-  params: { locale: string; unitSlug: string };
+export async function generateMetadata(props: {
+  params: Promise<{ unitSlug: string; locale: string }>;
 }): Promise<Metadata> {
+    const { unitSlug, locale } = await props.params;
+
   return generatePageMetadata(
     `units?filters[slug][$eq]=${unitSlug}&`,
     locale,
@@ -16,11 +16,11 @@ export async function generateMetadata({
   );
 }
 
-export default async function page({
-  params: { locale, unitSlug },
-}: {
-  params: { locale: string; unitSlug: string };
+export default async function page(props: {
+  params: Promise<{ unitSlug: string; locale: string }>;
 }) {
+    const { unitSlug, locale } = await props.params;
+
   const [Data] = await Promise.all([
     fetchServer(`units?filters[slug][$eq]=${unitSlug}&`, locale),
   ]);

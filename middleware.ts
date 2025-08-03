@@ -1,19 +1,24 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server'; // Import types
-import { localePrefix, locales } from './navigation';
-export default function middleware(req: NextRequest) {
+// import { localePrefix, locales } from './navigation';
+import { routing } from './routing';
+const intlMiddleware = createMiddleware(routing);
+
+export default function middleware(request: NextRequest) {
+    // const { pathname, origin } = request.nextUrl;
+
   // Handle the localization middleware
-  const localeMiddleware = createMiddleware({
-    localeDetection: false,
-    defaultLocale: 'ar',
-    locales,
-    localePrefix
-  });
+  // const localeMiddleware = createMiddleware({
+  //   localeDetection: false,
+  //   defaultLocale: 'ar',
+  //   locales,
+  //   localePrefix
+  // });
 
   // Run the locale middleware first
-  const localeResponse = localeMiddleware(req);
+  return intlMiddleware(request);
 
-  return localeResponse || NextResponse.next();
+  // return localeResponse || NextResponse.next();
 }
 
 export const config = {

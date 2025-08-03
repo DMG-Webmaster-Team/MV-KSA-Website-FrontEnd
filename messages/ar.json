@@ -2,6 +2,8 @@
   "server-component": {
     "welcome": "ARRRR"
   },
+      "title": "ماونتن ڤيو "
+  ,
   "LocaleLayout": {
     "title": "ماونتن ڤيو "
   },
@@ -19,7 +21,7 @@
     "all_role_types": " جميع الادوار",
     "no_results_found": "لا توجد وظائف متاحة تطابق اختياراتك.",
     "apply": "تقديم الطلب",
-    "scroll_text": "قم بالتمرير لاستكشاف المزيد",
+    "scroll_text": " قم بالتمرير للحصول على مزيد من المعلومات",
     "latest_news": "آخر الأخبار",
     "search_2": "ابحث",
     "no_result": "لم يتم العثور على نتائج.",

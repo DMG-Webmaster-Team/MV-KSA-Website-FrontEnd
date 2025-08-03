@@ -5,11 +5,11 @@ import { fetchServer } from "@/app/api/general";
 import { generatePageMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
-export async function generateMetadata({
-  params: { locale, slug },
-}: {
-  params: { locale: string; slug: string };
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string; locale: string }>;
 }): Promise<Metadata> {
+  const { slug, locale } = await props.params;
+
   return generatePageMetadata(
     `single-careers?filters[slug][$eq]=${slug}`,
     locale,
@@ -17,11 +17,11 @@ export async function generateMetadata({
   );
 }
 
-export default async function page({
-  params: { locale, slug },
-}: {
-  params: { locale: string; slug: string };
+export default async function page(props: {
+  params: Promise<{ slug: string; locale: string }>;
 }) {
+  const { slug, locale } = await props.params;
+
   const [Data] = await Promise.all([
     fetchServer(`single-careers?filters[slug][$eq]=${slug}&`, locale),
   ]);
