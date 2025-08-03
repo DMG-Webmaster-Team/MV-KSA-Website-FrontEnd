@@ -26,6 +26,8 @@
     "news": "News",
     "work": "Work",
     "unit": "Units",
+    "project": "Project",
+
     "enter_your_email": "Enter your email",
     "success": "Successfully subscribed!",
     "error": "Submission failed",
