@@ -46,7 +46,7 @@ export default function SingleProject({ data }: Props) {
     <div>
       <HeroSection data={data.MainData.HeroSection} singleProject />
       <OverviewSection data={data.MainData.OverviewSection} singleProject />
-      {data.MainData.PDF?.data?.attributes &&
+      {data.MainData.PDF?.data?.attributes && (
         <div className="md:-mt-10">
           <DownloadButton
             title={t("Buttons.download_PDF")}
@@ -54,7 +54,7 @@ export default function SingleProject({ data }: Props) {
             PDFName={data.MainData.PDF.data.attributes.name}
           />
         </div>
-      }
+      )}
       <div className=" my-10 max-w-[1200px] mx-auto md:flex-row flex-col gap-y-3 flex rtl:divide-x-reverse divide-x-2 divide-primary divide-opacity-10">
         {data.MainData.Numbers.map(
           (item: { Title: string; Description: string }, index: number) => (

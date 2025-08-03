@@ -68,7 +68,9 @@ export default function UnitPage({ data }: { data: Props }) {
             </div>
 
             <Link
-              href={`${locale == "en" ? "/en/" : "/"}projects/one-mountain-view`}
+              href={`${
+                locale == "en" ? "/en/" : "/"
+              }projects/one-mountain-view`}
               className=" bg-white flex rounded-full md:p-4 p-2.5 text-primary hover:text-white hover:bg-primary duration-500 transition-all"
             >
               <span className="md:w-6 md:h-6 w-5 h-5 ">
@@ -126,15 +128,14 @@ export default function UnitPage({ data }: { data: Props }) {
                 )}
               </ul>
             )}
-            {data.PDF?.data?.attributes &&
+            {data.PDF?.data?.attributes && (
               <DownloadButton
                 title={t("Buttons.download_PDF")}
                 PDFurl={data.PDF.data.attributes.url}
                 PDFName={data.PDF.data.attributes.name}
                 light
               />
-            }
-
+            )}
           </div>
         </div>
         <div className="lg:w-[50%] relative lg:aspect-[800/634] aspect-[800/604]">

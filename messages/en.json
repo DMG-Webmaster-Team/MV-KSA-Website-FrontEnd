@@ -25,11 +25,11 @@
     "no_result": "No results found.",
     "news": "News",
     "work": "Work",
-    "unit":"Units",
-    "enter_your_email":"Enter your email",
-    "success":"Successfully subscribed!",
-    "error":"Submission failed",
-    "went_wrong":"Something went wrong"
+    "unit": "Units",
+    "enter_your_email": "Enter your email",
+    "success": "Successfully subscribed!",
+    "error": "Submission failed",
+    "went_wrong": "Something went wrong"
   },
   "Menu": {
     "home": "Home",
@@ -100,5 +100,11 @@
       "title": "Thank you for getting in touch!",
       "description": "We’ve received your message and will get back to you as soon as possible."
     }
+  },
+  "NotFound": {
+    "title": "Page not found!",
+    "description": "The page you were looking for doesn’t exist. However, this is a good chance to take a look at our communities.",
+    "ourStory": "Our Story",
+    "Home": "Home"
   }
 }

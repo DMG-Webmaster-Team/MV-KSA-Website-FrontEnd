@@ -38,10 +38,9 @@ export interface CareerWidget {
   };
 }
 
-
 export interface ImageData {
   url: string;
   alternativeText: string | null;
-  width?:number;
-  height?:number;
+  width?: number;
+  height?: number;
 }

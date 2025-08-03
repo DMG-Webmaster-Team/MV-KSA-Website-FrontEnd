@@ -12,18 +12,17 @@ export default function SearchComponent({
 }: {
   StableHeader: boolean;
 }) {
-
   const [showSearch, setShowSearch] = useState(false);
-
 
   return (
     <>
       <button
         onClick={() => setShowSearch(true)}
-        className={` ${StableHeader
+        className={` ${
+          StableHeader
             ? " text-primary hover:bg-primary hover:text-white"
             : "text-white hover:bg-primary"
-          } xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
+        } xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
       >
         <span className=" xl:w-6 xl:h-6 w-5 h-5 block">
           <Search />

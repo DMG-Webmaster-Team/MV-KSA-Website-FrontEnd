@@ -24,9 +24,8 @@ export async function getSEOMetadata(
   single?: boolean
 ): Promise<Metadata> {
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${slug}${
-      single ? "&" : "?"
-    }locale=${lang}&populate[Seo][populate]=*`;
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${slug}${single ? "&" : "?"
+      }locale=${lang}&populate[Seo][populate]=*`;
 
     const res = await fetch(url);
 

@@ -32,7 +32,7 @@ export default function SubscribeForm() {
           },
           body: JSON.stringify({
             data: {
-              Email: email, // Match the exact field name in Strapi
+              Email: email,
             },
           }),
         }
@@ -71,9 +71,7 @@ export default function SubscribeForm() {
         </button>
       </div>
       {error && <p className="text-red-500 text-sm">{error}</p>}
-      {success && (
-        <p className="text-green-500 text-sm">{t("data.success")}</p>
-      )}
+      {success && <p className="text-green-500 text-sm">{t("data.success")}</p>}
     </form>
   );
 }

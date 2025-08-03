@@ -1,4 +1,3 @@
-// BreadCrumbs.tsx
 import Link from "next/link";
 import React from "react";
 import Arrow from "../SVGS/Arrow";
@@ -30,7 +29,9 @@ export default function BreadCrumbs({ ListProps }: BreadCrumbsProps) {
               {item.Name}
             </Link>
           ) : (
-            <span className=" opacity-50 leading-[22px] truncate overflow-hidden whitespace-nowrap max-w-48 ">{item.Name}</span>
+            <span className=" opacity-50 leading-[22px] truncate overflow-hidden whitespace-nowrap max-w-48 ">
+              {item.Name}
+            </span>
           )}
 
           {index < ListProps.length - 1 && (

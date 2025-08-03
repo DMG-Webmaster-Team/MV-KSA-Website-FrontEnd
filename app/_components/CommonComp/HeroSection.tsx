@@ -30,11 +30,11 @@ export interface HeroSectionProps {
 export default function HeroSection({
   data,
   singleProject,
-  home
+  home,
 }: {
   data: HeroSectionProps;
   singleProject?: boolean;
-  home?: boolean
+  home?: boolean;
 }) {
   const t = useTranslations();
   const locale = useLocale();
@@ -71,13 +71,15 @@ export default function HeroSection({
       )}
 
       <div
-        className={`${singleProject ? " space-y-10" : ""
-          } absolute w-fit h-fit m-auto inset-0 z-20 text-center px-2`}
+        className={`${
+          singleProject ? " space-y-10" : ""
+        } absolute w-fit h-fit m-auto inset-0 z-20 text-center px-2`}
       >
         {data.Logo && (
           <div
-            className={`${singleProject ? "md:h-[200px] h-[100px]" : "h-[140px]  mb-20"
-              } relative w-[305px]  mx-auto`}
+            className={`${
+              singleProject ? "md:h-[200px] h-[100px]" : "h-[140px]  mb-20"
+            } relative w-[305px]  mx-auto`}
           >
             <Image
               src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
@@ -90,18 +92,22 @@ export default function HeroSection({
         )}
         <div>
           <h1
-            className={`${singleProject
+            className={`${
+              singleProject
                 ? "md:text-[52px] text-4xl"
                 : "lg:text-[100px] lg:leading-[100px] md:text-6xl text-4xl"
-              } text-white   font-medium`}
+            } text-white   font-medium`}
           >
             {data.Title}
           </h1>
           <p
-            className={`${singleProject
+            className={`${
+              singleProject
                 ? "md:text-2xl text-base"
                 : "lg:text-[60px] lg:leading-[70px] md:text-4xl text-base  "
-              } text-white mx-auto md:max-w-[60%]  font-medium mt-2 ${home ? "" : " opacity-70"}`}
+            } text-white mx-auto md:max-w-[60%]  font-medium mt-2 ${
+              home ? "" : " opacity-70"
+            }`}
           >
             {data.ShortDescription}
           </p>

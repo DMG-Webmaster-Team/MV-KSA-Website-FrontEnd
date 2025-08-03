@@ -18,10 +18,12 @@ export default async function page({
 }: {
   params: { locale: string };
 }) {
-  // console.log("Fetching with locale:", locale);
   const [Data, AllCareers] = await Promise.all([
     fetchServer("career?", locale),
-    fetchServer("single-careers?fields=Title,slug&populate[department][fields]=Name&populate[role_type][fields]=Name&", locale),
+    fetchServer(
+      "single-careers?fields=Title,slug&populate[department][fields]=Name&populate[role_type][fields]=Name&",
+      locale
+    ),
   ]);
 
   return (

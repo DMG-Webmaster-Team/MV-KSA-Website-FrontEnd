@@ -13,6 +13,7 @@ export interface LogoProps {
     };
   };
 }
+
 export default function Rewards({
   Title,
   Logos,

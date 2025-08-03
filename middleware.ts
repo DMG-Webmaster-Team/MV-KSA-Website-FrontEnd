@@ -1,7 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server'; // Import types
 import { localePrefix, locales } from './navigation';
-export default function middleware(req:NextRequest) {
+export default function middleware(req: NextRequest) {
   // Handle the localization middleware
   const localeMiddleware = createMiddleware({
     localeDetection: false,

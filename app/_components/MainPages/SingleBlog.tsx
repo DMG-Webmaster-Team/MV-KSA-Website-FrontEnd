@@ -61,7 +61,10 @@ export default function SingleBlog({ data }: Props) {
   const t = useTranslations();
   const List = [
     { Name: t("Menu.home"), Link: locale == "en" ? "/en" : "/" },
-    { Name: t("Menu.media_center"), Link: locale == "en" ? "/en/media-center" : "/media-center" },
+    {
+      Name: t("Menu.media_center"),
+      Link: locale == "en" ? "/en/media-center" : "/media-center",
+    },
     { Name: data.MainData.Title },
   ];
   return (
@@ -80,7 +83,6 @@ export default function SingleBlog({ data }: Props) {
             {data.MainData.Title}
           </h1>
           <div className="flex justify-between">
-
             <div className="flex gap-4 text-primary text-sm font-medium items-center">
               <p>
                 {new Date(data.MainData.publishedAt).toLocaleDateString(
@@ -101,8 +103,9 @@ export default function SingleBlog({ data }: Props) {
             </div>
             <div>
               <ShareButtons
-                url={`${locale == "en" ? "/en/" : "/"}media-center/${data.MainData.slug
-                  }`}
+                url={`${locale == "en" ? "/en/" : "/"}media-center/${
+                  data.MainData.slug
+                }`}
               />
             </div>
           </div>
@@ -184,8 +187,9 @@ export default function SingleBlog({ data }: Props) {
 
               {item.type === "list" && (
                 <ul
-                  className={`${item.format === "unordered" ? "list-disc" : "list-decimal"
-                    }`}
+                  className={`${
+                    item.format === "unordered" ? "list-disc" : "list-decimal"
+                  }`}
                 >
                   {item.children.map((listItem, inde) => (
                     <li key={inde} className={` `}>

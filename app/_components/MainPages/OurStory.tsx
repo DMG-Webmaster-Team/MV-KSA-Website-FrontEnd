@@ -99,7 +99,10 @@ export default function OurStory({ data }: Props) {
               <div
                 ref={contentRef}
                 dangerouslySetInnerHTML={{
-                  __html: data.OwnerMessage.Message.replace(/\n\n/g, "<br><br>"),
+                  __html: data.OwnerMessage.Message.replace(
+                    /\n\n/g,
+                    "<br><br>"
+                  ),
                 }}
               />
             </motion.div>
@@ -112,7 +115,6 @@ export default function OurStory({ data }: Props) {
                 {expanded ? t("data.see_less") : t("data.see_more")}
               </button>
             )}
-
           </div>
         </div>
       </div>

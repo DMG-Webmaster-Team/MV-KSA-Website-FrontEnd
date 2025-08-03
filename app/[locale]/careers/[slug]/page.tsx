@@ -18,9 +18,9 @@ export async function generateMetadata({
 }
 
 export default async function page({
-  params: { locale , slug},
+  params: { locale, slug },
 }: {
-  params: { locale: string , slug:string };
+  params: { locale: string; slug: string };
 }) {
   const [Data] = await Promise.all([
     fetchServer(`single-careers?filters[slug][$eq]=${slug}&`, locale),

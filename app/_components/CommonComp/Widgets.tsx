@@ -49,7 +49,7 @@ export default function Widgets({
           </h2>
           <motion.div
             initial={false}
-            animate={{ height: expanded ? height : 110 }} // 110px ≈ 6.9rem fixed collapsed height
+            animate={{ height: expanded ? height : 110 }}
             style={{ overflow: "hidden" }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="overflow-hidden"

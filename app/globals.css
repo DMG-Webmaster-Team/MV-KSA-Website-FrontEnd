@@ -21,7 +21,6 @@
   font-weight: 300;
   font-style: normal;
   font-display: swap;
-  /* Ensures text remains visible during font load */
 }
 
 .font-FreightNeoPro {
@@ -121,7 +120,6 @@ body {
 
 .heroSection::after {
   background: linear-gradient(168.8deg, rgba(0, 0, 0, 0) 74.07%, #000000 91.74%);
-  /* transform: rotateY(180deg); */
 }
 
 @media (max-width:765px) {

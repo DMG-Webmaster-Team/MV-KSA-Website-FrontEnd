@@ -25,6 +25,7 @@ export default function BlogsSection({ Blogs }: { Blogs: BlogWidget[] }) {
           </span>
         </Link>
       </div>
+
       <SlickMultipleItems customArrow>
         {Blogs.map((item: BlogWidget, index: number) => (
           <Link

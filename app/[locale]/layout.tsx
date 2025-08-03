@@ -3,9 +3,8 @@ import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 import Footer from "../_components/Footer/BottomComponent";
 import HeaderComp from "../_components/Header/HeaderComp";
-import { tajwal } from "../fonts";
 import "../globals.css";
-
+import { tajwal } from "../fonts";
 
 type Props = {
   children: ReactNode;
@@ -16,7 +15,7 @@ async function getMessages(locale: string): Promise<Record<string, string>> {
     return (await import(`../../messages/${locale}.json`)).default;
   } catch {
     notFound();
-    return {}; // Fallback to avoid TS errors
+    return {};
   }
 }
 
@@ -25,7 +24,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }) {
-  const { locale } = params; // Ensure params is accessed correctly
+  const { locale } = params;
   const messages = await getMessages(locale);
   const t = createTranslator({ locale, messages });
 
@@ -52,7 +51,7 @@ export async function generateMetadata({
 }
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = params; // Destructure properly
+  const { locale } = params;
   const messages = await getMessages(locale);
   const direction = locale === "ar" ? "rtl" : "ltr";
 
@@ -61,27 +60,45 @@ export default async function RootLayout({ children, params }: Props) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet"
+        />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon/favicon-96x96.png"
+          sizes="96x96"
+        />
         <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
         <link rel="shortcut icon" href="/favicon/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </head>
       <body
-        className={`${locale == "ar" ? tajwal.className : "font-FreightNeoPro"}`}
+        className={`${
+          locale == "ar" ? tajwal.className : "font-FreightNeoPro"
+        }`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           {/* <MainHeader /> */}
-          <HeaderComp params={{
-            locale: locale
-          }} />
+          <HeaderComp
+            params={{
+              locale: locale,
+            }}
+          />
           <main>{children}</main>
-          <Footer params={{
-            locale: locale
-          }}  />
+          <Footer
+            params={{
+              locale: locale,
+            }}
+          />
         </NextIntlClientProvider>
       </body>
     </html>

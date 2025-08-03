@@ -40,7 +40,9 @@ export default function DownloadButton({
     <button
       onClick={DownloadPdf}
       className={`${
-        light ? " text-primary bg-Gray05 hover:text-Gray05 hover:bg-primary" : "bg-primary hover:bg-darkblue text-white mx-auto"
+        light
+          ? " text-primary bg-Gray05 hover:text-Gray05 hover:bg-primary"
+          : "bg-primary hover:bg-darkblue text-white mx-auto"
       } flex items-center  transition-all duration-500  py-3 px-4 rounded-sm w-fit  gap-3`}
     >
       <span className="text-base font-bold -mb-1">{title}</span>

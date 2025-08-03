@@ -20,7 +20,10 @@ export default async function page({
 }) {
   const [Data, Blogs] = await Promise.all([
     fetchServer("media-center?", locale),
-    fetchServer("blogs?fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText&", locale),
+    fetchServer(
+      "blogs?fields=Title,slug,publishedAt&populate[blogs_type][fields]=Name&populate[WidgetImage][fields]=url,alternativeText&",
+      locale
+    ),
   ]);
 
   return (

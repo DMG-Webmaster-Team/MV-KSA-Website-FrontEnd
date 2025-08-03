@@ -18,9 +18,9 @@ interface Props {
         };
       };
     };
-    List:{
-      Name:string
-    }[]
+    List: {
+      Name: string;
+    }[];
   };
 }
 export default function ContactUs({ data }: Props) {
@@ -46,7 +46,7 @@ export default function ContactUs({ data }: Props) {
             <span className=" text-sm opacity-50">{data.FormLabel}</span>
             <h2 className=" md:text-5xl text-3xl">{data.FormTitle}</h2>
           </div>
-          <ContactUsForm List={data.List}  />
+          <ContactUsForm List={data.List} />
         </div>
       </div>
       <div className="max-w-[1448px] px-4 mx-auto md:py-[60px] py-10 md:gap-[60px] gap-6 flex items-center sm:flex-row flex-col">

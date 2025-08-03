@@ -1,7 +1,11 @@
-// app/search/page.tsx or pages/search.tsx (based on your routing style)
 "use client";
 
-import { SearchBlogs, SearchCareers, SearchProjects, SearchUnits } from "@/app/api/general";
+import {
+  SearchBlogs,
+  SearchCareers,
+  SearchProjects,
+  SearchUnits,
+} from "@/app/api/general";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -9,105 +13,109 @@ import { useEffect, useState } from "react";
 import BreadCrumbs from "../CommonComp/BreadCrumbs";
 import SearchInput from "../Header/SearchInput";
 
+// Define TypeScript interfaces for better type safety
+interface SearchResult {
+  id: number;
+  attributes: {
+    Title: string;
+    slug: string;
+  };
+  __source: "blog" | "career" | "project" | "unit";
+}
+
+interface PathConfig {
+  basePath: string;
+  badgeText: string;
+}
+
 export default function SearchResultsPage() {
   const searchParams = useSearchParams();
   const t = useTranslations();
-  const keyword = searchParams.get('keyword') || '';
-  const [searchResults, setSearchResults] = useState<any[]>([]);
   const locale = useLocale();
+  const keyword = searchParams.get("keyword") || "";
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response1 = await SearchBlogs(locale, keyword);
-        const response2 = await SearchCareers(locale, keyword);
-        const response3 = await SearchProjects(locale, keyword);
-        const response4 = await SearchUnits(locale, keyword);
+        // Fetch all data in parallel for better performance
+        const [blogsRes, careersRes, projectsRes, unitsRes] = await Promise.all(
+          [
+            SearchBlogs(locale, keyword),
+            SearchCareers(locale, keyword),
+            SearchProjects(locale, keyword),
+            SearchUnits(locale, keyword),
+          ]
+        );
 
-        const taggedBlogs = response1.data.map((item: any) => ({
-          ...item,
-          __source: "blog",
-        }));
-        const taggedCareers = response2.data.map((item: any) => ({
-          ...item,
-          __source: "career",
-        }));
-        const taggedProjects = response3.data.map((item: any) => ({
-          ...item,
-          __source: "project",
-        }));
-        const taggedUnits = response4.data.map((item: any) => ({
-          ...item,
-          __source: "unit",
-        }));
+        // Helper function to map and tag results
+        const tagResults = (
+          data: SearchResult[],
+          source: SearchResult["__source"]
+        ) => data.map((item) => ({ ...item, __source: source }));
 
         const combinedResults = [
-          ...taggedBlogs,
-          ...taggedCareers,
-          ...taggedProjects,
-          ...taggedUnits,
+          ...tagResults(blogsRes.data, "blog"),
+          ...tagResults(careersRes.data, "career"),
+          ...tagResults(projectsRes.data, "project"),
+          ...tagResults(unitsRes.data, "unit"),
         ];
 
         setSearchResults(combinedResults);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching search results:", error);
       }
     };
 
     if (keyword) {
       fetchData();
+    } else {
+      setSearchResults([]);
     }
   }, [keyword, locale]);
-  const List = [
-    { Name: t("Menu.home"), Link: locale == "en" ? "/en" : "/" },
+
+  const breadcrumbsList = [
+    { Name: t("Menu.home"), Link: locale === "en" ? "/en" : "/" },
     { Name: t("Buttons.search") },
   ];
-  console.log(searchResults)
+
+  // Path configuration map for cleaner code
+  const pathConfigs: Record<SearchResult["__source"], PathConfig> = {
+    blog: { basePath: "media-center", badgeText: t("data.news") },
+    career: { basePath: "careers", badgeText: t("data.work") },
+    project: { basePath: "projects", badgeText: t("data.project") },
+    unit: {
+      basePath: "projects/one-mountain-view/units",
+      badgeText: t("data.unit"),
+    },
+  };
+
   return (
     <div className="max-w-[1000px] mx-auto px-4 md:py-10 py-5">
       <div className="text-center flex flex-col justify-center items-center md:py-20 py-7 gap-6">
-        <BreadCrumbs ListProps={List} />
-        <h1 className="md:text-[100px] text-6xl font-medium text-primary">{t("Buttons.search")}</h1>
+        <BreadCrumbs ListProps={breadcrumbsList} />
+        <h1 className="md:text-[100px] text-6xl font-medium text-primary">
+          {t("Buttons.search")}
+        </h1>
       </div>
-      <div className=" md:mt-[60px] mt-10 space-y-5">
+      <div className="md:mt-[60px] mt-10 space-y-5">
         <SearchInput />
         {searchResults.length === 0 ? (
-          <p className=" py-10 text-primary text-center">{t("data.no_result")}</p>
+          <p className="py-10 text-primary text-center">
+            {t("data.no_result")}
+          </p>
         ) : (
           <ul className="space-y-5">
-            {searchResults.map((item: any) => {
+            {searchResults.map((item) => {
               const { Title, slug } = item.attributes;
-
-              let basePath = "";
-              let badgeText = "";
-
-              switch (item.__source) {
-                case "blog":
-                  basePath = "media-center";
-                  badgeText = t("data.news");
-                  break;
-                case "career":
-                  basePath = "careers";
-                  badgeText = t("data.work");
-                  break;
-                case "project":
-                  basePath = "projects";
-                  badgeText = t("data.project");
-                  break;
-                case "unit":
-                  basePath = "projects/one-mountain-view/units";
-                  badgeText = t("data.unit");
-                  break;
-                default:
-                  basePath = "";
-                  badgeText = "";
-              }
+              const { basePath, badgeText } = pathConfigs[item.__source];
+              const baseUrl = locale === "en" ? "/en" : "/";
 
               return (
                 <Link
-                  href={`${locale === "en" ? "/en" : "/"}${basePath}/${slug}`}
+                  href={`${baseUrl}${basePath}/${slug}`}
                   key={`${item.__source}-${item.id}`}
-                  className="bg-beige p-6 md:space-y-[90px] space-y-10 block"
+                  className="bg-beige p-6 md:space-y-[90px] space-y-10 block hover:bg-beige/90 transition-colors"
                 >
                   <p className="bg-white w-fit py-[3px] px-1.5 rounded-[1px]">
                     <span className="text-black opacity-50">{badgeText}</span>
@@ -123,8 +131,6 @@ export default function SearchResultsPage() {
           </ul>
         )}
       </div>
-
     </div>
   );
-
 }

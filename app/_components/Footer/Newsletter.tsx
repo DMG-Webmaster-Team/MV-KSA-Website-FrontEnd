@@ -17,7 +17,7 @@ export default async function NewsLetter({ data }: Props) {
           {data.newsletter_subtitle}
         </p>
       </div>
-        <SubscribeForm />
+      <SubscribeForm />
     </div>
   );
 }

@@ -30,10 +30,7 @@ export default function Boxes({ BoxOne }: { BoxOne: BoxProps[] }) {
   return (
     <div className="flex lg:flex-row flex-col">
       {BoxOne.map((item: BoxProps, index: number) => (
-        <div
-          className="lg:w-1/2 w-full relative aspect-[1.1]"
-          key={index}
-        >
+        <div className="lg:w-1/2 w-full relative aspect-[1.1]" key={index}>
           <Image
             src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Image.data.attributes.url}`}
             alt={item.Image.data.attributes.alternativeText ?? item.Title}

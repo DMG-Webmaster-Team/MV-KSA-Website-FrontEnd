@@ -86,9 +86,9 @@ export default function MenuMobile({
               <div className=" space-y-2 pt-2 px-3">
                 {item.Megamenu.map((subItem: MegaMenu, index: number) => (
                   <Link
-                     onClick={() => {
-              setOpenMenu(!openMenu);
-            }}
+                    onClick={() => {
+                      setOpenMenu(!openMenu);
+                    }}
                     href={subItem.Link ?? ""}
                     className={`${
                       subItem.Link ? "" : " pointer-events-none"
