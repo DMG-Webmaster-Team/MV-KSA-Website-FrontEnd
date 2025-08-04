@@ -1,5 +1,5 @@
 import React from "react";
-import AboutUsLoading from "./AboutUsLoading";
+import AboutUsLoading from "./AboutUsLoadingComp";
 
 export default function HomepageLoading() {
   return (
