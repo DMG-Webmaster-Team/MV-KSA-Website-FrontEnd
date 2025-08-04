@@ -60,7 +60,6 @@ export default function SearchResultsPage() {
           ...tagResults(projectsRes.data, "project"),
           ...tagResults(unitsRes.data, "unit"),
         ];
-
         setSearchResults(combinedResults);
       } catch (error) {
         console.error("Error fetching search results:", error);
@@ -107,9 +106,26 @@ export default function SearchResultsPage() {
         ) : (
           <ul className="space-y-5">
             {searchResults.map((item) => {
-              const { Title, slug } = item.attributes;
+              const { slug } = item.attributes;
               const { basePath, badgeText } = pathConfigs[item.__source];
-              const baseUrl = locale === "en" ? "/en" : "/";
+              const baseUrl = locale === "en" ? "/en/" : "/";
+
+              let title = item.attributes.Title;
+
+              if (!title) {
+                if (item.__source === "project" && item.attributes.Title) {
+                  title = item.attributes.Title;
+                } else if (item.__source === "unit" && item.attributes.Title) {
+                  title = item.attributes.Title;
+                } else if (slug === "one-mountain-view") {
+                  title = slug
+                    .split("-")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ");
+                }
+              }
+
+              if (!title) return null;
 
               return (
                 <Link
@@ -122,7 +138,7 @@ export default function SearchResultsPage() {
                   </p>
                   <div>
                     <h2 className="text-darkblue md:text-5xl text-3xl font-medium">
-                      {Title}
+                      {title}
                     </h2>
                   </div>
                 </Link>

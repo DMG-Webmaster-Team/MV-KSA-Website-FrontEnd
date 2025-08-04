@@ -107,6 +107,7 @@
     "title": "Page not found!",
     "description": "The page you were looking for doesn’t exist. However, this is a good chance to take a look at our communities.",
     "ourStory": "Our Story",
-    "Home": "Home"
+    "Home": "Home",
+    "imageAlt": "Mountain View Logo"
   }
 }
