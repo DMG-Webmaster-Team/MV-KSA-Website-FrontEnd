@@ -1,36 +1,14 @@
 "use client";
-import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
+import { HomepageProps } from "@/app/types/Pages";
+import HeroSection from "../CommonComp/HeroSection";
 import BlogsSection from "../Homepage/BlogsSection";
-import Boxes, { BoxProps } from "../Homepage/Boxes";
-import LaunchingSection, { LaunchingProps } from "../Homepage/LaunchingSection";
+import Boxes from "../Homepage/Boxes";
+import LaunchingSection from "../Homepage/LaunchingSection";
 import NumbersList from "../Homepage/NumbersList";
-import Rewards, { LogoProps } from "../Homepage/Rewards";
-import WidgetSection, { WidgetProps } from "../Homepage/Widget";
-import { BlogWidget } from "./MediaCenter";
+import Rewards from "../Homepage/Rewards";
+import WidgetSection from "../Homepage/Widget";
 
-interface MainDataProps {
-  HeroSection: HeroSectionProps;
-  OverviewSection: string;
-  NumbersList: {
-    Title: string;
-    Description: string;
-  }[];
-  BoxOne: BoxProps[];
-  LaunchingSection: LaunchingProps;
-  Widget: WidgetProps;
-  Rewards: {
-    Title: string;
-    Logos: LogoProps[];
-  };
-}
-interface Props {
-  data: {
-    MainData: MainDataProps;
-    Blogs: BlogWidget[];
-  };
-}
-
-export default function Homepage({ data }: Props) {
+export default function Homepage({ data }: HomepageProps) {
   return (
     <div>
       <HeroSection data={data.MainData.HeroSection} home />

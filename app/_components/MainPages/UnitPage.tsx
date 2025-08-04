@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { OverviewSectionProps } from "../CommonComp/OverviewSection";
-import { SingleList } from "../UnitWidget";
 import Image from "next/image";
 import Link from "next/link";
 import Close from "../SVGS/Close";
@@ -11,6 +10,7 @@ import Calender from "../SVGS/Calender";
 import Gallery, { singleImage } from "../Gallery";
 import Widgets, { WidgetProps } from "../CommonComp/Widgets";
 import DownloadButton from "../CommonComp/DownloadButton";
+import { SingleList } from "@/app/types/UnitWidget";
 interface ImageProps {
   data: {
     attributes: {

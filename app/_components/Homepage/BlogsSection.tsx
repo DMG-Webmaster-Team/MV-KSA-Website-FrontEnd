@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import SlickMultipleItems from "../SlickMultipleItems";
-import { BlogWidget } from "../MainPages/MediaCenter";
 import ArrowLong from "../SVGS/ArrowLong";
 import { useLocale, useTranslations } from "next-intl";
+import { BlogWidget } from "@/app/types/Pages";
 
 export default function BlogsSection({ Blogs }: { Blogs: BlogWidget[] }) {
   const locale = useLocale();

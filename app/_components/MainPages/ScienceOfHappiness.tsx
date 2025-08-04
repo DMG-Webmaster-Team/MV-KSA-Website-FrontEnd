@@ -1,33 +1,16 @@
 "use client";
 import { useState } from "react";
-import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
+import HeroSection from "../CommonComp/HeroSection";
 import OverviewSection, {
   OverviewSectionProps,
 } from "../CommonComp/OverviewSection";
 import SingleAccordion from "../CommonComp/SingleAccordion";
 import { Repeater } from "../CommonComp/TextComp";
 import Image from "next/image";
+import { ScienceOfHappinessPageProps } from "@/app/types/Pages";
 
-interface Props {
-  data: {
-    HeroSection: HeroSectionProps;
-    OverviewSection: OverviewSectionProps;
-    TextSection: Repeater;
-    Strategies: {
-      Title: string;
-      Image: {
-        data: {
-          attributes: {
-            url: string;
-            alternativeText: string;
-          };
-        };
-      };
-      Repeater: Repeater[];
-    };
-  };
-}
-export default function ScienceOfHappinessPage({ data }: Props) {
+
+export default function ScienceOfHappinessPage({ data }: ScienceOfHappinessPageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleClick = (index: number) => {

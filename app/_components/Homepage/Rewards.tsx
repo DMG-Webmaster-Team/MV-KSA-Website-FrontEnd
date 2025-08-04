@@ -1,18 +1,8 @@
 "use client";
+import { LogoProps } from "@/app/types/HomePage";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-export interface LogoProps {
-  Link: string;
-  Icon: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-}
 
 export default function Rewards({
   Title,

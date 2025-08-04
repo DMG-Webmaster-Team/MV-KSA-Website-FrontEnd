@@ -1,12 +1,6 @@
-interface Props {
-  data: {
-    Label: string;
-    Title: string;
-    Calendly_Link: string;
-  };
-}
+import { CalendlyProps } from "@/app/types/Pages";
 
-export default function CalendlyPage({ data }: Props) {
+export default function CalendlyPage({ data }: CalendlyProps) {
   return (
     <div className=" mb-10">
       <div className=" md:pt-20 pt-[30px] pb-4 text-center space-y-6">

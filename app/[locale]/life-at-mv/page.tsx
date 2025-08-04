@@ -1,6 +1,6 @@
 export const runtime = "edge";
 
-import LifeatmvPage from "@/app/_components/MainPages/Lifeatmv";
+import LifeAtMVPage from "@/app/_components/MainPages/LifeAtMV";
 import { fetchServer } from "@/app/api/general";
 import { generatePageMetadata } from "@/lib/seo";
 import { Metadata } from "next";
@@ -23,5 +23,5 @@ export default async function page(props: {
   const { locale } = await props.params;
 
   const Data = await fetchServer("life-at-mv?", locale);
-  return <LifeatmvPage data={Data.data.attributes} />;
+  return <LifeAtMVPage data={Data.data.attributes} />;
 }

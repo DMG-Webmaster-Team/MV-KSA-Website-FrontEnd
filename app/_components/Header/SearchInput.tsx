@@ -1,5 +1,4 @@
 "use client";
-
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 import Search from "../SVGS/Search";
@@ -10,7 +9,6 @@ export default function SearchInput({ setShow }: { setShow?: () => void }) {
   const t = useTranslations();
   const router = useRouter();
   const searchParams = useSearchParams();
-
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {

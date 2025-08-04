@@ -3,29 +3,7 @@ import Link from "next/link";
 import React from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import { useLocale, useTranslations } from "next-intl";
-
-export interface HeroSectionProps {
-  Title: string;
-  ShortDescription?: string;
-  Media: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-  Logo?: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-  Buttonlink?: string;
-  ButtonText?: string;
-}
+import { HeroSectionProps } from "../_types/Common";
 
 export default function HeroSection({
   data,

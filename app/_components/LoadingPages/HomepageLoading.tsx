@@ -1,10 +1,10 @@
 import React from "react";
-import AboutusLoading from "./Aboutusloading";
+import AboutUsLoading from "./AboutUsLoading";
 
 export default function HomepageLoading() {
   return (
     <div className="md:py-[70px] py-[50px]">
-      <AboutusLoading />
+      <AboutUsLoading />
     </div>
   );
 }

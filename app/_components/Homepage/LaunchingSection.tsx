@@ -2,24 +2,7 @@ import React from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import Link from "next/link";
 import Image from "next/image";
-
-export interface LaunchingProps {
-  ButtonOneLink: string;
-  ButtonOneText: string;
-  ButtonTwoLink: string;
-  ButtonTwoText: string;
-  Tagline: string;
-  Title: string;
-  Title2: string;
-  Image: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-}
+import { LaunchingProps } from "@/app/types/HomePage";
 
 export default function LaunchingSection({
   LaunchingSection,

@@ -3,7 +3,7 @@ import Image from "next/image";
 import CompoundComponent, {
   SingleCompoundProps,
 } from "../CommonComp/CompoundComponent";
-import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
+import HeroSection  from "../CommonComp/HeroSection";
 import OverviewSection, {
   OverviewSectionProps,
 } from "../CommonComp/OverviewSection";
@@ -15,6 +15,7 @@ import SlickMultipleItems from "../SlickMultipleItems";
 import WidgetComp from "../SmallWidgets/WidgetComp";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { HeroSectionProps } from "../_types/Common";
 interface Props {
   data: {
     HeroSection: HeroSectionProps;

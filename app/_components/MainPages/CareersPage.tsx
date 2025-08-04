@@ -1,36 +1,13 @@
 "use client";
-
 import Image from "next/image";
 import { CareerWidget } from "../_types/Common";
 import CareerWidgetComp from "../SmallWidgets/CareerWidgetComp";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import FilterSelect from "../Forms/SelectTag";
+import { CareersProps } from "@/app/types/Pages";
 
-interface Props {
-  data: {
-    MainData: {
-      Title: string;
-      Description: string;
-      ListTitle: string;
-      HeroImage: {
-        data: {
-          attributes: {
-            url: string;
-            alternativeText: string;
-          };
-        };
-      };
-      OverviewSection: {
-        Title: string;
-        Description: string;
-      };
-    };
-    AllCareersData: CareerWidget[];
-  };
-}
-
-export default function CareersPage({ data }: Props) {
+export default function CareersPage({ data }: CareersProps) {
   const t = useTranslations();
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedRoleType, setSelectedRoleType] = useState("");

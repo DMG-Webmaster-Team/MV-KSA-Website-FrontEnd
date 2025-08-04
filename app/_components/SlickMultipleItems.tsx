@@ -1,8 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import ArrowLong from "./SVGS/ArrowLong";
-// import Arrow from "./Svgs/Arrow";
+import { useSlickSlider } from "../hooks/useSlickSlider";
 
 interface SlickMultipleItemsProps {
   children: React.ReactNode;
@@ -18,59 +17,17 @@ function SlickMultipleItems({
   noMargin,
   customArrow,
 }: SlickMultipleItemsProps) {
-  const [totalPages, setTotalPages] = useState<number>(1);
   const locale = useLocale();
+  const {
+    sliderRef,
+    totalPages,
+    isEndOfLeft,
+    isEndOfRight,
+    goLeft,
+    goRight,
+    onSlide,
+  } = useSlickSlider(children);
 
-  useEffect(() => {
-    if (sliderRef.current) {
-      const { scrollWidth, clientWidth } = sliderRef.current;
-      const pages = Math.ceil(scrollWidth / clientWidth);
-      setTotalPages(pages);
-      // checkScrollPosition();
-    }
-  }, [children]);
-
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [isEndOfLeft, setIsEndOfLeft] = useState<boolean>(true);
-  const [isEndOfRight, setIsEndOfRight] = useState<boolean>(false);
-  let x = 0;
-  let scrollAmount = 500;
-  if (typeof window !== "undefined") {
-    scrollAmount = window.innerWidth < 768 ? 330 : 440;
-  }
-
-  const goLeft = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollTo({
-        left: sliderRef.current.scrollLeft - scrollAmount,
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const goRight = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollTo({
-        left: sliderRef.current.scrollLeft + scrollAmount,
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const onSlide = () => {
-    if (sliderRef.current) {
-      x = sliderRef.current.scrollLeft;
-      const endOfLeft = x === 0;
-      setIsEndOfLeft(endOfLeft);
-
-      // Check if there are no more sliders in the right direction
-      const endOfRight =
-        x + sliderRef.current.clientWidth === sliderRef.current.scrollWidth;
-      setIsEndOfRight(endOfRight);
-    }
-  };
   return (
     <div
       className={`${noMargin ? "" : " md:-mt-[30px]"} ${

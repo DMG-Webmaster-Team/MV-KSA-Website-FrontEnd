@@ -1,17 +1,15 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import Image from "next/image";
 import { singleImage } from "./Gallery";
 import ArrowLong from "./SVGS/ArrowLong";
 import Close from "./SVGS/Close";
 import { motion } from "framer-motion";
+import { useGallerySwiper } from "../hooks/useGallerySwiper";
 
 export default function GalleryPopup({
   Images,
@@ -20,34 +18,19 @@ export default function GalleryPopup({
   Images: singleImage[];
   onClickHandle: () => void;
 }) {
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const [mainNav, setMainNav] = useState<{
-    prevEl: HTMLElement | null;
-    nextEl: HTMLElement | null;
-  }>({ prevEl: null, nextEl: null });
-  const [thumbNav, setThumbNav] = useState<{
-    prevEl: HTMLElement | null;
-    nextEl: HTMLElement | null;
-  }>({ prevEl: null, nextEl: null });
-  const mainSwiperRef = useRef<SwiperType | null>(null);
-
-  // Refs for navigation buttons
-  const mainPrevRef = useRef<HTMLButtonElement | null>(null);
-  const mainNextRef = useRef<HTMLButtonElement | null>(null);
-  const thumbPrevRef = useRef<HTMLButtonElement | null>(null);
-  const thumbNextRef = useRef<HTMLButtonElement | null>(null);
-
-  useEffect(() => {
-    setMainNav({
-      prevEl: mainPrevRef.current,
-      nextEl: mainNextRef.current,
-    });
-    setThumbNav({
-      prevEl: thumbPrevRef.current,
-      nextEl: thumbNextRef.current,
-    });
-  }, []);
-
+  const {
+    mainNav,
+    thumbNav,
+    thumbsSwiper,
+    setThumbsSwiper,
+    mainSwiperRef,
+    mainPrevRef,
+    mainNextRef,
+    thumbPrevRef,
+    thumbNextRef,
+    goToPrevImage,
+    goToNextImage,
+  } = useGallerySwiper(Images.length);
   return (
     <motion.div
       initial={{ opacity: 0 }}

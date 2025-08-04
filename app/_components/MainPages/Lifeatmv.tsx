@@ -1,8 +1,9 @@
-import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
+import { HeroSectionProps } from "../_types/Common";
+import HeroSection from "../CommonComp/HeroSection";
 import OverviewSection, {
   OverviewSectionProps,
 } from "../CommonComp/OverviewSection";
-import WidgetWithLogo, { WidgetProps } from "../CommonComp/WidgetWithlogo";
+import WidgetWithLogo, { WidgetProps } from "../CommonComp/WidgetWithLogo";
 
 interface Props {
   data: {
@@ -11,7 +12,7 @@ interface Props {
     Widgets: WidgetProps[];
   };
 }
-export default function LifeatmvPage({ data }: Props) {
+export default function LifeAtMVPage({ data }: Props) {
   return (
     <>
       <HeroSection data={data.HeroSection} />

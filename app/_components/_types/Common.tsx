@@ -44,3 +44,43 @@ export interface ImageData {
   width?: number;
   height?: number;
 }
+export interface siteMap {
+  Title: string;
+  Description: string;
+  Exploremorelink: string;
+  GoogleMapsLink: string;
+  Image: {
+    data: {
+      attributes: {
+        url: string;
+        alternativeText: string;
+      };
+    };
+  };
+  Repeater: {
+    Title: string;
+    Description: string;
+  }[];
+}
+export interface HeroSectionProps {
+  Title: string;
+  ShortDescription?: string;
+  Media: {
+    data: {
+      attributes: {
+        url: string;
+        alternativeText: string;
+      };
+    };
+  };
+  Logo?: {
+    data: {
+      attributes: {
+        url: string;
+        alternativeText: string;
+      };
+    };
+  };
+  Buttonlink?: string;
+  ButtonText?: string;
+}

@@ -3,28 +3,8 @@ import Link from "next/link";
 import React from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import { useTranslations } from "next-intl";
-export interface BoxProps {
-  Buttonlink: string;
-  Description: string;
-  Image: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-  Logo: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-  Tagline: string;
-  Title: string;
-}
+import { BoxProps } from "@/app/types/HomePage";
+
 export default function Boxes({ BoxOne }: { BoxOne: BoxProps[] }) {
   const t = useTranslations();
   return (

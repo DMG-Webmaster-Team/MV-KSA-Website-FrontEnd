@@ -1,46 +1,17 @@
 "use client";
 import { useTranslations } from "next-intl";
 import DownloadButton from "../CommonComp/DownloadButton";
-import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
-import OverviewSection, {
-  OverviewSectionProps,
-} from "../CommonComp/OverviewSection";
+import HeroSection from "../CommonComp/HeroSection";
+import OverviewSection from "../CommonComp/OverviewSection";
 import Widgets, { WidgetProps } from "../CommonComp/Widgets";
-import SiteMap, { siteMap } from "../SiteMap";
-import LandScape, { LandScapeProps } from "../LandScape";
-import Units, { UnitsProps } from "../Units";
-import PartnerShipSection, { PartnerShipProps } from "../PartnerShipSection";
-import Gallery, { singleImage } from "../Gallery";
+import SiteMap from "../SiteMap";
+import LandScape from "../LandScape";
+import Units from "../Units";
+import PartnerShipSection from "../PartnerShipSection";
+import Gallery from "../Gallery";
+import { SingleProjectProps } from "@/app/types/Pages";
 
-interface Props {
-  data: {
-    MainData: {
-      slug: string;
-      HeroSection: HeroSectionProps;
-      OverviewSection: OverviewSectionProps;
-      OverviewSection2: OverviewSectionProps;
-      Widgets: WidgetProps[];
-      PDF: {
-        data: {
-          attributes: {
-            url: string;
-            name: string;
-          };
-        };
-      };
-      Numbers: {
-        Title: string;
-        Description: string;
-      }[];
-      SiteMap: siteMap;
-      Landscape: LandScapeProps;
-      Units: UnitsProps;
-      PartnerSection: PartnerShipProps;
-      Gallery: { data: singleImage[] };
-    };
-  };
-}
-export default function SingleProject({ data }: Props) {
+export default function SingleProject({ data }: SingleProjectProps) {
   const t = useTranslations();
   return (
     <div>

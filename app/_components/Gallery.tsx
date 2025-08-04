@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import GalleryPopup from "./GalleryPopup";
 import ArrowLong from "./SVGS/ArrowLong";
 import ImageIcon from "./SVGS/ImageIcon";
-import type { Swiper as SwiperType } from "swiper"; // ✅ Import Swiper type
+import type { Swiper as SwiperType } from "swiper";
 
 export interface singleImage {
   id: number;
@@ -24,7 +24,7 @@ export default function Gallery({ data }: { data: { data: singleImage[] } }) {
   const images = data.data;
   const t = useTranslations();
   const [ActivePopup, setActivePopup] = useState(false);
-  const swiperRef = useRef<SwiperType | null>(null); // ✅ Type the ref
+  const swiperRef = useRef<SwiperType | null>(null); 
   const [activeIndex, setActiveIndex] = useState(0);
   const handlePopup = () => {
     setActivePopup(!ActivePopup);

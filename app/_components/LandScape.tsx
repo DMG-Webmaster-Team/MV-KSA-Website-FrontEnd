@@ -3,21 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ArrowLong from "./SVGS/ArrowLong";
-
-export interface LandScapeProps {
-  Buttonlink: string;
-  Image: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-  List: {
-    Name: string;
-  }[];
-}
+import { LandScapeProps } from "../types/PartnerShip";
 
 export default function LandScape({ data }: { data: LandScapeProps }) {
   const t = useTranslations();

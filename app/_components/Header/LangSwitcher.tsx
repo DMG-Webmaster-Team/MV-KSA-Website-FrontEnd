@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale} from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import Arrow from "../SVGS/Arrow";
 import { useEffect, useState } from "react";
@@ -22,7 +22,7 @@ export default function LangSwitcher({
     router.replace(newPath);
   };
 
-  const setisOpenlang = () => {
+  const setIsOpenLang = () => {
     toggleOpen(!isOpen);
   };
 
@@ -36,7 +36,7 @@ export default function LangSwitcher({
         className={`${
           DesktopHeader ? "lg:text-primary" : "lg:text-white"
         } text-white flex gap-1 border-b hover:opacity-50 duration-500 transition-all`}
-        onClick={setisOpenlang}
+        onClick={setIsOpenLang}
       >
         {locale === "en" ? "EN" : "AR"}
         <span className="w-5 h-5">

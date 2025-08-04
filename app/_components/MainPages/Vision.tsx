@@ -1,4 +1,5 @@
-import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
+import { HeroSectionProps } from "../_types/Common";
+import HeroSection from "../CommonComp/HeroSection";
 import { OverviewSectionProps } from "../CommonComp/OverviewSection";
 import OverviewSectionRepeater from "../CommonComp/OverviewSectionRepeater";
 import { Repeater } from "../CommonComp/TextComp";

@@ -3,20 +3,9 @@ import Link from "next/link";
 import React from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import { useLocale, useTranslations } from "next-intl";
+import { WidgetProps } from "@/app/types/HomePage";
 
-export interface WidgetProps {
-  Description: string;
-  Title: string;
-  Tagline: string;
-  Image: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-}
+
 export default function WidgetSection({ Widget }: { Widget: WidgetProps }) {
   const t = useTranslations();
   const locale = useLocale();

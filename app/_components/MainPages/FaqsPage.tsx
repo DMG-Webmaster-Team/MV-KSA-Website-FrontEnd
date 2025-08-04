@@ -5,21 +5,10 @@ import SingleAccordion from "../CommonComp/SingleAccordion";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import ArrowLong from "../SVGS/ArrowLong";
+import { FaqsProps } from "@/app/types/Pages";
 
-interface Props {
-  data: {
-    MainData: {
-      Title: string;
-      Text: {
-        Title: string;
-        Description: string;
-      };
-    };
-    FaqsData: SingleFaq[];
-  };
-}
 
-export default function FaqsPage({ data }: Props) {
+export default function FaqsPage({ data }: FaqsProps) {
   const locale = useLocale();
   const [activeType, setActiveType] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);

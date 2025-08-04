@@ -1,25 +1,14 @@
-import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
-import LighthouseWidget, {
-  LighthouseWidgetProps,
-} from "../SmallWidgets/LighthouseWidget";
+import HeroSection from "../CommonComp/HeroSection";
+import LighthouseWidget from "../SmallWidgets/LighthouseWidget";
 import OverviewSection, {
-  OverviewSectionProps,
 } from "../CommonComp/OverviewSection";
 import TextComp, { Repeater } from "../CommonComp/TextComp";
 import SlickMultipleItems from "../SlickMultipleItems";
+import { LighthousePageProps } from "@/app/types/Pages";
+import { LighthouseWidgetProps } from "@/app/types/LighthouseWidget";
 
-interface Props {
-  data: {
-    HeroSection: HeroSectionProps;
-    OverviewSection: OverviewSectionProps;
-    Repeater: Repeater[];
-    Whatweserve: {
-      Title: string;
-      Widgets: LighthouseWidgetProps[];
-    };
-  };
-}
-export default function LighthousePage({ data }: Props) {
+
+export default function LighthousePage({ data }: LighthousePageProps) {
   return (
     <>
       <HeroSection data={data.HeroSection} />

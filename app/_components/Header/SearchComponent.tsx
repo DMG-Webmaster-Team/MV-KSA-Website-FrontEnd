@@ -1,9 +1,7 @@
 "use client";
-
 import { useState } from "react";
 import Close from "../SVGS/Close";
 import Search from "../SVGS/Search";
-
 import { AnimatePresence, motion } from "framer-motion";
 import SearchInput from "./SearchInput";
 

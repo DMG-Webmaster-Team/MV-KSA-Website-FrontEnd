@@ -1,9 +1,10 @@
 import React from "react";
-import HeroSection, { HeroSectionProps } from "../CommonComp/HeroSection";
+import HeroSection from "../CommonComp/HeroSection";
 import OverviewSection, {
   OverviewSectionProps,
 } from "../CommonComp/OverviewSection";
 import Widgets, { WidgetProps } from "../CommonComp/Widgets";
+import { HeroSectionProps } from "../_types/Common";
 
 interface Props {
   data: {

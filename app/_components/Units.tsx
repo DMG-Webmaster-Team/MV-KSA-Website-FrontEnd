@@ -1,16 +1,6 @@
+import { SingleUnitProps, UnitsProps } from "../types/UnitWidget";
 import SlickMultipleItems from "./SlickMultipleItems";
-import UnitWidget, { SingleUnitProps } from "./UnitWidget";
-
-
-
-
-export interface UnitsProps {
-  Title: string;
-  Description: string;
-  units: {
-    data: SingleUnitProps[];
-  };
-}
+import UnitWidget from "./UnitWidget";
 
 export default function Units({ data, ProjectSlug }: { data: UnitsProps, ProjectSlug: string }) {
   return (
@@ -37,7 +27,6 @@ export default function Units({ data, ProjectSlug }: { data: UnitsProps, Project
           ))}
         </div>
       </div>
-
     </div>
   );
 }

@@ -4,28 +4,14 @@ import ArrowLong from "./SVGS/ArrowLong";
 import Link from "next/link";
 import GoogleIcon from "./SVGS/GoogleIcon";
 import { useTranslations } from "next-intl";
-export interface siteMap {
-  Title: string;
-  Description: string;
-  Exploremorelink: string;
-  GoogleMapsLink: string;
-  Image: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText: string;
-      };
-    };
-  };
-  Repeater: {
-    Title: string;
-    Description: string;
-  }[];
-}
+import { siteMap } from "./_types/Common";
+
 export default function SiteMap({ data }: { data: siteMap }) {
   const t = useTranslations();
   return (
-    <div className={`max-w-[1910px] mx-auto flex  bg-gray lg:flex-row flex-col-reverse `}>
+    <div
+      className={`max-w-[1910px] mx-auto flex  bg-gray lg:flex-row flex-col-reverse `}
+    >
       <div className="lg:w-[50%] w-full 2xl:p-[100px] lg:py-[100px] lg:px-10 md:py-[84px] py-6 px-4 content-center">
         <div className="space-y-5">
           <h2 className=" text-primary xl:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]">
@@ -80,7 +66,9 @@ export default function SiteMap({ data }: { data: siteMap }) {
                       <span className="md:text-[100px] text-[60px] font-FreightNeoPro ">
                         {number}
                       </span>
-                      <span className="md:text-xl text-sm opacity-50">{word}</span>
+                      <span className="md:text-xl text-sm opacity-50">
+                        {word}
+                      </span>
                     </p>
                     <p className="md:text-sm text-xs text-primary font-medium">
                       {item.Description}

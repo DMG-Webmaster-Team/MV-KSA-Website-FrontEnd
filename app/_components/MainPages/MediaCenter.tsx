@@ -3,40 +3,11 @@ import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import { MediaCenterProps } from "@/app/types/Pages";
 
-export interface BlogWidget {
-  attributes: {
-    Title: string;
-    slug: string;
-    publishedAt: string;
-    blogs_type: {
-      data: {
-        attributes: {
-          Name: string;
-        };
-      };
-    };
-    WidgetImage: {
-      data: {
-        attributes: {
-          url: string;
-          alternativeText: string | null;
-        };
-      };
-    };
-  };
-}
 
-interface Props {
-  data: {
-    MainData: {
-      Title: string;
-    };
-    Blogs: BlogWidget[];
-  };
-}
 
-export default function MediaCenter({ data }: Props) {
+export default function MediaCenter({ data }: MediaCenterProps) {
   const t = useTranslations();
   const [selectedType, setSelectedType] = useState(t("data.all"));
   const locale = useLocale();

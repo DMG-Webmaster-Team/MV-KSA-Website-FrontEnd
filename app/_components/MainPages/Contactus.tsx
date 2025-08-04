@@ -2,28 +2,9 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import ContactUsForm from "../Forms/ContactUsForm";
+import { ContactUsProps } from "@/app/types/Pages";
 
-interface Props {
-  data: {
-    Title: string;
-    Tagline: string;
-    FormLabel: string;
-    FormTitle: string;
-    Hotline: string;
-    Email: string;
-    Image: {
-      data: {
-        attributes: {
-          url: string;
-        };
-      };
-    };
-    List: {
-      Name: string;
-    }[];
-  };
-}
-export default function ContactUs({ data }: Props) {
+export default function ContactUs({ data }: ContactUsProps) {
   const t = useTranslations();
   return (
     <div>

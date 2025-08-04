@@ -3,38 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import ArrowLong from './SVGS/ArrowLong';
-
-export interface SingleList {
-    Text: string;
-    Icon: {
-        data: {
-            attributes: {
-                url: string;
-                alternativeText: string;
-            };
-        };
-    };
-}
-
-
-export interface SingleUnitProps {
-    attributes: {
-        Title: string;
-        slug: string;
-        Model: string;
-        amenities: {
-            List: SingleList[];
-        };
-        Hero_Media: {
-            data: {
-                attributes: {
-                    url: string;
-                    alternativeText: string;
-                };
-            };
-        };
-    };
-}
+import { SingleList, SingleUnitProps } from '../types/UnitWidget';
 
 export default function UnitWidget({ data, ProjectSlug }: { data: SingleUnitProps, ProjectSlug: string }) {
     const t = useTranslations();
@@ -91,7 +60,7 @@ export default function UnitWidget({ data, ProjectSlug }: { data: SingleUnitProp
                         {t("data.discover_more")}
                         <span className='w-4 h-4 ltr:rotate-180'><ArrowLong /></span>
                     </Link>
-                    <Link href={`${locale == "en" ? "/en/" : "/"}contact-us`}
+                    <Link href={`${locale == "en" ? "/en/" : "/"} contact-us`}
                         className='bg-primary hover:bg-darkblue transition-all duration-500 text-white md:w-[calc(50%-4px)] w-full flex justify-between items-center py-2 px-4 font-bold text-sm'
                     >
                         {t("Buttons.register_your_interest")}

@@ -1,91 +1,19 @@
 "use client";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import * as Yup from "yup";
 import Done from "../SVGS/Done";
+import { useCareerForm } from "@/app/hooks/useCareerForm";
 
 const CareerForm = ({ Title }: { Title: string }) => {
-  const t = useTranslations();
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const validationSchema = Yup.object().shape({
-    firstName: Yup.string()
-      .required(t("validation.firstName.required"))
-      .matches(/^[A-Za-z\s]*$/, t("validation.firstName.invalid"))
-      .min(3, t("validation.firstName.min")),
-    lastName: Yup.string()
-      .required(t("validation.lastName.required"))
-      .matches(/^[A-Za-z\s]*$/, t("validation.lastName.invalid"))
-      .min(3, t("validation.lastName.min")),
-    email: Yup.string()
-      .email(t("validation.email.invalid"))
-      .required(t("validation.email.required")),
-    mobile: Yup.string()
-      .required(t("validation.mobile.required"))
-      .test("is-valid-phone", t("validation.mobile.invalid"), (value) =>
-        isValidPhoneNumber(value || "")
-      ),
-    message: Yup.string().required(t("validation.message.required")),
-    resume: Yup.mixed().required(t("validation.resume.required")),
-  });
-
-  const initialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    mobile: "",
-    message: "",
-    resume: null,
-  };
-  const handleSubmit = async (values: typeof initialValues) => {
-    setIsLoading(true);
-
-    try {
-      const formData = new FormData();
-
-      // Append the file
-      if (values.resume) {
-        formData.append("files.cv", values.resume); // make sure your Strapi field is called "cv"
-      }
-
-      // Append the data as a JSON string under `data`
-      formData.append(
-        "data",
-        JSON.stringify({
-          email: values.email,
-          fullname: `${values.firstName} ${values.lastName}`,
-          mobile: values.mobile,
-          message: values.message,
-          careerTitle: Title,
-        })
-      );
-
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/careers-submissions`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const responseJson = await res.json();
-      console.log("Success:", responseJson);
-
-      if (res.ok) {
-        setIsSubmitted(true);
-      } else {
-        console.error("Backend error:", responseJson);
-      }
-    } catch (error) {
-      console.error("Submission error", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+ const {
+  t,
+  initialValues,
+  validationSchema,
+  handleSubmit,
+  isLoading,
+  isSubmitted,
+} = useCareerForm(Title);
 
   return (
     <>
