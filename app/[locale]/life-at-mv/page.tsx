@@ -1,6 +1,6 @@
 export const runtime = "edge";
 
-import LifeAtMVPage from "@/app/_components/MainPages/LifeAtMV";
+import LifeAtMVPage from "@/app/_components/MainPages/LifeAtMVPage";
 import { fetchServer } from "@/app/api/general";
 import { generatePageMetadata } from "@/lib/seo";
 import { Metadata } from "next";
