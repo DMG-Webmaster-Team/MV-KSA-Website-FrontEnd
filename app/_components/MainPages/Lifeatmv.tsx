@@ -12,7 +12,7 @@ interface Props {
     Widgets: WidgetProps[];
   };
 }
-export  function LifeAtMVPage({ data }: Props) {
+export default function LifeAtMVPage({ data }: Props) {
   return (
     <>
       <HeroSection data={data.HeroSection} />
