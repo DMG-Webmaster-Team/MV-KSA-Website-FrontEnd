@@ -3,7 +3,7 @@ import HeroSection from "../CommonComp/HeroSection";
 import OverviewSection, {
   OverviewSectionProps,
 } from "../CommonComp/OverviewSection";
-import WidgetWithLogo, { WidgetProps } from "../CommonComp/WidgetWithLogo";
+import WidgetWithLogo, { WidgetProps } from "../CommonComp/WidgetWithLogoComp";
 
 interface Props {
   data: {
