@@ -12,6 +12,7 @@ interface Props {
     Widgets: WidgetProps[];
   };
 }
+
 export default function LifeAtMVPage({ data }: Props) {
   return (
     <>
