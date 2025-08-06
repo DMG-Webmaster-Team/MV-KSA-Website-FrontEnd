@@ -4,7 +4,8 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import Arrow from "../SVGS/Arrow";
 import { motion } from "framer-motion";
-
+import ArrowLong from "../SVGS/ArrowLong";
+import Link from "next/link";
 export interface WidgetProps {
   Title: string;
   Description: string;
@@ -16,6 +17,8 @@ export interface WidgetProps {
       };
     };
   };
+  Btn?: string;
+  href?: string;
 }
 export default function Widgets({
   data,
@@ -63,17 +66,30 @@ export default function Widgets({
               {data.Description}
             </p>
           </motion.div>
-          {data.Description?.split(" ").length > 30 && (
-            <button
-              className=" text-primary flex items-center mt-3 gap-1 md:text-base text-sm font-bold py-1 border-b border-primary border-opacity-20 w-fit"
-              onClick={() => setExpanded(!expanded)}
-            >
-              {expanded ? t("data.see_less") : t("data.see_more")}
-              <span className={`w-4 h-4 ${expanded ? " rotate-180" : ""}`}>
-                <Arrow />
+          {data?.Btn && data?.href && (
+            <Link href={data.href}>
+              <span className="group-hover:bg-primary group-hover:text-white transition-all duration-500 bg-white w-fit mt-10 rounded-[2px] md:py-5 py-2.5 px-4 md:text-base text-sm font-bold flex text-primary gap-3 items-center">
+                <span className="leading-[10px]">{data.Btn}</span>
+                <span className="w-5 h-5 ltr:rotate-180">
+                  <ArrowLong />
+                </span>
               </span>
-            </button>
+            </Link>
           )}
+
+          {!data?.Btn &&
+            !data?.href &&
+            data.Description?.split(" ").length > 30 && (
+              <button
+                className="text-primary flex items-center mt-3 gap-1 md:text-base text-sm font-bold py-1 border-b border-primary border-opacity-20 w-fit"
+                onClick={() => setExpanded(!expanded)}
+              >
+                {expanded ? t("data.see_less") : t("data.see_more")}
+                <span className={`w-4 h-4 ${expanded ? "rotate-180" : ""}`}>
+                  <Arrow />
+                </span>
+              </button>
+            )}
         </div>
       </div>
       <div className="lg:w-[50%] relative lg:aspect-[800/634] aspect-[1/1]">
