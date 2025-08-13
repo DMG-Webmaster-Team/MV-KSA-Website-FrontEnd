@@ -149,7 +149,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                         <Search />
                       </span>
                     </button> */}
-                    <SearchComponent StableHeader={StableHeader} />
+                    {/* <SearchComponent StableHeader={StableHeader} /> */}
                   </div>
                   <Link
                     href={`${locale == "en" ? "/en/" : "/"}contact-us`}
