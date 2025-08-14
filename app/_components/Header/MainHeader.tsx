@@ -108,7 +108,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                     <LangSwitcher DesktopHeader={StableHeader} />
                   </div>
 
-                  <div
+                  {/* <div
                     className={`${
                       StableHeader
                         ? "border-primary divide-primary"
@@ -138,7 +138,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                       <span className=" xl:w-6 xl:h-6 w-5 h-5 block">
                         <Phone />
                       </span>
-                    </Link>
+                    </Link> */}
                     {/* <button
                       className={` ${StableHeader
                         ? " text-primary hover:bg-primary hover:text-white"
@@ -150,7 +150,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                       </span>
                     </button> */}
                     {/* <SearchComponent StableHeader={StableHeader} /> */}
-                  </div>
+                  {/* </div> */}
                   <Link
                     href={`${locale == "en" ? "/en/" : "/"}contact-us`}
                     className={`${
@@ -176,7 +176,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                     : "border-white divide-white"
                 } rtl:divide-x-reverse ltr:divide-x divide-x-[1px] rounded-sm `}
               >
-                <button
+                {/* <button
                   className={`${
                     StableHeader && !openMenu
                       ? " text-primary hover:bg-primary hover:text-white"
@@ -198,7 +198,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                   <span className=" w-5 h-5 block">
                     <Calender />
                   </span>
-                </Link>
+                </Link> */}
                 <button
                   onClick={() => {
                     setOpenMenu(!openMenu);

@@ -42,17 +42,19 @@ export default function ContactUs({ data }: ContactUsProps) {
             {data.Email}
           </Link>
         </div>
-        <div className="sm:w-[50%] w-full text-center text-primary flex flex-col gap-3">
-          <span className=" md:text-xl text-base opacity-50 font-medium">
-            {t("data.hotline")}
-          </span>
-          <Link
-            className=" md:text-5xl text-2xl font-normal font-FreightNeoPro "
-            href={`tel:${data.Hotline}`}
-          >
-            {data.Hotline}
-          </Link>
-        </div>
+        {data.Hotline && (
+          <div className="sm:w-[50%] w-full text-center text-primary flex flex-col gap-3">
+            <span className=" md:text-xl text-base opacity-50 font-medium">
+              {t("data.hotline")}
+            </span>
+            <Link
+              className=" md:text-5xl text-2xl font-normal font-FreightNeoPro "
+              href={`tel:${data.Hotline}`}
+            >
+              {data.Hotline}
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
