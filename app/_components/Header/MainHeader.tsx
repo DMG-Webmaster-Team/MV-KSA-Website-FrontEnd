@@ -85,7 +85,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
               >
                 {StableHeader && !openMenu ? (
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/uploads/logo_Black_c18c9ebbc6.webp`}
+                    src={`/logoblack.png`}
                     alt="Logo MV KSA"
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
