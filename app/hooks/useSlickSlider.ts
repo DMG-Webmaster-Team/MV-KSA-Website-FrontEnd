@@ -5,6 +5,7 @@ export function useSlickSlider(children: React.ReactNode) {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [isEndOfLeft, setIsEndOfLeft] = useState<boolean>(true);
   const [isEndOfRight, setIsEndOfRight] = useState<boolean>(false);
+  const [hasSingleItem, setHasSingleItem] = useState<boolean>(false);
 
   let scrollAmount = 500;
   if (typeof window !== "undefined") {
@@ -16,11 +17,14 @@ export function useSlickSlider(children: React.ReactNode) {
       const { scrollWidth, clientWidth } = sliderRef.current;
       const pages = Math.ceil(scrollWidth / clientWidth);
       setTotalPages(pages);
+      
+      // Check if there's only one item (scrollWidth is less than or equal to clientWidth)
+      setHasSingleItem(scrollWidth <= clientWidth);
     }
   }, [children]);
 
   const goLeft = () => {
-    if (sliderRef.current) {
+    if (sliderRef.current && !hasSingleItem) {
       sliderRef.current.scrollTo({
         left: sliderRef.current.scrollLeft - scrollAmount,
         top: 0,
@@ -30,7 +34,7 @@ export function useSlickSlider(children: React.ReactNode) {
   };
 
   const goRight = () => {
-    if (sliderRef.current) {
+    if (sliderRef.current && !hasSingleItem) {
       sliderRef.current.scrollTo({
         left: sliderRef.current.scrollLeft + scrollAmount,
         top: 0,
@@ -40,7 +44,7 @@ export function useSlickSlider(children: React.ReactNode) {
   };
 
   const onSlide = () => {
-    if (sliderRef.current) {
+    if (sliderRef.current && !hasSingleItem) {
       const x = sliderRef.current.scrollLeft;
       setIsEndOfLeft(x === 0);
       setIsEndOfRight(
@@ -54,6 +58,7 @@ export function useSlickSlider(children: React.ReactNode) {
     totalPages,
     isEndOfLeft,
     isEndOfRight,
+    hasSingleItem,
     goLeft,
     goRight,
     onSlide,

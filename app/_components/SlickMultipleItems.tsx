@@ -23,6 +23,7 @@ function SlickMultipleItems({
     totalPages,
     isEndOfLeft,
     isEndOfRight,
+    hasSingleItem,
     goLeft,
     goRight,
     onSlide,
@@ -164,6 +165,11 @@ function SlickMultipleItems({
         <div
           ref={sliderRef}
           className={`multi_scroll_content_gallery`}
+             style={{
+            // Disable touch scrolling when there's only one item
+            touchAction: hasSingleItem ? 'none' : 'pan-y',
+            overflowX: hasSingleItem ? 'hidden' : 'auto'
+          }}
           // onScroll={checkScrollPosition}
           onScroll={onSlide}
         >

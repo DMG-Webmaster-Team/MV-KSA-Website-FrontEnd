@@ -78,51 +78,55 @@ export default function Gallery({ data }: { data: { data: singleImage[] } }) {
             ))}
           </div>
         </div>
-        <Swiper
-          modules={[Navigation]}
-          navigation={{
-            prevEl: ".custom-prev",
-            nextEl: ".custom-next",
-          }}
-          loop
-          slidesPerView={isDesktop ? 'auto' : 1.3}
-          centeredSlides
-          initialSlide={1}
-          allowTouchMove={true}
-          className="lg:h-[678px] md:h-[558px] sm:h-[378px] h-[300px] !lg:z-auto !z-30"
-          spaceBetween={0}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          onSlideChange={(swiper) => {
-            setActiveIndex(swiper.realIndex);
-          }}
+<Swiper
+  modules={[Navigation]}
+  navigation={{
+    prevEl: ".custom-prev",
+    nextEl: ".custom-next",
+  }}
+  loop
+  slidesPerView={isDesktop ? 'auto' : 1.3}
+  centeredSlides
+  initialSlide={1}
+  allowTouchMove={true}
+  className="lg:h-[678px] md:h-[558px] sm:h-[378px] h-[300px] !lg:z-auto !z-30"
+  spaceBetween={isDesktop ? 0 : 16} // spacing only on mobile
+  onSwiper={(swiper) => {
+    swiperRef.current = swiper;
+  }}
+  onSlideChange={(swiper) => {
+    setActiveIndex(swiper.realIndex);
+  }}
+>
+  {images.map((item, index) => (
+    <SwiperSlide
+      key={index}
+      className={`h-fit my-auto !flex items-center 
+        ${isDesktop ? "!w-fit" : "justify-center"}`} // center only on mobile
+    >
+      {({ isActive }) => (
+        <div
+          className={`relative aspect-[464/300] flex h-fit my-auto 
+            ${isDesktop ? "md:mx-2.5 mx-1.5" : "mx-auto"} 
+            2xl:w-[1024px] xl:w-[900px] lg:w-[750px] md:w-[600px] w-[320px]`}
         >
-          {images.map((item, index) => (
-            <SwiperSlide
-              key={index}
-              className="!w-fit h-fit my-auto items-center !flex"
-            >
-              {({ isActive }) => (
-                <div
-                  className={`relative aspect-[464/300] flex h-fit my-auto md:mx-2.5 mx-1.5 2xl:w-[1024px] xl:w-[900px] lg:w-[750px] md:w-[600px] w-[320px]
-                                `}
-                >
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.attributes.url}`}
-                    alt={item.attributes.alternativeText ?? "Image"}
-                    fill
-                    className={`${
-                      isActive
-                        ? "h-full"
-                        : "lg:!h-[400px] md:!h-[300px] !h-[140px]"
-                    } object-cover transition-all duration-500 !my-auto`}
-                  />
-                </div>
-              )}
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <Image
+            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.attributes.url}`}
+            alt={item.attributes.alternativeText ?? "Image"}
+            fill
+            className={`${
+              isActive
+                ? "h-full"
+                : "lg:!h-[400px] md:!h-[300px] !h-[140px]"
+            } object-cover transition-all duration-500 !my-auto`}
+          />
+        </div>
+      )}
+    </SwiperSlide>
+  ))}
+</Swiper>
+
+
       </div>
       <AnimatePresence>
         {ActivePopup && (
