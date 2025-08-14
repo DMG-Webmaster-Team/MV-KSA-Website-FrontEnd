@@ -52,7 +52,7 @@ export default function SingleProject({ data }: SingleProjectProps) {
       )}
 
       <LandScape data={data.MainData.Landscape} />
-      <Units data={data.MainData.Units} ProjectSlug={data.MainData.slug} />
+     {data.MainData.Units&& <Units data={data.MainData.Units} ProjectSlug={data.MainData.slug} />}
       {data.MainData.Gallery?.data?.length > 0 && (
         <Gallery data={data.MainData.Gallery} />
       )}

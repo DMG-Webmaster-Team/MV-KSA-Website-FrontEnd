@@ -52,7 +52,7 @@ export default function OverviewSection({
       <h2
         className={`${
           vision
-            ? " md:text-4xl text-[22px]"
+            ? " md:text-4xl text-[22px]  lg:text-[52px] leading-[125%]"
             : "md:text-[52px] md:leading-[65px] text-[28px]"
         } text-pretty  text-primary `}
       >

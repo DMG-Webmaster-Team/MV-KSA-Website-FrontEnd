@@ -87,7 +87,7 @@ export default function OurStory({ data }: Props) {
             />
           </div>
           <div className="xl:w-[calc(100%-500px-100px)] lg:w-[calc(100%-500px-50px)] xl:pe-20 lg:pe-10 space-y-5">
-            <h2 className=" xl:text-5xl text-4xl text-primary font-medium mb-5">
+            <h2 className=" xl:text-5xl text-4xl text-primary font-medium mb-5 whitespace-pre-line">
               {data.OwnerMessage.Title}
             </h2>
             <motion.div
@@ -143,7 +143,7 @@ export default function OurStory({ data }: Props) {
             )}
           </div>
         )}
-        {data?.Compounds?.PDF && (
+        {data?.Compounds?.PDF?.data?.attributes?.url && (
           <DownloadButton
             title={t("Buttons.download_company_profile")}
             PDFurl={data.Compounds.PDF.data.attributes.url}

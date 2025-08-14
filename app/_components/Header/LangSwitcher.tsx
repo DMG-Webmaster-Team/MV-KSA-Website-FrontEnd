@@ -15,12 +15,21 @@ export default function LangSwitcher({
   const router = useRouter();
   const [isOpen, toggleOpen] = useState(false);
 
-  const onLocaleChange = (newLocale: "en" | "ar") => {
-    const segments = pathname.split("/");
-    segments[1] = newLocale; // replace the locale part of the path
-    const newPath = segments.join("/") || "/";
-    router.replace(newPath);
-  };
+const onLocaleChange = (newLocale: "en" | "ar") => {
+  const segments = pathname.split("/").filter(Boolean); // remove empty segments
+  
+  // If first segment is a locale, replace it
+  if (segments[0] === "en" || segments[0] === "ar") {
+    segments[0] = newLocale;
+  } else {
+    // Otherwise, prepend the new locale
+    segments.unshift(newLocale);
+  }
+
+  const newPath = "/" + segments.join("/");
+  router.replace(newPath);
+};
+
 
   const setIsOpenLang = () => {
     toggleOpen(!isOpen);

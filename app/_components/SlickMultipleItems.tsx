@@ -69,7 +69,7 @@ function SlickMultipleItems({
                     >
                       <span
                         className={` block w-6 h-6  ${
-                          locale === "en" ? "rotate-180" : " "
+                          locale === "en" ? "" : "rotate-180 "
                         }`}
                       >
                         <ArrowLong />
@@ -93,7 +93,9 @@ function SlickMultipleItems({
                         customArrow ? "w-12 h-12" : "w-[56px] h-[56px]"
                       } flex justify-center items-center`}
                     >
-                      <span className={`block w-6 h-6 `}>
+                      <span className={`block w-6 h-6 ${
+                          locale === "en" ? "rotate-180 " : ""
+                        }`}>
                         <ArrowLong />
                       </span>
                     </button>
