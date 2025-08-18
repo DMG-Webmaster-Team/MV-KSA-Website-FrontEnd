@@ -54,8 +54,20 @@ export default function MenuDesktop({
                 >
                   {item.Link && (
                     <a
-                      href={item.Link} target="_blank"
-                      className=" absolute inset-0 w-full h-full z-10"
+                      href={item.Link}
+                      target={
+                        item.Link ===
+                        "https://mountainviewegypt.com/communities"
+                          ? "_blank"
+                          : "_self"
+                      }
+                      rel={
+                        item.Link ===
+                        "https://mountainviewegypt.com/communities"
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className="absolute inset-0 w-full h-full z-10"
                     />
                   )}
 
