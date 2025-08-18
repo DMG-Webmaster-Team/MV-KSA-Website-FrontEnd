@@ -218,7 +218,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
           </div>
           <motion.div
             className={
-              " pt-[64px] fixed inset-0 w-full h-[100vh] bg-darkblue z-30 px-4 lg:hidden block"
+              " pt-[64px] fixed inset-0 w-full h-[100vh] bg-darkblue z-30 px-4 lg:hidden block overflow-auto"
             }
             initial={{
               y: -200,

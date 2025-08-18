@@ -106,7 +106,7 @@ export default function HeroSection({
       </div>
       <Link
         href={"#Overview"}
-        className=" text-white md:text-xl text-xs font-medium text-center   absolute md:bottom-8 lg:bottom-8 bottom-4 flex flex-col md:gap-5 gap-3 w-full z-20"
+        className=" text-white md:text-xl text-xs font-medium text-center   absolute md:bottom-4 lg:bottom-6 bottom-4 flex flex-col md:gap-5 gap-3 w-full z-20"
       >
         {t("data.scroll_text")}
         <span className="w-[1px] md:h-[70px] h-[50px] bg-white mx-auto" />

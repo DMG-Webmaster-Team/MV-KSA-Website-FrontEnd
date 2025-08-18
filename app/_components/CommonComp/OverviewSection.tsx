@@ -38,7 +38,7 @@ export default function OverviewSection({
       } md:px-0 px-4 justify-center`}
     >
       {data?.Label && (
-        <span className="  text-2xl opacity-50 text-primary">{data.Label}</span>
+        <span className={`  text-2xl opacity-50 text-primary`}>{data.Label}</span>
       )}
       {data.Logo && (
         <Image
@@ -52,7 +52,7 @@ export default function OverviewSection({
       <h2
         className={`${
           vision
-            ? " md:text-4xl text-[22px]  lg:text-[52px] lg:leading-[4rem] font-medium"
+            ? " md:text-[36px] text-[22px]  lg:text-[36px] lg:leading-[4rem] font-medium"
             : "md:text-[52px] md:leading-[65px] text-[28px] font-medium"
         } text-pretty  text-primary `}
       >
