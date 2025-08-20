@@ -71,7 +71,7 @@ export default function CompoundComponent({
             <p
               className="text-sm font-medium text-primary"
               dangerouslySetInnerHTML={{
-                __html: item.WidgetDetails.replace(/\n/g, "</br>"),
+                __html: item?.WidgetDetails?.replace(/\n/g, "</br>"),
               }}
             ></p>
             <button
