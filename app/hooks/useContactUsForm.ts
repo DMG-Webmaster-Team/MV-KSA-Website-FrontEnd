@@ -11,23 +11,23 @@ export const useContactUsForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const initialValues = {
-    firstName: "",
-    lastName: "",
+    fullName: "",
+    // lastName: "",
     email: "",
     mobile: "",
     message: "",
-    inquiryType: "",
+    // inquiryType: "",
   };
 
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string()
-      .required(t("validation.firstName.required"))
-      .matches(/^[A-Za-z\s]*$/, t("validation.firstName.invalid"))
-      .min(3, t("validation.firstName.min")),
-    lastName: Yup.string()
-      .required(t("validation.lastName.required"))
-      .matches(/^[A-Za-z\s]*$/, t("validation.lastName.invalid"))
-      .min(3, t("validation.lastName.min")),
+    fullName: Yup.string()
+      .required(t("validation.fullName.required"))
+      .matches(/^[A-Za-z\s]*$/, t("validation.fullName.invalid"))
+      .min(3, t("validation.fullName.min")),
+    // lastName: Yup.string()
+    //   .required(t("validation.lastName.required"))
+    //   .matches(/^[A-Za-z\s]*$/, t("validation.lastName.invalid"))
+    //   .min(3, t("validation.lastName.min")),
     email: Yup.string()
       .email(t("validation.email.invalid"))
       .required(t("validation.email.required")),
@@ -37,7 +37,7 @@ export const useContactUsForm = () => {
         isValidPhoneNumber(value || "")
       ),
     message: Yup.string().required(t("validation.message.required")),
-    inquiryType: Yup.string().required(t("validation.inquiryType.required")),
+    // inquiryType: Yup.string().required(t("validation.inquiryType.required")),
   });
 
   const handleSubmit = async (values: typeof initialValues) => {
@@ -48,10 +48,10 @@ export const useContactUsForm = () => {
         "data",
         JSON.stringify({
           email: values.email,
-          fullname: `${values.firstName} ${values.lastName}`,
+          fullname: `${values.fullName}`,
           mobile: values.mobile,
           message: values.message,
-          inquiryType: values.inquiryType,
+          // inquiryType: values.inquiryType,
         })
       );
 

@@ -55,7 +55,7 @@
     "search": "Search"
   },
   "form": {
-    "first_name": "First Name",
+    "first_name": "Full Name",
     "last_name": "Last Name",
     "email": "Email Address",
     "phone": "Phone Number",
@@ -75,6 +75,11 @@
       "required": "Last name required",
       "invalid": "Invalid value: numbers and symbols are not allowed",
       "min": "Last name should be at least 3 characters."
+    },
+       "fullName": {
+      "required": "Full name required",
+      "invalid": "Invalid value: numbers and symbols are not allowed",
+      "min": "Full name should be at least 3 characters."
     },
     "email": {
       "invalid": "Invalid email address",

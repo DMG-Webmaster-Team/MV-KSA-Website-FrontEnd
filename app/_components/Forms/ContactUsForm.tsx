@@ -4,7 +4,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Done from "../SVGS/Done";
 import ArrowLong from "../SVGS/ArrowLong";
-import Arrow from "../SVGS/Arrow";
+// import Arrow from "../SVGS/Arrow";
 import { useContactUsForm } from "@/app/hooks/useContactUsForm";
 
 const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
@@ -28,7 +28,7 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
         >
           {({ setFieldValue, values, errors, touched }) => (
             <Form className="flex flex-col md:gap-5 gap-3">
-              <div>
+              {/* <div>
                 <div className=" relative">
                   <Field
                     as="select"
@@ -58,27 +58,27 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
                   component="p"
                   className="text-red-500 text-xs pt-3"
                 />
-              </div>
+              </div> */}
 
               <div className="flex md:gap-5 gap-3 md:flex-row flex-col">
-                <div className=" md:w-1/2">
+                <div className=" md:w-full">
                   <Field
-                    name="firstName"
+                    name="fullName"
                     className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none placeholder:text-primary placeholder:opacity-70 ${
-                      errors.firstName && touched.firstName
+                      errors.fullName && touched.fullName
                         ? "border-red-500"
                         : "border-transparent"
                     } border`}
                     placeholder={t("form.first_name")}
                   />
                   <ErrorMessage
-                    name="firstName"
+                    name="fullName"
                     component="p"
                     className="text-red-500 text-xs pt-3"
                   />
                 </div>
 
-                <div className=" md:w-1/2">
+                {/* <div className=" md:w-1/2">
                   <Field
                     name="lastName"
                     className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none placeholder:text-primary placeholder:opacity-70 ${
@@ -93,7 +93,7 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
                     component="p"
                     className="text-red-500 text-xs pt-3"
                   />
-                </div>
+                </div> */}
               </div>
 
               <div>
@@ -117,7 +117,7 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
                 <PhoneInput
                   value={values.mobile}
                   onChange={(value) => setFieldValue("mobile", value)}
-                  defaultCountry="EG"
+                  defaultCountry="SA"
                   className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none placeholder:text-primary placeholder:opacity-70 ${
                     errors.mobile && touched.mobile
                       ? "border-red-500"
