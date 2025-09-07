@@ -1,14 +1,27 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import Link from "next/link";
 import Image from "next/image";
 import { LaunchingProps } from "@/app/types/HomePage";
+import { useLocale } from "next-intl";
 
 export default function LaunchingSection({
   LaunchingSection,
 }: {
   LaunchingSection: LaunchingProps;
 }) {
+  const [utmSource, setUtmSource] = useState("general");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const source = urlParams.get("utm_source");
+    if (source) {
+      setUtmSource(source);
+    }
+  }, []);
+  const locale = useLocale();
+
   return (
     <div className="relative w-full md:h-[80vh] h-[60vh]">
       {LaunchingSection.Image && (
@@ -49,7 +62,10 @@ export default function LaunchingSection({
               </span>
             </Link>
             <Link
-              href={LaunchingSection.ButtonTwoLink ?? ""}
+              // href={LaunchingSection.ButtonTwoLink ?? ""}
+              href={`${
+                locale == "en" ? "/en/" : "/"
+              }contact-us?projectname=${LaunchingSection.ButtonTwoLink?.toLowerCase()}&utm_source=${utmSource}`}
               className="flex gap-3 bg-Gray05 text-primary md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center"
             >
               {LaunchingSection.ButtonTwoText}
