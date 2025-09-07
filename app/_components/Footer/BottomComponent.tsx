@@ -111,7 +111,7 @@ export default async function Footer({
           <p className="text-white text-sm opacity-50">
             Website design and developed by{" "}
             <Link
-              href={"www.mitchdesigns.com"}
+              href={"https://www.mitchdesigns.com/"}
               className="underline"
               target="_blank"
             >
