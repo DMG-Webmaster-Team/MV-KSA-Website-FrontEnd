@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import { useLocale, useTranslations } from "next-intl";
 import { HeroSectionProps } from "../_types/Common";
@@ -18,6 +18,15 @@ export default function HeroSection({
   const locale = useLocale();
   const mediaUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media.data.attributes.url}`;
   const isVideo = /\.(mp4|webm)$/i.test(data.Media.data.attributes.url);
+   const [utmSource, setUtmSource] = useState("general");
+  
+    useEffect(() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const source = urlParams.get("utm_source");
+      if (source) {
+        setUtmSource(source);
+      }
+    }, []);
   return (
     <section
       className="w-full md:h-[100vh] h-[73vh] relative heroSection overflow-hidden"
@@ -93,7 +102,7 @@ export default function HeroSection({
 
         {data?.Buttonlink && (
           <Link
-            href={`${locale == "en" ? "/en" : ""}${data.Buttonlink}`}
+            href={`${locale == "en" ? "/en" : ""}${data.Buttonlink}?projectname=${data.Title?.toLowerCase()}&utm_source=${utmSource}`}
             className="text-primary bg-white hover:bg-darkblue hover:text-white transition-all duration-500 flex md:py-[18px] py-2.5 px-4 w-fit mx-auto md:text-base text-sm font-bold md:gap-3 gap-2 rounded-sm"
           >
             {data.ButtonText}

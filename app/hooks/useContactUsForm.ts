@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import * as Yup from "yup";
 import { isValidPhoneNumber } from "react-phone-number-input";
@@ -9,13 +9,22 @@ export const useContactUsForm = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [utmSource, setUtmSource] = useState("general");
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const source = urlParams.get("utm_source");
+    if (source) {
+      setUtmSource(source);
+    }
+  }, []);
   const initialValues = {
     fullName: "",
     // lastName: "",
     email: "",
     mobile: "",
     message: "",
+    utmSource:"",
     // inquiryType: "",
   };
 
@@ -51,6 +60,8 @@ export const useContactUsForm = () => {
           fullname: `${values.fullName}`,
           mobile: values.mobile,
           message: values.message,
+              utmSource:values.utmSource,
+
           // inquiryType: values.inquiryType,
         })
       );
