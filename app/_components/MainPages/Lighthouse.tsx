@@ -23,7 +23,7 @@ export default function LighthousePage({ data }: LighthousePageProps) {
         </div>
       </div>
       <div className=" bg-gray md:py-20 py-10 relative">
-        <div className="max-w-[1448px] px-4 mx-auto mb-10">
+        <div className="max-w-[1448px] px-4 mx-auto mb-12">
           <h2 className=" text-primary md:text-[60px] text-4xl font-medium">
             {data.Whatweserve.Title}
           </h2>

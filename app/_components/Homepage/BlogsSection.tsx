@@ -9,6 +9,17 @@ import { BlogWidget } from "@/app/types/Pages";
 export default function BlogsSection({ Blogs }: { Blogs: BlogWidget[] }) {
   const locale = useLocale();
   const t = useTranslations();
+  function formatDate(dateString: string, locale: string) {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    };
+
+    const usedLocale = locale === "ar" ? "ar-EG" : "en-GB";
+    return new Date(dateString).toLocaleDateString(usedLocale, options);
+  }
+
   return (
     <div className="mb-[64px] relative">
       <div className="max-w-[1448px] px-4 mx-auto flex md:items-center justify-between md:flex-row flex-col md:py-[64px] py-[28px] gap-y-6">
@@ -62,14 +73,7 @@ export default function BlogsSection({ Blogs }: { Blogs: BlogWidget[] }) {
               className="text-sm text-primary opacity-50 font-medium rtl:text-right"
               style={{ direction: "ltr" }}
             >
-              {new Date(item.attributes.publishedAt).toLocaleDateString(
-                "en-GB",
-                {
-                  day: "2-digit",
-                  month: "short",
-                  year: "numeric",
-                }
-              )}
+              {formatDate(item.attributes.publishedAt, locale)}
             </p>
           </Link>
         ))}

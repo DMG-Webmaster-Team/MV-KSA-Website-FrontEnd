@@ -16,6 +16,9 @@ import WidgetComp from "../SmallWidgets/WidgetComp";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { HeroSectionProps } from "../_types/Common";
+import "swiper/css";
+
+import { Swiper,SwiperSlide } from "swiper/react";
 interface Props {
   data: {
     HeroSection: HeroSectionProps;
@@ -122,11 +125,12 @@ export default function OurStory({ data }: Props) {
 
       <div className=" max-w-[880px] mx-auto py-20">
         {data?.Compounds?.Title && (
-          <h2 className=" text-primary text-[60px] font-medium text-center">
+          <h2 className=" text-primary text-[36px] md:text-[60px] font-medium text-center">
             {data.Compounds.Title}
           </h2>
         )}
-        {data?.Compounds?.SingleCompound.length > 0 && (
+             <div className="hidden md:flex flex-col gap-10">
+ {data?.Compounds?.SingleCompound.length > 0 && (
           <div className=" mt-[60px] mb-[100px]">
             {data.Compounds.SingleCompound.map(
               (item: SingleCompoundProps, index: number) => (
@@ -142,7 +146,29 @@ export default function OurStory({ data }: Props) {
               )
             )}
           </div>
-        )}
+        )}</div>
+         <div className="md:hidden flex pb-20">
+        <Swiper
+          spaceBetween={16}
+          slidesPerView={1.1}
+          centeredSlides={false}
+        >
+          {data.Compounds.SingleCompound.map(
+            (item: SingleCompoundProps, index: number) => (
+              <SwiperSlide key={index}>
+                <CompoundComponent
+                  item={item}
+                  index={index}
+                  lastone={index === data.Compounds.SingleCompound.length - 1}
+                  open={openPopupIndex === index}
+                  onOpen={() => setOpenPopupIndex(index)}
+                  onClose={() => setOpenPopupIndex(null)}
+                />
+              </SwiperSlide>
+            )
+          )}
+        </Swiper>
+      </div>
         {data?.Compounds?.PDF?.data?.attributes?.url && (
           <DownloadButton
             title={t("Buttons.download_company_profile")}
@@ -152,7 +178,7 @@ export default function OurStory({ data }: Props) {
         )}
       </div>
       <div className="relative mb-20">
-        <h2 className="text-primary text-[52px] font-medium text-center mb-2">
+        <h2 className="text-primary text-[36px] md:text-[52px] font-medium text-center mb-2">
           {data.BrandAuthenticity.Title}
         </h2>
 

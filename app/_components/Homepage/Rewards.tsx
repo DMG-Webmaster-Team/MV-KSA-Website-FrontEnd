@@ -28,13 +28,13 @@ export default function Rewards({
       <h2 className="text-primary md:text-5xl text-[28px] font-medium">
         {Title}
       </h2>
-      <div className="flex gap-3 md:flex-nowrap flex-wrap">
+      <div className="grid grid-cols-2 lg:grid-cols-6  gap-3 md:flex-nowrap flex-wrap">
         {Logos.map((item: LogoProps, index: number) => {
           const isHovered = hoveredIndex === index || !isDesktop;
           return (
             <div
               key={index}
-              className={`border border-gray2 rounded-xl md:w-[calc(100%/4)] w-[calc(100%/2-6px)] md:gap-y-0 gap-y-4 lg:h-[340px] md:h-[290px] h-[250px] flex flex-col justify-center transition-all duration-500 ${
+              className={`border border-gray2 rounded-xl md:w-full w-full md:gap-y-0 gap-y-4 lg:h-[340px] md:h-[290px] h-[250px] flex flex-col justify-center transition-all duration-500 ${
                 isHovered && isDesktop ? " bg-gray2" : " bg-transparent"
               }`}
               onMouseEnter={() => setHoveredIndex(index)}

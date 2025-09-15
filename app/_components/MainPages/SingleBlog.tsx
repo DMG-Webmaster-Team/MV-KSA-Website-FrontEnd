@@ -67,6 +67,16 @@ export default function SingleBlog({ data }: Props) {
     },
     { Name: data.MainData.Title },
   ];
+  function formatDate(dateString: string, locale: string) {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    };
+
+    const usedLocale = locale === "ar" ? "ar-EG" : "en-GB";
+    return new Date(dateString).toLocaleDateString(usedLocale, options);
+  }
   return (
     <div className="relative before:content-normal before:w-full md:before:h-[800px] before:h-[650px] before:bg-gray before:absolute before:inset-0 before:-top-[143px] before:z-[-1]">
       <div className="max-w-[1112px] mx-auto xl:px-0 px-4 my-[50px] relative">
@@ -84,16 +94,7 @@ export default function SingleBlog({ data }: Props) {
           </h1>
           <div className="flex justify-between">
             <div className="flex gap-4 text-primary text-sm font-medium items-center">
-              <p>
-                {new Date(data.MainData.publishedAt).toLocaleDateString(
-                  "en-GB",
-                  {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                  }
-                )}
-              </p>
+              <p>{formatDate(data.MainData.publishedAt, locale)}</p>
               {data?.MainData?.author?.data?.attributes && (
                 <p className="flex gap-4 items-center">
                   <span className="bg-primary opacity-20 w-[1px] h-5"></span>

@@ -36,13 +36,13 @@ function SlickMultipleItems({
       }`}
     >
       <div
-        className={` md:block hidden absolute  ${
+        className={` md:block  absolute  ${
           customArrow
             ? "top-0 bottom-0 m-auto h-fit z-20 max-w-[1392px] px-7 w-full inset-x-0"
-            : "top-[65px] w-full"
+            : "top-[75px] md:top-[65px] w-full"
         }  `}
       >
-        <div className="max-w-[1448px] mx-auto px-3">
+        <div className="max-w-[1448px] mx-auto px-3 mt-4">
           {totalPages > 1 && (
             <div
               className={`flex ${
@@ -65,11 +65,11 @@ function SlickMultipleItems({
                   >
                     <button
                       className={`${
-                        customArrow ? "w-12 h-12" : "w-[56px] h-[56px]"
+                        customArrow ? "w-6 md:w-12 h-6 md:h-12" : "w-[25px] h-[25px] md:w-[56px] md:h-[56px]"
                       }  flex justify-center items-center`}
                     >
                       <span
-                        className={` block w-6 h-6  ${
+                        className={` block w-3 md:w-6 h-3 md:h-6  ${
                           locale === "en" ? "" : "rotate-180 "
                         }`}
                       >
@@ -118,13 +118,13 @@ function SlickMultipleItems({
                   >
                     <button
                       className={`${
-                        customArrow ? "w-12 h-12" : "w-[56px] h-[56px]"
+                        customArrow ? "w-6 md:w-12 h-6 md:h-12" : "w-[25px] h-[25px] md:w-[56px] md:h-[56px]"
                       } flex justify-center items-center`}
                     >
                       <span
                         className={`${
                           locale === "ar" ? "" : "rotate-180"
-                        } block w-6 h-6`}
+                        } block w-3 md:w-6 h-3 md:h-6`}
                       >
                         <ArrowLong />
                       </span>
@@ -143,11 +143,11 @@ function SlickMultipleItems({
                   >
                     <button
                       className={`${
-                        customArrow ? "w-12 h-12" : "w-[56px] h-[56px]"
+                        customArrow ? "w-6 md:w-12 h-6 md:h-12" : "w-[25px] h-[25px] md:w-[56px] md:h-[56px]"
                       } flex justify-center items-center`}
                     >
                       <span
-                        className={`block w-6 h-6 ${
+                        className={`block w-3 md:w-6 h-3 md:h-6 ${
                           locale === "ar" ? "rotate-180" : ""
                         }`}
                       >

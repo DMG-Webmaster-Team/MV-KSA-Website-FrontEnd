@@ -42,25 +42,30 @@ export default function CompoundComponent({
     <>
       <div
         key={index}
-        className={`w-[calc(50%+39px)] flex ${
-          index % 2 == 0 ? "flex-row-reverse" : "ms-auto"
+        className={`w-full md:w-[calc(50%+39px)] flex ${
+          index % 2 == 0
+            ? "flex-col md:flex-row-reverse"
+            : "flex-col md:flex-row md:ms-auto"
+        } ${index === 0 ? "ps-4 md:ps-0" : ""} ${
+          lastone ? "pe-4 md:pe-0" : ""
         }`}
       >
-        <div className="w-[80px] flex flex-col items-center">
-          <span className=" w-10 h-10 block mx-auto">
+        <div className=" w-full md:w-[80px] flex flew-row md:flex-col items-center">
+          <span className="pb-3 md:pb-0 w-10 h-10 block mx-auto">
             <Circle />
           </span>
           {!lastone && (
-            <span className="w-[2px] h-[calc(100%-40px)] mx-auto bg-primary bg-opacity-30" />
+            <span className="hidden md:flex w-full md:w-[2px] h-[2px] md:h-[calc(100%-40px)] mx-auto bg-primary bg-opacity-30" />
           )}
+          <span className="md:hidden flex w-full md:w-[2px] h-[2px] md:h-[calc(100%-40px)] mx-auto bg-primary bg-opacity-30" />
         </div>
-        <div className="w-[calc(100%-80px)]">
+        <div className="w-full md:w-[calc(100%-80px)]">
           <div className="w-full h-[300px] relative">
             <Image
               src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Image.data.attributes.url}`}
               alt={item.Image.data.attributes.alternativeText ?? item.Title}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="w-full md:(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className=" flex flex-col gap-1 mt-6">

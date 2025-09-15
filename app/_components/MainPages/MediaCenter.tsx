@@ -27,7 +27,16 @@ export default function MediaCenter({ data }: MediaCenterProps) {
         item.attributes.blogs_type?.data?.attributes?.Name === selectedType
     );
   }, [selectedType, t, data.Blogs]);
+  function formatDate(dateString: string, locale: string) {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    };
 
+    const usedLocale = locale === "ar" ? "ar-EG" : "en-GB";
+    return new Date(dateString).toLocaleDateString(usedLocale, options);
+  }
   return (
     <div>
       <div className="md:py-20 py-10 text-center space-y-6">
@@ -89,11 +98,7 @@ export default function MediaCenter({ data }: MediaCenterProps) {
                   className="text-sm text-primary opacity-50 font-medium rtl:text-right"
                   style={{ direction: "ltr" }}
                 >
-                  {new Date(publishedAt).toLocaleDateString("en-GB", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                  })}
+                              {formatDate(publishedAt, locale)}
                 </p>
               </Link>
             );

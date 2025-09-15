@@ -45,7 +45,7 @@ export default function Widgets({
         white ? "" : " bg-gray"
       } flex-col-reverse  ${reverse ? " lg:flex-row-reverse" : "lg:flex-row"} `}
     >
-      <div className="lg:w-[50%] xl:p-[100px] md:py-[100px] md:px-10 py-[84px] px-4 content-center">
+      <div className="lg:w-[50%] xl:p-[100px] md:py-[100px] md:px-10 py-[44px] px-4 content-center">
         <div className="md:max-w-[516px] flex flex-col gap-3">
           <h2 className=" text-primary lg:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]">
             {data.Title}
