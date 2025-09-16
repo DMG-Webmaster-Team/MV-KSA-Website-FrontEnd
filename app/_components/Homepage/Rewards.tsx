@@ -41,7 +41,7 @@ export default function Rewards({
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <motion.div
-                className="relative mx-4 aspect-[429/183] lg:h-[100px] min-h-20"
+                className="relative mx-4 aspect-[429/183] max-w-[80%] lg:h-[100px] min-h-20"
                 animate={{ y: isHovered && isDesktop ? -30 : 0 }}
                 transition={{ duration: 0.4 }}
               >
