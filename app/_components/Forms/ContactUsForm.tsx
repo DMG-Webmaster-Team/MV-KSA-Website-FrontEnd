@@ -8,14 +8,14 @@ import ArrowLong from "../SVGS/ArrowLong";
 import { useContactUsForm } from "@/app/hooks/useContactUsForm";
 
 const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
- const {
-  initialValues,
-  validationSchema,
-  handleSubmit,
-  isSubmitted,
-  isLoading,
-  t
-} = useContactUsForm();
+  const {
+    initialValues,
+    validationSchema,
+    handleSubmit,
+    isSubmitted,
+    isLoading,
+    t,
+  } = useContactUsForm();
   return (
     <>
       {!isSubmitted ? (
@@ -118,12 +118,18 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
                   value={values.mobile}
                   onChange={(value) => setFieldValue("mobile", value)}
                   defaultCountry="SA"
-                  className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none placeholder:text-primary placeholder:opacity-70 ${
+                  placeholder={t("form.phone")}
+                  className={`rtl:flex-row-reverse gap-3 input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none ${
                     errors.mobile && touched.mobile
                       ? "border-red-500"
                       : "border-transparent"
                   } border`}
-                  placeholder={t("form.phone")}
+                  inputClassName={`w-full bg-transparent outline-none placeholder:opacity-70 placeholder:text-primary 
+    ${
+      document.dir === "rtl"
+        ? "text-right placeholder:text-right"
+        : "text-left placeholder:text-left"
+    }`}
                 />
 
                 <ErrorMessage
@@ -157,7 +163,7 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
                 type="submit"
                 className={`${
                   isLoading ? " opacity-40 pointer-events-none" : ""
-                } w-[51%] ms-auto flex items-center my-auto justify-between bg-primary text-white uppercase py-3 px-4 hover:bg-darkblue transition-all duration-500 text-base rounded-sm`}
+                } w-[51%] ms-auto flex items-center my-auto justify-between bg-primary text-white uppercase py-3 px-4 hover:bg-darkblue transition-all duration-500 text-base rounded-sm text-nowrap`}
               >
                 {t("Buttons.send_message")}
                 <span className="w-5 h-5 ltr:rotate-180">

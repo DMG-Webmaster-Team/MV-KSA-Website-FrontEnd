@@ -114,7 +114,7 @@ function SlickMultipleItems({
                   
                   ${customArrow ? " absolute end-0" : ""}
                   `}
-                    onClick={goRight}
+                    onClick={goLeft}
                   >
                     <button
                       className={`${
@@ -139,7 +139,7 @@ function SlickMultipleItems({
                        : "opacity-50 pointer-events-none "
                    } ${customArrow ? " absolute start-0" : ""}
                    `}
-                    onClick={goLeft}
+                    onClick={goRight}
                   >
                     <button
                       className={`${
@@ -175,7 +175,7 @@ function SlickMultipleItems({
         >
           <div className={`wrapper`}>
             {children}
-            {/* <div className=" shrink-0 flex-grow-0 w-1 h-5 "></div> */}
+            <div className=" shrink-0 flex-grow-0 w-1 h-5 "></div>
           </div>
         </div>
       </div>

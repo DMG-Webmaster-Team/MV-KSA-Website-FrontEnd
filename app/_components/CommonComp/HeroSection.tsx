@@ -60,7 +60,7 @@ export default function HeroSection({
 
       <div
         className={`${
-          singleProject ? " space-y-10" : ""
+          singleProject ? "space-y-6 md:space-y-10" : ""
         } absolute w-fit h-fit m-auto inset-0 z-20 text-center px-2`}
       >
         {data.Logo && (
@@ -92,8 +92,8 @@ export default function HeroSection({
             className={`${
               singleProject
                 ? "md:text-2xl text-base"
-                : "lg:text-[60px] lg:leading-[70px] md:text-4xl text-base  "
-            } text-white mx-auto md:max-w-[60%]  font-medium mt-2 ${
+                : "lg:text-[60px] lg:leading-[70px]  text-base text-center text-nowrap"
+            } text-white mx-auto  font-medium mt-2 ${
               home ? "" : " opacity-70"
             }`}
           >

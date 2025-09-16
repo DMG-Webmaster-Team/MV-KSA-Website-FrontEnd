@@ -47,6 +47,30 @@ export default function MainHeader({ data }: { data: Menu[] }) {
       document.body.classList.remove("overflow-hidden");
     }
   }, [openMenu]);
+ const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (window.innerWidth < 1024) {
+        if (currentScrollY < lastScrollY) {
+          // scrolling up
+          setShow(true);
+        } else {
+          // scrolling down
+          setShow(false);
+        }
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const StableHeader =
     Pathname == "/calendly" ||
@@ -75,7 +99,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
         <>
           <div
             className={`${openMenu ? " bg-darkblue " : ""} ${
-              StableHeader ? "relative" : "absolute top-0"
+            show?"bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px] fixed":  StableHeader ? "relative" : "absolute top-0"
             } transition-all duration-500  w-full z-40 py-2.5 border-b-[2px] border-white border-opacity-20`}
           >
             <div className="max-w-[1448px] px-4 mx-auto flex justify-between items-center">
@@ -88,14 +112,14 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                     src={`/logoblack.png`}
                     alt="Logo MV KSA"
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-contain"
                   />
                 ) : (
                   <Image
                     src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/uploads/logo_White_7bce5b4307.webp`}
                     alt="Logo MV KSA"
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-contain"
                   />
                 )}
               </Link>
@@ -103,7 +127,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                 <div className="lg:flex hidden xl:gap-[28px] gap-4 rtl:xl:w-[calc(100%-422px-50px)] rtl:w-[calc(100%-359px-50px)] ltr:2xl:w-[calc(100%-485px-50px)] ltr:w-[calc(100%-429px-50px)]">
                   <MenuDesktop data={data} StableHeader={StableHeader} />
                 </div>
-                <div className="flex xl:gap-8 gap-5 items-center rtl:xl:w-[422px] rtl:w-[359px] ltr:2xl:w-[485px] ltr:w-[429px] justify-between">
+                <div className={`justify-end flex xl:gap-8 gap-5 items-center rtl:xl:w-[422px] rtl:w-[359px] ltr:2xl:w-[485px] ltr:w-[429px]`}>
                   <div className="lg:block hidden">
                     <LangSwitcher DesktopHeader={StableHeader} />
                   </div>
@@ -216,10 +240,10 @@ export default function MainHeader({ data }: { data: Menu[] }) {
               </div>
             </div>
           </div>
-          <motion.div
-            className={
-              " pt-[64px] fixed inset-0 w-full h-[100vh] bg-darkblue z-30 px-4 lg:hidden block overflow-y-scroll"
-            }
+     <motion.div
+     
+      className={`pt-[64px] fixed inset-0 w-full h-[100vh] bg-darkblue z-30 px-4 lg:hidden overflow-y-auto`}
+    
             initial={{
               y: -200,
               opacity: 0,
@@ -246,7 +270,9 @@ export default function MainHeader({ data }: { data: Menu[] }) {
               <Link
                 href={`${locale == "en" ? "/en/" : "/"}contact-us`}
                 className="bg-white xl:px-4 px-3 py-2.5 text-sm font-bold text-primary flex justify-center gap-3 items-center rounded-sm hover:bg-primary hover:text-white transition-all duration-500 "
-              >
+                onClick={() => {
+              setOpenMenu(!openMenu);
+            }}>
                 <span className=" leading-[10px] whitespace-nowrap">
                   {t("Buttons.register_your_interest")}
                 </span>

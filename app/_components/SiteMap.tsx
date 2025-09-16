@@ -14,7 +14,7 @@ export default function SiteMap({ data }: { data: siteMap }) {
     >
       <div className="lg:w-[50%] w-full 2xl:p-[100px] lg:py-[100px] lg:px-10 md:py-[84px] py-6 px-4 content-center">
         <div className="space-y-5">
-          <h2 className=" text-primary xl:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]">
+          <h2 className="text-nowrap text-primary xl:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]">
             {data.Title}
           </h2>
           <h3 className="text-primary xl:text-5xl text-3xl opacity-50">
@@ -25,7 +25,7 @@ export default function SiteMap({ data }: { data: siteMap }) {
               <Link
                 href={data.Exploremorelink}
                 target="_blank"
-                className=" flex text-primary bg-white md:text-base text-sm w-fit items-center gap-3 py-[18px] font-bold px-3 rounded-sm hover:bg-[#DDDDDD] transition-all duration-500 "
+                className=" flex text-primary bg-white md:text-base text-sm w-fit items-center gap-3 py-[18px] font-bold px-3 rounded-sm hover:bg-[#DDDDDD] transition-all duration-500 text-nowrap"
               >
                 {t("data.discover_more")}
                 <span className="w-4 h-4 ltr:rotate-180">
@@ -37,7 +37,7 @@ export default function SiteMap({ data }: { data: siteMap }) {
               <Link
                 href={data.GoogleMapsLink}
                 target="_blank"
-                className=" flex text-primary bg-white  md:text-base text-sm w-fit items-center gap-3 py-[18px] font-bold px-3 rounded-sm hover:bg-[#DDDDDD] transition-all duration-500 "
+                className=" flex text-primary bg-white  md:text-base text-sm w-fit items-center gap-3 py-[18px] font-bold px-3 rounded-sm hover:bg-[#DDDDDD] transition-all duration-500 text-nowrap"
               >
                 {t("data.google_link")}
                 <span className="w-5 h-5">
@@ -63,7 +63,7 @@ export default function SiteMap({ data }: { data: siteMap }) {
                         ${index % 2 == 0 ? "" : " border-s"} `}
                   >
                     <p className="text-primary flex items-end">
-                      <span className="md:text-[100px] text-[60px] font-FreightNeoPro ">
+                      <span className="md:text-[80px] text-[60px] font-FreightNeoPro ">
                         {number}
                       </span>
                       <span className="md:text-xl text-sm opacity-50">

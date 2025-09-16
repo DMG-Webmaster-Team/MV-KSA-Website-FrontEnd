@@ -54,7 +54,7 @@ const onLocaleChange = (newLocale: "en" | "ar") => {
       </button>
       {isOpen && (
         <div
-          className="absolute w-[200px] p-2 bg-white rounded-lg top-12 flex flex-col gap-1"
+          className="absolute w-[200px] p-2 bg-white rounded-lg md:bottom-auto md:top-12 bottom-12 flex flex-col gap-1"
           style={{ boxShadow: "0px 4px 12px 0px #0000001A" }}
         >
           <p

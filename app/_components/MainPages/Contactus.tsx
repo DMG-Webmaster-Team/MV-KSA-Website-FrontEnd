@@ -12,7 +12,7 @@ export default function ContactUs({ data }: ContactUsProps) {
         <h1 className="text-primary lg:text-[100px] font-medium lg:leading-[100px] md:text-5xl text-4xl">
           {data.Title}
         </h1>
-        <p className="md:text-4xl text-2xl text-primary font-medium opacity-50">
+        <p className="md:text-4xl text-2xl text-primary font-medium opacity-50 px-2 text-nowrap">
           {data.Tagline}
         </p>
       </div>
@@ -31,7 +31,7 @@ export default function ContactUs({ data }: ContactUsProps) {
         </div>
       </div>
       <div className="max-w-[1448px] px-4 mx-auto md:py-[60px] py-10 md:gap-[60px] gap-6 flex items-center sm:flex-row flex-col">
-        <div className="sm:w-[50%] w-full text-center text-primary flex flex-col gap-3">
+        <div className={`${data.Hotline?"sm:w-[50%]":"sm:w-full"} w-full text-center text-primary flex flex-col gap-3`}>
           <span className=" md:text-xl text-base opacity-50 font-medium">
             {t("data.email")}
           </span>

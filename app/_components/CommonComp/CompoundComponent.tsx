@@ -42,13 +42,11 @@ export default function CompoundComponent({
     <>
       <div
         key={index}
-        className={`w-full md:w-[calc(50%+39px)] flex ${
+        className={`w-full md:w-[calc(50%+39px)] flex px-4 ${
           index % 2 == 0
             ? "flex-col md:flex-row-reverse"
             : "flex-col md:flex-row md:ms-auto"
-        } ${index === 0 ? "ps-4 md:ps-0" : ""} ${
-          lastone ? "pe-4 md:pe-0" : ""
-        }`}
+        } `}
       >
         <div className=" w-full md:w-[80px] flex flew-row md:flex-col items-center">
           <span className="pb-3 md:pb-0 w-10 h-10 block mx-auto">

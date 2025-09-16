@@ -26,12 +26,12 @@ export default function SingleProject({ data }: SingleProjectProps) {
           />
         </div>
       )}
-      <div className=" my-10 max-w-[1200px] mx-auto md:flex-row flex-col gap-y-3 flex rtl:divide-x-reverse divide-x-2 divide-primary divide-opacity-10">
+      <div className=" my-10 max-w-[1200px] mx-auto md:flex-row flex-col gap-y-5 flex rtl:divide-x-reverse divide-x-2 divide-primary divide-opacity-10">
         {data.MainData.Numbers.map(
           (item: { Title: string; Description: string }, index: number) => (
             <div
               key={index}
-              className="md:w-[calc(100%/3)] w-full text-center space-y-3"
+              className="md:w-[calc(100%/3)] w-full text-center space-y-2"
             >
               <h3 className=" xl:text-7xl text-5xl text-medium font-FreightNeoPro text-primary">
                 {item.Description}

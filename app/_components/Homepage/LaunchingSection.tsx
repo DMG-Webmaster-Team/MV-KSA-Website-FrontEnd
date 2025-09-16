@@ -54,7 +54,7 @@ export default function LaunchingSection({
           <div className="flex gap-3 md:w-[380px]">
             <Link
               href={LaunchingSection.ButtonOneLink ?? ""}
-              className="flex gap-3 bg-primary text-white md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center whitespace-nowrap"
+              className="flex gap-3 bg-primary text-white md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center text-nowrap"
             >
               {LaunchingSection.ButtonOneText}
               <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180 ">
@@ -66,7 +66,7 @@ export default function LaunchingSection({
               href={`${
                 locale == "en" ? "/en/" : "/"
               }contact-us?projectname=${LaunchingSection.ButtonTwoLink?.toLowerCase()}&utm_source=${utmSource}`}
-              className="flex gap-3 bg-Gray05 text-primary md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center"
+              className="flex gap-3 bg-Gray05 text-primary md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center text-nowrap"
             >
               {LaunchingSection.ButtonTwoText}
               <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">

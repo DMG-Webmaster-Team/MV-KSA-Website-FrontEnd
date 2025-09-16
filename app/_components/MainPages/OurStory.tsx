@@ -149,7 +149,7 @@ export default function OurStory({ data }: Props) {
         )}</div>
          <div className="md:hidden flex pb-20">
         <Swiper
-          spaceBetween={16}
+          spaceBetween={0}
           slidesPerView={1.1}
           centeredSlides={false}
         >

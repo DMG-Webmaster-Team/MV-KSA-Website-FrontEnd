@@ -40,7 +40,7 @@ export default function GalleryPopup({
     >
       <button
         onClick={onClickHandle}
-        className="p-4 bg-white text-primary rounded-full absolute top-10 start-10 flex hover:bg-primary hover:text-white transition-all duration-500"
+        className="p-2 bg-white text-primary rounded-full absolute top-10 right-4 z-10 start-10 flex hover:bg-primary hover:text-white transition-all duration-500"
       >
         <span className="w-6 h-6">
           <Close />
@@ -73,7 +73,7 @@ export default function GalleryPopup({
             modules={[Navigation, Thumbs]}
             navigation={mainNav}
             thumbs={{ swiper: thumbsSwiper }}
-            className="!w-[66%] h-full"
+            className=" h-full"
             slidesPerView={1}
           >
             {Images?.map((image) => (

@@ -190,3 +190,11 @@ select {
   inset: 0;
   background: linear-gradient(26deg, rgba(0, 0, 0, 0) 51.66%, #000000 105.99%);
 }
+/* global.css */
+html[dir="rtl"] .PhoneInputInput::placeholder {
+  text-align: right;
+}
+
+html[dir="ltr"] .PhoneInputInput::placeholder {
+  text-align: left;
+}
