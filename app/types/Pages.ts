@@ -54,6 +54,9 @@ export interface ContactUsProps {
     List: {
       Name: string;
     }[];
+     budget: {
+      Name: string;
+    }[];
   };
 }
 export interface FaqsProps {

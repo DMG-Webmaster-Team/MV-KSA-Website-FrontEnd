@@ -63,6 +63,9 @@
     "message": "Write a cover message",
     "select_file": "Select File",
     "select_inquiry_type": "Inquiry Type",
+    "city": "City of Residence",
+    "budget": "Budget Range",
+
     "add_message": "Add Message"
   },
   "validation": {

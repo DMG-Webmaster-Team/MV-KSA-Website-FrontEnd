@@ -24,8 +24,10 @@ export const useContactUsForm = () => {
     email: "",
     mobile: "",
     message: "",
-    utmSource:"",
-    // inquiryType: "",
+    utmSource: "",
+    city: "",
+    budget: "",
+
   };
 
   const validationSchema = Yup.object().shape({
@@ -45,7 +47,7 @@ export const useContactUsForm = () => {
       .test("is-valid-phone", t("validation.mobile.invalid"), (value) =>
         isValidPhoneNumber(value || "")
       ),
-    message: Yup.string().required(t("validation.message.required")),
+    // message: Yup.string().required(t("validation.message.required")),
     // inquiryType: Yup.string().required(t("validation.inquiryType.required")),
   });
 
@@ -60,9 +62,10 @@ export const useContactUsForm = () => {
           fullname: `${values.fullName}`,
           mobile: values.mobile,
           message: values.message,
-              utmSource:values.utmSource,
+          utmSource: values.utmSource,
+          city: values.city,
+          budget: values.budget,
 
-          // inquiryType: values.inquiryType,
         })
       );
 

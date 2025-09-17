@@ -83,4 +83,6 @@ export interface HeroSectionProps {
   };
   Buttonlink?: string;
   ButtonText?: string;
+  subTitle?: string;
+
 }

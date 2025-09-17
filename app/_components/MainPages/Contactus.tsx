@@ -6,6 +6,7 @@ import { ContactUsProps } from "@/app/types/Pages";
 
 export default function ContactUs({ data }: ContactUsProps) {
   const t = useTranslations();
+  console.log(data)
   return (
     <div>
       <div className="md:py-20 py-10 text-center space-y-6">
@@ -27,7 +28,7 @@ export default function ContactUs({ data }: ContactUsProps) {
             <span className=" text-sm opacity-50">{data.FormLabel}</span>
             <h2 className=" md:text-5xl text-3xl">{data.FormTitle}</h2>
           </div>
-          <ContactUsForm List={data.List} />
+          <ContactUsForm List={data.List} budget={data.budget}/>
         </div>
       </div>
       <div className="max-w-[1448px] px-4 mx-auto md:py-[60px] py-10 md:gap-[60px] gap-6 flex items-center sm:flex-row flex-col">

@@ -6,8 +6,9 @@ import Done from "../SVGS/Done";
 import ArrowLong from "../SVGS/ArrowLong";
 // import Arrow from "../SVGS/Arrow";
 import { useContactUsForm } from "@/app/hooks/useContactUsForm";
+import Arrow from "../SVGS/Arrow";
 
-const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
+const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name:string}[]}) => {
   const {
     initialValues,
     validationSchema,
@@ -28,37 +29,7 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
         >
           {({ setFieldValue, values, errors, touched }) => (
             <Form className="flex flex-col md:gap-5 gap-3">
-              {/* <div>
-                <div className=" relative">
-                  <Field
-                    as="select"
-                    name="inquiryType"
-                    className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none appearance-none ${
-                      errors.inquiryType && touched.inquiryType
-                        ? "border-red-500"
-                        : "border-transparent"
-                    } border`}
-                  >
-                    <option hidden className="opacity-70 ">
-                      {t("form.select_inquiry_type")}
-                    </option>
-                    {List?.map((item, index) => (
-                      <option key={index} value={item.Name}>
-                        {item.Name}
-                      </option>
-                    ))}
-                  </Field>
-                  <span className=" text-primary w-6 h-6 absolute end-4 inset-y-0 m-auto">
-                    <Arrow />
-                  </span>
-                </div>
-
-                <ErrorMessage
-                  name="inquiryType"
-                  component="p"
-                  className="text-red-500 text-xs pt-3"
-                />
-              </div> */}
+           
 
               <div className="flex md:gap-5 gap-3 md:flex-row flex-col">
                 <div className=" md:w-full">
@@ -138,6 +109,69 @@ const ContactUsForm = ({ List }: { List: { Name: string }[] }) => {
                   className="text-red-500 text-xs pt-3"
                 />
               </div>
+ <div>
+                <div className=" relative">
+                  <Field
+                    as="select"
+                    name="city"
+                    className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none appearance-none ${
+                      errors.city && touched.city
+                        ? "border-red-500"
+                        : "border-transparent"
+                    } border`}
+                  >
+                    <option hidden className="opacity-70 ">
+                      {t("form.city")}
+                    </option>
+                    {List?.map((item, index) => (
+                      <option key={index} value={item.Name}>
+                        {item.Name}
+                      </option>
+                    ))}
+                  </Field>
+                  <span className=" text-primary w-6 h-6 absolute end-4 inset-y-0 m-auto">
+                    <Arrow />
+                  </span>
+                </div>
+
+                <ErrorMessage
+                  name="city"
+                  component="p"
+                  className="text-red-500 text-xs pt-3"
+                />
+              </div> 
+
+ <div>
+                <div className=" relative">
+                  <Field
+                    as="select"
+                    name="budget"
+                    className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none appearance-none ${
+                      errors.budget && touched.budget
+                        ? "border-red-500"
+                        : "border-transparent"
+                    } border`}
+                  >
+                    <option hidden className="opacity-70 ">
+                      {t("form.budget")}
+                    </option>
+                    {budget?.map((item, index) => (
+                      <option key={index} value={item.Name}>
+                        {item.Name}
+                      </option>
+                    ))}
+                  </Field>
+                  <span className=" text-primary w-6 h-6 absolute end-4 inset-y-0 m-auto">
+                    <Arrow />
+                  </span>
+                </div>
+
+                <ErrorMessage
+                  name="budget"
+                  component="p"
+                  className="text-red-500 text-xs pt-3"
+                />
+              </div> 
 
               <div>
                 <Field

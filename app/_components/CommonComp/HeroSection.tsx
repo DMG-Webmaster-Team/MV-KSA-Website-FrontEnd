@@ -103,7 +103,7 @@ export default function HeroSection({
 
         {data?.Buttonlink && (
           <Link
-            href={`${locale == "en" ? "/en" : ""}${data.Buttonlink}?projectname=${data.Title?.toLowerCase()}&utm_source=${utmSource}`}
+            href={`${locale == "en" ? "/en" : ""}${data.Buttonlink}?projectname=${data.subTitle}&utm_source=${utmSource}`}
             className="text-primary bg-white hover:bg-darkblue hover:text-white transition-all duration-500 flex md:py-[18px] py-2.5 px-4 w-fit mx-auto md:text-base text-sm font-bold md:gap-3 gap-2 rounded-sm"
           >
             {data.ButtonText}
