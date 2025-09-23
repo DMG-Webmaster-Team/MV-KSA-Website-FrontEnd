@@ -23,7 +23,7 @@ export default function ContactUs({ data }: ContactUsProps) {
           backgroundImage: `url(${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url})`,
         }}
       >
-        <div className="max-w-[656px] mx-auto bg-white p-10 rounded-sm space-y-5">
+        <div className="max-w-[656px] mx-auto bg-white p-10 rounded-sm space-y-5 min-h-[100vh]">
           <div className=" text-primary font-medium space-y-2 text-center ">
             <span className=" text-sm opacity-50">{data.FormLabel}</span>
             <h2 className=" md:text-5xl text-3xl">{data.FormTitle}</h2>
