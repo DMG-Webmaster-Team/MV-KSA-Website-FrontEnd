@@ -8,7 +8,13 @@ import ArrowLong from "../SVGS/ArrowLong";
 import { useContactUsForm } from "@/app/hooks/useContactUsForm";
 import Arrow from "../SVGS/Arrow";
 
-const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name:string}[]}) => {
+const ContactUsForm = ({
+  List,
+  budget,
+}: {
+  List: { Name: string }[];
+  budget: { Name: string }[];
+}) => {
   const {
     initialValues,
     validationSchema,
@@ -29,15 +35,13 @@ const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name
         >
           {({ setFieldValue, values, errors, touched }) => (
             <Form className="flex flex-col md:gap-5 gap-3">
-           
-
               <div className="flex md:gap-5 gap-3 md:flex-row flex-col">
-                <div className=" md:w-full">
+                <div className="relative pb-1 md:w-full">
                   <Field
                     name="fullName"
                     className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none placeholder:text-primary placeholder:opacity-70 ${
                       errors.fullName && touched.fullName
-                        ? "border-red-500"
+                        ? ""
                         : "border-transparent"
                     } border`}
                     placeholder={t("form.first_name")}
@@ -45,7 +49,7 @@ const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name
                   <ErrorMessage
                     name="fullName"
                     component="p"
-                    className="text-red-500 text-xs pt-3"
+                    className="text-red-500 text-xs pt-2 h-0 absolute bottom-0"
                   />
                 </div>
 
@@ -67,7 +71,7 @@ const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name
                 </div> */}
               </div>
 
-              <div>
+              <div className="relative pb-1">
                 <Field
                   name="email"
                   type="email"
@@ -81,10 +85,10 @@ const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name
                 <ErrorMessage
                   name="email"
                   component="p"
-                  className="text-red-500 text-xs pt-3"
+                  className="text-red-500 text-xs pt-2 h-0 absolute bottom-0"
                 />
               </div>
-              <div>
+              <div className="relative pb-1">
                 <PhoneInput
                   value={values.mobile}
                   onChange={(value) => setFieldValue("mobile", value)}
@@ -106,11 +110,11 @@ const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name
                 <ErrorMessage
                   name="mobile"
                   component="p"
-                  className="text-red-500 text-xs pt-3"
+                  className="text-red-500 text-xs pt-2 h-0 absolute bottom-0"
                 />
               </div>
- <div>
-                <div className=" relative">
+              <div>
+                <div className="relative pb-1">
                   <Field
                     as="select"
                     name="city"
@@ -137,12 +141,12 @@ const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name
                 <ErrorMessage
                   name="city"
                   component="p"
-                  className="text-red-500 text-xs pt-3"
+                  className="text-red-500 text-xs pt-2 h-0 absolute bottom-0"
                 />
-              </div> 
+              </div>
 
- <div>
-                <div className=" relative">
+              <div>
+                <div className="relative pb-1">
                   <Field
                     as="select"
                     name="budget"
@@ -169,11 +173,11 @@ const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name
                 <ErrorMessage
                   name="budget"
                   component="p"
-                  className="text-red-500 text-xs pt-3"
+                  className="text-red-500 text-xs pt-2 h-0 absolute bottom-0"
                 />
-              </div> 
+              </div>
 
-              <div>
+              <div className="relative pb-1">
                 <Field
                   name="message"
                   as="textarea"
@@ -189,7 +193,7 @@ const ContactUsForm = ({ List,budget }: { List: { Name: string }[] ,budget:{Name
                 <ErrorMessage
                   name="message"
                   component="p"
-                  className="text-red-500 text-xs"
+                  className="text-red-500 text-xs pt-2 h-0 absolute bottom-0"
                 />
               </div>
 
