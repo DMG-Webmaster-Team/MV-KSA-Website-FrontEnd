@@ -18,7 +18,7 @@ export default function NumbersList({
               className="md:w-[calc(100%/3)] w-full text-center space-y-3"
             >
               <h3
-                className=" xl:text-7xl text-5xl text-medium font-FreightNeoPro text-primary"
+                className=" xl:text-7xl text-5xl text-medium font-Poppins text-primary"
                 style={{ direction: "ltr" }}
               >
                 {item.Title}
@@ -38,7 +38,7 @@ export default function NumbersList({
               className="md:w-[calc(100%/3)] w-full text-center space-y-3"
             >
               <h3
-                className=" xl:text-7xl text-5xl text-medium font-FreightNeoPro text-primary"
+                className=" xl:text-7xl text-5xl text-medium font-Poppins text-primary"
                 style={{ direction: "ltr" }}
               >
                 {item.Title}

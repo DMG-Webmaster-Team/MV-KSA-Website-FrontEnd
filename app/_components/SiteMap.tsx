@@ -63,7 +63,7 @@ export default function SiteMap({ data }: { data: siteMap }) {
                         ${index % 2 == 0 ? "" : " border-s"} `}
                   >
                     <p className="text-primary flex items-end">
-                      <span className="md:text-[80px] text-[60px] font-FreightNeoPro ">
+                      <span className="md:text-[80px] text-[60px] font-Poppins ">
                         {number}
                       </span>
                       <span className="md:text-xl text-sm opacity-50">

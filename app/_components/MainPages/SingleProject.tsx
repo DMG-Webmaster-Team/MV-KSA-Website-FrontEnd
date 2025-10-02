@@ -33,7 +33,7 @@ export default function SingleProject({ data }: SingleProjectProps) {
               key={index}
               className="md:w-[calc(100%/3)] w-full text-center space-y-2"
             >
-              <h3 className=" xl:text-7xl text-5xl text-medium font-FreightNeoPro text-primary">
+              <h3 className=" xl:text-7xl text-5xl text-medium font-Poppins text-primary">
                 {item.Description}
               </h3>
               <p className="text-primary xl:text-xl md:text-lg text-sm font-medium opacity-50">
