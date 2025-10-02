@@ -58,7 +58,7 @@ export default function Boxes({ BoxOne }: { BoxOne: BoxProps[] }) {
                 {item.Tagline}
               </span>
               <h2
-                className=" text-white md:text-[52px] font-medium md:leading-[66px] text-4xl"
+                className=" text-white md:text-[52px] font-medium md:leading-[66px] text-2xl"
                 dangerouslySetInnerHTML={{ __html: item.Title }}
               />
               <Link
