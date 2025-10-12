@@ -79,7 +79,7 @@ export default function HeroSection({
           </div>
         )}
         <div>
-          <h1
+          {/* <h1
             className={`${
               singleProject
                 ? "md:text-[52px] text-4xl"
@@ -87,7 +87,7 @@ export default function HeroSection({
             } text-white   font-medium`}
           >
             {data.Title}
-          </h1>
+          </h1> */}
           <p
             className={`${
               singleProject
