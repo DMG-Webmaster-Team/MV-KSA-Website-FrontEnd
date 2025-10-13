@@ -42,7 +42,7 @@ export default function CompoundComponent({
     <>
       <div
         key={index}
-        className={`w-full md:w-[calc(50%+39px)] flex px-4 ${
+        className={`w-full md:w-[calc(50%+57px)] flex px-4 ${
           index % 2 == 0
             ? "flex-col md:flex-row-reverse"
             : "flex-col md:flex-row md:ms-auto"
@@ -77,7 +77,10 @@ export default function CompoundComponent({
                 __html: item?.WidgetDetails?.replace(/\n/g, "</br>"),
               }}
             ></p>
-            <button
+               <p className="lg:text-xl md:text-lg text-sm text-primary">
+                  {item.PopupDetails}
+                </p>
+            {/* <button
               onClick={() => onOpen(index)}
               className=" text-primary flex gap-1 text-base font-bold mt-1 border-b border-primary border-opacity-20 w-fit hover:border-opacity-100 transition-all duration-500"
             >
@@ -85,7 +88,7 @@ export default function CompoundComponent({
               <span className="w-5 h-5 rotate-90 ltr:-rotate-90">
                 <Arrow />
               </span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

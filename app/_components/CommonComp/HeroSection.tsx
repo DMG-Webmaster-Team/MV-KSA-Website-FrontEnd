@@ -92,7 +92,7 @@ export default function HeroSection({
             className={`${
               singleProject
                 ? "md:text-2xl text-base"
-                : "lg:text-[60px] lg:leading-[70px]  text-base text-center text-nowrap"
+                : "lg:text-[60px] lg:leading-[70px]  text-base text-center "
             } text-white mx-auto  font-medium mt-2 ${
               home ? "" : " opacity-70"
             }`}
