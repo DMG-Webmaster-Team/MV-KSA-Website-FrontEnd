@@ -8,7 +8,7 @@ import { LandScapeProps } from "../types/PartnerShip";
 export default function LandScape({ data }: { data: LandScapeProps }) {
   const t = useTranslations();
   return (
-    <div className="relative w-full md:h-[80vh] h-[60vh]">
+    <div className="relative w-full md:h-[96vh] h-[60vh]">
       {data?.Image?.data && (
         <Image
           src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data?.attributes?.url}`}
