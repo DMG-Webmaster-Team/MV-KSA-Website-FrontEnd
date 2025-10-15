@@ -8,36 +8,37 @@ import { BoxProps } from "@/app/types/HomePage";
 export default function Boxes({ BoxOne }: { BoxOne: BoxProps[] }) {
   const t = useTranslations();
   return (
-    <div className="flex lg:flex-row flex-col">
+    <div className="flex flex-col lg:flex-row">
       {BoxOne.map((item: BoxProps, index: number) => (
-        <div className="lg:w-1/2 w-full relative aspect-[1.1]" key={index}>
+        <div className="relative aspect-[1.1] w-full lg:w-1/2" key={index}>
           <Image
             src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Image.data.attributes.url}`}
             alt={item.Image.data.attributes.alternativeText ?? item.Title}
             fill
-            className=" object-cover"
+            className="object-cover"
           />
           {item.Logo.data ? (
-            <div className="relative lg:max-w-[700px] ms-auto md:p-8 p-4 flex flex-col justify-between h-full">
-              <div className=" space-y-3">
-                <span className=" text-white md:text-xl text-sm font-medium">
+            <div className="relative ms-auto flex h-full flex-col justify-between p-4 md:p-8 lg:max-w-[700px]">
+              <div className="space-y-3">
+                <span className="text-sm font-medium text-white md:text-xl">
                   {item.Tagline}
                 </span>
-                <h2 className=" text-white font-medium md:text-[100px] md:leading-[100px] text-4xl">
+                <h2 className="text-[clamp(2rem,6.8vw,100px)] font-medium leading-[clamp(2rem,6.8vw,100px)] text-white">
                   {item.Title}
                 </h2>
+
                 <Link
                   href={item.Buttonlink ?? ""}
-                  className=" flex text-primary bg-white md:text-base text-sm gap-3 font-bold md:py-[18px] py-2.5 px-4 w-fit hover:bg-primary hover:text-white transition-all duration-500"
+                  className="flex w-fit gap-3 bg-white px-4 py-2.5 text-sm font-bold text-primary transition-all duration-500 hover:bg-primary hover:text-white md:py-[18px] md:text-base"
                 >
                   {t("data.discover_more")}
-                  <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
+                  <span className="h-4 w-4 md:h-5 md:w-5 ltr:rotate-180">
                     <ArrowLong />
                   </span>
                 </Link>
               </div>
               <div className="space-y-[22px]">
-                <div className="relative aspect-[359/60] h-10 ms-auto">
+                <div className="relative ms-auto aspect-[359/60] h-10">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Logo.data.attributes.url}`}
                     alt={
@@ -47,26 +48,26 @@ export default function Boxes({ BoxOne }: { BoxOne: BoxProps[] }) {
                     className="object-contain"
                   />
                 </div>
-                <p className="text-white text-2xl font-medium text-pretty">
+                <p className="text-pretty text-2xl font-medium text-white">
                   {item.Description}
                 </p>
               </div>
             </div>
           ) : (
-            <div className="relative h-full flex flex-col justify-end md:p-8 p-4 max-w-[700px] me-auto">
-              <span className=" text-white md:text-xl text-sm font-medium">
+            <div className="relative me-auto flex h-full max-w-[700px] flex-col justify-end p-4 md:p-8">
+              <span className="text-sm font-medium text-white md:text-xl">
                 {item.Tagline}
               </span>
               <h2
-                className=" text-white md:text-[52px] font-medium md:leading-[66px] text-2xl"
+                className="text-2xl font-medium text-white md:text-[52px] md:leading-[66px]"
                 dangerouslySetInnerHTML={{ __html: item.Title }}
               />
               <Link
                 href={item.Buttonlink ?? ""}
-                className="md:mt-20 mt-5 flex text-primary bg-white text-base gap-3 font-bold md:py-[18px] py-2.5 px-4 w-fit hover:bg-primary hover:text-white transition-all duration-500"
+                className="mt-5 flex w-fit gap-3 bg-white px-4 py-2.5 text-base font-bold text-primary transition-all duration-500 hover:bg-primary hover:text-white md:mt-20 md:py-[18px]"
               >
                 {t("data.explore_more")}
-                <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
+                <span className="h-4 w-4 md:h-5 md:w-5 ltr:rotate-180">
                   <ArrowLong />
                 </span>
               </Link>

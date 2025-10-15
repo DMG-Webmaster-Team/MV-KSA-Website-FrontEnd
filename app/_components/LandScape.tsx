@@ -8,25 +8,25 @@ import { LandScapeProps } from "../types/PartnerShip";
 export default function LandScape({ data }: { data: LandScapeProps }) {
   const t = useTranslations();
   return (
-    <div className="relative w-full md:h-[96vh] h-[60vh]">
+    <div className="relative h-[60vh] max-h-[800px] w-full md:h-[96vh]">
       {data?.Image?.data && (
         <Image
           src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data?.attributes?.url}`}
           alt={data.Image.data.attributes.alternativeText ?? "Landscape image"}
           fill
-          className=" object-cover"
+          className="object-cover"
         />
       )}
 
-      <div className="max-w-[1448px] px-4 mx-auto relative md:py-8 py-5">
-        <div className="bg-white max-w-[700px] ms-auto md:p-10 p-5">
-          <ul className=" space-y-1">
+      <div className="mx-auto max-w-[1448px] px-4 py-5 md:py-8">
+        <div className="absolute bottom-0 start-0 ms-auto w-full max-w-[700px] bg-white p-5 md:p-10">
+          <ul className="space-y-1">
             {data.List.map((item: { Name: string }, index: number) => (
               <li
                 key={index}
-                className="text-primary md:text-2xl text-xl font-medium flex items-center md:gap-5 gap-3"
+                className="flex items-center gap-3 text-xl font-medium text-primary md:gap-5 md:text-2xl"
               >
-                <span className="w-1 h-1 rounded-full bg-primary" />
+                <span className="h-1 w-1 rounded-full bg-primary" />
                 {item.Name}
               </li>
             ))}
@@ -34,11 +34,11 @@ export default function LandScape({ data }: { data: LandScapeProps }) {
 
           <Link
             href={data.Buttonlink}
-            className="mt-10 flex items-center w-fit text-primary text-sm leading-[9px] font-bold bg-Gray05 hover:bg-[#DDDDDD] transition-all duration-500 gap-3 py-3 px-4 rounded-sm "
+            className="mt-10 flex w-fit items-center gap-3 rounded-sm bg-Gray05 px-4 py-3 text-sm font-bold leading-[9px] text-primary transition-all duration-500 hover:bg-[#DDDDDD]"
             target="_blank"
           >
             {t("data.discover_more")}
-            <span className="w-5 h-5 ltr:rotate-180 ">
+            <span className="h-5 w-5 ltr:rotate-180">
               <ArrowLong />
             </span>
           </Link>

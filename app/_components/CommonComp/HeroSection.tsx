@@ -30,12 +30,12 @@ export default function HeroSection({
     }, []);
   return (
     <section
-      className="w-full md:h-[100vh] h-[73vh] relative heroSection overflow-hidden"
+      className="heroSection relative h-[73vh] min-h-[700px] w-full overflow-hidden md:h-[100vh]"
       style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}
     >
       {isVideo ? (
         <video
-          className="absolute inset-0 w-full h-full object-cover scale-150"
+          className="absolute inset-0 h-full w-full scale-150 object-cover"
           autoPlay
           loop
           muted
@@ -73,7 +73,7 @@ export default function HeroSection({
               src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
               alt={data.Media.data.attributes.alternativeText ?? "Image"}
               fill
-              className=" object-contain"
+              className="object-contain"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
@@ -104,11 +104,11 @@ export default function HeroSection({
         {data?.Buttonlink && (
           <Link
             href={`${locale == "en" ? "/en" : ""}${data.Buttonlink}?projectname=${data.subTitle}&utm_source=${utmSource}`}
-            className="text-primary bg-white hover:bg-darkblue hover:text-white transition-all duration-500 flex md:py-[18px] py-2.5 px-4 w-fit mx-auto md:text-base text-sm font-bold md:gap-3 gap-2 rounded-sm"
+            className="mx-auto flex w-fit gap-2 rounded-sm bg-white px-4 py-2.5 text-sm font-bold text-primary transition-all duration-500 hover:bg-darkblue hover:text-white md:gap-3 md:py-[18px] md:text-base"
           >
             {data.ButtonText}
 
-            <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
+            <span className="h-4 w-4 md:h-5 md:w-5 ltr:rotate-180">
               <ArrowLong />
             </span>
           </Link>
@@ -116,10 +116,10 @@ export default function HeroSection({
       </div>
       <Link
         href={"#Overview"}
-        className=" text-white md:text-xl text-xs font-medium text-center   absolute md:bottom-2 lg:bottom-4 bottom-4 flex flex-col md:gap-5 gap-3 w-full z-20"
+        className="absolute bottom-4 z-20 flex w-full flex-col gap-3 text-center text-xs font-medium text-white md:bottom-2 md:gap-5 md:text-xl lg:bottom-4"
       >
         {t("data.scroll_text")}
-        <span className="w-[1px] md:h-[70px] h-[50px] bg-white mx-auto" />
+        <span className="mx-auto h-[50px] w-[1px] bg-white md:h-[70px]" />
       </Link>
     </section>
   );

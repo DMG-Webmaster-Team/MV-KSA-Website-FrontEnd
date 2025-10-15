@@ -10,25 +10,25 @@ export default function SiteMap({ data }: { data: siteMap }) {
   const t = useTranslations();
   return (
     <div
-      className={`max-w-[1910px] mx-auto flex  bg-gray lg:flex-row flex-col-reverse `}
+      className={`mx-auto flex max-w-[1910px] flex-col-reverse bg-gray lg:flex-row`}
     >
-      <div className="lg:w-[50%] w-full 2xl:p-[100px] lg:py-[100px] lg:px-10 md:py-[84px] py-6 px-4 content-center">
+      <div className="w-full content-center px-4 py-6 md:py-[84px] lg:w-[50%] lg:px-10 lg:py-[100px] 2xl:p-[100px]">
         <div className="space-y-5">
-          <h2 className="text-nowrap text-primary xl:text-6xl font-medium lg:leading-[75px] md:text-4xl text-[28px]">
+          <h2 className="text-nowrap text-[28px] font-medium text-primary md:text-4xl lg:leading-[75px] xl:text-5xl">
             {data.Title}
           </h2>
-          <h3 className="text-primary xl:text-5xl text-3xl opacity-50">
+          <h3 className="text-3xl text-primary opacity-50 xl:text-5xl">
             {data.Description}
           </h3>
-          <div className="flex gap-5 ">
+          <div className="flex gap-5">
             {data.Exploremorelink && (
               <Link
                 href={data.Exploremorelink}
                 target="_blank"
-                className=" flex text-primary bg-white md:text-base text-sm w-fit items-center gap-3 py-[18px] font-bold px-3 rounded-sm hover:bg-[#DDDDDD] transition-all duration-500 text-nowrap"
+                className="flex w-fit items-center gap-3 text-nowrap rounded-sm bg-white px-3 py-[18px] text-sm font-bold text-primary transition-all duration-500 hover:bg-[#DDDDDD] md:text-base"
               >
                 {t("data.discover_more")}
-                <span className="w-4 h-4 ltr:rotate-180">
+                <span className="h-4 w-4 ltr:rotate-180">
                   <ArrowLong />
                 </span>
               </Link>
@@ -37,16 +37,16 @@ export default function SiteMap({ data }: { data: siteMap }) {
               <Link
                 href={data.GoogleMapsLink}
                 target="_blank"
-                className=" flex text-primary bg-white  md:text-base text-sm w-fit items-center gap-3 py-[18px] font-bold px-3 rounded-sm hover:bg-[#DDDDDD] transition-all duration-500 text-nowrap"
+                className="flex w-fit items-center gap-3 text-nowrap rounded-sm bg-white px-3 py-[18px] text-sm font-bold text-primary transition-all duration-500 hover:bg-[#DDDDDD] md:text-base"
               >
                 {t("data.google_link")}
-                <span className="w-5 h-5">
+                <span className="h-5 w-5">
                   <GoogleIcon />
                 </span>
               </Link>
             )}
           </div>
-          <div className="flex lg:flex-wrap lg:overflow-auto overflow-x-auto lg:mx-0 -mx-4">
+          <div className="-mx-4 flex overflow-x-auto lg:mx-0 lg:flex-wrap lg:overflow-auto">
             {data.Repeater.map(
               (item: { Title: string; Description: string }, index: number) => {
                 const [number, word] = item.Title.split(" ");
@@ -62,15 +62,15 @@ export default function SiteMap({ data }: { data: siteMap }) {
                         }
                         ${index % 2 == 0 ? "" : " border-s"} `}
                   >
-                    <p className="text-primary flex items-end">
-                      <span className="md:text-[80px] text-[60px] font-Poppins ">
+                    <p className="flex items-end text-primary">
+                      <span className="font-Poppins text-[60px] md:text-[80px]">
                         {number}
                       </span>
-                      <span className="md:text-xl text-sm opacity-50">
+                      <span className="text-sm opacity-50 md:text-xl">
                         {word}
                       </span>
                     </p>
-                    <p className="md:text-sm text-xs text-primary font-medium">
+                    <p className="text-xs font-medium text-primary md:text-sm">
                       {item.Description}
                     </p>
                   </div>
@@ -80,12 +80,12 @@ export default function SiteMap({ data }: { data: siteMap }) {
           </div>
         </div>
       </div>
-      <div className="lg:w-[50%] relative lg:aspect-[800/734] aspect-[822/800] w-full">
+      <div className="relative aspect-[822/800] w-full lg:aspect-[800/734] lg:w-[50%]">
         <Image
           src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url}`}
           alt={data.Image.data.attributes.alternativeText ?? ""}
           fill
-          className=" object-cover"
+          className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
