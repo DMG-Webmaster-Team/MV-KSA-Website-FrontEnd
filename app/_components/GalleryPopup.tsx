@@ -1,15 +1,15 @@
 "use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
+import { useGallerySwiper } from "../hooks/useGallerySwiper";
 import { singleImage } from "./Gallery";
 import ArrowLong from "./SVGS/ArrowLong";
 import Close from "./SVGS/Close";
-import { motion } from "framer-motion";
-import { useGallerySwiper } from "../hooks/useGallerySwiper";
 
 export default function GalleryPopup({
   Images,
@@ -28,40 +28,40 @@ export default function GalleryPopup({
     mainNextRef,
     thumbPrevRef,
     thumbNextRef,
-    goToPrevImage,
-    goToNextImage,
+    // goToPrevImage,
+    // goToNextImage,
   } = useGallerySwiper(Images.length);
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="bg-[#222222] fixed inset-0 w-full z-40 py-[50px] space-y-[60px] h-full"
+      className="fixed inset-0 z-40 h-full w-full space-y-[60px] bg-[#222222] py-[50px]"
     >
       <button
         onClick={onClickHandle}
-        className="p-2 bg-white text-primary rounded-full absolute top-10 right-4 z-10 start-10 flex hover:bg-primary hover:text-white transition-all duration-500"
+        className="absolute start-10 top-10 z-10 flex rounded-full bg-white p-2 text-primary transition-all duration-500 hover:bg-primary hover:text-white"
       >
-        <span className="w-6 h-6">
+        <span className="h-6 w-6">
           <Close />
         </span>
       </button>
       {/* Main Swiper */}
-      <div className="max-w-[1448px] px-4 mx-auto h-[calc(87%-60px)] relative">
-        <div className="flex justify-between items-center absolute w-full inset-0 px-4 z-10">
+      <div className="relative mx-auto h-[calc(87%-60px)] max-w-[1448px] px-4">
+        <div className="absolute inset-0 z-10 flex w-full items-center justify-between px-4">
           <button
             ref={mainPrevRef}
-            className="hover:bg-primary hover:text-Gray05 rounded-full transition-all duration-500 text-primary flex bg-Gray05 p-3"
+            className="flex rounded-full bg-Gray05 p-3 text-primary transition-all duration-500 hover:bg-primary hover:text-Gray05"
           >
-            <span className="w-5 h-5 rtl:rotate-180">
+            <span className="h-5 w-5 rtl:rotate-180">
               <ArrowLong />
             </span>
           </button>
           <button
             ref={mainNextRef}
-            className="text-primary flex bg-Gray05 p-3 hover:bg-primary hover:text-Gray05 rounded-full transition-all duration-500"
+            className="flex rounded-full bg-Gray05 p-3 text-primary transition-all duration-500 hover:bg-primary hover:text-Gray05"
           >
-            <span className="w-5 h-5 ltr:rotate-180">
+            <span className="h-5 w-5 ltr:rotate-180">
               <ArrowLong />
             </span>
           </button>
@@ -73,7 +73,7 @@ export default function GalleryPopup({
             modules={[Navigation, Thumbs]}
             navigation={mainNav}
             thumbs={{ swiper: thumbsSwiper }}
-            className=" h-full"
+            className="h-full"
             slidesPerView={1}
           >
             {Images?.map((image) => (
@@ -91,7 +91,7 @@ export default function GalleryPopup({
       </div>
 
       {/* Thumbs Swiper */}
-      <div className="max-w-[1448px] px-4 mx-auto relative w-fit">
+      <div className="relative mx-auto w-fit max-w-[1448px] px-4">
         <button
           ref={thumbPrevRef}
           onClick={() => {
@@ -100,9 +100,9 @@ export default function GalleryPopup({
               main.slideTo(main.activeIndex - 1);
             }
           }}
-          className=" opacity-0 bg-Gray05 text-primary absolute inset-y-0 start-0 hover:bg-primary hover:text-Gray05 p-2 rounded-full transition flex items-center h-fit m-auto z-10"
+          className="absolute inset-y-0 start-0 z-10 m-auto flex h-fit items-center rounded-full bg-Gray05 p-2 text-primary opacity-0 transition hover:bg-primary hover:text-Gray05"
         >
-          <span className="w-4 h-4 rotate-180">
+          <span className="h-4 w-4 rotate-180">
             <ArrowLong />
           </span>
         </button>
@@ -115,9 +115,9 @@ export default function GalleryPopup({
               main.slideTo(main.activeIndex + 1);
             }
           }}
-          className="opacity-0 bg-Gray05 text-primary absolute inset-y-0 end-0 hover:bg-primary hover:text-Gray05 p-2 rounded-full transition flex items-center h-fit m-auto z-10"
+          className="absolute inset-y-0 end-0 z-10 m-auto flex h-fit items-center rounded-full bg-Gray05 p-2 text-primary opacity-0 transition hover:bg-primary hover:text-Gray05"
         >
-          <span className="w-4 h-4">
+          <span className="h-4 w-4">
             <ArrowLong />
           </span>
         </button>
@@ -136,13 +136,13 @@ export default function GalleryPopup({
             {Images?.map((image) => (
               <SwiperSlide
                 key={image.id}
-                className="relative !w-[107px] !h-20 border-[4px] transition-all duration-500 border-transparent hover:border-Gold"
+                className="relative !h-20 !w-[107px] border-[4px] border-transparent transition-all duration-500 hover:border-Gold"
               >
                 <Image
                   src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${image.attributes.url}`}
                   alt={image.attributes.alternativeText || "Thumbnail"}
                   fill
-                  className="w-full h-auto object-cover cursor-pointer"
+                  className="h-auto w-full cursor-pointer object-cover"
                 />
               </SwiperSlide>
             ))}
