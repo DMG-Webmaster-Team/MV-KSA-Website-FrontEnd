@@ -44,7 +44,7 @@ export default function Widgets({
       const lineHeight = parseInt(
         window.getComputedStyle(contentRef.current).lineHeight || "24"
       );
-      const maxHeight = lineHeight * 4; // 4 lines
+      const maxHeight = lineHeight * 5; // 4 lines
       setIsOverflowing(contentRef.current.scrollHeight > maxHeight);
     }
   }, [mounted, data.Description]);
