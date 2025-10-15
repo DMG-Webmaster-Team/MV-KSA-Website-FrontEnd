@@ -32,17 +32,23 @@ export default function Widgets({
   const t = useTranslations();
   const [expanded, setExpanded] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const contentRef = useRef<HTMLParagraphElement>(null);
-
+  
   useEffect(() => {
-    if (contentRef.current) {
+    setMounted(true); // Ensures client-side render only
+  }, []);
+  
+  useEffect(() => {
+    if (mounted && contentRef.current) {
       const lineHeight = parseInt(
         window.getComputedStyle(contentRef.current).lineHeight || "24"
       );
       const maxHeight = lineHeight * 4; // 4 lines
       setIsOverflowing(contentRef.current.scrollHeight > maxHeight);
     }
-  }, [data.Description]);
+  }, [mounted, data.Description]);
+  
   return (
     <div
       className={`max-w-[1910px] mx-auto flex ${
@@ -80,7 +86,7 @@ export default function Widgets({
               </span>
             </Link>
           )}
-          {isOverflowing && (
+          {mounted && isOverflowing && (
             <button
               className="mt-3 flex w-fit items-center gap-1 border-b border-primary border-opacity-20 py-1 text-sm font-bold text-primary md:text-base"
               onClick={() => setExpanded(!expanded)}

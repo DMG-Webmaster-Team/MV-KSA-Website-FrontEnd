@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -10,24 +10,26 @@ export default function HeroSection({
   data,
   singleProject,
   home,
+  srOnly,
 }: {
   data: HeroSectionProps;
   singleProject?: boolean;
   home?: boolean;
+  srOnly?: boolean;
 }) {
   const t = useTranslations();
   const locale = useLocale();
   const mediaUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media.data.attributes.url}`;
   const isVideo = /\.(mp4|webm)$/i.test(data.Media.data.attributes.url);
-   const [utmSource, setUtmSource] = useState("general");
-  
-    useEffect(() => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const source = urlParams.get("utm_source");
-      if (source) {
-        setUtmSource(source);
-      }
-    }, []);
+  const [utmSource, setUtmSource] = useState("general");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const source = urlParams.get("utm_source");
+    if (source) {
+      setUtmSource(source);
+    }
+  }, []);
   return (
     <section
       className="heroSection relative h-[73vh] min-h-[700px] w-full overflow-hidden md:h-[100vh]"
@@ -79,15 +81,15 @@ export default function HeroSection({
           </div>
         )}
         <div>
-          {/* <h1
+          <h1
             className={`${
               singleProject
                 ? "md:text-[52px] text-4xl"
                 : "lg:text-[100px] lg:leading-[100px] md:text-6xl text-4xl"
-            } text-white   font-medium`}
+            } text-white font-medium ${srOnly?"sr-only":""}`}
           >
             {data.Title}
-          </h1> */}
+          </h1>
           <p
             className={`${
               singleProject
@@ -103,7 +105,9 @@ export default function HeroSection({
 
         {data?.Buttonlink && (
           <Link
-            href={`${locale == "en" ? "/en" : ""}${data.Buttonlink}?projectname=${data.subTitle}&utm_source=${utmSource}`}
+            href={`${locale == "en" ? "/en" : ""}${
+              data.Buttonlink
+            }?projectname=${data.subTitle}&utm_source=${utmSource}`}
             className="mx-auto flex w-fit gap-2 rounded-sm bg-white px-4 py-2.5 text-sm font-bold text-primary transition-all duration-500 hover:bg-darkblue hover:text-white md:gap-3 md:py-[18px] md:text-base"
           >
             {data.ButtonText}

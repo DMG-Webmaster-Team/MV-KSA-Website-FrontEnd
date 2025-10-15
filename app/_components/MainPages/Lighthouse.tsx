@@ -11,27 +11,27 @@ import { LighthouseWidgetProps } from "@/app/types/LighthouseWidget";
 export default function LighthousePage({ data }: LighthousePageProps) {
   return (
     <>
-      <HeroSection data={data.HeroSection} />
-      <div className="flex max-w-[1448px] px-4 mx-auto items-start md:py-20 py-10  xl:gap-[100px] md:gap-[50px] gap-10 lg:flex-row flex-col">
-        <div className="xl:w-[calc(50%-50px)] md2:w-[calc(50%-25px)] w-full">
+      <HeroSection data={data.HeroSection} srOnly />
+      <div className="mx-auto flex max-w-[1448px] flex-col items-start gap-10 px-4 py-10 md:gap-[50px] md:py-20 lg:flex-row xl:gap-[100px]">
+        <div className="w-full md2:w-[calc(50%-25px)] xl:w-[calc(50%-50px)]">
           <OverviewSection data={data.OverviewSection} FullWidth />
         </div>
-        <div className="xl:w-[calc(50%-50px)] lg:w-[calc(50%-25px)] w-full flex flex-col md:gap-5 gap-2">
+        <div className="flex w-full flex-col gap-2 md:gap-5 lg:w-[calc(50%-25px)] xl:w-[calc(50%-50px)]">
           {data.Repeater.map((item: Repeater, index: number) => (
             <TextComp data={item} key={index} />
           ))}
         </div>
       </div>
-      <div className=" bg-gray md:py-20 py-10 relative">
-        <div className="max-w-[1448px] px-4 mx-auto mb-12">
-          <h2 className=" text-primary md:text-[60px] text-4xl font-medium">
+      <div className="relative bg-gray py-10 md:py-20">
+        <div className="mx-auto mb-12 max-w-[1448px] px-4">
+          <h2 className="text-4xl font-medium text-primary md:text-[60px]">
             {data.Whatweserve.Title}
           </h2>
         </div>
         <SlickMultipleItems>
           {data.Whatweserve.Widgets.map(
             (item: LighthouseWidgetProps, index: number) => (
-              <div key={index} className="md:w-[440px] flex-mobile">
+              <div key={index} className="flex-mobile md:w-[440px]">
                 <LighthouseWidget data={item} />
               </div>
             )
