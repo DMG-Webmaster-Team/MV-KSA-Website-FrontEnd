@@ -1,11 +1,9 @@
 "use client";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import Arrow from "../SVGS/Arrow";
+import { useEffect, useRef, useState } from "react"; // Import useRef
 import Circle from "../SVGS/Circle"; // We will use your Circle component again
 import Close from "../SVGS/Close";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react"; // Import useRef
 
 export interface SingleCompoundProps {
   Years: string;
@@ -27,7 +25,7 @@ interface SingleCompoundDetailsProps {
   lastone?: boolean;
   open: boolean;
   onClose: () => void;
-  onOpen: (index: number) => void;
+  onOpen?: (index: number) => void;
 }
 
 export default function CompoundComponent({
@@ -36,9 +34,9 @@ export default function CompoundComponent({
   lastone,
   open,
   onClose,
-  onOpen,
+  // onOpen,
 }: SingleCompoundDetailsProps) {
-  const t = useTranslations();
+  // const t = useTranslations();
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -228,12 +226,12 @@ export default function CompoundComponent({
             </span>
             <h3 className=" text-2xl font-medium text-primary">{item.Title}</h3>
             <p
-              className="text-sm font-medium text-primary"
+              className="text-lg font-medium text-primary"
               dangerouslySetInnerHTML={{
                 __html: item?.WidgetDetails?.replace(/\n/g, "</br>"),
               }}
             ></p>
-            <p className="lg:text-xl md:text-lg text-sm text-primary">
+            <p className="md:text-lg text-sm text-primary">
               {item.PopupDetails}
             </p>
           </div>
