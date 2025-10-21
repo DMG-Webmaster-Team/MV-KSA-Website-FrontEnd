@@ -122,7 +122,7 @@ export default function OurStory({ data }: Props) {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[880px] py-20">
+      <div className="mx-auto max-w-[1080px] py-20">
         {data?.Compounds?.Title && (
           <h2 className="text-center text-[36px] font-medium text-primary md:text-[60px]">
             {data.Compounds.Title}

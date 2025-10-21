@@ -1,10 +1,8 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import Arrow from "../SVGS/Arrow";
 import Circle from "../SVGS/Circle";
 import Close from "../SVGS/Close";
-import { motion, AnimatePresence } from "framer-motion";
 
 export interface SingleCompoundProps {
   Years: string;
@@ -35,9 +33,8 @@ export default function CompoundComponent({
   lastone,
   open,
   onClose,
-  onOpen,
-}: SingleCompoundDetailsProps) {
-  const t = useTranslations();
+}: // onOpen,
+SingleCompoundDetailsProps) {
   return (
     <>
       <div
@@ -72,14 +69,14 @@ export default function CompoundComponent({
             </span>
             <h3 className=" text-2xl font-medium text-primary">{item.Title}</h3>
             <p
-              className="text-sm font-medium text-primary"
+              className="text-lg font-medium text-primary"
               dangerouslySetInnerHTML={{
                 __html: item?.WidgetDetails?.replace(/\n/g, "</br>"),
               }}
             ></p>
-               <p className="lg:text-xl md:text-lg text-sm text-primary">
-                  {item.PopupDetails}
-                </p>
+            <p className="md:text-base text-sm text-primary">
+              {item.PopupDetails}
+            </p>
             {/* <button
               onClick={() => onOpen(index)}
               className=" text-primary flex gap-1 text-base font-bold mt-1 border-b border-primary border-opacity-20 w-fit hover:border-opacity-100 transition-all duration-500"
