@@ -1,13 +1,11 @@
 "use client";
+import { ScienceOfHappinessPageProps } from "@/app/types/Pages";
+import Image from "next/image";
 import { useState } from "react";
 import HeroSection from "../CommonComp/HeroSection";
-import OverviewSection, {
-  OverviewSectionProps,
-} from "../CommonComp/OverviewSection";
+import OverviewSection from "../CommonComp/OverviewSection";
 import SingleAccordion from "../CommonComp/SingleAccordion";
 import { Repeater } from "../CommonComp/TextComp";
-import Image from "next/image";
-import { ScienceOfHappinessPageProps } from "@/app/types/Pages";
 
 
 export default function ScienceOfHappinessPage({ data }: ScienceOfHappinessPageProps) {
@@ -54,7 +52,7 @@ export default function ScienceOfHappinessPage({ data }: ScienceOfHappinessPageP
         </div>
       </div>
       <div className="max-w-[1448px] mx-auto px-4 md:py-20 py-10">
-        <h2 className=" text-primary lg:text-4xl md:text-2xl text-base font-medium text-center">
+        <h2 className=" text-primary md:text-2xl text-base font-medium text-center">
           {data.TextSection.Title}
         </h2>
         <p className=" text-center lg:text-4xl md:text-2xl text-base mt-6 text-primary opacity-50">
