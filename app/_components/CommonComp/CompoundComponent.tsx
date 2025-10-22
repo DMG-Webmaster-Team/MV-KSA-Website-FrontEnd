@@ -104,12 +104,21 @@ SingleCompoundDetailsProps) {
                 <h3 className=" text-2xl font-medium text-primary">
                   {item.Title}
                 </h3>
-                <p
-                  className="text-lg font-medium text-primary"
-                  dangerouslySetInnerHTML={{
-                    __html: item?.WidgetDetails?.replace(/\n/g, "</br>"),
-                  }}
-                ></p>
+                {item.WidgetDetails && (
+                  <div
+                    className="rtl:text-lg ltr:text-xl font-medium text-primary"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        item?.WidgetDetails?.replace(
+                          /^#### (.+)$/gm,
+                          "</p></div><h4 class='text-lg rtl:font-semibold ltr:font-bold mb-2'>$1</h4><div><p>"
+                        )
+                          .replace(/\n/g, "</p><p>")
+                          .replace(/<p><\/p>/g, "")
+                          .replace(/<p>$/, "") + "</p>",
+                    }}
+                  />
+                )}
                 <p className="md:text-base text-sm text-primary">
                   {item.PopupDetails}
                 </p>
@@ -252,8 +261,8 @@ SingleCompoundDetailsProps) {
                           "</p></div><h4 class='text-lg rtl:font-semibold ltr:font-bold mb-2'>$1</h4><div><p>"
                         )
                           .replace(/\n/g, "</p><p>")
-                          .replace(/<p><\/p>/g, "") // remove empty <p></p> pairs
-                          .replace(/<p>$/, "") + "</p>", // remove trailing opening <p>
+                          .replace(/<p><\/p>/g, "")
+                          .replace(/<p>$/, "") + "</p>",
                     }}
                   />
                 )}
