@@ -1,12 +1,11 @@
-import { NextIntlClientProvider, createTranslator } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 import Footer from "../_components/Footer/BottomComponent";
 import HeaderComp from "../_components/Header/HeaderComp";
-import "../globals.css";
 import { tajwal } from "../fonts";
-import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import "../globals.css";
 
 type Props = {
   children: ReactNode;
@@ -21,9 +20,8 @@ async function getMessages(locale: string): Promise<Record<string, string>> {
   }
 }
 
-export async function generateMetadata(props: Promise<{ params: { locale: string } }>
-) {
-  const t = await getTranslations('LocaleLayout');
+export async function generateMetadata() {
+  const t = await getTranslations("LocaleLayout");
 
   return {
     title: t("title"),
@@ -45,7 +43,7 @@ export async function generateMetadata(props: Promise<{ params: { locale: string
 }
 
 export default async function RootLayout({ children, params }: Props) {
-  const {locale} = await params;
+  const { locale } = await params;
   const messages = await getMessages(locale);
   const direction = locale === "ar" ? "rtl" : "ltr";
 
