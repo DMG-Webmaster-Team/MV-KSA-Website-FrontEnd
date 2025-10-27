@@ -1,12 +1,11 @@
 "use client";
+import { ContactUsProps } from "@/app/types/Pages";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import ContactUsForm from "../Forms/ContactUsForm";
-import { ContactUsProps } from "@/app/types/Pages";
 
 export default function ContactUs({ data }: ContactUsProps) {
   const t = useTranslations();
-  console.log(data)
   return (
     <div>
       <div className="md:py-20 py-10 text-center space-y-6">

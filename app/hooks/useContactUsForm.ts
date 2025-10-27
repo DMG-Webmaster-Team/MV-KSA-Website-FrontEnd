@@ -27,7 +27,45 @@ export const useContactUsForm = () => {
     utmSource: "",
     city: "",
     budget: "",
+  };
+  // Modify the sendToZapier function to return false on error instead of throwing
+  const sendToZapier = async (formData: {
+    fullname: string;
+    mobile: string;
+    email: string;
+    message: string;
+    city?: string;
+    budget?: string;
+    utmSource?: string;
+  }) => {
+    try {
+      const zapierUrl = `https://hooks.zapier.com/hooks/catch/2694313/urwjmjp/?fullname=${encodeURIComponent(
+        formData.fullname
+      )}&mobile=${encodeURIComponent(
+        formData.mobile
+      )}&email=${encodeURIComponent(
+        formData.email
+      )}&message=${encodeURIComponent(formData.message)}${
+        formData.city ? `&city=${encodeURIComponent(formData.city)}` : ""
+      }${
+        formData.budget ? `&budget=${encodeURIComponent(formData.budget)}` : ""
+      }${
+        formData.utmSource
+          ? `&source=${encodeURIComponent(formData.utmSource)}`
+          : ""
+      }`;
 
+      const response = await fetch(zapierUrl, { method: "GET" });
+
+      if (!response.ok) {
+        throw new Error("Failed to send data to Zapier");
+      }
+
+      return true;
+    } catch (error) {
+      console.error("Error sending data to Zapier:", error);
+      return false; // Return false instead of throwing error
+    }
   };
 
   const validationSchema = Yup.object().shape({
@@ -65,7 +103,6 @@ export const useContactUsForm = () => {
           utmSource: values.utmSource,
           city: values.city,
           budget: values.budget,
-
         })
       );
 
@@ -80,6 +117,30 @@ export const useContactUsForm = () => {
       const responseJson = await res.json();
       console.log("Success:", responseJson);
 
+      // Send data to Zapier, but don't let it stop execution if it fails
+      try {
+        const zapierResult = await sendToZapier({
+          fullname: values.fullName,
+          mobile: values.mobile,
+          email: values.email,
+          message: values.message,
+          city: values.city,
+          budget: values.budget,
+          utmSource: values.utmSource,
+        });
+
+        if (!zapierResult) {
+          console.log(
+            "Zapier integration failed, but continuing with form submission"
+          );
+        }
+      } catch (zapierError) {
+        // Catch any unexpected errors from Zapier call here
+        console.error("Zapier integration error:", zapierError);
+        // Continue with form submission even if Zapier fails
+      }
+
+      // Continue regardless of Zapier success/failure
       if (res.ok) {
         setIsSubmitted(true);
       } else {
