@@ -13,17 +13,21 @@ export default function PartnerShipSection({
       <h2 className=" text-primary text-center md:text-[52px] md:leading-[65px] text-[28px] font-medium">
         {data.Title}
       </h2>
-      <Link
-        href={data.Link}
-        target="_blank"
-        className="md:w-[207px] w-[150px] relative mx-auto aspect-[208/300] block"
-      >
-        <Image
-          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
-          alt={data.Logo.data.attributes.alternativeText ?? "logo partner"}
-          fill
-        />
-      </Link>
+      {data.Logo?.data?.map((logoItem: any) => (
+        <Link
+          key={logoItem.id}
+          href={data.Link}
+          target="_blank"
+          className="md:w-[207px] w-[150px] relative mx-auto aspect-[208/300] block"
+        >
+          <Image
+            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${logoItem.attributes.url}`}
+            alt={logoItem.attributes.alternativeText ?? "partner logo"}
+            fill
+            className="object-contain"
+          />
+        </Link>
+      ))}
     </div>
   );
 }

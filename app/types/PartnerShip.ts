@@ -7,7 +7,7 @@ export interface PartnerShipProps {
                 url: string;
                 alternativeText: string;
             };
-        };
+        }[]
     }
 }
 export interface LandScapeProps {
