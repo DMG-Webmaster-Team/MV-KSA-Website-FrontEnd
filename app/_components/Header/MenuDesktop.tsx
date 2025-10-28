@@ -72,17 +72,33 @@ export default function MenuDesktop({
                   )}
 
                   <div className="h-[90px] w-[90px] overflow-hidden rounded-md">
-                    {item.Media?.data?.attributes?.url && (
-                      <video
-                        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Media.data.attributes.url}`}
-                        muted
-                        autoPlay
-                        loop
-                        playsInline
-                        className="h-full w-full object-cover"
-                        aria-hidden="true"
-                      />
-                    )}
+                  {item.Media?.data?.attributes?.url && (() => {
+  const url = item.Media.data.attributes.url;
+  const isVideo = url.toLowerCase().endsWith(".mp4");
+
+  if (isVideo) {
+    return (
+      <video
+        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`}
+        muted
+        autoPlay
+        loop
+        playsInline
+        className="h-full w-full object-cover"
+        aria-hidden="true"
+      />
+    );
+  } else {
+    return (
+      <img
+        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`}
+        alt="media"
+        className="h-full w-full object-cover"
+      />
+    );
+  }
+})()}
+
                   </div>
                   <div className="w-[calc(100%-90px-12px)] space-y-1 text-xl font-medium text-primary">
                     <h4 className="">{item.Title}</h4>
