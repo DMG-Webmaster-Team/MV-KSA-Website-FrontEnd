@@ -15,13 +15,13 @@ export interface UseProjectsFiltersReturn {
 }
 
 interface UseProjectsFiltersProps {
-  allProjects: Project[];
+  projects: Project[];
   viewCategories: FilterCategory[];
   locationCategories?: FilterCategory[]; // Add location categories
 }
 
 export function useProjectsFilters({
-  allProjects,
+  projects,
   viewCategories,
   locationCategories = [],
 }: UseProjectsFiltersProps): UseProjectsFiltersReturn {
@@ -61,7 +61,10 @@ export function useProjectsFilters({
         );
         if (mappedLocationName) {
           setSelectedFilterLocation(mappedLocationName);
-        } else if (locationQuery === "all" || locationQuery === "all-locations") {
+        } else if (
+          locationQuery === "all" ||
+          locationQuery === "all-locations"
+        ) {
           setSelectedFilterLocation("All Locations");
         } else {
           setSelectedFilterLocation("All Locations");
@@ -72,42 +75,60 @@ export function useProjectsFilters({
 
       setIsInitialized(true);
     }
-  }, [viewQuery, locationQuery, viewCategories, locationCategories, isInitialized]);
+  }, [
+    viewQuery,
+    locationQuery,
+    viewCategories,
+    locationCategories,
+    isInitialized,
+  ]);
 
-  const filteredProjects = allProjects.filter((project) => {
+  const filteredProjects = projects.filter((project, index) => {
+    // Filter by selected view
     if (selectedFilter && selectedFilter !== "All Views") {
-      const projectViewName = project.view?.data?.attributes?.Name;
+      const projectViewName =
+        project?.attributes.project_view?.data?.attributes?.view;
+
       if (!slugEquals(projectViewName, selectedFilter)) {
+        console.log("❌ Filtered out by view");
         return false;
+      } else {
+        console.log("✅ Passed view filter");
       }
+    } else {
+      console.log("⏭️ Skipping view filter (All Views selected)");
     }
 
+    // Filter by location
     if (selectedFilterLocation && selectedFilterLocation !== "All Locations") {
       const projectLocationName =
-        project.location?.data?.attributes?.Name;
+        project?.attributes.project_location?.data?.attributes?.name;
+
       if (projectLocationName !== selectedFilterLocation) {
         return false;
+      } else {
+        console.log("✅ Passed location filter");
       }
+    } else {
+      console.log("⏭️ Skipping location filter (All Locations selected)");
     }
 
-    if (isOnSaleOnly && !project.Onsale) {
+    if (isOnSaleOnly && !project?.Onsale) {
+      console.log(" Filtered out because not on sale");
       return false;
+    } else {
+      console.log(" Passed on-sale filter");
     }
 
+    console.log(" Project included in filtered list");
     return true;
   });
 
   const sortedProjects =
     selectedFilter === "All Views"
       ? [...filteredProjects].sort((a, b) => {
-          const aDate =
-            a.createdAt ||
-            a.updatedAt ||
-            a.publishedAt;
-          const bDate =
-            b.createdAt ||
-            b.updatedAt ||
-            b.publishedAt;
+          const aDate = a.createdAt || a.updatedAt || a.publishedAt;
+          const bDate = b.createdAt || b.updatedAt || b.publishedAt;
 
           if (aDate && bDate) {
             return new Date(bDate).getTime() - new Date(aDate).getTime();
@@ -151,7 +172,8 @@ export function useProjectsFilters({
   };
 
   const handleLocationFilterClick = (filter: string) => {
-    const normalizedLocation = filter === "All Locations" ? "All Locations" : filter;
+    const normalizedLocation =
+      filter === "All Locations" ? "All Locations" : filter;
     setSelectedFilterLocation(normalizedLocation);
     updateURL(undefined, normalizedLocation);
   };

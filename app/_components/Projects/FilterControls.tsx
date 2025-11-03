@@ -25,6 +25,7 @@ export default function FilterControls({
   onToggleOnSale,
   onOpenFilterModal,
 }: FilterControlsProps) {
+  console.log(selectedFilter)
   return (
     <div className="flex flex-row justify-between items-center gap-5 md:py-10 py-5 lg:mx-10 md:mx-5 mx-4">
       <div className="flex flex-row items-center md:gap-5 gap-2">

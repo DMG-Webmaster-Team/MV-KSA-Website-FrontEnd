@@ -13,11 +13,28 @@ interface ImageData {
 interface CategoryData {
   data: {
     attributes: {
-      Name: string;
+      view: string;
     };
   };
 }
-
+interface LocationData {
+  data: {
+    attributes: {
+      name: string;
+    };
+  };
+}
+interface HeroSection {
+  Title: string;
+  ShortDescription: string;
+  Media: {
+  data: {
+    attributes: {
+      url: string;
+      alternativeText: string;
+    };
+  };}
+}
 interface ProjectAttributes {
   Title: string;
   Description: string;
@@ -29,6 +46,9 @@ interface ProjectAttributes {
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
+  HeroSection:HeroSection;
+  project_view?: CategoryData;
+project_location?: LocationData;
 }
 
 export interface Project {
@@ -41,7 +61,12 @@ export interface Project {
   location?: CategoryData;
   createdAt?: string;
   updatedAt?: string;
-  publishedAt?: string;}
+  publishedAt?: string;
+project_view?: CategoryData;
+project_location?: LocationData;
+attributes: ProjectAttributes;
+
+}
 
 export interface JirianProject {
   attributes: ProjectAttributes;
@@ -63,14 +88,14 @@ export interface FilterCategory {
 
 export interface UseProjectsDataReturn {
   projectPageData: any;
-  allProjects: Project[];
+  projects: Project[];
   isLoading: boolean;
   error: string | null;
   viewCategories: FilterCategory[];
   locationCategories: FilterCategory[];
 }
 
-export function useProjectsData(): UseProjectsDataReturn {
+export function useProjectsData(projects: Project []){
   const [projectPageData, setProjectPageData] =
     useState<ProjectPageData | null>(null);
   const [regularProjects, setRegularProjects] = useState<Project[]>([]);
@@ -107,29 +132,29 @@ export function useProjectsData(): UseProjectsDataReturn {
 //   }, [isArabic]);
 
   // Combine all projects - Jirian is fetched separately and will be handled in the filter logic
-  const allProjects: Project[] = [
-    ...regularProjects,
-  ];
+  // const projects: Project[] = [
+  //   ...regularProjects,
+  // ];
 
   const viewCategories: FilterCategory[] = Array.from(
     new Set(
-      allProjects
-        .map((project) => project.view?.data?.attributes?.Name)
+      projects
+        .map((project) => project.project_view?.data?.attributes?.view)
         .filter(Boolean)
     )
   ).map((name) => ({ name: name! }));
 
   const locationCategories: FilterCategory[] = Array.from(
     new Set(
-      allProjects
-        .map((project) => project.location?.data?.attributes?.Name)
+      projects
+        .map((project) => project.project_location?.data?.attributes?.name)
         .filter(Boolean)
     )
   ).map((name) => ({ name: name! }));
 
   return {
     projectPageData,
-    allProjects,
+    projects,
     isLoading,
     error,
     viewCategories,

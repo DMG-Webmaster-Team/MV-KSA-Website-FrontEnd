@@ -3,6 +3,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowRight from "../SVGS/ArrowRight";
+import { useLocale } from "next-intl";
 
 
 
@@ -35,8 +36,8 @@ export default function CommunitiesPage({
     events: any;
     meta: any;
   }
+  const locale = useLocale();
 
-console.log(data)
   return (
     <LazyMotion features={domAnimation}>
       <section className="relative mx-auto h-[80vh] custom:h-[100vh] md:h-[90vh] min-h-[620px]">
@@ -110,7 +111,8 @@ console.log(data)
               >
                 <Link
                   prefetch={false}
-                  href={`/projects`}
+                  href={`${locale == "en" ? "/en/" : "/"}projects`}
+
                   className="text-center"
                 >
                   <div className="flex items-center gap-x-1 gap-y-2.5">
@@ -192,7 +194,7 @@ console.log(data)
                     <div className="md:p-10 px-4 py-6 md:py-0">
                       <Link
                         prefetch={false}
-                        href={`/projects?view=${item.attributes.name.toLowerCase().replace(
+                        href={`${locale == "en" ? "/en/" : "/"}projects?view=${item.attributes.name.toLowerCase().replace(
                           /\s+/g,
                           "-"
                         )}`}
@@ -227,7 +229,7 @@ console.log(data)
                         >
                           <Link
                             prefetch={false}
-                            href={`/projects?view=${item.attributes.name.toLowerCase().replace(
+                            href={`${locale == "en" ? "/en/" : "/"}projects?view=${item.attributes.name.toLowerCase().replace(
                               /\s+/g,
                               "-"
                             )}`}
@@ -261,7 +263,7 @@ console.log(data)
                 >
                   <Link
                     prefetch={false}
-                    href={`/projects/${item.attributes.name.toLowerCase().replace(
+                    href={`${locale == "en" ? "/en/" : "/"}projects/${item.attributes.name.toLowerCase().replace(
                       /\s+/g,
                       "-"
                     )}`}

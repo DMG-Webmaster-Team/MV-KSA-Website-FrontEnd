@@ -23,16 +23,17 @@ const variants = {
 export default function ProjectsPage({
   data,
   List,
-  Locations
+  Locations,
+  projects
 }: any) {
   const [showFilterModal, setShowFilterModal] = useState(false);
 
   const {
-    allProjects,
+    // allProjects,
     error,
     viewCategories,
     locationCategories,
-  } = useProjectsData();
+  } = useProjectsData(projects);
 
   const {
     selectedFilter,
@@ -43,7 +44,7 @@ export default function ProjectsPage({
     handleLocationFilterClick,
     handleToggleOnSale,
   } = useProjectsFilters({
-    allProjects,
+    projects,
     viewCategories,
     locationCategories,
   });
@@ -64,6 +65,8 @@ export default function ProjectsPage({
   }
   console.log(data)
   console.log(viewCategories)
+  console.log(filteredProjects)
+
 
   return (
     <>
@@ -137,10 +140,11 @@ export default function ProjectsPage({
             onLocationFilterClick={handleLocationFilterClick}
           />
 
-          {/* {filteredProjects.length > 0 ? (
-            filteredProjects.map((project, index) => ( */}
-             {data?.Widgets?.length > 0 ? (
-            data.Widgets.map((project:Project, index:any) => (
+       
+             {/* {data?.Widgets?.length > 0 ? (
+            data.Widgets.map((project:Project, index:any) => ( */}
+            {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
               <ProjectCard
                 // key={`${project.attributes.slug}-${index}`}
                 key={`${index}`}

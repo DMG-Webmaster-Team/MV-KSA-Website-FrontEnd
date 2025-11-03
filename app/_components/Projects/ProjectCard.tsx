@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowRight from "../SVGS/ArrowRight";
 import { Project } from "@/app/hooks/useProjectsData";
+import { useLocale } from "next-intl";
 
 interface ProjectCardProps {
   project: Project;
@@ -17,7 +18,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, index, variants,projectView ,projectLocation}: ProjectCardProps) {
   const isEven = index % 2 === 0;
-  console.log(project)
+  const locale = useLocale();
   return (
     <m.div
       className={`flex flex-col ${
@@ -29,10 +30,10 @@ export default function ProjectCard({ project, index, variants,projectView ,proj
       variants={isEven ? variants.left : variants.right}
     >
       <div className="relative md:w-1/2 aspect-[756/800]">
-        {project?.Image?.data && (
+        {project?.attributes.HeroSection.Media?.data.attributes.url && (
           <Image
-            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${project.Image.data.attributes.url}`}
-            alt={project.Image.data.attributes.alternativeText ?? `${project.Title} Cover`}
+            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${project.attributes.HeroSection.Media?.data.attributes.url}`}
+            alt={project.attributes.HeroSection.Media?.data.attributes.alternativeText ?? `${project.Title} Cover`}
             fill
             className="object-cover w-full"
           />
@@ -61,16 +62,16 @@ export default function ProjectCard({ project, index, variants,projectView ,proj
           </div>
 
           <h2 className="text-primary-100 text-balance md:w-full w-[75%] font-normal pt-2 lg:text-[75px] md:text-5xl text-[44px] ml-2 lg:leading-[96px] md:leading-[66px] leading-[52.8px]">
-            {project.Title}
+            {project.attributes.HeroSection.Title}
           </h2>
 
           <p className="text-[#AAAAAA] text-pretty font-normal py-2 ml-2 lg:text-[25px] md:text-xl text-base leading-[22px] lg:leading-[38px] md:leading-[28px]">
-            {project.Description}
+            {project.attributes.HeroSection.ShortDescription}
           </p>
 
           <Link
             prefetch={false}
-            href={`/projects/${project.slug}`}
+            href={`${locale == "en" ? "/en/" : "/"}projects/${project.attributes.slug}`}
             className="gap-[6px] hover:gap-3 transition-all duration-300 ease-in-out ml-2 py-2 flex items-center text-primary-200"
           >
             <p className="text-primary-200 font-bold md:text-base text-sm md:leading-[24px] md:pb-0 pb-[2px] leading-5 uppercase pt-1">
