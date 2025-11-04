@@ -1,6 +1,8 @@
 import { m } from "framer-motion";
 import { FilterCategory } from "@/app/hooks/useProjectsData";
 import ProjectsFilter from "./ProjectsFilter";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 interface FilterControlsProps {
   viewCategories: FilterCategory[];
@@ -25,33 +27,34 @@ export default function FilterControls({
   onToggleOnSale,
   onOpenFilterModal,
 }: FilterControlsProps) {
-  console.log(selectedFilter)
+  const t = useTranslations();
+
   return (
     <div className="flex flex-row justify-between items-center gap-5 md:py-10 py-5 lg:mx-10 md:mx-5 mx-4">
       <div className="flex flex-row items-center md:gap-5 gap-2">
         <div className="hidden md:flex flex-row gap-5">
           <div className="flex flex-row items-center md:gap-5 gap-2">
             <div className="flex flex-col md:flex-row items-baseline">
-              <h3 className="lg:text-[30px] md:text-base text-sm font-normal lg:leading-[38px] md:leading-7 pr-3 text-[#AAAAAA]">
-                View
+              <h3 className="lg:text-[30px] md:text-base text-sm font-normal lg:leading-[38px] md:leading-7 pe-3 text-[#AAAAAA]">
+               {t("data.view")} 
               </h3>
               <ProjectsFilter
                 List={viewCategories}
                 setSelectedFilter={onFilterClick}
                 selectedFilter={selectedFilter || ""}
-                allName="All Views"
+                allName={t("data.all-view")} 
               />
             </div>
 
             <div className="flex md:flex-row flex-col items-baseline">
-              <h3 className="lg:text-[30px] md:text-base text-sm font-normal lg:leading-[38px] md:leading-7 pr-3 text-[#AAAAAA]">
-                communities in
+              <h3 className="lg:text-[30px] md:text-base text-sm font-normal lg:leading-[38px] md:leading-7 pe-3 text-[#AAAAAA]">
+             {t("data.communities")} 
               </h3>
               <ProjectsFilter
                 List={locationCategories}
                 setSelectedFilter={onLocationFilterClick}
                 selectedFilter={selectedFilterLocation || ""}
-                allName="All Locations"
+                allName={t("data.all-locations")} 
               />
             </div>
           </div>
@@ -62,7 +65,7 @@ export default function FilterControls({
             className="text-[#003DA6] cursor-pointer"
             onClick={onOpenFilterModal}
           >
-            Filter
+            {t("data.filter")} 
           </h3>
         </div>
       </div>
@@ -75,7 +78,7 @@ export default function FilterControls({
         viewport={{ once: true }}
       >
         <p className="text-[#AAAAAA] md:text-sm text-xs leading-4 mt-1 md:font-medium font-light uppercase">
-          Available for Sale
+         {t("data.isOnSale")} 
         </p>
         <label className="inline-flex items-center cursor-pointer">
           <input

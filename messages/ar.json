@@ -33,7 +33,16 @@
     "enter_your_email": "أدخل عنوان بريدك الإلكتروني",
     "success": "تم الاشتراك بنجاح!",
     "error": "فشل الإرسال",
-    "went_wrong": "حدث خطأ ما"
+    "went_wrong": "حدث خطأ ما",
+
+    "view": "منظر",
+    "all-view": "جميع المشاهدات",
+    "communities": " في المجتمعات ",
+    "all-locations": "جميع المواقع",
+    "filter": "تصفية",
+    "isOnSale": "متاح للبيع",
+    "discover-projects": "اكتشف المشاريع "
+
   },
   "Menu": {
     "home": "الرئيسية",

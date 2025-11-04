@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowRight from "../SVGS/ArrowRight";
 import { Project } from "@/app/hooks/useProjectsData";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 interface ProjectCardProps {
   project: Project;
@@ -19,6 +19,8 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index, variants,projectView ,projectLocation}: ProjectCardProps) {
   const isEven = index % 2 === 0;
   const locale = useLocale();
+    const t = useTranslations();
+  
   return (
     <m.div
       className={`flex flex-col ${
@@ -75,10 +77,10 @@ export default function ProjectCard({ project, index, variants,projectView ,proj
             className="gap-[6px] hover:gap-3 transition-all duration-300 ease-in-out ml-2 py-2 flex items-center text-primary-200"
           >
             <p className="text-primary-200 font-bold md:text-base text-sm md:leading-[24px] md:pb-0 pb-[2px] leading-5 uppercase pt-1">
-              Discover More
+            {t("data.discover-projects")} 
             </p>
             <span className="w-5 h-5">
-              <ArrowRight />
+              <ArrowRight className="rtl:rotate-180"/>
             </span>
           </Link>
         </div>

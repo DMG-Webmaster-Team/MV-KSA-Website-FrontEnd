@@ -3,7 +3,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowRight from "../SVGS/ArrowRight";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 
 
@@ -37,6 +37,7 @@ export default function CommunitiesPage({
     meta: any;
   }
   const locale = useLocale();
+  const t = useTranslations();
 
   return (
     <LazyMotion features={domAnimation}>
@@ -117,10 +118,10 @@ export default function CommunitiesPage({
                 >
                   <div className="flex items-center gap-x-1 gap-y-2.5">
                     <span className="font-bold text-base uppercase leading-[24px]">
-                      Discover Projects
+                     {t("data.discover-projects")}   
                     </span>
                     <span className="w-5 h-5">
-                      <ArrowRight />
+                      <ArrowRight className="rtl:rotate-180"/>
                     </span>
                   </div>
                 </Link>
@@ -239,10 +240,10 @@ export default function CommunitiesPage({
                               <span className="font-bold text-base uppercase leading-[24px]">
                                 {item.attributes.ButtonTitle
                                   ? item.attributes.ButtonTitle
-                                  : "Discover Projects"}
+                                  : t("data.discover-projects") }
                               </span>
                               <span className="w-5 h-5">
-                                <ArrowRight />
+                                <ArrowRight className="rtl:rotate-180"/>
                               </span>
                             </div>
                           </Link>

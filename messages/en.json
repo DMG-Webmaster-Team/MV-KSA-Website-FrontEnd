@@ -32,7 +32,17 @@
     "enter_your_email": "Enter your email",
     "success": "Successfully subscribed!",
     "error": "Submission failed",
-    "went_wrong": "Something went wrong"
+    "went_wrong": "Something went wrong",
+
+    "view": "View",
+    "all-view": "All Views",
+    "communities": "Communities in",
+    "all-locations": "All Locations",
+    "filter": "Filter",
+    "isOnSale": "Available for Sale",
+    "discover-projects": "Discover Projects"
+
+
   },
   "Menu": {
     "home": "Home",

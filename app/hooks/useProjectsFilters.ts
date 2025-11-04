@@ -2,6 +2,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ensureFilterNameFromSlug, slugEquals, slugify } from "../../utils/helpers";
 import { FilterCategory, Project } from "./useProjectsData";
+import { useTranslations } from "next-intl";
 
 export interface UseProjectsFiltersReturn {
   selectedFilter: string | null;
@@ -36,23 +37,22 @@ export function useProjectsFilters({
   >(null);
   const [isOnSaleOnly, setIsOnSaleOnly] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
+  const t = useTranslations();
 
   // Initialize filters from URL params
- useEffect(() => {
-
+useEffect(() => {
   if (!isInitialized && viewCategories.length > 0) {
-
     // --- VIEW FILTER SETUP ---
     const mappedName = ensureFilterNameFromSlug(viewQuery, viewCategories);
 
     if (mappedName) {
       setSelectedFilter(mappedName);
     } else if (viewQuery === "all" || viewQuery === "all-views") {
-      setSelectedFilter("All Views");
+      setSelectedFilter(t("data.all-view"));
     } else if (!viewQuery) {
-      setSelectedFilter("All Views");
+      setSelectedFilter(t("data.all-view"));
     } else {
-      setSelectedFilter("All Views");
+      setSelectedFilter(t("data.all-view"));
     }
 
     // --- LOCATION FILTER SETUP ---
@@ -68,20 +68,16 @@ export function useProjectsFilters({
         locationQuery === "all" ||
         locationQuery === "all-locations"
       ) {
-        setSelectedFilterLocation("All Locations");
+        setSelectedFilterLocation(t("data.all-locations"));
       } else {
-        setSelectedFilterLocation("All Locations");
+        setSelectedFilterLocation(t("data.all-locations"));
       }
     } else {
-      setSelectedFilterLocation("All Locations");
+      setSelectedFilterLocation(t("data.all-locations"));
     }
 
     setIsInitialized(true);
-  } else {
-    console.log(" Skipping initialization");
   }
-
-  console.groupEnd();
 }, [
   viewQuery,
   locationQuery,
@@ -91,49 +87,38 @@ export function useProjectsFilters({
 ]);
 
 
-  const filteredProjects = projects.filter((project, index) => {
-    // Filter by selected view
-    if (selectedFilter && selectedFilter !== "All Views") {
-      const projectViewName =
-        project?.attributes.project_view?.data?.attributes?.view;
+const filteredProjects = projects.filter((project, index) => {
+  // Filter by selected view
+  if (selectedFilter && selectedFilter !== t("data.all-view")) {
+    const projectViewName =
+      project?.attributes.project_view?.data?.attributes?.view;
 
-      if (!slugEquals(projectViewName, selectedFilter)) {
-        console.log("❌ Filtered out by view");
-        return false;
-      } else {
-        console.log("✅ Passed view filter");
-      }
-    } else {
-      console.log("⏭️ Skipping view filter (All Views selected)");
-    }
-
-    // Filter by location
-    if (selectedFilterLocation && selectedFilterLocation !== "All Locations") {
-      const projectLocationName =
-        project?.attributes.project_location?.data?.attributes?.name;
-
-      if (projectLocationName !== selectedFilterLocation) {
-        return false;
-      } else {
-        console.log("✅ Passed location filter");
-      }
-    } else {
-      console.log("⏭️ Skipping location filter (All Locations selected)");
-    }
-
-    if (isOnSaleOnly && !project?.Onsale) {
-      console.log(" Filtered out because not on sale");
+    if (!slugEquals(projectViewName, selectedFilter)) {
       return false;
-    } else {
-      console.log(" Passed on-sale filter");
     }
+  }
 
-    console.log(" Project included in filtered list");
-    return true;
-  });
+  // Filter by location
+  if (selectedFilterLocation && selectedFilterLocation !== t("data.all-locations")) {
+    const projectLocationName =
+      project?.attributes.project_location?.data?.attributes?.name;
+
+    if (projectLocationName !== selectedFilterLocation) {
+      return false;
+    }
+  }
+
+  // Filter by on-sale status
+  if (isOnSaleOnly && !project?.attributes.Onsale) {
+    return false;
+  }
+
+  return true;
+});
+
 
   const sortedProjects =
-    selectedFilter === "All Views"
+    selectedFilter === t("data.all-view")
       ? [...filteredProjects].sort((a, b) => {
           const aDate = a.createdAt || a.updatedAt || a.publishedAt;
           const bDate = b.createdAt || b.updatedAt || b.publishedAt;
@@ -151,7 +136,7 @@ export function useProjectsFilters({
 
     // Update view param
     if (newFilter !== undefined) {
-      if (newFilter === "All Views") {
+      if (newFilter === t("data.all-view")) {
         params.delete("view");
       } else {
         params.set("view", slugify(newFilter));
@@ -160,7 +145,7 @@ export function useProjectsFilters({
 
     // Update location param
     if (newLocation !== undefined) {
-      if (newLocation === "All Locations") {
+      if (newLocation === t("data.all-locations")) {
         params.delete("location");
       } else {
         params.set("location", slugify(newLocation));
@@ -174,14 +159,14 @@ export function useProjectsFilters({
   };
 
   const handleFilterClick = (filter: string) => {
-    const normalizedFilter = filter === "All Views" ? "All Views" : filter;
+    const normalizedFilter = filter === t("data.all-view") ? t("data.all-view") : filter;
     setSelectedFilter(normalizedFilter);
     updateURL(normalizedFilter, undefined);
   };
 
   const handleLocationFilterClick = (filter: string) => {
     const normalizedLocation =
-      filter === "All Locations" ? "All Locations" : filter;
+      filter === t("data.all-locations") ? t("data.all-locations") : filter;
     setSelectedFilterLocation(normalizedLocation);
     updateURL(undefined, normalizedLocation);
   };

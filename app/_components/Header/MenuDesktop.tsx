@@ -14,7 +14,7 @@ export default function MenuDesktop({
   return (
     <>
       {data.map((item: Menu, index: number) =>
-        item.Link ? (
+        item.Megamenu.length == 0 ? (
           <Link
             className={`${
               Pathname === item.Link
@@ -31,7 +31,7 @@ export default function MenuDesktop({
             {item.Title}
           </Link>
         ) : (
-          <div key={index} className="group relative">
+          <Link key={index} className="group relative"  href={`${item.Link}`}>
             <p
               className={`relative rtl:2xl:text-base rtl:lg:text-xs rtl:text-xs ltr:xl:text-sm ltr:2xl:text-base font-bold cursor-pointer whitespace-nowrap ${
                 StableHeader
@@ -72,33 +72,33 @@ export default function MenuDesktop({
                   )}
 
                   <div className="h-[90px] w-[90px] overflow-hidden rounded-md">
-                  {item.Media?.data?.attributes?.url && (() => {
-  const url = item.Media.data.attributes.url;
-  const isVideo = url.toLowerCase().endsWith(".mp4");
+                    {item.Media?.data?.attributes?.url &&
+                      (() => {
+                        const url = item.Media.data.attributes.url;
+                        const isVideo = url.toLowerCase().endsWith(".mp4");
 
-  if (isVideo) {
-    return (
-      <video
-        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`}
-        muted
-        autoPlay
-        loop
-        playsInline
-        className="h-full w-full object-cover"
-        aria-hidden="true"
-      />
-    );
-  } else {
-    return (
-      <img
-        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`}
-        alt="media"
-        className="h-full w-full object-cover"
-      />
-    );
-  }
-})()}
-
+                        if (isVideo) {
+                          return (
+                            <video
+                              src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`}
+                              muted
+                              autoPlay
+                              loop
+                              playsInline
+                              className="h-full w-full object-cover"
+                              aria-hidden="true"
+                            />
+                          );
+                        } else {
+                          return (
+                            <img
+                              src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`}
+                              alt="media"
+                              className="h-full w-full object-cover"
+                            />
+                          );
+                        }
+                      })()}
                   </div>
                   <div className="w-[calc(100%-90px-12px)] space-y-1 text-xl font-medium text-primary">
                     <h4 className="">{item.Title}</h4>
@@ -107,7 +107,7 @@ export default function MenuDesktop({
                 </div>
               ))}
             </div>
-          </div>
+          </Link>
         )
       )}
     </>

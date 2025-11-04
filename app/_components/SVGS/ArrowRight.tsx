@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function ArrowRight() {
+export default function ArrowRight({ className = "w-full h-full" }: { className?: string }) {
   return (
     <svg
-      className="w-full h-full"
+      className={className}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

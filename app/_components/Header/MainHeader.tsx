@@ -73,6 +73,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
   }, []);
 
   const StableHeader =
+
     Pathname == "/calendly" ||
     Pathname == "/en/calendly" ||
     Pathname == "/en/faqs" ||
