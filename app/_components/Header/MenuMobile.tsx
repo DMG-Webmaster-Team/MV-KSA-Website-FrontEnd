@@ -29,18 +29,18 @@ export default function MenuMobile({
             }}
             className={` ${
               Pathname === item.Link && !openSingleMenu
-                ? "text-yellow"
+                ? ""
                 : "  text-white"
-            } justify-between flex items-center text-[22px] font-medium py-4 border-b border-white border-opacity-10`}
+            } text-white justify-between flex items-center text-[22px] font-medium py-4 border-b border-white border-opacity-10`}
           >
             <span className="flex gap-3 items-center">
-              <span
+              {/* <span
                 className={`${
                   Pathname === item.Link && !openSingleMenu
                     ? "block"
                     : " hidden"
                 } w-3 h-3 bg-yellow rounded-full`}
-              />
+              /> */}
               {item.Title}
             </span>
 
