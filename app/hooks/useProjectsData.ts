@@ -1,6 +1,4 @@
-
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 interface ImageData {
   data: {
     attributes: {
@@ -28,12 +26,13 @@ interface HeroSection {
   Title: string;
   ShortDescription: string;
   Media: {
-  data: {
-    attributes: {
-      url: string;
-      alternativeText: string;
+    data: {
+      attributes: {
+        url: string;
+        alternativeText: string;
+      };
     };
-  };}
+  };
 }
 interface ProjectAttributes {
   Title: string;
@@ -46,13 +45,13 @@ interface ProjectAttributes {
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  HeroSection:HeroSection;
+  HeroSection: HeroSection;
   project_view?: CategoryData;
-project_location?: LocationData;
+  project_location?: LocationData;
 }
 
 export interface Project {
- Title: string;
+  Title: string;
   Description: string;
   slug?: string;
   Onsale?: boolean;
@@ -62,10 +61,9 @@ export interface Project {
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-project_view?: CategoryData;
-project_location?: LocationData;
-attributes: ProjectAttributes;
-
+  project_view?: CategoryData;
+  project_location?: LocationData;
+  attributes: ProjectAttributes;
 }
 
 export interface JirianProject {
@@ -95,41 +93,35 @@ export interface UseProjectsDataReturn {
   locationCategories: FilterCategory[];
 }
 
-export function useProjectsData(projects: Project []){
+export function useProjectsData(projects: Project[]) {
   const [projectPageData, setProjectPageData] =
     useState<ProjectPageData | null>(null);
-  const [regularProjects, setRegularProjects] = useState<Project[]>([]);
-  const [jirianProject, setJirianProject] = useState<JirianProject | null>(
-    null
-  );
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const pathname = usePathname();
-  const isArabic = pathname.includes("/ar");
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         setIsLoading(true);
-//         setError(null);
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       try {
+  //         setIsLoading(true);
+  //         setError(null);
 
-//         const [projectPageResponse, allProjectsResponse, jirianResponse] =
-//           await Promise.all([
-//             fetchAllProjects(),
-//             fetchLandingPage(isArabic ? "ar" : "en"),
-//           ]);
-//         setProjectPageData(projectPageResponse);
-//         setRegularProjects(allProjectsResponse?.data || []);
-//         setJirianProject(jirianResponse?.data || null);
-//       } catch (err) {
-//         console.error("Error fetching projects data:", err);
-//         setError("Failed to fetch projects data");
-//       } finally {
-//         setIsLoading(false);
-//       }
-//     };
+  //         const [projectPageResponse, allProjectsResponse, jirianResponse] =
+  //           await Promise.all([
+  //             fetchAllProjects(),
+  //             fetchLandingPage(isArabic ? "ar" : "en"),
+  //           ]);
+  //         setProjectPageData(projectPageResponse);
+  //         setRegularProjects(allProjectsResponse?.data || []);
+  //         setJirianProject(jirianResponse?.data || null);
+  //       } catch (err) {
+  //         console.error("Error fetching projects data:", err);
+  //         setError("Failed to fetch projects data");
+  //       } finally {
+  //         setIsLoading(false);
+  //       }
+  //     };
 
-//     fetchData();
-//   }, [isArabic]);
+  //     fetchData();
+  //   }, [isArabic]);
 
   // Combine all projects - Jirian is fetched separately and will be handled in the filter logic
   // const projects: Project[] = [
@@ -139,15 +131,19 @@ export function useProjectsData(projects: Project []){
   const viewCategories: FilterCategory[] = Array.from(
     new Set(
       projects
-        .map((project) => project.project_view?.data?.attributes?.view)
+        .map(
+          (project) => project.attributes.project_view?.data?.attributes?.view
+        )
         .filter(Boolean)
     )
   ).map((name) => ({ name: name! }));
-
   const locationCategories: FilterCategory[] = Array.from(
     new Set(
       projects
-        .map((project) => project.project_location?.data?.attributes?.name)
+        .map(
+          (project) =>
+            project.attributes.project_location?.data?.attributes?.name
+        )
         .filter(Boolean)
     )
   ).map((name) => ({ name: name! }));

@@ -24,10 +24,10 @@ export default function ProjectsPage({
   data,
   List,
   Locations,
-  projects
+  projects,
+  page
 }: any) {
   const [showFilterModal, setShowFilterModal] = useState(false);
-
   const {
     // allProjects,
     error,
@@ -63,9 +63,6 @@ export default function ProjectsPage({
       </div>
     );
   }
-  console.log(data)
-  console.log(viewCategories)
-  console.log(filteredProjects)
 
 
   return (
@@ -73,13 +70,13 @@ export default function ProjectsPage({
       <LazyMotion features={domAnimation}>
         <section className="relative mx-auto h-[80vh] custom:h-[100vh] md:h-[90vh] min-h-[620px]">
           <div className="relative w-full h-full">
-            {data?.HeroSection?.Media && (
+            {page?.image && (
               <Image
-                src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.HeroSection.Media.data.attributes.url}`}
-                alt={`${data.HeroSection.Media.data.attributes.alternativeText}`}
+                src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${page?.image.data.attributes.url}`}
+                alt={`${page?.image.data.attributes.alternativeText}`}
                 fill
                 className="object-cover"
-                overrideSrc={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.HeroSection.Media.data.attributes.url}`}
+                overrideSrc={`${process.env.NEXT_PUBLIC_API_BASE_URL}${page?.image.data.attributes.url}`}
               />
             )}
           </div>
@@ -96,24 +93,10 @@ export default function ProjectsPage({
           >
             <div className="flex justify-center items-center gap-10 mb-36 custom:mb-0 pb-5 md:pb-20">
               <h1 className="pb-5 md:pb-20 font-normal text-[42px] md:text-[80px] lg:text-[120px] leading-[52.8px] md:leading-[120px]">
-                {data?.HeroSection?.Title}
+                {page?.title}
               </h1>
             </div>
-            <div className="hidden custom:block pt-16 text-center">
-              <p
-                className="pb-2 md:pb-5 font-semibold text-sm uppercase leading-4 tracking-[4px] cursor-pointer"
-                onClick={() =>
-                  document
-                    .getElementById("projects-section")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                {data?.scroll}
-              </p>
-              <div className="flex justify-center items-center">
-                <div className="bg-white w-[2px] h-[50px] md:h-[112px] animate-line"></div>
-              </div>
-            </div>
+          
           </m.div>
         </section>
         <section id="projects-section" className="max-w-[1512px] mx-auto">

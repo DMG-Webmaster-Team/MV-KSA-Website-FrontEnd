@@ -24,12 +24,7 @@ export default async function page(props: {
 
   const [Data, Views] = await Promise.all([
     fetchServer("community?", locale),
-    fetchServer(
-      "project-views?",
-      locale
-    ),
+    fetchServer("project-views?", locale),
   ]);
-console.log(Views)
-  // const Data = await fetchServer("community?", locale);
   return <CommunitiesPage data={Data.data.attributes} Views={Views} />;
 }

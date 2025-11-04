@@ -1,8 +1,7 @@
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { slugEquals, ensureFilterNameFromSlug } from "../../utils/helpers";
-import { Project, FilterCategory } from "./useProjectsData";
-import { slugify } from "../../utils/helpers";
+import { ensureFilterNameFromSlug, slugEquals, slugify } from "../../utils/helpers";
+import { FilterCategory, Project } from "./useProjectsData";
 
 export interface UseProjectsFiltersReturn {
   selectedFilter: string | null;
@@ -39,49 +38,58 @@ export function useProjectsFilters({
   const [isInitialized, setIsInitialized] = useState(false);
 
   // Initialize filters from URL params
-  useEffect(() => {
-    if (!isInitialized && viewCategories.length > 0) {
-      // Initialize view filter
-      const mappedName = ensureFilterNameFromSlug(viewQuery, viewCategories);
-      if (mappedName) {
-        setSelectedFilter(mappedName);
-      } else if (viewQuery === "all" || viewQuery === "all-views") {
-        setSelectedFilter("All Views");
-      } else if (!viewQuery) {
-        setSelectedFilter("All Views");
-      } else {
-        setSelectedFilter("All Views");
-      }
+ useEffect(() => {
 
-      // Initialize location filter
-      if (locationQuery && locationCategories.length > 0) {
-        const mappedLocationName = ensureFilterNameFromSlug(
-          locationQuery,
-          locationCategories
-        );
-        if (mappedLocationName) {
-          setSelectedFilterLocation(mappedLocationName);
-        } else if (
-          locationQuery === "all" ||
-          locationQuery === "all-locations"
-        ) {
-          setSelectedFilterLocation("All Locations");
-        } else {
-          setSelectedFilterLocation("All Locations");
-        }
+  if (!isInitialized && viewCategories.length > 0) {
+
+    // --- VIEW FILTER SETUP ---
+    const mappedName = ensureFilterNameFromSlug(viewQuery, viewCategories);
+
+    if (mappedName) {
+      setSelectedFilter(mappedName);
+    } else if (viewQuery === "all" || viewQuery === "all-views") {
+      setSelectedFilter("All Views");
+    } else if (!viewQuery) {
+      setSelectedFilter("All Views");
+    } else {
+      setSelectedFilter("All Views");
+    }
+
+    // --- LOCATION FILTER SETUP ---
+    if (locationQuery && locationCategories.length > 0) {
+      const mappedLocationName = ensureFilterNameFromSlug(
+        locationQuery,
+        locationCategories
+      );
+
+      if (mappedLocationName) {
+        setSelectedFilterLocation(mappedLocationName);
+      } else if (
+        locationQuery === "all" ||
+        locationQuery === "all-locations"
+      ) {
+        setSelectedFilterLocation("All Locations");
       } else {
         setSelectedFilterLocation("All Locations");
       }
-
-      setIsInitialized(true);
+    } else {
+      setSelectedFilterLocation("All Locations");
     }
-  }, [
-    viewQuery,
-    locationQuery,
-    viewCategories,
-    locationCategories,
-    isInitialized,
-  ]);
+
+    setIsInitialized(true);
+  } else {
+    console.log(" Skipping initialization");
+  }
+
+  console.groupEnd();
+}, [
+  viewQuery,
+  locationQuery,
+  viewCategories,
+  locationCategories,
+  isInitialized,
+]);
+
 
   const filteredProjects = projects.filter((project, index) => {
     // Filter by selected view
