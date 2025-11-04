@@ -41,8 +41,10 @@
     "all-locations": "جميع المواقع",
     "filter": "تصفية",
     "isOnSale": "متاح للبيع",
-    "discover-projects": "اكتشف المشاريع "
-
+    "discover-projects": "اكتشف المشاريع ",
+"project-type":"حدد نوع المشروع",
+"select-location":"حدد الموقع",
+"save-continue":"حفظ ومتابعة"
   },
   "Menu": {
     "home": "الرئيسية",

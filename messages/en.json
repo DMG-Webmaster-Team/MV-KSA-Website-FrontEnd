@@ -40,7 +40,11 @@
     "all-locations": "All Locations",
     "filter": "Filter",
     "isOnSale": "Available for Sale",
-    "discover-projects": "Discover Projects"
+    "discover-projects": "Discover Projects",
+"project-type":"Select Project Type",
+"select-location":"Select Location",
+"save-continue":"Save and continue"
+
 
 
   },

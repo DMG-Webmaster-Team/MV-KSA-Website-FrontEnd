@@ -1,6 +1,7 @@
 import { FilterCategory } from "@/app/hooks/useProjectsData";
 import { useEffect } from "react";
 import Close from "../SVGS/Close";
+import { useTranslations } from "next-intl";
 
 interface FilterModalProps {
   isOpen: boolean;
@@ -23,6 +24,8 @@ export default function FilterModal({
   onFilterClick,
   onLocationFilterClick,
 }: FilterModalProps) {
+      const t = useTranslations();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -55,20 +58,20 @@ export default function FilterModal({
     <div className="fixed inset-0 z-[12] bg-black bg-opacity-50 flex justify-end">
       <div className="bg-white w-full h-[90%] bottom-[-10%] rounded-t-xl p-5 relative overflow-scroll">
         <button
-          className="absolute top-3 right-3 bg-[#F6F6F6] p-3 rounded-full text-primary-200"
+          className="absolute top-3 rtl:left-3 ltr:right-3 bg-[#F6F6F6] p-3 rounded-full text-primary-200"
           onClick={onClose}
         >
           <Close />
         </button>
         
-        <h2 className="text-2xl font-medium text-primary-200">Filters</h2>
+        <h2 className="text-2xl font-medium text-primary-200">{t("data.filter")}</h2>
 
         <div className="my-5">
           <h3 className="lg:text-[30px] md:text-base text-sm font-medium lg:leading-[38px] md:leading-7 pr-3 text-[#AAAAAA] uppercase">
-            Select Project Type
+            {t("data.project-type")}
           </h3>
           <div className="flex flex-col gap-2">
-            {["All Views", ...viewCategories.map((category) => category.name)].map(
+            {[t("data.all-view"), ...viewCategories.map((category) => category.name)].map(
               (view, index) => (
                 <button
                   key={index}
@@ -89,10 +92,10 @@ export default function FilterModal({
 
         <div className="my-5">
           <h3 className="lg:text-[30px] md:text-base text-sm font-medium lg:leading-[38px] md:leading-7 pr-3 text-[#AAAAAA] uppercase">
-            Select Location
+             {t("data.select-location")}
           </h3>
           <div className="flex flex-col gap-2">
-            {["All Locations", ...locationCategories.map((location) => location.name)].map(
+            {[t("data.all-locations"), ...locationCategories.map((location) => location.name)].map(
               (location, index) => (
                 <button
                   key={index}
