@@ -13,8 +13,8 @@ export default async function Footer({
   return (
     <footer className="bg-darkblue">
       <div className="max-w-[1448px] px-4 mx-auto">
-        <div className=" py-8 flex justify-between items-center border-b border-white border-opacity-10">
-          <div className="flex md:gap-6 gap-3 items-center">
+        <div className=" py-8 flex justify-between items-center border-b border-white border-opacity-10 gap-8">
+          <div className="flex md:gap-6 gap-3 items-center w-full">
             <Link
               href={`${locale == "en" ? "/en" : "/"}`}
               className=" relative md:w-[267px] w-[152px] aspect-[401/105]"
@@ -27,38 +27,52 @@ export default async function Footer({
               />
             </Link>
             <span className="w-[1px] md:h-[60px] h-[40px] bg-white bg-opacity-20" />
-            <div className="flex md:gap-6 gap-3 ">
-              {Footer.data.attributes.Footer.SocialMedia.map(
-                (item: {
-                  Link: string;
-                  Icon: {
-                    data: {
-                      attributes: {
-                        alternativeText: string | null;
-                        url: string;
+            <div className="flex items-center justify-between w-full">
+              <div className="flex md:gap-6 gap-3 pe-8">
+                {Footer.data.attributes.Footer.SocialMedia.map(
+                  (item: {
+                    Link: string;
+                    Icon: {
+                      data: {
+                        attributes: {
+                          alternativeText: string | null;
+                          url: string;
+                        };
                       };
                     };
-                  };
-                }) => (
-                  <Link
-                    href={item.Link}
-                    key={item.Link}
-                    className=" relative w-6 h-6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Icon.data.attributes.url}`}
-                      alt={
-                        item.Icon.data.attributes.alternativeText ||
-                        "Social media icon"
-                      }
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  </Link>
-                )
-              )}
+                  }) => (
+                    <Link
+                      href={item.Link}
+                      key={item.Link}
+                      className="relative w-6 h-6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Icon.data.attributes.url}`}
+                        alt={
+                          item.Icon.data.attributes.alternativeText ||
+                          "Social media icon"
+                        }
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </Link>
+                  )
+                )}
+              </div>
+
+              <Link
+                href={locale === "en" ? "/en" : "/"}
+                className="relative md:w-[250px] w-[152px] aspect-[250/77] overflow-hidden"
+              >
+                <Image
+                  src="/md.png"
+                  alt="Logo MV KSA"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </Link>
             </div>
           </div>
           <ScrollTop />
