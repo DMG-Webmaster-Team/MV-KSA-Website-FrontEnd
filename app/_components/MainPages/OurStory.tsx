@@ -76,7 +76,7 @@ export default function OurStory({ data }: Props) {
         <Widgets data={item} key={index} reverse={index % 2 == 0} />
       ))}
       <div className="px-4 lg:px-0">
-        <div className="mx-auto my-20 flex max-w-[1448px] flex-col items-center justify-between gap-y-[28px] rounded-xl bg-gray p-5 px-4 lg:flex-row">
+        <div className={`mx-auto my-20 flex max-w-[1448px] flex-col ${expanded?"items-start":"items-center"} justify-between gap-y-[28px] rounded-xl bg-gray p-10 px-4 lg:flex-row`}>
           <div className="relative aspect-[1067/1088] w-full overflow-hidden rounded md:aspect-[1067/1600] md:w-[500px]">
             <Image
               src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.OwnerMessage.Image.data.attributes.url}`}
