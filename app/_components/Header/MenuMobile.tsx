@@ -29,7 +29,7 @@ export default function MenuMobile({
             }}
             className={` ${
               Pathname === item.Link && !openSingleMenu
-                ? ""
+                ? " underline text-white"
                 : "  text-white"
             } text-white justify-between flex items-center text-[22px] font-medium py-4 border-b border-white border-opacity-10`}
           >

@@ -31,7 +31,8 @@ export default function MenuDesktop({
             {item.Title}
           </Link>
         ) : (
-          <Link key={index} className="group relative"  href={`${item.Link}`}>
+          <div  className="group relative"  key={index} >
+          <Link href={`${item.Link}`}>
             <p
               className={`relative rtl:2xl:text-base rtl:lg:text-xs rtl:text-xs ltr:xl:text-sm ltr:2xl:text-base font-bold cursor-pointer whitespace-nowrap ${
                 StableHeader
@@ -40,7 +41,7 @@ export default function MenuDesktop({
               }`}
             >
               {item.Title}
-            </p>
+            </p></Link>
             <div
               className="invisible absolute top-12 flex w-[370px] flex-col gap-1 rounded-lg bg-white p-2 opacity-0 transition-all duration-500 group-hover:visible group-hover:opacity-100"
               style={{ boxShadow: "0px 4px 12px 0px #0000001A" }}
@@ -107,7 +108,7 @@ export default function MenuDesktop({
                 </div>
               ))}
             </div>
-          </Link>
+          </div>
         )
       )}
     </>
