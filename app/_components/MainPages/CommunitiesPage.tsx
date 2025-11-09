@@ -38,7 +38,6 @@ export default function CommunitiesPage({
   }
   const locale = useLocale();
   const t = useTranslations();
-
   return (
     <LazyMotion features={domAnimation}>
       <section className="relative mx-auto h-[80vh] custom:h-[100vh] md:h-[90vh] min-h-[620px]">

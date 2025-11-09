@@ -13,21 +13,35 @@ export default function PartnerShipSection({
       <h2 className=" text-primary text-center md:text-[52px] md:leading-[65px] text-[28px] font-medium">
         {data.Title}
       </h2>
-      {data.Logo?.data?.map((logoItem: any) => (
-        <Link
-          key={logoItem.id}
-          href={data.Link}
-          target="_blank"
-          className="md:w-[207px] w-[150px] relative mx-auto aspect-[208/300] block"
-        >
+      {data.Logo?.data?.map((logoItem: any) => {
+        const imageElement = (
           <Image
+            key={logoItem.id}
             src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${logoItem.attributes.url}`}
             alt={logoItem.attributes.alternativeText ?? "partner logo"}
             fill
             className="object-contain"
           />
-        </Link>
-      ))}
+        );
+
+        return data.Link ? (
+          <Link
+            key={logoItem.id}
+            href={data.Link}
+            target="_blank"
+            className="md:w-[207px] w-[150px] relative mx-auto aspect-[208/300] block"
+          >
+            {imageElement}
+          </Link>
+        ) : (
+          <div
+            key={logoItem.id}
+            className="md:w-[207px] w-[150px] relative mx-auto aspect-[208/300]"
+          >
+            {imageElement}
+          </div>
+        );
+      })}
     </div>
   );
 }
