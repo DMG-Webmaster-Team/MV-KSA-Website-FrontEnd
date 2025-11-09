@@ -51,7 +51,7 @@ export default function ProjectCard({ project, index, variants,projectView ,proj
       >
         <div>
           <div className="flex justify-start items-center text-center capitalize mt-2">
-            {projectView.data.attributes.view && (
+            {projectView?.data?.attributes?.view && (
               <div className="bg-[#F6F6F6] rounded-full px-3 py-[6px] text-[#969696] ml-2 uppercase font-medium md:text-sm text-xs">
                 {projectView.data.attributes.view }
               </div>
@@ -63,7 +63,7 @@ export default function ProjectCard({ project, index, variants,projectView ,proj
             )}
           </div>
 
-          <h2 className="text-primary-100 text-balance md:w-full w-[75%] font-normal pt-2 lg:text-[75px] md:text-5xl text-[44px] ml-2 lg:leading-[96px] md:leading-[66px] leading-[52.8px]">
+          <h2 className="text-primary text-balance md:w-full w-[75%] font-normal pt-2 lg:text-[75px] md:text-5xl text-[44px] ml-2 lg:leading-[96px] md:leading-[66px] leading-[52.8px]">
             {project.attributes.HeroSection.Title}
           </h2>
 

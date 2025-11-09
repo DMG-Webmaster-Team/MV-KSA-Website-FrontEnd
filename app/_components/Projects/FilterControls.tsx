@@ -70,7 +70,7 @@ export default function FilterControls({
         </div>
       </div>
 
-      <m.div
+      {/* <m.div
         className="flex text-center md:gap-6 gap-2"
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
@@ -95,7 +95,7 @@ export default function FilterControls({
             ></span>
           </div>
         </label>
-      </m.div>
+      </m.div> */}
     </div>
   );
 }
