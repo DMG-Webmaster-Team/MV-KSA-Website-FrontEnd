@@ -34,7 +34,7 @@ export default function FilterControls({
       <div className="flex flex-row items-center md:gap-5 gap-2">
         <div className="hidden md:flex flex-row gap-5">
           <div className="flex flex-row items-center md:gap-5 gap-2">
-            <div className="flex flex-col md:flex-row items-baseline">
+            {/* <div className="flex flex-col md:flex-row items-baseline">
               <h3 className="lg:text-[30px] md:text-base text-sm font-normal lg:leading-[38px] md:leading-7 pe-3 text-[#AAAAAA]">
                {t("data.view")} 
               </h3>
@@ -44,7 +44,7 @@ export default function FilterControls({
                 selectedFilter={selectedFilter || ""}
                 allName={t("data.all-view")} 
               />
-            </div>
+            </div> */}
 
             <div className="flex md:flex-row flex-col items-baseline">
               <h3 className="lg:text-[30px] md:text-base text-sm font-normal lg:leading-[38px] md:leading-7 pe-3 text-[#AAAAAA]">
