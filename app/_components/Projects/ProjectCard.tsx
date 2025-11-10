@@ -74,9 +74,9 @@ export default function ProjectCard({ project, index, variants,projectView ,proj
           <Link
             prefetch={false}
             href={`${locale == "en" ? "/en/" : "/"}projects/${project.attributes.slug}`}
-            className="gap-[6px] hover:gap-3 transition-all duration-300 ease-in-out ml-2 py-2 flex items-center text-primary-200"
+            className="gap-[6px] hover:gap-3 transition-all duration-300 ease-in-out ml-2 py-2 flex items-center text-primary"
           >
-            <p className="text-primary-200 font-bold md:text-base text-sm md:leading-[24px] md:pb-0 pb-[2px] leading-5 uppercase pt-1">
+            <p className="text-primary font-bold md:text-base text-sm md:leading-[24px] md:pb-0 pb-[2px] leading-5 uppercase pt-1">
             {t("data.discover-projects")} 
             </p>
             <span className="w-5 h-5">
