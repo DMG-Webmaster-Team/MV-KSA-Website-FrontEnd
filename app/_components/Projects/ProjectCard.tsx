@@ -67,7 +67,7 @@ export default function ProjectCard({ project, index, variants,projectView ,proj
             {project.attributes.HeroSection.Title}
           </h2>
 
-          <p className="text-[#AAAAAA] text-pretty font-normal py-2 ml-2 lg:text-[25px] md:text-xl text-base leading-[22px] lg:leading-[38px] md:leading-[28px]">
+          <p className="text-primary/50 text-pretty font-normal py-2 ml-2 lg:text-[25px] md:text-xl text-base leading-[22px] lg:leading-[38px] md:leading-[28px]">
             {project.attributes.HeroSection.ShortDescription}
           </p>
 
