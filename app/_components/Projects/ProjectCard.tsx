@@ -32,10 +32,10 @@ export default function ProjectCard({ project, index, variants,projectView ,proj
       variants={isEven ? variants.left : variants.right}
     >
       <div className="relative md:w-1/2 aspect-[756/800]">
-        {project?.attributes.HeroSection.Media?.data.attributes.url && (
+        {project?.attributes?.HeroSection.widgetImage?.data.attributes.url && (
           <Image
-            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${project.attributes.HeroSection.Media?.data.attributes.url}`}
-            alt={project.attributes.HeroSection.Media?.data.attributes.alternativeText ?? `${project.Title} Cover`}
+            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${project.attributes.HeroSection.widgetImage?.data.attributes.url}`}
+            alt={project.attributes.HeroSection.widgetImage?.data.attributes.alternativeText ?? `${project.Title} Cover`}
             fill
             className="object-cover w-full"
           />

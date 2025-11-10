@@ -33,6 +33,15 @@ interface HeroSection {
       };
     };
   };
+    widgetImage?:  {
+    data: {
+      attributes: {
+        url: string;
+        alternativeText: string;
+      };
+    };
+  };
+
 }
 interface ProjectAttributes {
   Title: string;
@@ -48,6 +57,7 @@ interface ProjectAttributes {
   HeroSection: HeroSection;
   project_view?: CategoryData;
   project_location?: LocationData;
+  
 }
 
 export interface Project {
