@@ -152,9 +152,7 @@ If you wish to contribute to this project, please follow the standard Git workfl
    ```
 5. Open a pull request.
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
+## IMPORTANT
 
 **Important:** Copy the correct values from `.env.example` into your `.env.local` file.  
 Make sure `NEXT_PUBLIC_API_BASE_URL` is set to the proper **API base URL** provided in `.env.example`.
