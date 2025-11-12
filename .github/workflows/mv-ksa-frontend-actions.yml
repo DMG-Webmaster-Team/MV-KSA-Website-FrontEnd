@@ -18,5 +18,5 @@ jobs:
 
       - name: Push to SWR
         run: |
-          docker tag mv-ksa-frontend:1.0.0 swr.me-east-1.myhuaweicloud.com/mountview/mv-ksa-frontend:1.0.0
+          docker tag mv-ksa-frontend:1.0.0 swr.me-east-1.myhuaweicloud.com/mountainview/mv-ksa-frontend:1.0.0
           docker push swr.me-east-1.myhuaweicloud.com/mountainview/mv-ksa-frontend:1.0.0
