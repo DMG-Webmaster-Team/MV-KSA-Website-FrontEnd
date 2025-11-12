@@ -1,18 +1,11 @@
 FROM node:24-alpine
-
 WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm ci
 
 COPY . .
 
-RUN npm run build
+RUN npm install --loglevel silly --force
 
-RUN npm prune --production
-
+RUN npm build
 EXPOSE 3000
 
-CMD ["npm", "start"]
-
+CMD ["node", "dist/index.js"]
