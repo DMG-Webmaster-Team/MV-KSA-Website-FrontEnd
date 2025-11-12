@@ -12,8 +12,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag mv-ksa-frontend:1.0.0
+
       - name: Login to SWR
-        run: docker login -u me-east-1@{{ secrets.ak }} -p ${{ secrets.sk }} swr.me-east-1.myhuaweicloud.com
+        run: docker login -u me-east-1@HPUA91KHAW29LUCKZJOU -p a304d1580bfcb9bf443d6ff4eda337e2f35f2bd9cca017adea68bd4d9b40daf0 swr.me-east-1.myhuaweicloud.com
 
       - name: Push to SWR
         run: |
