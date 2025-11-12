@@ -11,6 +11,10 @@ RUN npm ci --only=production=false
 # Copy the rest of the application
 COPY . .
 
+# Accept build-time argument for API base URL
+ARG NEXT_PUBLIC_API_BASE_URL
+ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
+
 # Build the Next.js application
 RUN npm run build
 
