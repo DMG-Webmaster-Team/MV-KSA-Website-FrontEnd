@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "production" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag mv-ksa-frontend:1.0.0
+    - name: Login to SWR
+      run: docker login -u me-east-1@{{ secrets.ak }} -p ${{ secrets.sk }} swr.me-east-1.myhuaweicloud.com
+
+    - name: Push to SWR
+      run: |
+          docker tag mv-ksa-frontend:1.0.0 swr.me-east-1.myhuaweicloud.com/mountview/mv-ksa-frontend:1.0.0
+          docker push swr.me-east-1.myhuaweicloud.com/mountainview/mv-ksa-frontend:1.0.0
