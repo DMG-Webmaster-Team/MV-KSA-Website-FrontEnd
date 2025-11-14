@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export async function fetchServer(pageURL: string, lang: string) {
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${pageURL}locale=${lang}&populate=*`;
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${pageURL}locale=${lang}`;
     const res = await fetch(url);
 
     if (!res.ok) {
