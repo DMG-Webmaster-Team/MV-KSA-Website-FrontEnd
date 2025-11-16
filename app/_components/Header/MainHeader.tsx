@@ -89,10 +89,10 @@ export default function MainHeader({ data }: { data: Menu[] }) {
 
     Pathname.startsWith("/media-center/") ||
     Pathname.startsWith("/en/media-center/") ||
-     Pathname == "/privacy" ||
-    Pathname == "/en/privacy" ||
-     Pathname.startsWith("/privacy/") ||
-    Pathname.startsWith("/en/privacy/") ||
+     Pathname == "/privacy-policy" ||
+    Pathname == "/en/privacy-policy" ||
+     Pathname.startsWith("/privacy-policy/") ||
+    Pathname.startsWith("/en/privacy-policy/") ||
     Pathname == "/search" ||
     Pathname == "/en/search";
   const isUnitPage = /^\/(?:[a-z]{2}\/)?projects\/[^/]+\/units\/[^/]+$/.test(
