@@ -1,15 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import * as Yup from "yup";
 import { isValidPhoneNumber } from "react-phone-number-input";
 
 export const useContactUsForm = () => {
   const t = useTranslations();
-
+  const searchParams = useSearchParams();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [utmSource, setUtmSource] = useState("general");
+  const [projectName, setProjectName] = useState("general");
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -17,14 +19,18 @@ export const useContactUsForm = () => {
     if (source) {
       setUtmSource(source);
     }
-  }, []);
+    const project = urlParams.get("projectname");
+    if (project) {
+      setProjectName(project);
+    }
+  }, [searchParams]);
   const initialValues = {
     fullName: "",
-    // lastName: "",
     email: "",
     mobile: "",
     message: "",
-    utmSource: "",
+    utmSource: utmSource,
+    projectName: projectName,
     city: "",
     budget: "",
   };
@@ -37,6 +43,7 @@ export const useContactUsForm = () => {
     city?: string;
     budget?: string;
     utmSource?: string;
+    projectName?: string;
   }) => {
     try {
       const zapierUrl = `https://hooks.zapier.com/hooks/catch/2694313/urwjmjp/?fullname=${encodeURIComponent(
@@ -52,6 +59,10 @@ export const useContactUsForm = () => {
       }${
         formData.utmSource
           ? `&source=${encodeURIComponent(formData.utmSource)}`
+          : ""
+      }${
+        formData.projectName
+          ? `&projectname=${encodeURIComponent(formData.projectName)}`
           : ""
       }`;
 
@@ -103,6 +114,7 @@ export const useContactUsForm = () => {
           utmSource: values.utmSource,
           city: values.city,
           budget: values.budget,
+          projectname: projectName,
         })
       );
 
@@ -115,9 +127,6 @@ export const useContactUsForm = () => {
       );
 
       const responseJson = await res.json();
-      console.log("Success:", responseJson);
-
-      // Send data to Zapier, but don't let it stop execution if it fails
       try {
         const zapierResult = await sendToZapier({
           fullname: values.fullName,
@@ -127,6 +136,7 @@ export const useContactUsForm = () => {
           city: values.city,
           budget: values.budget,
           utmSource: values.utmSource,
+          projectName: values.projectName,
         });
 
         if (!zapierResult) {
