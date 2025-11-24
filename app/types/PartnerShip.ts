@@ -12,6 +12,7 @@ export interface PartnerShipProps {
 }
 export interface LandScapeProps {
   Buttonlink: string;
+  rotate:boolean;
   Image: {
     data: {
       attributes: {
