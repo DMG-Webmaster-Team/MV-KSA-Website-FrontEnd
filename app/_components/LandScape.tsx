@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,6 +7,7 @@ import { LandScapeProps } from "../types/PartnerShip";
 
 export default function LandScape({ data }: { data: LandScapeProps }) {
   const t = useTranslations();
+
   return (
     <div className="relative h-[60vh] max-h-[800px] w-full md:h-[96vh]">
       {data?.Image?.data && (
@@ -14,7 +15,7 @@ export default function LandScape({ data }: { data: LandScapeProps }) {
           src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data?.attributes?.url}`}
           alt={data.Image.data.attributes.alternativeText ?? "Landscape image"}
           fill
-          className="object-cover"
+          className={`object-cover rtl:-scale-x-100`}
         />
       )}
 
