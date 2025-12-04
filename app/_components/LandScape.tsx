@@ -1,26 +1,28 @@
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import ArrowLong from "./SVGS/ArrowLong";
 import { LandScapeProps } from "../types/PartnerShip";
+import ArrowLong from "./SVGS/ArrowLong";
 
 export default function LandScape({ data }: { data: LandScapeProps }) {
   const t = useTranslations();
 
   return (
-    <div className="relative h-[60vh] max-h-[800px] w-full md:h-[96vh]">
-      {data?.Image?.data && (
-        <Image
-          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data?.attributes?.url}`}
-          alt={data.Image.data.attributes.alternativeText ?? "Landscape image"}
-          fill
-          className={`object-cover ${data.rotate?"-scale-x-100":""}`}
-        />
-      )}
-
-      <div className="mx-auto max-w-[1448px] px-4 py-5 md:py-8">
-        <div className="absolute bottom-0 start-0 ms-auto w-full max-w-[700px] bg-white p-5 md:p-10">
+    <>
+      <div className="relative h-[60vh] max-h-[800px] w-full md:h-[96vh]">
+        {data?.Image?.data && (
+          <Image
+            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data?.attributes?.url}`}
+            alt={
+              data.Image.data.attributes.alternativeText ?? "Landscape image"
+            }
+            fill
+            className={`object-cover ${data.rotate ? "-scale-x-100" : ""}`}
+          />
+        )}
+      </div>
+      <div className="mx-auto max-w-[1448px] px-4 py-5 md:py-10">
+        <div className=" ms-auto w-full bg-white px-5 ">
           <ul className="space-y-1">
             {data.List.map((item: { Name: string }, index: number) => (
               <li
@@ -45,6 +47,6 @@ export default function LandScape({ data }: { data: LandScapeProps }) {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
