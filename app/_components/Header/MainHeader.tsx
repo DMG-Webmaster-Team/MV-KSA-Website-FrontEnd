@@ -80,6 +80,8 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     Pathname == "/faqs" ||
     Pathname == "/contact-us" ||
     Pathname == "/en/contact-us" ||
+    Pathname == "/privacy-policy" ||
+    Pathname == "/en/privacy-policy" ||
     Pathname == "/careers" ||
     Pathname == "/en/careers" ||
     Pathname.startsWith("/careers/") ||

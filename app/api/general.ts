@@ -22,7 +22,7 @@ export async function getSEOMetadata(slug: string, lang: string, single?: boolea
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${slug}${
       single ? "&" : "?"
     }locale=${lang}&populate[Seo][populate]=*`;
-
+    console.log(url);
     const res = await fetch(url);
 
     if (!res.ok) {
