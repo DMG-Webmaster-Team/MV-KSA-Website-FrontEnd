@@ -19,7 +19,6 @@ export default async function page(props: {
   params: Promise<Props["params"]>;
 }) {
   const { locale } = await props.params;
-
   const Data = await fetchServer("privacy-page?", locale);
   return <PrivacyPage data={Data} />;
 }
