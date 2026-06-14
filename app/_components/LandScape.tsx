@@ -40,7 +40,7 @@ export default function LandScape({ data }: { data: LandScapeProps }) {
             className="mt-10 flex w-fit items-center gap-3 rounded-sm bg-Gray05 px-4 py-3 text-sm font-bold leading-[9px] text-primary transition-all duration-500 hover:bg-[#DDDDDD]"
             target="_blank"
           >
-            {t("data.discover_more")}
+            {t("data.master_plan_rotation")}
             <span className="h-5 w-5 ltr:rotate-180">
               <ArrowLong />
             </span>
