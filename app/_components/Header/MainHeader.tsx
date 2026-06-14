@@ -86,8 +86,13 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     Pathname.startsWith("/en/careers/") ||
     Pathname == "/media-center" ||
     Pathname == "/en/media-center" ||
+
     Pathname.startsWith("/media-center/") ||
     Pathname.startsWith("/en/media-center/") ||
+     Pathname == "/privacy-policy" ||
+    Pathname == "/en/privacy-policy" ||
+     Pathname.startsWith("/privacy-policy/") ||
+    Pathname.startsWith("/en/privacy-policy/") ||
     Pathname == "/search" ||
     Pathname == "/en/search";
   const isUnitPage = /^\/(?:[a-z]{2}\/)?projects\/[^/]+\/units\/[^/]+$/.test(

@@ -25,7 +25,7 @@ export default async function Page(props: { params: Promise<Props["params"]> }) 
   return (
     <Homepage
       data={{
-        MainData: Data.data.attributes,
+        MainData: Data.data?.attributes,
         Blogs: Blogs.data,
       }}
     />
