@@ -17,15 +17,11 @@ export async function fetchServer(pageURL: string, lang: string) {
   }
 }
 
-
-export async function getSEOMetadata(
-  slug: string,
-  lang: string,
-  single?: boolean
-): Promise<Metadata> {
+export async function getSEOMetadata(slug: string, lang: string, single?: boolean): Promise<Metadata> {
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${slug}${single ? "&" : "?"
-      }locale=${lang}&populate[Seo][populate]=*`;
+    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${slug}${
+      single ? "&" : "?"
+    }locale=${lang}&populate[Seo][populate]=*`;
 
     const res = await fetch(url);
 
@@ -40,13 +36,11 @@ export async function getSEOMetadata(
     if (!realData) {
       return {
         title: "Mountain View KSA",
-        description: "Mountain View KSA",
+        description: "Mountain View KSA"
       };
     }
 
-    const seo = single
-      ? realData[0].attributes?.Seo
-      : realData.attributes?.Seo;
+    const seo = single ? realData[0].attributes?.Seo : realData.attributes?.Seo;
 
     return {
       title: seo?.MetaTitle || "Mountain View KSA",
@@ -57,16 +51,16 @@ export async function getSEOMetadata(
         description: seo?.MetaDescription || "Mountain View KSA",
         images: [
           {
-            url: `${process.env.NEXT_PUBLIC_API_BASE_URL}${seo?.Image?.url ?? ""}`,
-          },
-        ],
-      },
+            url: `${process.env.NEXT_PUBLIC_API_BASE_URL}${seo?.Image?.url ?? ""}`
+          }
+        ]
+      }
     };
   } catch (error) {
     console.error("getSEOMetadata error:", error);
     return {
       title: "Mountain View KSA",
-      description: "The page not found",
+      description: "The page not found"
     };
   }
 }
