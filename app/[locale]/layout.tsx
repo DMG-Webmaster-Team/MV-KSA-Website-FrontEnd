@@ -9,7 +9,7 @@ import "../globals.css";
 
 type Props = {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 async function getMessages(locale: string): Promise<Record<string, string>> {
   try {
