@@ -8,5 +8,7 @@ export default async function HeaderComp({
   params: { locale: string };
 }) {
   const Header = await fetchServer("general-page?", locale);
-  return <MainHeader data={Header.data.attributes.Header} />;
+  const headerData = Header.data?.attributes?.Header;
+  if (!headerData) return null;
+  return <MainHeader data={headerData} />;
 }

@@ -25,7 +25,6 @@ export default withNextIntl("./i18n.ts")({
   },
 
   // Build optimizations
-  swcMinify: true, // Use SWC for minification
   compress: true, // Enable compression
   poweredByHeader: false, // Remove X-Powered-By header
 
