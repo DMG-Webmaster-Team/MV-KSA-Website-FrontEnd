@@ -20,7 +20,9 @@ export default function Homepage({ data }: HomepageProps) {
 
       <NumbersList NumbersList={data.MainData.NumbersList} />
       <LaunchingSection LaunchingSection={data.MainData.LaunchingSection} />
-      <LaunchingSection LaunchingSection={data.MainData.LaunchingSection2} second/>
+      {data.MainData.LaunchingSection2 && (
+        <LaunchingSection LaunchingSection={data.MainData.LaunchingSection2} second />
+      )}
       <Boxes BoxOne={data.MainData.BoxOne} />
       {data.MainData.Widget && <WidgetSection Widget={data.MainData.Widget} />}
 
