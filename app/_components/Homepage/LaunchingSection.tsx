@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,6 +14,8 @@ export default function LaunchingSection({
   second?: boolean;
 }) {
   const [utmSource, setUtmSource] = useState("general");
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -22,10 +24,27 @@ export default function LaunchingSection({
       setUtmSource(source);
     }
   }, []);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const locale = useLocale();
 
   return (
-    <div className="relative h-[60vh] w-full md:h-[80vh]">
+    <div ref={sectionRef} className="relative h-[60vh] min-h-[540px] w-full md:h-[80vh]">
       {LaunchingSection.Image && (
         <Image
           src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${LaunchingSection.Image.data.attributes.url}`}
@@ -39,7 +58,7 @@ export default function LaunchingSection({
       )}
 
       <div className="relative mx-auto flex h-full max-w-[1448px] items-end justify-center py-5 md:items-center md:py-8">
-        <div className={`bg-white md:w-[695px] w-[calc(100%-32px)] md:p-10 p-5 md:space-y-10 space-y-[28px] ${second ? "md:ms-0 md:me-auto mx-auto" : "md:ms-auto md:me-0 mx-auto"}`}>
+        <div className={`bg-white md:w-[695px] w-[calc(100%-32px)] md:p-10 p-5 md:space-y-10 space-y-[28px] transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${second ? "md:ms-0 md:me-auto mx-auto" : "md:ms-auto md:me-0 mx-auto"}`}>
           <div className="space-y-2 md:space-y-3">
             <span className="text-sm font-medium text-primary md:text-xl">
               {LaunchingSection.Tagline}
