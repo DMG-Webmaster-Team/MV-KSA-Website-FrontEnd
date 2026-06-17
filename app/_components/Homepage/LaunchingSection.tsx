@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,10 +8,14 @@ import { useLocale } from "next-intl";
 
 export default function LaunchingSection({
   LaunchingSection,
+  second,
 }: {
   LaunchingSection: LaunchingProps;
+  second?: boolean;
 }) {
   const [utmSource, setUtmSource] = useState("general");
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -20,10 +24,27 @@ export default function LaunchingSection({
       setUtmSource(source);
     }
   }, []);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const locale = useLocale();
 
   return (
-    <div className="relative w-full md:h-[80vh] h-[60vh]">
+    <div ref={sectionRef} className="relative h-[60vh] min-h-[540px] w-full md:h-[80vh]">
       {LaunchingSection.Image && (
         <Image
           src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${LaunchingSection.Image.data.attributes.url}`}
@@ -32,21 +53,21 @@ export default function LaunchingSection({
             "Landscape image"
           }
           fill
-          className=" object-cover"
+          className="object-cover"
         />
       )}
 
-      <div className="max-w-[1448px] mx-auto relative md:py-8 py-5 flex md:items-center items-end justify-center h-full">
-        <div className="bg-white md:w-[695px] w-[calc(100%-32px)] md:ms-auto md:me-0 mx-auto md:p-10 p-5 md:space-y-10 space-y-[28px] ">
-          <div className="md:space-y-3 space-y-2">
-            <span className=" text-primary md:text-xl text-sm font-medium">
+      <div className="relative mx-auto flex h-full max-w-[1448px] items-end justify-center py-5 md:items-center md:py-8">
+        <div className={`bg-white md:w-[695px] w-[calc(100%-32px)] md:p-10 p-5 md:space-y-10 space-y-[28px] transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${second ? "md:ms-0 md:me-auto mx-auto" : "md:ms-auto md:me-0 mx-auto"}`}>
+          <div className="space-y-2 md:space-y-3">
+            <span className="text-sm font-medium text-primary md:text-xl">
               {LaunchingSection.Tagline}
             </span>
-            <h2 className=" text-primary font-medium space-y-3 ">
-              <span className="block md:text-[60px] text-4xl">
+            <h2 className="space-y-3 font-medium text-primary">
+              <span className="block text-4xl md:text-[60px]">
                 {LaunchingSection.Title}
               </span>
-              <span className="block md:text-5xl text-[28px] opacity-50">
+              <span className="block text-[28px] opacity-50 md:text-5xl">
                 {LaunchingSection.Title2}
               </span>
             </h2>
@@ -54,10 +75,10 @@ export default function LaunchingSection({
           <div className="flex gap-3 md:w-[380px]">
             <Link
               href={LaunchingSection.ButtonOneLink ?? ""}
-              className="flex gap-3 bg-primary text-white md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center whitespace-nowrap"
+              className="flex w-fit justify-center gap-3 whitespace-nowrap rounded-sm bg-primary px-4 py-2.5 text-sm font-bold text-white md:w-1/2 md:py-3 md:text-base"
             >
               {LaunchingSection.ButtonOneText}
-              <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180 ">
+              <span className="h-4 w-4 ltr:rotate-180 md:h-5 md:w-5">
                 <ArrowLong />
               </span>
             </Link>
@@ -66,10 +87,10 @@ export default function LaunchingSection({
               href={`${
                 locale == "en" ? "/en/" : "/"
               }contact-us?projectname=${LaunchingSection.ButtonTwoLink?.toLowerCase()}&utm_source=${utmSource}`}
-              className="flex gap-3 bg-Gray05 text-primary md:w-1/2 w-fit md:text-base text-sm font-bold px-4 md:py-3 py-2.5 rounded-sm justify-center whitespace-nowrap"
+              className="flex w-fit justify-center gap-3 whitespace-nowrap rounded-sm bg-Gray05 px-4 py-2.5 text-sm font-bold text-primary md:w-1/2 md:py-3 md:text-base"
             >
               {LaunchingSection.ButtonTwoText}
-              <span className="md:w-5 md:h-5 w-4 h-4 ltr:rotate-180">
+              <span className="h-4 w-4 ltr:rotate-180 md:h-5 md:w-5">
                 <ArrowLong />
               </span>
             </Link>
