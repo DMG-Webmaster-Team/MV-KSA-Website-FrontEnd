@@ -20,6 +20,9 @@ export default {
       "5xl": "1511px",
     },
     extend: {
+      fontSize: {
+        "5xl": ["3rem", { lineHeight: "1.2" }],
+      },
       colors: {
         primary: "#001A70",
         gray: "#F6F6F6",
