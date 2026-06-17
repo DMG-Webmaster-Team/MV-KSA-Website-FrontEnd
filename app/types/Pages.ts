@@ -113,6 +113,7 @@ interface MainDataProps {
   }[];
   BoxOne: BoxProps[];
   LaunchingSection: LaunchingProps;
+  LaunchingSection2: LaunchingProps;
   Widget: WidgetProps;
   Rewards: {
     Title: string;
