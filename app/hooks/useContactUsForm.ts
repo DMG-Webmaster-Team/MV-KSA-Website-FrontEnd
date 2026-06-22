@@ -88,9 +88,7 @@ export const useContactUsForm = () => {
     //   .required(t("validation.lastName.required"))
     //   .matches(/^[A-Za-z\s]*$/, t("validation.lastName.invalid"))
     //   .min(3, t("validation.lastName.min")),
-    email: Yup.string()
-      .email(t("validation.email.invalid"))
-      .required(t("validation.email.required")),
+    email: Yup.string().email(t("validation.email.invalid")),
     mobile: Yup.string()
       .required(t("validation.mobile.required"))
       .test("is-valid-phone", t("validation.mobile.invalid"), (value) =>
