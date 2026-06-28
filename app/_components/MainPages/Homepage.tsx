@@ -12,14 +12,17 @@ export default function Homepage({ data }: HomepageProps) {
   return (
     <div>
       <HeroSection data={data.MainData.HeroSection} home />
-      <div className="max-w-[1144px] mx-auto px-4 md:pt-20 pt-10" id="Overview">
-        <p className=" md:text-2xl text-base text-primary text-center">
+      <div className="mx-auto max-w-[1144px] px-4 pt-10 md:pt-20" id="Overview">
+        <p className="text-center text-base text-primary md:text-2xl">
           {data.MainData.OverviewSection}
         </p>
       </div>
 
       <NumbersList NumbersList={data.MainData.NumbersList} />
       <LaunchingSection LaunchingSection={data.MainData.LaunchingSection} />
+      {data.MainData.LaunchingSection2 && (
+        <LaunchingSection LaunchingSection={data.MainData.LaunchingSection2} second />
+      )}
       <Boxes BoxOne={data.MainData.BoxOne} />
       {data.MainData.Widget && <WidgetSection Widget={data.MainData.Widget} />}
 

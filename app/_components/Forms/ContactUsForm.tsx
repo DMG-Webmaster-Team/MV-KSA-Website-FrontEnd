@@ -184,7 +184,7 @@ const ContactUsForm = ({
                   isLoading ? " opacity-40 pointer-events-none" : ""
                 } w-[51%] ms-auto flex items-center my-auto justify-between bg-primary text-white uppercase py-3 px-4 hover:bg-darkblue transition-all duration-500 text-base rounded-sm text-nowrap`}
               >
-                {t("Buttons.send_message")}
+                إرسال
                 <span className="w-5 h-5 ltr:rotate-180">
                   <ArrowLong />
                 </span>

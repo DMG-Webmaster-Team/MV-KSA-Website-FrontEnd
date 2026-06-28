@@ -10,6 +10,8 @@ export default async function Footer({
   params: { locale: string };
 }) {
   const Footer = await fetchServer("general-page?", locale);
+  const footerData = Footer.data?.attributes?.Footer;
+  if (!footerData) return null;
   return (
     <footer className="bg-darkblue">
       <div className="max-w-[1448px] px-4 mx-auto">
