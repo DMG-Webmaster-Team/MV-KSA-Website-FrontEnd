@@ -178,26 +178,6 @@ const ContactUsForm = ({
                 />
               </div>
 
-              <div className="relative pb-1">
-                <Field
-                  name="message"
-                  as="textarea"
-                  className={`input w-full bg-gray text-primary md:px-5 md:py-4 px-4 py-3 md:text-xl text-base rounded-sm outline-none resize-none placeholder:text-primary placeholder:opacity-70 ${
-                    errors.message && touched.message
-                      ? "border-red-500"
-                      : "border-transparent"
-                  } border`}
-                  rows={5}
-                  placeholder={t("form.add_message")}
-                />
-
-                <ErrorMessage
-                  name="message"
-                  component="p"
-                  className="text-red-500 text-xs pt-2 h-0 absolute bottom-0"
-                />
-              </div>
-
               <button
                 type="submit"
                 className={`${

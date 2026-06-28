@@ -81,7 +81,7 @@ export default function Widgets({
     >
       <div className="content-center px-4 py-[44px] md:px-10 md:py-4 lg:w-[50%] xl:px-[100px]">
         <div className="flex flex-col gap-3 md:max-w-[516px]">
-          <h2 className="text-[28px] font-medium text-primary md:text-4xl lg:text-6xl lg:leading-[75px]">
+          <h2 className="text-[28px] font-medium text-primary md:text-4xl lg:text-6xl lg:leading-[75px] text-balance">
             {data.Title}
           </h2>
 
