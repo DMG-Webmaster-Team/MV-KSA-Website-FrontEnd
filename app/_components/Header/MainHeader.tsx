@@ -48,6 +48,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     }
   }, [openMenu]);
  const [show, setShow] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -55,12 +56,12 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
+      setScrolled(currentScrollY > 0);
+
       if (window.innerWidth < 1024) {
         if (currentScrollY < lastScrollY) {
-          // scrolling up
           setShow(true);
         } else {
-          // scrolling down
           setShow(false);
         }
       }
@@ -105,7 +106,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
         <>
           <div
             className={`${openMenu ? " bg-darkblue " : ""} ${
-            show?"bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px] fixed":  StableHeader ? "relative" : "absolute top-0"
+            show ? "bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px] fixed" : StableHeader ? "relative" : scrolled ? "fixed top-0 bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px]" : "absolute top-0"
             } transition-all duration-500  w-full z-40 py-2.5 border-b-[2px] border-white border-opacity-20`}
           >
             <div className="max-w-[1448px] px-4 mx-auto flex justify-between items-center">
