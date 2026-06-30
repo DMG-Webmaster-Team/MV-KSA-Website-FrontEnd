@@ -58,7 +58,7 @@ export default function LaunchingSection({
       )}
 
       <div className="relative mx-auto flex h-full max-w-[1448px] items-end justify-center py-5 md:items-center md:py-8">
-        <div className={`bg-white w-[381px] h-[218px] p-5 space-y-4 transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${second ? "md:ms-0 md:me-auto mx-auto" : "md:ms-auto md:me-0 mx-auto"}`}>
+        <div className={`bg-white w-[381px] p-5 space-y-4 transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${second ? "md:ms-0 md:me-auto mx-auto" : "md:ms-auto md:me-0 mx-auto"}`}>
           <div className="space-y-1">
             <span className="text-[14px] font-medium text-primary">
               {LaunchingSection.Tagline}
