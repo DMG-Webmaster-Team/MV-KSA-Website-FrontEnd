@@ -58,27 +58,27 @@ export default function LaunchingSection({
       )}
 
       <div className="relative mx-auto flex h-full max-w-[1448px] items-end justify-center py-5 md:items-center md:py-8">
-        <div className={`bg-white md:w-[695px] w-[calc(100%-32px)] md:p-10 p-5 md:space-y-10 space-y-[28px] transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${second ? "md:ms-0 md:me-auto mx-auto" : "md:ms-auto md:me-0 mx-auto"}`}>
-          <div className="space-y-2 md:space-y-3">
-            <span className="text-sm font-medium text-primary md:text-xl">
+        <div className={`bg-white w-[381px] h-[218px] p-5 space-y-4 transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${second ? "md:ms-0 md:me-auto mx-auto" : "md:ms-auto md:me-0 mx-auto"}`}>
+          <div className="space-y-1">
+            <span className="text-[14px] font-medium text-primary">
               {LaunchingSection.Tagline}
             </span>
-            <h2 className="space-y-3 font-medium text-primary">
-              <span className="block text-4xl md:text-[60px]">
+            <h2 className="font-medium text-primary">
+              <span className="block text-[36px] leading-tight">
                 {LaunchingSection.Title}
               </span>
-              <span className="block text-[28px] opacity-50 md:text-5xl">
+              <span className="block text-[36px] leading-tight opacity-50">
                 {LaunchingSection.Title2}
               </span>
             </h2>
           </div>
-          <div className="flex gap-3 md:w-[380px]">
+          <div className="flex gap-3">
             <Link
               href={LaunchingSection.ButtonOneLink ?? ""}
-              className="flex w-fit justify-center gap-3 whitespace-nowrap rounded-sm bg-primary px-4 py-2.5 text-sm font-bold text-white md:w-1/2 md:py-3 md:text-base"
+              className="flex w-fit justify-center gap-2 whitespace-nowrap rounded-sm bg-primary px-4 py-2 text-sm font-bold text-white"
             >
               {LaunchingSection.ButtonOneText}
-              <span className="h-4 w-4 ltr:rotate-180 md:h-5 md:w-5">
+              <span className="h-4 w-4 ltr:rotate-180">
                 <ArrowLong />
               </span>
             </Link>
@@ -87,10 +87,10 @@ export default function LaunchingSection({
               href={`${
                 locale == "en" ? "/en/" : "/"
               }contact-us?projectname=${LaunchingSection.ButtonTwoLink?.toLowerCase()}&utm_source=${utmSource}`}
-              className="flex w-fit justify-center gap-3 whitespace-nowrap rounded-sm bg-Gray05 px-4 py-2.5 text-sm font-bold text-primary md:w-1/2 md:py-3 md:text-base"
+              className="flex w-fit justify-center gap-2 whitespace-nowrap rounded-sm bg-Gray05 px-4 py-2 text-sm font-bold text-primary"
             >
               {LaunchingSection.ButtonTwoText}
-              <span className="h-4 w-4 ltr:rotate-180 md:h-5 md:w-5">
+              <span className="h-4 w-4 ltr:rotate-180">
                 <ArrowLong />
               </span>
             </Link>

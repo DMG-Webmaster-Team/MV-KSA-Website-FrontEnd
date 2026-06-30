@@ -44,9 +44,9 @@ export default function OverviewSection({
         <Image
           src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
           alt={data.Logo.data.attributes.alternativeText ?? "Logo"}
-          width={128}
-          height={86}
-          className="md:w-[128px] md:h-[86px] !w-[89px] !h-[60px] md:mx-0 mx-auto"
+          width={160}
+          height={80}
+          className="w-[160px] h-[80px] mx-auto"
         />
       )}
       <h2
