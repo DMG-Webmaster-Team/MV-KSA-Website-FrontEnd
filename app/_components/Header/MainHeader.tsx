@@ -37,12 +37,14 @@ export interface Menu {
 
 function getComputedBg(el: Element): string {
   let current: Element | null = el;
-  while (current && current !== document.body) {
+  while (current) {
     const bg = window.getComputedStyle(current).backgroundColor;
     if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
+    if (current === document.documentElement) break;
     current = current.parentElement;
   }
-  return "rgb(0,0,0)";
+  // Most pages default to white — assume light if no explicit bg found
+  return "rgb(255,255,255)";
 }
 
 function isLightBg(color: string): boolean {
@@ -88,12 +90,17 @@ export default function MainHeader({ data }: { data: Menu[] }) {
 
       // Auto contrast: sample elements at header center, skip the header itself
       if (currentScrollY > 0) {
-        const elements = document.elementsFromPoint(window.innerWidth / 2, 56);
-        const el = elements.find(
+        const elements = document.elementsFromPoint(window.innerWidth / 2, 70);
+        const pageEls = elements.filter(
           (e) => headerRef.current && !headerRef.current.contains(e)
         );
-        if (el) {
-          setIsDarkSection(isLightBg(getComputedBg(el)));
+        // If a fill image is in the stack, it's a dark hero — keep white header
+        const hasImage = pageEls.some((e) => e.tagName === "IMG");
+        if (hasImage) {
+          setIsDarkSection(false);
+        } else {
+          const el = pageEls[0];
+          if (el) setIsDarkSection(isLightBg(getComputedBg(el)));
         }
       } else {
         setIsDarkSection(false);
