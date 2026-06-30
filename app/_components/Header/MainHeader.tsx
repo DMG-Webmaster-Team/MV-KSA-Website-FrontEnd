@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import BurgerMenu from "../SVGS/BurgerMenu";
 import Calender from "../SVGS/Calender";
@@ -60,6 +60,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
   const [show, setShow] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isDarkSection, setIsDarkSection] = useState(false);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (openMenu) {
@@ -85,9 +86,12 @@ export default function MainHeader({ data }: { data: Menu[] }) {
         }
       }
 
-      // Auto contrast: sample the element just below the header bar
+      // Auto contrast: sample elements at header center, skip the header itself
       if (currentScrollY > 0) {
-        const el = document.elementFromPoint(window.innerWidth / 2, 56);
+        const elements = document.elementsFromPoint(window.innerWidth / 2, 56);
+        const el = elements.find(
+          (e) => headerRef.current && !headerRef.current.contains(e)
+        );
         if (el) {
           setIsDarkSection(isLightBg(getComputedBg(el)));
         }
@@ -150,6 +154,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
       {!isUnitPage && (
         <>
           <div
+            ref={headerRef}
             className={`${headerBg} transition-all duration-500 w-full z-40 py-2.5 border-b-[2px] ${borderClass}`}
           >
             <div className="max-w-[1448px] px-4 mx-auto flex justify-between items-center">
