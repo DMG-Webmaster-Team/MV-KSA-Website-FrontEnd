@@ -139,7 +139,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
   );
 
   // When over a light section, use a darker bg so white text stays readable
-  const darkBg = "bg-[rgba(12,46,48,0.75)] backdrop-blur-[45px]";
+  const darkBg = "bg-[rgba(12,46,48,0.92)] backdrop-blur-[45px]";
   const lightBg = "bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px]";
 
   const headerBg = openMenu
