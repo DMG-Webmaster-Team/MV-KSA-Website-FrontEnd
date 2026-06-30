@@ -43,7 +43,6 @@ function getComputedBg(el: Element): string {
     if (current === document.documentElement) break;
     current = current.parentElement;
   }
-  // Most pages default to white — assume light if no explicit bg found
   return "rgb(255,255,255)";
 }
 
@@ -88,13 +87,13 @@ export default function MainHeader({ data }: { data: Menu[] }) {
         }
       }
 
-      // Auto contrast: sample elements at header center, skip the header itself
+      // Auto contrast: sample elements below the header, skip header itself
       if (currentScrollY > 0) {
         const elements = document.elementsFromPoint(window.innerWidth / 2, 70);
         const pageEls = elements.filter(
           (e) => headerRef.current && !headerRef.current.contains(e)
         );
-        // If a fill image is in the stack, it's a dark hero — keep white header
+        // If a fill image is in the stack it's a dark hero — keep normal header
         const hasImage = pageEls.some((e) => e.tagName === "IMG");
         if (hasImage) {
           setIsDarkSection(false);
@@ -139,22 +138,19 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     Pathname
   );
 
-  // Use dark (primary) styles when on a stable page OR when scrolled over a light-bg section
-  const useDarkStyles = StableHeader || (isDarkSection && scrolled && !openMenu);
+  // When over a light section, use a darker bg so white text stays readable
+  const darkBg = "bg-[rgba(12,46,48,0.75)] backdrop-blur-[45px]";
+  const lightBg = "bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px]";
 
   const headerBg = openMenu
     ? "bg-darkblue"
     : show
-    ? `${isDarkSection ? "bg-white" : "bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px]"} fixed`
+    ? `${isDarkSection ? darkBg : lightBg} fixed`
     : StableHeader
     ? "relative"
     : scrolled
-    ? `fixed top-0 ${isDarkSection ? "bg-white" : "bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px]"}`
+    ? `fixed top-0 ${isDarkSection ? darkBg : lightBg}`
     : "absolute top-0";
-
-  const borderClass = useDarkStyles
-    ? "border-primary border-opacity-20"
-    : "border-white border-opacity-20";
 
   return (
     <>
@@ -162,14 +158,14 @@ export default function MainHeader({ data }: { data: Menu[] }) {
         <>
           <div
             ref={headerRef}
-            className={`${headerBg} transition-all duration-500 w-full z-40 py-2.5 border-b-[2px] ${borderClass}`}
+            className={`${headerBg} transition-all duration-500 w-full z-40 py-2.5 border-b-[2px] border-white border-opacity-20`}
           >
             <div className="max-w-[1448px] px-4 mx-auto flex justify-between items-center">
               <Link
                 className=" relative rtl:2xl:w-[268px] rtl:xl:w-[220px] rtl:sm:w-[200px] rtl:w-[153px] ltr:2xl:w-[240px] ltr:w-[200px] aspect-[401/105]"
                 href={`${locale == "en" ? "/en" : ""}/`}
               >
-                {useDarkStyles ? (
+                {StableHeader && !openMenu ? (
                   <Image
                     src={`/logoblack.png`}
                     alt="Logo MV KSA"
@@ -189,23 +185,23 @@ export default function MainHeader({ data }: { data: Menu[] }) {
               </Link>
               <div className="rtl:2xl:w-[calc(100%-268px-140px)] rtl:xl:w-[calc(100%-220px-100px)] rtl:w-[calc(100%-200px-20px)] ltr:2xl:w-[calc(100%-240px-50px)] ltr:w-[calc(100%-200px-50px)] rtl:2xl:gap-[60px] xl:gap-[50px] gap-8 ltr:2xl:gap-[40px] items-center justify-between lg:flex hidden ">
                 <div className="lg:flex hidden xl:gap-[28px] gap-4 rtl:xl:w-[calc(100%-422px-50px)] rtl:w-[calc(100%-359px-50px)] ltr:2xl:w-[calc(100%-485px-50px)] ltr:w-[calc(100%-429px-50px)]">
-                  <MenuDesktop data={data} StableHeader={useDarkStyles} />
+                  <MenuDesktop data={data} StableHeader={StableHeader} />
                 </div>
                 <div className={`justify-end flex xl:gap-8 gap-5 items-center rtl:xl:w-[422px] rtl:w-[359px] ltr:2xl:w-[485px] ltr:w-[429px]`}>
                   <div className="lg:block hidden">
-                    <LangSwitcher DesktopHeader={useDarkStyles} />
+                    <LangSwitcher DesktopHeader={StableHeader} />
                   </div>
 
                   {/* <div
                     className={`${
-                      useDarkStyles
+                      StableHeader
                         ? "border-primary divide-primary"
                         : "border-white divide-white"
                     } lg:flex hidden border  rtl:divide-x-reverse ltr:divide-x divide-x-[1px]  rounded-sm`}
                   >
                     <Link
                       className={`${
-                        useDarkStyles
+                        StableHeader
                           ? " text-primary hover:bg-primary hover:text-white"
                           : "text-white hover:bg-primary"
                       }  xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
@@ -217,7 +213,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                     </Link>
                     <Link
                       className={` ${
-                        useDarkStyles
+                        StableHeader
                           ? " text-primary hover:bg-primary hover:text-white"
                           : "text-white hover:bg-primary"
                       } xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
@@ -228,7 +224,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                       </span>
                     </Link> */}
                     {/* <button
-                      className={` ${useDarkStyles
+                      className={` ${StableHeader
                         ? " text-primary hover:bg-primary hover:text-white"
                         : "text-white hover:bg-primary"
                         } xl:p-2.5 p-1.5  transition-all duration-500 content-center`}
@@ -237,12 +233,12 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                         <Search />
                       </span>
                     </button> */}
-                    {/* <SearchComponent StableHeader={useDarkStyles} /> */}
+                    {/* <SearchComponent StableHeader={StableHeader} /> */}
                   {/* </div> */}
                   <Link
                     href={`${locale == "en" ? "/en/" : "/"}contact-us`}
                     className={`${
-                      useDarkStyles
+                      StableHeader
                         ? "bg-primary text-white hover:bg-darkblue"
                         : "bg-white text-primary hover:bg-primary hover:text-white"
                     }  xl:px-4 px-3 xl:py-3 py-2 rtl:xl:text-base text-sm font-bold  lg:flex hidden gap-3 items-center rounded-sm  transition-all duration-500 `}
@@ -259,14 +255,14 @@ export default function MainHeader({ data }: { data: Menu[] }) {
               </div>
               <div
                 className={`lg:hidden flex border ${
-                  useDarkStyles && !openMenu
+                  StableHeader && !openMenu
                     ? "border-primary divide-primary"
                     : "border-white divide-white"
                 } rtl:divide-x-reverse ltr:divide-x divide-x-[1px] rounded-sm `}
               >
                 {/* <button
                   className={`${
-                    useDarkStyles && !openMenu
+                    StableHeader && !openMenu
                       ? " text-primary hover:bg-primary hover:text-white"
                       : "text-white hover:bg-primary"
                   } p-2.5 transition-all duration-500`}
@@ -277,7 +273,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                 </button>
                 <Link
                   className={`${
-                    useDarkStyles && !openMenu
+                    StableHeader && !openMenu
                       ? " text-primary hover:bg-primary hover:text-white"
                       : "text-white hover:bg-primary"
                   } p-2.5  transition-all duration-500`}
@@ -292,7 +288,7 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                     setOpenMenu(!openMenu);
                   }}
                   className={`${
-                    useDarkStyles && !openMenu
+                    StableHeader && !openMenu
                       ? " text-primary hover:bg-primary hover:text-white"
                       : "text-white hover:bg-primary"
                   } p-2.5 transition-all duration-500`}
