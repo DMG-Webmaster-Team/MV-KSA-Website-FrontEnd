@@ -9,6 +9,7 @@ import LandScape from "../LandScape";
 import Units from "../Units";
 import PartnerShipSection from "../PartnerShipSection";
 import Gallery from "../Gallery";
+import AmenitiesSection from "../CommonComp/AmenitiesSection";
 import { SingleProjectProps } from "@/app/types/Pages";
 
 export default function SingleProject({ data }: SingleProjectProps) {
@@ -17,6 +18,9 @@ export default function SingleProject({ data }: SingleProjectProps) {
     <div>
       <HeroSection data={data.MainData.HeroSection} singleProject />
       <OverviewSection data={data.MainData.OverviewSection} singleProject />
+      {data.MainData.AmenitiesSection && (
+        <AmenitiesSection data={data.MainData.AmenitiesSection} />
+      )}
       {data.MainData.PDF?.data?.attributes && (
         <div className="md:-mt-10">
           <DownloadButton
