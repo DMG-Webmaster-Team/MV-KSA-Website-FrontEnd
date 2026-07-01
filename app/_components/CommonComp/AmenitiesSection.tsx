@@ -73,7 +73,7 @@ export default function AmenitiesSection({
             return (
               <div
                 key={index}
-                className={`flex items-center justify-between gap-4 py-8 px-[42px] border-[#001A70]/20 ${borders}`}
+                className={`flex items-center justify-between gap-4 py-8 px-5 md:px-[42px] border-[#001A70]/20 ${borders}`}
               >
                 <div>
                   <p className="text-[48px] font-medium leading-tight text-[#001A70]">
