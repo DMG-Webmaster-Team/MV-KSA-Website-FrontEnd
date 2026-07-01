@@ -19,8 +19,8 @@ export default function HeroSection({
 }) {
   const t = useTranslations();
   const locale = useLocale();
-  const mediaUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media.data.attributes.url}`;
-  const isVideo = /\.(mp4|webm)$/i.test(data.Media.data.attributes.url);
+  const mediaUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Media?.data?.attributes?.url ?? ""}`;
+  const isVideo = /\.(mp4|webm)$/i.test(data.Media?.data?.attributes?.url ?? "");
   const [utmSource, setUtmSource] = useState("general");
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function HeroSection({
       ) : (
         <Image
           src={mediaUrl}
-          alt={data.Media.data.attributes.alternativeText ?? "Image"}
+          alt={data.Media?.data?.attributes?.alternativeText ?? "Image"}
           fill
           priority
           className="object-cover"
@@ -72,8 +72,8 @@ export default function HeroSection({
             } relative w-[305px]  mx-auto`}
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
-              alt={data.Media.data.attributes.alternativeText ?? "Image"}
+              src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo?.data?.attributes?.url}`}
+              alt={data.Media?.data?.attributes?.alternativeText ?? "Image"}
               fill
               className="object-contain"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

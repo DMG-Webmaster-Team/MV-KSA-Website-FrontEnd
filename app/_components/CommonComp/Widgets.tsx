@@ -134,8 +134,8 @@ export default function Widgets({
 
       <div className="relative aspect-[1/1] lg:aspect-[800/634] lg:w-[50%]">
         <Image
-          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url}`}
-          alt={data.Image.data.attributes.alternativeText ?? ""}
+          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image?.data?.attributes?.url}`}
+          alt={data.Image?.data?.attributes?.alternativeText ?? ""}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

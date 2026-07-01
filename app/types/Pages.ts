@@ -164,6 +164,7 @@ export interface SingleProjectProps {
       HeroSection: HeroSectionProps;
       OverviewSection: OverviewSectionProps;
       OverviewSection2: OverviewSectionProps;
+      AmenitiesSection?: import("../_components/CommonComp/AmenitiesSection").AmenitiesSectionProps;
       Widgets: WidgetProps[];
       PDF: {
         data: {

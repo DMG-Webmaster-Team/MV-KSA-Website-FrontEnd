@@ -80,15 +80,17 @@ export default function SiteMap({ data }: { data: siteMap }) {
           </div>
         </div>
       </div>
-      <div className="relative aspect-[822/800] w-full lg:aspect-[800/734] lg:w-[50%]">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url}`}
-          alt={data.Image.data.attributes.alternativeText ?? ""}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
+      {data.Image?.data?.attributes && (
+        <div className="relative aspect-[822/800] w-full lg:aspect-[800/734] lg:w-[50%]">
+          <Image
+            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data.attributes.url}`}
+            alt={data.Image.data.attributes.alternativeText ?? ""}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+      )}
     </div>
   );
 }
