@@ -3,6 +3,7 @@ export const runtime = "edge";
 import SingleProject from "@/app/_components/MainPages/SingleProject";
 import { fetchServer } from "@/app/api/general";
 import { generatePageMetadata } from "@/lib/seo";
+import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 export async function generateMetadata(props: {
@@ -25,10 +26,14 @@ export default async function page(props: {
   const [Data] = await Promise.all([
     fetchServer(`projects?filters[slug][$eq]=${slug}&`, locale),
   ]);
+
+  const attributes = Data?.data?.[0]?.attributes;
+  if (!attributes) notFound();
+
   return (
     <SingleProject
       data={{
-        MainData: Data.data[0]?.attributes,
+        MainData: attributes,
       }}
     />
   );
