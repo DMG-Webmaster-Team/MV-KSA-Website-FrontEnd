@@ -15,8 +15,7 @@ export interface AmenityItem {
 }
 
 export interface AmenitiesSectionProps {
-  TitleAr: string;
-  TitleEn: string;
+  Title: string;
   BackgroundImage?: {
     data: {
       attributes: {
@@ -49,11 +48,8 @@ export default function AmenitiesSection({
       <div className="relative z-10 mx-auto max-w-[1512px] px-4 py-[111px]">
         <div className="mb-[60px] text-center">
           <h2 className="text-[36px] font-medium leading-[125%] text-[#001A70]">
-            {data.TitleAr}
+            {data.Title}
           </h2>
-          <p className="text-[36px] font-medium leading-[125%] text-[#001A70]">
-            {data.TitleEn}
-          </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y divide-[#001A7033] border-0">
           {data.Items.map((item, index) => (
