@@ -21,13 +21,20 @@ export async function generateMetadata(props: {
 export default async function page(props: {
   params: Promise<{ slug: string; locale: string }>;
 }) {
-    const { slug, locale } = await props.params;
+  const { slug, locale } = await props.params;
 
   const [Data] = await Promise.all([
     fetchServer(`projects?filters[slug][$eq]=${slug}&`, locale),
   ]);
 
-  const attributes = Data?.data?.[0]?.attributes;
+  let attributes = Data?.data?.[0]?.attributes;
+
+  // EN content may not be filled in Strapi — fall back to AR
+  if (!attributes && locale === "en") {
+    const FallbackData = await fetchServer(`projects?filters[slug][$eq]=${slug}&`, "ar");
+    attributes = FallbackData?.data?.[0]?.attributes;
+  }
+
   if (!attributes) notFound();
 
   return (
