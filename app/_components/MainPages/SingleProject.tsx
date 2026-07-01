@@ -9,6 +9,7 @@ import LandScape from "../LandScape";
 import Units from "../Units";
 import PartnerShipSection from "../PartnerShipSection";
 import Gallery from "../Gallery";
+import AmenitiesSection from "../CommonComp/AmenitiesSection";
 import { SingleProjectProps } from "@/app/types/Pages";
 
 export default function SingleProject({ data }: SingleProjectProps) {
@@ -51,6 +52,9 @@ export default function SingleProject({ data }: SingleProjectProps) {
         <OverviewSection data={data.MainData.OverviewSection2} />
       )}
 
+      {data.MainData.AmenitiesSection && (
+        <AmenitiesSection data={data.MainData.AmenitiesSection} />
+      )}
       <LandScape data={data.MainData.Landscape} />
      {data.MainData.Units&& <Units data={data.MainData.Units} ProjectSlug={data.MainData.slug} />}
       {data.MainData.Gallery?.data?.length > 0 && (
