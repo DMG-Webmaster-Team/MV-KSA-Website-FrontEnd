@@ -57,7 +57,7 @@ export default function AmenitiesSection({
             const col = index % cols;
             const row = Math.floor(index / cols);
             const totalRows = Math.ceil(arr.length / cols);
-            const borderRight = col < cols - 1 ? "border-r border-r-[#001A7033]" : "";
+            const borderRight = col < cols - 1 ? "ltr:border-r ltr:border-r-[#001A7033] rtl:border-l rtl:border-l-[#001A7033]" : "";
             const borderBottom = row < totalRows - 1 ? "border-b border-b-[#001A7033]" : "";
             return (
               <div
