@@ -38,8 +38,8 @@ export default function AmenitiesSection({
     <section className="relative w-full overflow-hidden">
       {data.BackgroundImage?.data?.attributes?.url && (
         <Image
-          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.BackgroundImage.data.attributes.url}`}
-          alt={data.BackgroundImage.data.attributes.alternativeText ?? ""}
+          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.BackgroundImage.data?.attributes?.url}`}
+          alt={data.BackgroundImage.data?.attributes?.alternativeText ?? ""}
           fill
           className="object-cover object-top"
         />
@@ -75,8 +75,8 @@ export default function AmenitiesSection({
                 {item.Icon?.data?.attributes?.url && (
                   <div className="relative h-[60px] w-[60px] shrink-0">
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Icon.data.attributes.url}`}
-                      alt={item.Icon.data.attributes.alternativeText ?? item.Label}
+                      src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${item.Icon.data?.attributes?.url}`}
+                      alt={item.Icon.data?.attributes?.alternativeText ?? item.Label}
                       fill
                       className="object-contain"
                     />
