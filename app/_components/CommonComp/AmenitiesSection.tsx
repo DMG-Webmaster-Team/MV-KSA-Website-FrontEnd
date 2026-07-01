@@ -53,16 +53,27 @@ export default function AmenitiesSection({
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4">
           {data.Items.map((item, index, arr) => {
-            const cols = 4;
-            const col = index % cols;
-            const row = Math.floor(index / cols);
-            const totalRows = Math.ceil(arr.length / cols);
-            const borderRight = col < cols - 1 ? "ltr:border-r ltr:border-r-[#001A7033] rtl:border-l rtl:border-l-[#001A7033]" : "";
-            const borderBottom = row < totalRows - 1 ? "border-b border-b-[#001A7033]" : "";
+            const n = arr.length;
+            // mobile: 2 cols
+            const mCol = index % 2;
+            const mRow = Math.floor(index / 2);
+            const mTotalRows = Math.ceil(n / 2);
+            // desktop: 4 cols
+            const dCol = index % 4;
+            const dRow = Math.floor(index / 4);
+            const dTotalRows = Math.ceil(n / 4);
+
+            const borders = [
+              mCol < 1   ? "max-md:ltr:border-r max-md:rtl:border-l" : "",
+              mRow < mTotalRows - 1 ? "max-md:border-b" : "",
+              dCol < 3   ? "md:ltr:border-r md:rtl:border-l" : "",
+              dRow < dTotalRows - 1 ? "md:border-b" : "",
+            ].filter(Boolean).join(" ");
+
             return (
               <div
                 key={index}
-                className={`flex items-center justify-between gap-4 py-8 px-[42px] ${borderRight} ${borderBottom}`}
+                className={`flex items-center justify-between gap-4 py-8 px-[42px] border-[#001A70]/20 ${borders}`}
               >
                 <div>
                   <p className="text-[48px] font-medium leading-tight text-[#001A70]">
