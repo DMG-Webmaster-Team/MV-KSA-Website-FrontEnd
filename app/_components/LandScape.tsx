@@ -14,7 +14,7 @@ export default function LandScape({ data }: { data: LandScapeProps }) {
           <Image
             src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Image.data?.attributes?.url}`}
             alt={
-              data.Image.data.attributes.alternativeText ?? "Landscape image"
+              data.Image.data?.attributes?.alternativeText ?? "Landscape image"
             }
             fill
             className={`object-cover ${data.rotate ? "-scale-x-100" : ""}`}
