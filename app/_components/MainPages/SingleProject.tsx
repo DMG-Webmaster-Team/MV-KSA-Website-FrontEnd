@@ -18,9 +18,6 @@ export default function SingleProject({ data }: SingleProjectProps) {
     <div>
       <HeroSection data={data.MainData.HeroSection} singleProject />
       <OverviewSection data={data.MainData.OverviewSection} singleProject />
-      {data.MainData.AmenitiesSection && (
-        <AmenitiesSection data={data.MainData.AmenitiesSection} />
-      )}
       {data.MainData.PDF?.data?.attributes && (
         <div className="md:-mt-10">
           <DownloadButton
@@ -55,6 +52,9 @@ export default function SingleProject({ data }: SingleProjectProps) {
         <OverviewSection data={data.MainData.OverviewSection2} />
       )}
 
+      {data.MainData.AmenitiesSection && (
+        <AmenitiesSection data={data.MainData.AmenitiesSection} />
+      )}
       <LandScape data={data.MainData.Landscape} />
      {data.MainData.Units&& <Units data={data.MainData.Units} ProjectSlug={data.MainData.slug} />}
       {data.MainData.Gallery?.data?.length > 0 && (
