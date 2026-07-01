@@ -14,10 +14,10 @@ export default function SiteMap({ data }: { data: siteMap }) {
     >
       <div className="w-full content-center px-4 py-6 md:py-[84px] lg:w-[50%] lg:px-10 lg:py-[100px] 2xl:p-[100px]">
         <div className="space-y-5">
-          <h2 className="text-[28px] font-medium text-primary md:text-4xl lg:leading-[75px] xl:text-5xl">
+          <h2 className="text-xl font-medium text-primary md:text-3xl lg:leading-tight xl:text-4xl">
             {data.Title}
           </h2>
-          <h3 className="text-3xl text-primary opacity-50 xl:text-5xl">
+          <h3 className="text-2xl text-primary opacity-50 xl:text-4xl">
             {data.Description}
           </h3>
           <div className="flex gap-5">

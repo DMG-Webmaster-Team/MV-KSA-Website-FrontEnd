@@ -84,8 +84,8 @@ export default function HeroSection({
           <h1
             className={`${
               singleProject
-                ? "md:text-[52px] text-4xl"
-                : "lg:text-[100px] lg:leading-[100px] md:text-6xl text-4xl"
+                ? "md:text-[36px] text-2xl"
+                : "lg:text-[72px] lg:leading-[80px] md:text-5xl text-2xl"
             } text-white font-medium ${srOnly?"sr-only":""}`}
           >
             {data.Title}
@@ -93,8 +93,8 @@ export default function HeroSection({
           <p
             className={`${
               singleProject
-                ? "md:text-2xl text-base"
-                : "lg:text-[60px] lg:leading-[70px]  text-base text-center "
+                ? "md:text-lg text-sm"
+                : "lg:text-[40px] lg:leading-[50px] text-sm text-center "
             } text-white mx-auto  font-medium mt-2 ${
               home ? "" : " opacity-70"
             }`}
