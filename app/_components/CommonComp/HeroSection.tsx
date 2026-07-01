@@ -35,6 +35,8 @@ export default function HeroSection({
       className="heroSection relative h-[73vh] min-h-[700px] w-full overflow-hidden md:h-[100vh]"
       style={{ boxShadow: "0px 1000px 4px 0px #00000033 inset" }}
     >
+      {/* Top gradient to ensure header content stays readable */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/50 to-transparent z-10 pointer-events-none" />
       {isVideo ? (
         <video
           className="absolute inset-0 h-full w-full scale-150 object-cover"
