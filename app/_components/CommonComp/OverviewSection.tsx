@@ -40,10 +40,10 @@ export default function OverviewSection({
       {data?.Label && (
         <span className={`  text-2xl opacity-50 text-primary`}>{data.Label}</span>
       )}
-      {data.Logo && (
+      {data.Logo?.data?.attributes?.url && (
         <Image
-          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo?.data?.attributes?.url}`}
-          alt={data.Logo?.data?.attributes?.alternativeText ?? "Logo"}
+          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}${data.Logo.data.attributes.url}`}
+          alt={data.Logo.data.attributes.alternativeText ?? "Logo"}
           width={160}
           height={80}
           className="w-[160px] h-[80px] mx-auto"
