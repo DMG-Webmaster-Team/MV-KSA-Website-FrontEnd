@@ -183,6 +183,10 @@ export interface SingleProjectProps {
       Units: UnitsProps;
       PartnerSection: PartnerShipProps;
       Gallery: { data: singleImage[] };
+      Button?: {
+        ButtonText: string;
+        Buttonlink: string;
+      };
     };
   };
 }
