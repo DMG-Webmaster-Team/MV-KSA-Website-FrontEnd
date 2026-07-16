@@ -7,6 +7,7 @@ import ArrowLong from "../SVGS/ArrowLong";
 // import Arrow from "../SVGS/Arrow";
 import { useContactUsForm } from "@/app/hooks/useContactUsForm";
 import Arrow from "../SVGS/Arrow";
+import { useLocale } from "next-intl";
 
 const ContactUsForm = ({
   List,
@@ -15,6 +16,7 @@ const ContactUsForm = ({
   List: { Name: string }[];
   budget: { Name: string }[];
 }) => {
+  const locale = useLocale();
   const {
     initialValues,
     validationSchema,
@@ -184,7 +186,7 @@ const ContactUsForm = ({
                   isLoading ? " opacity-40 pointer-events-none" : ""
                 } w-[51%] ms-auto flex items-center my-auto justify-between bg-primary text-white uppercase py-3 px-4 hover:bg-darkblue transition-all duration-500 text-base rounded-sm text-nowrap`}
               >
-                إرسال
+                {locale === "en" ? "Send" : "إرسال"}
                 <span className="w-5 h-5 ltr:rotate-180">
                   <ArrowLong />
                 </span>
