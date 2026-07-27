@@ -19,20 +19,22 @@ export default function SingleProject({ data }: SingleProjectProps) {
       <HeroSection data={data.MainData.HeroSection} singleProject />
       <OverviewSection data={data.MainData.OverviewSection} singleProject />
       {(data.MainData.PDF?.data?.attributes || data.MainData.Button?.Buttonlink) && (
-        <div className="md:-mt-10 flex flex-wrap gap-3">
+        <div className="md:-mt-10 flex justify-center gap-8 px-4 md:px-0 md:justify-start">
           {data.MainData.PDF?.data?.attributes && (
-            <DownloadButton
-              title={t("Buttons.download_PDF")}
-              PDFurl={data.MainData.PDF.data.attributes.url}
-              PDFName={data.MainData.PDF.data.attributes.name}
-            />
+            <div className="flex flex-1 md:flex-none">
+              <DownloadButton
+                title={t("Buttons.download_PDF")}
+                PDFurl={data.MainData.PDF.data.attributes.url}
+                PDFName={data.MainData.PDF.data.attributes.name}
+              />
+            </div>
           )}
           {data.MainData.Button?.Buttonlink && (
             <a
               href={data.MainData.Button.Buttonlink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-fit items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-bold text-white transition-all duration-500 hover:bg-darkblue"
+              className="flex flex-1 md:flex-none justify-center items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-bold text-white transition-all duration-500 hover:bg-darkblue"
             >
               {data.MainData.Button.ButtonText}
             </a>
