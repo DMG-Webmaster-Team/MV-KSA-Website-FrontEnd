@@ -19,22 +19,21 @@ export default function SingleProject({ data }: SingleProjectProps) {
       <HeroSection data={data.MainData.HeroSection} singleProject />
       <OverviewSection data={data.MainData.OverviewSection} singleProject />
       {(data.MainData.PDF?.data?.attributes || data.MainData.Button?.Buttonlink) && (
-        <div className="md:-mt-10 flex justify-center gap-8 px-4 md:px-0 md:justify-start">
+        <div className="md:-mt-10 flex flex-col items-center gap-4 px-8 md:flex-row md:justify-center md:gap-8 md:px-0">
           {data.MainData.PDF?.data?.attributes && (
-            <div className="flex flex-1 md:flex-none">
-              <DownloadButton
-                title={t("Buttons.download_PDF")}
-                PDFurl={data.MainData.PDF.data.attributes.url}
-                PDFName={data.MainData.PDF.data.attributes.name}
-              />
-            </div>
+            <DownloadButton
+              title={t("Buttons.download_PDF")}
+              PDFurl={data.MainData.PDF.data.attributes.url}
+              PDFName={data.MainData.PDF.data.attributes.name}
+              className="w-full md:w-fit"
+            />
           )}
           {data.MainData.Button?.Buttonlink && (
             <a
               href={data.MainData.Button.Buttonlink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-1 md:flex-none justify-center items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-bold text-white transition-all duration-500 hover:bg-darkblue"
+              className="flex w-full justify-center items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-bold text-white transition-all duration-500 hover:bg-darkblue md:w-auto"
             >
               {data.MainData.Button.ButtonText}
             </a>
