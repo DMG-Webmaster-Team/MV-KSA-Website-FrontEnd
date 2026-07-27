@@ -7,11 +7,13 @@ export default function DownloadButton({
   PDFurl,
   PDFName,
   light,
+  className,
 }: {
   title: string;
   PDFurl: string;
   PDFName: string;
   light?: boolean;
+  className?: string;
 }) {
   const DownloadPdf = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +45,7 @@ export default function DownloadButton({
         light
           ? " text-primary bg-Gray05 hover:text-Gray05 hover:bg-primary"
           : "bg-primary hover:bg-darkblue text-white mx-auto"
-      } flex items-center  transition-all duration-500  py-3 px-4 rounded-sm w-fit  gap-3`}
+      } flex items-center justify-center transition-all duration-500 py-3 px-4 rounded-sm w-fit gap-3 ${className ?? ""}`}
     >
       <span className="text-base font-bold -mb-1">{title}</span>
       <span className="w-5 h-5 flex items-center justify-center">
