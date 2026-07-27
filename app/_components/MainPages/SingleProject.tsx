@@ -19,12 +19,13 @@ export default function SingleProject({ data }: SingleProjectProps) {
       <HeroSection data={data.MainData.HeroSection} singleProject />
       <OverviewSection data={data.MainData.OverviewSection} singleProject />
       {(data.MainData.PDF?.data?.attributes || data.MainData.Button?.Buttonlink) && (
-        <div className="md:-mt-10 flex flex-wrap items-center gap-8 w-fit mx-auto">
+        <div className="md:-mt-10 flex flex-col items-center gap-4 px-8 md:flex-row md:gap-8 md:px-0 md:w-fit md:mx-auto">
           {data.MainData.PDF?.data?.attributes && (
             <DownloadButton
               title={t("Buttons.download_PDF")}
               PDFurl={data.MainData.PDF.data.attributes.url}
               PDFName={data.MainData.PDF.data.attributes.name}
+              className="w-full md:w-fit"
             />
           )}
           {data.MainData.Button?.Buttonlink && (
@@ -32,7 +33,7 @@ export default function SingleProject({ data }: SingleProjectProps) {
               href={data.MainData.Button.Buttonlink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-fit items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-bold text-white transition-all duration-500 hover:bg-darkblue"
+              className="flex w-full justify-center items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-bold text-white transition-all duration-500 hover:bg-darkblue md:w-auto"
             >
               {data.MainData.Button.ButtonText}
             </a>
