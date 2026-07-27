@@ -19,7 +19,7 @@ export default function SingleProject({ data }: SingleProjectProps) {
       <HeroSection data={data.MainData.HeroSection} singleProject />
       <OverviewSection data={data.MainData.OverviewSection} singleProject />
       {(data.MainData.PDF?.data?.attributes || data.MainData.Button?.Buttonlink) && (
-        <div className="md:-mt-10 flex flex-col items-center gap-4 px-8 md:flex-row md:justify-center md:gap-8 md:px-0">
+        <div className="md:-mt-10 flex flex-col items-center gap-4 px-8 md:flex-row md:gap-8 md:px-0 md:w-fit md:mx-auto">
           {data.MainData.PDF?.data?.attributes && (
             <DownloadButton
               title={t("Buttons.download_PDF")}
