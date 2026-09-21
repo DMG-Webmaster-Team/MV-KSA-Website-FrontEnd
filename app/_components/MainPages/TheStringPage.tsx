@@ -41,9 +41,6 @@ export default function TheStringPage() {
   return (
     <div className="bg-darkblue text-white">
       <div className="max-w-[800px] mx-auto px-4 md:pt-44 pt-32 pb-10 text-center space-y-4">
-        <span className="text-Gold md:text-xl text-sm font-medium block">
-          {t("label")}
-        </span>
         <h1 className="lg:text-6xl md:text-5xl text-3xl font-medium leading-tight">
           {t("title")}
         </h1>
