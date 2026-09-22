@@ -56,6 +56,8 @@ export default function LaunchingSection({
           className="object-cover"
         />
       )}
+      {/* Top gradient to ensure header content stays readable */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/50 to-transparent z-10 pointer-events-none" />
 
       <div className="relative mx-auto flex h-full max-w-[1448px] items-end justify-center py-5 md:items-center md:py-8">
         <div className={`bg-white w-[381px] p-5 space-y-4 transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${second ? "md:ms-0 md:me-auto mx-auto" : "md:ms-auto md:me-0 mx-auto"}`}>

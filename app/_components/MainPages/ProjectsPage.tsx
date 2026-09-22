@@ -79,6 +79,8 @@ export default function ProjectsPage({
                 overrideSrc={`${process.env.NEXT_PUBLIC_API_BASE_URL}${page?.image.data.attributes.url}`}
               />
             )}
+            {/* Top gradient to ensure header content stays readable */}
+            <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/50 to-transparent z-10 pointer-events-none" />
           </div>
           <m.div
             className="bottom-0 left-0 z-9 absolute w-full text-white"

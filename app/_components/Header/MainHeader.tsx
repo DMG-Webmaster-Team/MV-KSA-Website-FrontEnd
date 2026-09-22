@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ArrowLong from "../SVGS/ArrowLong";
 import BurgerMenu from "../SVGS/BurgerMenu";
 import Calender from "../SVGS/Calender";
@@ -35,11 +35,34 @@ export interface Menu {
   Megamenu: MegaMenu[];
 }
 
+function getComputedBg(el: Element): string {
+  let current: Element | null = el;
+  while (current) {
+    const bg = window.getComputedStyle(current).backgroundColor;
+    if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") return bg;
+    if (current === document.documentElement) break;
+    current = current.parentElement;
+  }
+  return "rgb(255,255,255)";
+}
+
+function isLightBg(color: string): boolean {
+  const nums = color.match(/[\d.]+/g);
+  if (!nums || nums.length < 3) return false;
+  const [r, g, b] = nums.map(Number);
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.6;
+}
+
 export default function MainHeader({ data }: { data: Menu[] }) {
   const locale = useLocale();
   const t = useTranslations();
   const Pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
+  const [show, setShow] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isDarkSection, setIsDarkSection] = useState(false);
+  const headerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (openMenu) {
       document.body.classList.add("overflow-hidden");
@@ -47,8 +70,6 @@ export default function MainHeader({ data }: { data: Menu[] }) {
       document.body.classList.remove("overflow-hidden");
     }
   }, [openMenu]);
- const [show, setShow] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -66,15 +87,32 @@ export default function MainHeader({ data }: { data: Menu[] }) {
         }
       }
 
+      // Auto contrast: sample elements below the header, skip header itself
+      if (currentScrollY > 0) {
+        const elements = document.elementsFromPoint(window.innerWidth / 2, 70);
+        const pageEls = elements.filter(
+          (e) => headerRef.current && !headerRef.current.contains(e)
+        );
+        // If a fill image is in the stack it's a dark hero — keep normal header
+        const hasImage = pageEls.some((e) => e.tagName === "IMG");
+        if (hasImage) {
+          setIsDarkSection(false);
+        } else {
+          const el = pageEls[0];
+          if (el) setIsDarkSection(isLightBg(getComputedBg(el)));
+        }
+      } else {
+        setIsDarkSection(false);
+      }
+
       lastScrollY = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const StableHeader =
-
     Pathname == "/calendly" ||
     Pathname == "/en/calendly" ||
     Pathname == "/en/faqs" ||
@@ -87,27 +125,40 @@ export default function MainHeader({ data }: { data: Menu[] }) {
     Pathname.startsWith("/en/careers/") ||
     Pathname == "/media-center" ||
     Pathname == "/en/media-center" ||
-
     Pathname.startsWith("/media-center/") ||
     Pathname.startsWith("/en/media-center/") ||
-     Pathname == "/privacy-policy" ||
+    Pathname == "/privacy-policy" ||
     Pathname == "/en/privacy-policy" ||
-     Pathname.startsWith("/privacy-policy/") ||
+    Pathname.startsWith("/privacy-policy/") ||
     Pathname.startsWith("/en/privacy-policy/") ||
     Pathname == "/search" ||
     Pathname == "/en/search";
+
   const isUnitPage = /^\/(?:[a-z]{2}\/)?projects\/[^/]+\/units\/[^/]+$/.test(
     Pathname
   );
+
+  // When over a light section, use a darker bg so white text stays readable
+  const darkBg = "bg-[rgba(12,46,48,0.92)] backdrop-blur-[45px]";
+  const lightBg = "bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px]";
+
+  const headerBg = openMenu
+    ? "bg-darkblue"
+    : show
+    ? `${isDarkSection ? darkBg : lightBg} fixed`
+    : StableHeader
+    ? "relative"
+    : scrolled
+    ? `fixed top-0 ${isDarkSection ? darkBg : lightBg}`
+    : "absolute top-0";
 
   return (
     <>
       {!isUnitPage && (
         <>
           <div
-            className={`${openMenu ? " bg-darkblue " : ""} ${
-            show ? "bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px] fixed" : StableHeader ? "relative" : scrolled ? "fixed top-0 bg-[rgba(12,46,48,0.04)] backdrop-blur-[45px]" : "absolute top-0"
-            } transition-all duration-500  w-full z-40 py-2.5 border-b-[2px] border-white border-opacity-20`}
+            ref={headerRef}
+            className={`${headerBg} transition-all duration-500 w-full z-40 py-2.5 border-b-[2px] border-white border-opacity-20`}
           >
             <div className="max-w-[1448px] px-4 mx-auto flex justify-between items-center">
               <Link
@@ -119,14 +170,16 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                     src={`/logoblack.png`}
                     alt="Logo MV KSA"
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-contain"
                   />
                 ) : (
                   <Image
                     src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/uploads/logo_White_7bce5b4307.webp`}
                     alt="Logo MV KSA"
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-contain"
                   />
                 )}
               </Link>
@@ -247,10 +300,8 @@ export default function MainHeader({ data }: { data: Menu[] }) {
               </div>
             </div>
           </div>
-     <motion.div
-     
-      className={`pt-[64px] fixed inset-0 w-full h-[100vh] bg-darkblue z-30 px-4 lg:hidden overflow-y-auto`}
-    
+          <motion.div
+            className={`pt-[64px] fixed inset-0 w-full h-[100vh] bg-darkblue z-30 px-4 lg:hidden overflow-y-auto`}
             initial={{
               y: -200,
               opacity: 0,
@@ -278,8 +329,9 @@ export default function MainHeader({ data }: { data: Menu[] }) {
                 href={`${locale == "en" ? "/en/" : "/"}contact-us`}
                 className="bg-white xl:px-4 px-3 py-2.5 text-sm font-bold text-primary flex justify-center gap-3 items-center rounded-sm hover:bg-primary hover:text-white transition-all duration-500 "
                 onClick={() => {
-              setOpenMenu(!openMenu);
-            }}>
+                  setOpenMenu(!openMenu);
+                }}
+              >
                 <span className=" leading-[10px] whitespace-nowrap">
                   {t("Buttons.register_your_interest")}
                 </span>
